@@ -2,6 +2,8 @@ package jegmezo.items;
 
 public class EmptyItem extends Item{
 	public void use() {
-		//printek
+		
+		System.out.println("<EmptyItem.use()");
+		System.out.println(">EmptyItem.use()");
 	}
 }

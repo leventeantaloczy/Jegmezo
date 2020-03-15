@@ -1,10 +1,7 @@
 package jegmezo.items;
 
-public class Item {
+public abstract class Item {
 	
-	public void use() {
-		System.out.println("<Item.use()");
-		System.out.println(">Item.use()");
-	}
+	public abstract void use();
 	
 }
