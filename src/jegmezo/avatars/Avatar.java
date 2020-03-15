@@ -3,7 +3,7 @@ import jegmezo.fields.*;
 import jegmezo.Direction;
 import jegmezo.items.*;
 
-public class Avatar {
+public abstract class Avatar {
 	
 	public Field field;
 	private Item backpack[];
