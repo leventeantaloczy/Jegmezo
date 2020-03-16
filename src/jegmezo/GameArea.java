@@ -24,8 +24,8 @@ public class GameArea {
 		
 		System.out.println("Creating and adding as many avatars as many are needed");
 
-		Eskimo avatar = new Eskimo();
-		Researcher researcher = new Researcher();
+		Eskimo avatar = new Eskimo(5);
+		Researcher researcher = new Researcher(4);
 		
 		System.out.println(">GameArea.constructor()");
 	}

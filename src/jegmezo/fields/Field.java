@@ -1,17 +1,29 @@
 package jegmezo.fields;
+import java.util.List;
+
 import jegmezo.Direction;
 import jegmezo.avatars.*;
 import jegmezo.items.*;
 
 public class Field {
-	
+
 	private int snowAmount;
 	private int capacity;
 	private boolean Igloo;
-	public Avatar avatars[];
+	public List<Avatar> avatars;
 	public Item item;
-	private Field neighbours[];
-		
+	private List<Field> neighbours;
+	
+	/*
+	 * TODO
+	 * Kezdetben még legyen mindenstatikus
+	 * Levente
+	 */
+	
+	public Field(){
+
+	}
+	
 	public boolean accept() {
 		System.out.println("<Field.accept()");
 		System.out.println(">Field.accept()");
@@ -22,9 +34,13 @@ public class Field {
 		System.out.println("<Field.removeAvatar()");
 		System.out.println(">Field.removeAvatar()");
 	}
-	
+	/*
+	 * A regi item helyett emptyItem lesz
+	 * Levente
+	 */
 	public void removeItem(Item i) {
 		System.out.println("<Field.removeItem()");
+		item = new EmptyItem();
 		System.out.println(">Field.removeItem()");
 	}
 	
@@ -33,22 +49,40 @@ public class Field {
 		System.out.println(">Field.addAvatar()");
 	}
 	
-	public Field[] getNeighbour(Direction d) {
+	/*
+	 * Elvileg visszater az adott iranyu szomszeddal, nem teszteltem
+	 * Levente
+	 */
+	
+	public Field getNeighbour(Direction d) {
 		System.out.println("<Field.getNeighbour()");
 		System.out.println(">Field.getNeighbour()");
-		return neighbours;
+		return neighbours.get(d.showVal());
 	}
 	
+	/*
+	 * setter
+	 * Levente
+	 */
 	public void setSnow(int i) {
 		System.out.println("<Field.setSnow()");
+		snowAmount += i;
 		System.out.println(">Field.setSnow()");
 	}
-	
+	/*
+	 * setter
+	 * Levente
+	 */
 	public void setIgloo() {
 		System.out.println("<Field.setIgloo()");
+		Igloo = !Igloo;
 		System.out.println(">Field.setIgloo()");
 	}
 	
+	/*
+	 * getter
+	 * Levente
+	 */
 	public int getCapacity() {
 		System.out.println("<Field.getCapacity()");
 		System.out.println(">Field.getCapacity()");
