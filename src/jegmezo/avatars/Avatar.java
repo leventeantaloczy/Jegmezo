@@ -28,15 +28,6 @@ public abstract class Avatar {
 	}
 	
 	/*
-	 * Szerintem felesleges
-	 * Levente
-	*/
-	public void pickUpItem(Item i) {
-		System.out.println("<Avatar.pickUpItem()");
-		
-		System.out.println(">Avatar.pickUpItem()");
-	}
-	/*
 	 * a backpack lancolt lista vegere fuzi az itemet
 	 * Levente
 	 */
