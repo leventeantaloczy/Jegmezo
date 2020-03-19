@@ -6,7 +6,7 @@ import jegmezo.items.*;
 
 public class GameArea {
 	
-	private List<Avatar> avatars;
+	private List<Avatar> avatars;	//Ez alapján lesznek a körök (tehát, hogy ki mikor és ki után léphet
 	private List<Field> fieldsOnArea;
 	
 	public GameArea() {
@@ -49,6 +49,10 @@ public class GameArea {
 		System.out.println(">GameArea.constructor()");
 	}
 	
+	/* Vajon tényleg kell ez? Mit akarunk a Listával, amihez adjuk? 
+	* Úgyis minden Field ismeri a szomszédait, nem látom, hogy a Controll miért kéne számontartsa őket.
+	* Zoli
+	*/
 	public void addField(Field f) {
 		System.out.println("<GameArea.addField()");
 		System.out.println(">GameArea.addField()");
