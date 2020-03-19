@@ -61,6 +61,14 @@ public abstarct class Field {
 	}
 	
 	/*
+	* Ide kell majd egy setNeighbour(), ami kap egy Field-et, ami a szomszédja lesz és
+	* egy Direction-t, hogy tudja, melyik szomszédja. 
+	* A Field-et berakja a neighbours-ba és jó. 
+	* Majd megcsinálom, csak ezt előbb ide akartam tenni, hogy meglegyen az elképzelés.
+	* Zoli
+	*/
+	
+	/*
 	 * setter
 	 * Levente
 	 */
