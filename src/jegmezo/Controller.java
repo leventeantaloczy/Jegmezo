@@ -8,7 +8,8 @@ public class Controller {
 	public static void startGame() {
 		System.out.println("<Controller.startGame()");
 		
-		GameArea ga = new GameArea();
+		GameEnder gameEnder = new GameEnder();
+		GameArea gameArea = new GameArea();
 		
 		System.out.println(">Controller.startGame()");
 	}
