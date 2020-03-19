@@ -17,7 +17,6 @@ public abstract class Avatar {
 	
 	
 	/*
-	 * TODO; field beállítása
 	 * mindenkinek 4 activityPoints-a van, bár ez állítható
 	 * Levente
 	 */
@@ -38,6 +37,7 @@ public abstract class Avatar {
 		backpack.add(i);
 		System.out.println(">Avatar.addToBackpack()");
 	}
+	
 	/*
 	 * használja az adott itemet
 	 * Levente
@@ -50,29 +50,30 @@ public abstract class Avatar {
 	
 	/*
 	 * TODO
+	 * Meg kell hívni a gameEnder endGame()-jét de nem tudom, azt látja-e
 	 * Várni kell majd előbb egy kört
 	 */
-	
 	public void dieByWater() {
 		System.out.println("<Avatar.dieByWater()");
 		if(!wearsWetsuit)
-			//endGame
+			//gameEnder.endGame();	//vagy valami ilyesmi
 		System.out.println(">Avatar.dieByWater()");
 	}
-	/*
-	 * TODO
-	 */
 	
+	/*
+	* Kihűl, elhalálozik
+	* Zoli
+	*/
 	public void dieByHeatLoss() {
 		System.out.println("<Avatar.dieByHeatLoss()");
-		//endGame
+		//gameEnder.endGame();	//vagy valami ilyesmi
 		System.out.println(">Avatar.dieByHeatLoss()");
 	}
+	
 	/*
 	 * Eletero novekszik etel hatiasara
 	 * Levente 
 	 */
-	
 	public void gainHealth() {
 		System.out.println("<Avatar.gainHealth()");
 		healthPoints++;
@@ -83,7 +84,6 @@ public abstract class Avatar {
 	 * hp vesztes, ha 0 meghal heatLoss-ban
 	 * Levente
 	 */
-	
 	public void loseHealth() {
 		System.out.println("<Avatar.loseHealth()");
 		healthPoints--;
@@ -103,7 +103,7 @@ public abstract class Avatar {
 	}
 	
 	/*
-	 *d irányba elmozdul ha tud (csak akkor nem tud ha határmező van ott) 
+	 * d irányba elmozdul ha tud (csak akkor nem tud ha határmező van ott) 
 	 * Levente
 	 */
 	public void move(Direction d) {
@@ -118,10 +118,10 @@ public abstract class Avatar {
 		
 		System.out.println(">Avatar.move()");
 	}
+	
 	/*
 	 * TODO
 	 */
-	
 	public void endTurn() {
 		System.out.println("<Avatar.endTurn()");
 		System.out.println(">Avatar.endTurn()");
@@ -133,7 +133,6 @@ public abstract class Avatar {
 	 * Ha kifogy, meghívódik az endTurn()	
 	 * Levente															
 	 */
-	
 	public void setActivity(int i) {
 		System.out.println("<Avatar.setActivity()");
 		activityPoints += i;
