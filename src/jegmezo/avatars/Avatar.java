@@ -13,7 +13,7 @@ public abstract class Avatar {
 	private List<Item> backpack;
 	private int activityPoints;
 	private int healthPoints;
-	private boolean wearsWetsuit = false;
+	public boolean wearsWetsuit = false;
 	
 	
 	/*
