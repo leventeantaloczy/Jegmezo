@@ -5,7 +5,7 @@ import jegmezo.Direction;
 import jegmezo.avatars.*;
 import jegmezo.items.*;
 
-public class Field {
+public abstarct class Field {
 
 	private int snowAmount;
 	private int capacity;
