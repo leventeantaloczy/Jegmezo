@@ -13,6 +13,7 @@ public abstract class Avatar {
 	private List<Item> backpack;
 	private int activityPoints;
 	private int healthPoints;
+	private boolean wearsWetsuit = false;
 	
 	
 	/*
@@ -49,11 +50,13 @@ public abstract class Avatar {
 	
 	/*
 	 * TODO
+	 * Várni kell majd előbb egy kört
 	 */
 	
 	public void dieByWater() {
 		System.out.println("<Avatar.dieByWater()");
-		
+		if(!wearsWetsuit)
+			//endGame
 		System.out.println(">Avatar.dieByWater()");
 	}
 	/*
@@ -62,7 +65,7 @@ public abstract class Avatar {
 	
 	public void dieByHeatLoss() {
 		System.out.println("<Avatar.dieByHeatLoss()");
-		
+		//endGame
 		System.out.println(">Avatar.dieByHeatLoss()");
 	}
 	/*
