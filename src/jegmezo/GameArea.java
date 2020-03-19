@@ -24,8 +24,25 @@ public class GameArea {
 		
 		System.out.println("Creating and adding as many avatars as many are needed");
 
-		Eskimo avatar = new Eskimo(5);
+		Eskimo eskimo = new Eskimo(5);
 		Researcher researcher = new Researcher(4);
+		
+		addAvatar(eskimo);
+		addAvatar(researcher);
+		
+		System.out.println("Putting avatars on Fields");
+		
+		eskimo.field = stableIce;
+		researcher.field = unstableIce;
+		
+		System.out.println("Setting up the neighbourhood");
+		
+		/*
+		* TODO
+		* Ide a majdan megvalósított Field.setNeighbour()-t felhasználva
+		* kéne felépíteni a térképen lévő Field-ek közti szomszédságokat
+		* Zoli
+		*/
 		
 		System.out.println(">GameArea.constructor()");
 	}
