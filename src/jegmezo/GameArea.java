@@ -6,6 +6,8 @@ import jegmezo.items.*;
 
 public class GameArea {
 	
+	private List<Avatar> avatars;
+	private List<Field> fieldsOnArea;
 	
 	public GameArea() {
 		System.out.println("<GameArea.constructor()");
