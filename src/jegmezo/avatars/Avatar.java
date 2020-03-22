@@ -45,6 +45,7 @@ public abstract class Avatar {
 	public void useItem(Item i) {
 		System.out.println("<Avatar.useItem()");
 		i.use(this);
+		this.setActivity(1);
 		System.out.println(">Avatar.useItem()");
 	}
 	
