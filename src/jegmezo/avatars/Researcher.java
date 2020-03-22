@@ -16,7 +16,7 @@ public class Researcher extends Avatar{
 	public int checkField(Direction d) {
 		System.out.println("<Researcher.checkField()");
 		
-		Field f = new Field(); 
+		Field f = new StableIce(); 
 		f = field.getNeighbour(d);
 		this.setActivity(1);
 		
