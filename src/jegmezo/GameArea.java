@@ -80,7 +80,7 @@ public class GameArea {
 		//Nincs nyugati szomszéd, mert minek
 		stableIce1.setNeighbour(border2);
 		stableIce1.setNeighbour(stableIce3);
-		stableIce1.setNeighbour(stableIce);
+		stableIce1.setNeighbour(stableIce2);
 		stableIce1.setNeighbour(holeField);
 		stableIce2.setNeighbour(border3);
 		stableIce2.setNeighbour(stableIce4);
