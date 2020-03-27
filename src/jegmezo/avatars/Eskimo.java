@@ -3,8 +3,8 @@ package jegmezo.avatars;
 public class Eskimo extends Avatar{
 	
 	
-	public Eskimo(int hp) {
-		super(hp);
+	public Eskimo() {
+		super(5);
 		// TODO Auto-generated constructor stub
 	}
 	
