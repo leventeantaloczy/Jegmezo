@@ -20,7 +20,7 @@ public class GameArea {
 		* Ezen kene maszkalni es figyelni, hogy jo-e amiket kiir. 
 		* Zoli
 		*/
-		System.out.println("Creating and adding different tipes of fields for skeletoning purpose");
+		System.out.println("Creating and adding different types of fields for skeletoning purpose");
 		
 		HoleField holeField = new HoleField();
 		StableIce stableIce1 = new StableIce();
