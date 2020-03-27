@@ -4,8 +4,8 @@ import jegmezo.Direction;
 
 public class Researcher extends Avatar{
 
-	public Researcher(int hp) {
-		super(hp);
+	public Researcher() {
+		super(4);
 		// TODO Auto-generated constructor stub
 	}
 	
