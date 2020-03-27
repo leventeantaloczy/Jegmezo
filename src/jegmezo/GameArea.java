@@ -51,10 +51,6 @@ public class GameArea {
 		System.out.println(">GameArea.constructor()");
 	}
 	
-	/* Vajon tényleg kell ez? Mit akarunk a Listával, amihez adjuk? 
-	* Úgyis minden Field ismeri a szomszédait, nem látom, hogy a Controll miért kéne számontartsa őket.
-	* Zoli
-	*/
 	public void addField(Field f) {
 		System.out.println("<GameArea.addField()");
 		System.out.println(">GameArea.addField()");
