@@ -12,7 +12,7 @@ public abstract class Field {
 	private boolean Igloo;
 	public List<Avatar> avatars;
 	public Item item;
-	private List<Field> neighbours;
+	private List<Field> neighbours = new ArrayList <Field>();
 	
 	/*
 	 * TODO
