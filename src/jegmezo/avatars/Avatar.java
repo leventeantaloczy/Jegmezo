@@ -136,8 +136,8 @@ public abstract class Avatar {
 	 */
 	public void setActivity(int i) {
 		System.out.println("<Avatar.setActivity()");
-		activityPoints += i;
-		if(activityPoints == 0) {
+		activityPoints -= i;
+		if(activityPoints <= 0) {
 			this.endTurn();
 		}
 		System.out.println(">Avatar.setActivity()");
