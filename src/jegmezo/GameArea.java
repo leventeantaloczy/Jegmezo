@@ -14,6 +14,12 @@ public class GameArea {
 	public GameArea() {
 		System.out.println("<GameArea.constructor()");
 		
+		/*
+		* Egy jo kis init szekvencia. 
+		* Felepit egy tesztpalyat field-ekbol, iteme-kbol és tesz rajuk 2 avatart. 
+		* Ezen kene maszkalni es figyelni, hogy jo-e amiket kiir. 
+		* Zoli
+		*/
 		System.out.println("Creating and adding different tipes of fields for skeletoning purpose");
 		
 		HoleField holeField = new HoleField();
@@ -83,6 +89,7 @@ public class GameArea {
 		unstableIce.setNeighbour(holeField);
 		unstableIce.setNeighbour(stableIce5);
 		unstableIce.setNeighbour(stableIce3);
+		//Nincs nyugati szomszéd, mert minek
 		stableIce3.setNeighbour(stableIce1);
 		stableIce3.setNeighbour(stableIce6);
 		stableIce3.setNeighbour(stableIce4);
@@ -91,7 +98,32 @@ public class GameArea {
 		stableIce4.setNeighbour(border6);
 		stableIce4.setNeighbour(border5);
 		stableIce4.setNeighbour(stableIce3);
-		//itt még folytatom
+		stableIce5.setNeighbour(unstableIce);
+		stableIce5.setNeighbour(border7);
+		stableIce5.setNeighbour(stableIce6);
+		//Nincs nyugati szomszéd, mert minek
+		stableIce6.setNeighbour(stableIce3);
+		stableIce6.setNeighbour(border8);
+		stableIce6.setNeighbour(border6);
+		stableIce6.setNeighbour(stableIce5);
+		
+		System.out.println("Creating and putting items on Fields");
+		
+		WetSuit wetSuit = new WetSuit();
+		Flare flare = new Flare();
+		Food food = new Food();
+		Shovel shovel = new Shovel();
+		Rope rope = new Rope();
+		Cartridge cartridge = new Cartridge();
+		Gun gun = new Gun();
+		
+		stableIce1.item = wetSuit;
+		stableIce2.item = flare;
+		unstableIce.item = food;
+		stableIce3.item = shovel;
+		stableIce4.item = rope;
+		stableIce5.item = cartridge;
+		stableIce6.item = gun;
 		
 		System.out.println(">GameArea.constructor()");
 	}
