@@ -10,6 +10,7 @@ public class GameArea {
 	
 	private List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
 	private List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
+	private int activeAvatar;
 	
 	public GameArea() {
 		System.out.println("<GameArea.constructor()");
@@ -141,4 +142,16 @@ public class GameArea {
 		avatars.add(a);
 		System.out.println(">GameArea.addAvatar()");
 	}
+	
+	/*
+	 * Ez valt aktiv Avatart a tömbben
+	 * Benedek
+	 */
+	public void changeActiveAvatar() {
+		this.activeAvatar++;
+		if(activeAvatar >= this.avatars.size())
+			activeAvatar = 0;
+	}
+	
+	
 }

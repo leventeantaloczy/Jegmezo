@@ -14,8 +14,10 @@ public abstract class Avatar {
 	private List<Item> backpack;
 	private int activityPoints;
 	private int healthPoints;
+	public boolean EndTurn = false;
 	public boolean wearsWetsuit = false;
 	public GameEnder gameEnder;
+	
 	
 	
 	/*
@@ -123,10 +125,12 @@ public abstract class Avatar {
 	}
 	
 	/*
-	 * TODO
+	 * Ezt tudtam kitalalni arra hogy "szol controllernek"
+	 * Benedek
 	 */
 	public void endTurn() {
 		System.out.println("<Avatar.endTurn()");
+		this.EndTurn = true;
 		System.out.println(">Avatar.endTurn()");
 	}
 	
