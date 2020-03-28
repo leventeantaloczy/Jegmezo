@@ -148,6 +148,7 @@ public class GameArea {
 	 * Benedek
 	 */
 	public void changeActiveAvatar() {
+		this.avatars.get(activeAvatar).EndTurn = false;
 		this.activeAvatar++;
 		if(activeAvatar >= this.avatars.size())
 			activeAvatar = 0;
