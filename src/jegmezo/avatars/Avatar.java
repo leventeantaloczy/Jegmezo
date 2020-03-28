@@ -14,6 +14,7 @@ public abstract class Avatar {
 	private int activityPoints;
 	private int healthPoints;
 	public boolean wearsWetsuit = false;
+	public GameEnder gameEnder;
 	
 	
 	/*
