@@ -1,4 +1,6 @@
 package jegmezo;
+import java.util.List;
+
 import jegmezo.avatars.*;
 //import javafx.scene.layout.Border;
 import jegmezo.fields.*;
