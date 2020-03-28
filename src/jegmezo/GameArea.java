@@ -2,13 +2,12 @@ package jegmezo;
 import java.util.List;
 
 import jegmezo.avatars.*;
-//import javafx.scene.layout.Border;
 import jegmezo.fields.*;
 import jegmezo.items.*;
 
 public class GameArea {
 	
-	private List<Avatar> avatars;	//Ez alapján lesznek a körök (tehát, hogy ki mikor és ki után léphet
+	private List<Avatar> avatars;	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
 	private List<Field> fieldsOnArea;
 	
 	public GameArea() {
@@ -63,6 +62,8 @@ public class GameArea {
 
 		Eskimo eskimo = new Eskimo();
 		Researcher researcher = new Researcher();
+		eskimo.gameEnder = gameEnder;
+		researcher.gameEnder = gameEnder;
 		
 		addAvatar(eskimo);
 		addAvatar(researcher);
