@@ -1,4 +1,5 @@
 package jegmezo;
+import java.util.ArrayList;
 import java.util.List;
 
 import jegmezo.avatars.*;

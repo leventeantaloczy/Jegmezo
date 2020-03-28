@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import jegmezo.Direction;
+import jegmezo.GameEnder;
 import jegmezo.items.*;
 
 public abstract class Avatar {
