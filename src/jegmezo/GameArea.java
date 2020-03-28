@@ -12,7 +12,7 @@ public class GameArea {
 	private List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
 	private int activeAvatar = 0;
 	
-	public GameArea() {
+	public GameArea(GameEnder gameEnder) {
 		System.out.println("<GameArea.constructor()");
 		
 		/*
@@ -80,7 +80,7 @@ public class GameArea {
 		holeField.setNeighbour(border1);
 		holeField.setNeighbour(unstableIce);
 		holeField.setNeighbour(stableIce1);
-		//Nincs nyugati szomszĂŠd, mert minek
+		//Nincs nyugati szomszed, mert minek
 		stableIce1.setNeighbour(border2);
 		stableIce1.setNeighbour(stableIce3);
 		stableIce1.setNeighbour(stableIce2);
@@ -92,7 +92,7 @@ public class GameArea {
 		unstableIce.setNeighbour(holeField);
 		unstableIce.setNeighbour(stableIce5);
 		unstableIce.setNeighbour(stableIce3);
-		//Nincs nyugati szomszĂŠd, mert minek
+		//Nincs nyugati szomszed, mert minek
 		stableIce3.setNeighbour(stableIce1);
 		stableIce3.setNeighbour(stableIce6);
 		stableIce3.setNeighbour(stableIce4);
@@ -104,7 +104,7 @@ public class GameArea {
 		stableIce5.setNeighbour(unstableIce);
 		stableIce5.setNeighbour(border7);
 		stableIce5.setNeighbour(stableIce6);
-		//Nincs nyugati szomszĂŠd, mert minek
+		//Nincs nyugati szomszed, mert minek
 		stableIce6.setNeighbour(stableIce3);
 		stableIce6.setNeighbour(border8);
 		stableIce6.setNeighbour(border6);
