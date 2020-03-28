@@ -9,7 +9,7 @@ public class Controller {
 		System.out.println("<Controller.startGame()");
 		
 		GameEnder gameEnder = new GameEnder();
-		GameArea gameArea = new GameArea();
+		GameArea gameArea = new GameArea(gameEnder);
 		
 		System.out.println(">Controller.startGame()");
 	}
@@ -20,7 +20,7 @@ public class Controller {
 	}
 	
 	public static void main(String[] args) {
-        System.out.println("A legjobb t�rgy a Projlab!! -help ;)");
+        System.out.println("A legjobb targy a Projlab!! -help ;)");
         startGame();
     }
 	
