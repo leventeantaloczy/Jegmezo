@@ -1,4 +1,5 @@
 package jegmezo.fields;
+import java.util.ArrayList;
 import java.util.List;
 
 import jegmezo.Direction;
@@ -12,7 +13,7 @@ public abstract class Field {
 	private boolean Igloo;
 	public List<Avatar> avatars;
 	public Item item;
-	private List<Field> neighbours;
+	private List<Field> neighbours = new ArrayList <Field>();
 	
 	/*
 	 * TODO
@@ -61,12 +62,13 @@ public abstract class Field {
 	}
 	
 	/*
-	* Ide kell majd egy setNeighbour(), ami kap egy Field-et, ami a szomszédja lesz és
-	* egy Direction-t, hogy tudja, melyik szomszédja. 
-	* A Field-et berakja a neighbours-ba és jó. 
-	* Majd megcsinálom, csak ezt előbb ide akartam tenni, hogy meglegyen az elképzelés.
+	* Kap egy Field-et és befuzi a lista vegere. 
+	* Emiatt a szomszedokat Eszaki, Deli, Keleti es Nyugati sorrendben kell hozzaadni.
 	* Zoli
 	*/
+	public void setNeighbour(Field f) {
+		this.neighbours.add(f);
+	}
 	
 	/*
 	 * setter

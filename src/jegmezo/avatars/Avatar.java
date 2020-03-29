@@ -5,6 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import jegmezo.Direction;
+import jegmezo.GameEnder;
 import jegmezo.items.*;
 
 public abstract class Avatar {
@@ -13,7 +14,10 @@ public abstract class Avatar {
 	private List<Item> backpack;
 	private int activityPoints;
 	private int healthPoints;
+	public boolean EndTurn = false;
 	public boolean wearsWetsuit = false;
+	public GameEnder gameEnder;
+	
 	
 	
 	/*
@@ -45,6 +49,7 @@ public abstract class Avatar {
 	public void useItem(Item i) {
 		System.out.println("<Avatar.useItem()");
 		i.use(this);
+		this.setActivity(1);
 		System.out.println(">Avatar.useItem()");
 	}
 	
@@ -120,10 +125,13 @@ public abstract class Avatar {
 	}
 	
 	/*
-	 * TODO
+	 * Ezt tudtam kitalalni arra hogy "szol controllernek"
+	 * Benedek
 	 */
 	public void endTurn() {
 		System.out.println("<Avatar.endTurn()");
+		this.activityPoints = 4;
+		this.EndTurn = true;
 		System.out.println(">Avatar.endTurn()");
 	}
 	
@@ -135,8 +143,8 @@ public abstract class Avatar {
 	 */
 	public void setActivity(int i) {
 		System.out.println("<Avatar.setActivity()");
-		activityPoints += i;
-		if(activityPoints == 0) {
+		activityPoints -= i;
+		if(activityPoints <= 0) {
 			this.endTurn();
 		}
 		System.out.println(">Avatar.setActivity()");
