@@ -1,5 +1,7 @@
 package jegmezo.avatars;
 
+import jegmezo.Direction;
+
 public class Eskimo extends Avatar{
 	
 	
@@ -13,11 +15,12 @@ public class Eskimo extends Avatar{
 	 * Levente
 	 */
 
-	public void build() {
+	public int specialMove(Direction d) {
 		System.out.println("<Eskimo.build()");
 		field.setIgloo();
 		this.setActivity(1);
 		System.out.println(">Eskimo.build()");
+		return 1;
 	}
 
 }

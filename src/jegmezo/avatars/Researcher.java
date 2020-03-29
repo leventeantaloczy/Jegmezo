@@ -13,7 +13,7 @@ public class Researcher extends Avatar{
 	 * A d iranyu mezot leelenorzi és visszater annak kapacitas ertekevel
 	 * Levente
 	 */
-	public int checkField(Direction d) {
+	public int specialMove(Direction d) {
 		System.out.println("<Researcher.checkField()");
 		
 		Field f = new StableIce(); 

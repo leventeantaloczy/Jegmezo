@@ -87,15 +87,22 @@ public class Controller {
 				 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
 				 * Zoli
 				 */
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.North);
 			    break;
 			case "CE":
 			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.East);
+
 			    break;
 			case "CS":
 			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.South);
+
 			    break;
 			case "CW":
 			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.West);
+
 			    break;    
 			default:
 			    break;
