@@ -69,6 +69,8 @@ public class GameArea {
 		
 		addAvatar(eskimo);
 		addAvatar(researcher);
+		unstableIce.addAvatar(eskimo);
+		stableIce4.addAvatar(researcher);
 		
 		System.out.println("Putting avatars on Fields");
 		
