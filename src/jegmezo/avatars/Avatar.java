@@ -150,4 +150,5 @@ public abstract class Avatar {
 		System.out.println(">Avatar.setActivity()");
 	}
 	
+	public abstract int specialMove(Direction d);
 }
