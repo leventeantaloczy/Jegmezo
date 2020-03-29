@@ -11,7 +11,7 @@ import jegmezo.items.*;
 public abstract class Avatar {
 	
 	public Field field;
-	private List<Item> backpack;
+	private List<Item> backpack = new ArrayList<Item>();
 	private int activityPoints;
 	private int healthPoints;
 	public boolean EndTurn = false;

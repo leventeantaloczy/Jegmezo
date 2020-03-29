@@ -86,15 +86,22 @@ public class Controller {
 				 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
 				 * ZolisnowAmount
 				 */
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.North);
 			    break;
 			case "CE":
 			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.East);
+
 			    break;
 			case "CS":
 			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.South);
+
 			    break;
 			case "CW":
 			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.West);
+
 			    break;    
 			default:
 				System.out.println("Hibas input");
@@ -124,7 +131,7 @@ public class Controller {
 	        	int probability = rand.nextInt(101);
 	        	if(probability > 50) {
 	        		fields.get(i).setSnow(1);
-				for(int j = 0; j < fields.get(i).avatars.size(); i++) {
+				for(int j = 0; j < fields.get(i).avatars.size(); j++) {
 	        			fields.get(i).avatars.get(j).loseHealth();
 	        		}
 	        	}

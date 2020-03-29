@@ -11,7 +11,7 @@ public abstract class Field {
 	private int snowAmount;
 	private int capacity;
 	private boolean Igloo;
-	public List<Avatar> avatars;
+	public List<Avatar> avatars = new ArrayList<Avatar>();
 	public Item item;
 	private List<Field> neighbours = new ArrayList <Field>();
 	
@@ -33,6 +33,7 @@ public abstract class Field {
 	
 	public void removeAvatar(Avatar a) {
 		System.out.println("<Field.removeAvatar()");
+		avatars.remove(a);
 		System.out.println(">Field.removeAvatar()");
 	}
 	/*
@@ -47,6 +48,7 @@ public abstract class Field {
 	
 	public void addAvatar(Avatar a) {
 		System.out.println("<Field.addAvatar()");
+		avatars.add(a);
 		System.out.println(">Field.addAvatar()");
 	}
 	
@@ -67,7 +69,9 @@ public abstract class Field {
 	* Zoli
 	*/
 	public void setNeighbour(Field f) {
+		System.out.println("<Field.setNeighbour()");
 		this.neighbours.add(f);
+		System.out.println(">Field.setNeighbour()");
 	}
 	
 	/*
