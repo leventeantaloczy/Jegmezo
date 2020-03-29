@@ -11,7 +11,7 @@ public abstract class Field {
 	private int snowAmount;
 	private int capacity;
 	private boolean Igloo;
-	public List<Avatar> avatars;
+	public List<Avatar> avatars = new ArrayList<Avatar>();
 	public Item item;
 	private List<Field> neighbours = new ArrayList <Field>();
 	
