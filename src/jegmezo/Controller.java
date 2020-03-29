@@ -94,8 +94,24 @@ public class Controller {
 		//System.out.println(">Controller.runGame()");
 	}
 	
-	public void Strom() {
+	/*
+	 * Kap egy csomag mezot, amiket behavaz.
+	 * Zoli
+	 */
+	public void Storm(List<Field> fields) {
 		System.out.println("<Controller.Storm()");
+		
+		Random rand = new Random();
+		for(int i = 0; i < fields.size(); i++) {
+			/*
+			 * Igy 50% esellyel esik minden mezon a ho
+			 */ 
+	        	int probability = rand.nextInt(101);
+	        	if(probability > 50) {
+	        		fields.get(i).setSnow(1);
+	        	}
+		}
+		
 		System.out.println(">Controller.Storm()");
 	}
 	
