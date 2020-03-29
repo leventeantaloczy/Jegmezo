@@ -43,7 +43,7 @@ public abstract class Avatar {
 	}
 	
 	/*
-	 * használja az adott itemet
+	 * használja az adott itemet, aktivitasa no
 	 * Levente
 	 */
 	public void useItem(Item i) {

@@ -1,17 +1,16 @@
 package jegmezo;
 import java.util.ArrayList;
->>>>>>> 4bdf55988512b1707454deaade3621b8667401e1
 import java.util.List;
-
 import jegmezo.avatars.*;
 import jegmezo.fields.*;
 import jegmezo.items.*;
 
 public class GameArea {
+	/*packet lathatosag*/
 	
-	public List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
-	public List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
-	public int activeAvatar = 0;
+	List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
+	List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
+	int activeAvatar = 0;
 	
 	public GameArea(GameEnder gameEnder) {
 		System.out.println("<GameArea.constructor()");
@@ -132,13 +131,13 @@ public class GameArea {
 		System.out.println(">GameArea.constructor()");
 	}
 	
-	public void addField(Field f) {
+	private void addField(Field f) {
 		System.out.println("<GameArea.addField()");
 		fieldsOnArea.add(f);
 		System.out.println(">GameArea.addField()");
 	}
 	
-	public void addAvatar(Avatar a) {
+	private void addAvatar(Avatar a) {
 		System.out.println("<GameArea.addAvatar()");
 		avatars.add(a);
 		System.out.println(">GameArea.addAvatar()");

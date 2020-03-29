@@ -5,8 +5,7 @@ import jegmezo.avatars.Avatar;
 public class Shovel extends Item{
 
 	/*
-	 * 2 havat eltakarit, azt nem tudom, hogy az aktivitast mikor csokkentsuk
-	 * TODO
+	 * 2 havat eltakarit
 	 * Levente
 	 */
 	@Override

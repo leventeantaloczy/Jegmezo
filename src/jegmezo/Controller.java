@@ -31,7 +31,7 @@ public class Controller {
 		while(true) {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	        	String command = br.readLine();
-		        switch(command) {
+		        switch(command.toUpperCase()) {
 		        case "S":
 	        		Storm(gameArea.fieldsOnArea);
 	            		break;
@@ -43,8 +43,7 @@ public class Controller {
 	            		break;
 			case "B":
 				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack(
-						gameArea.avatars.get(gameArea.activeAvatar).field.item
-						);
+						gameArea.avatars.get(gameArea.activeAvatar).field.item);
 			    break;
 			case "T":
 				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
@@ -85,7 +84,7 @@ public class Controller {
 			case "CN":
 				/*
 				 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
-				 * Zoli
+				 * ZolisnowAmount
 				 */
 			    break;
 			case "CE":
@@ -98,6 +97,7 @@ public class Controller {
 			    // code block
 			    break;    
 			default:
+				System.out.println("Hibas input");
 			    break;
 	        	}
 		}

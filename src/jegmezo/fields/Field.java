@@ -79,6 +79,11 @@ public abstract class Field {
 		snowAmount += i;
 		System.out.println(">Field.setSnow()");
 	}
+	
+	public int getSnowAmount(){
+		return snowAmount;
+	}
+	
 	/*
 	 * setter
 	 * Levente
