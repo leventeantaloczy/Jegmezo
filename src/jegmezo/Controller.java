@@ -49,12 +49,27 @@ public class Controller {
 			case "T":
 				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
 			    break;
-			case "U":
-			    /*
-			     * Ide kell majd egy "U..." minden fajta Item-hez
-			     * Zoli
-			     */
-			    break;
+			case "UC":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Cartridge());
+				break;
+			case "UFL":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Flare());
+				break;
+			case "UFO":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Food());
+				break;
+			case "UG":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Gun());
+				break;
+			case "UR":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Rope());
+				break;
+			case "US":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Shovel());
+				break;
+			case "UW":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new WetSuit());
+				break;
 			case "MN":
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
 			    break;
@@ -98,7 +113,7 @@ public class Controller {
 	 * Kap egy csomag mezot, amiket behavaz.
 	 * Zoli
 	 */
-	public void Storm(List<Field> fields) {
+	public static void Storm(List<Field> fields) {
 		System.out.println("<Controller.Storm()");
 		
 		Random rand = new Random();
@@ -117,7 +132,12 @@ public class Controller {
 	
 	public static void main(String[] args) {
         System.out.println("A legjobb targy a Projlab!! -help ;)");
-        startGame();
+        try {
+			startGame();
+		} catch (IOException e) {
+			System.out.println("IOexception: startgame");
+			e.printStackTrace();
+		}
     }
 	
 }
