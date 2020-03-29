@@ -67,7 +67,9 @@ public abstract class Field {
 	* Zoli
 	*/
 	public void setNeighbour(Field f) {
+		System.out.println("<Field.setNeighbour()");
 		this.neighbours.add(f);
+		System.out.println(">Field.setNeighbour()");
 	}
 	
 	/*
