@@ -124,6 +124,9 @@ public class Controller {
 	        	int probability = rand.nextInt(101);
 	        	if(probability > 50) {
 	        		fields.get(i).setSnow(1);
+				for(int j = 0; j < fields.get(i).avatars.size(); i++) {
+	        			fields.get(i).avatars.get(j).loseHealth();
+	        		}
 	        	}
 		}
 		
