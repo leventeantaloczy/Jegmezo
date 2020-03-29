@@ -8,9 +8,9 @@ import jegmezo.items.*;
 
 public class GameArea {
 	
-	private List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
-	private List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
-	private int activeAvatar = 0;
+	public List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
+	public List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
+	public int activeAvatar = 0;
 	
 	public GameArea(GameEnder gameEnder) {
 		System.out.println("<GameArea.constructor()");
