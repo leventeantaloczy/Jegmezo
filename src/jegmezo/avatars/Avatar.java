@@ -61,7 +61,7 @@ public abstract class Avatar {
 	public void dieByWater() {
 		System.out.println("<Avatar.dieByWater()");
 		if(!wearsWetsuit)
-			//gameEnder.endGame();	//vagy valami ilyesmi
+		gameEnder.endGame();
 		System.out.println(">Avatar.dieByWater()");
 	}
 	
@@ -71,7 +71,7 @@ public abstract class Avatar {
 	*/
 	public void dieByHeatLoss() {
 		System.out.println("<Avatar.dieByHeatLoss()");
-		//gameEnder.endGame();	//vagy valami ilyesmi
+		gameEnder.endGame();
 		System.out.println(">Avatar.dieByHeatLoss()");
 	}
 	
