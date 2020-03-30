@@ -85,6 +85,8 @@ public abstract class Field {
 	}
 	
 	public int getSnowAmount(){
+		System.out.println("<Field.getSnowAmount()");
+		System.out.println(">Field.getSnowAmount()");
 		return snowAmount;
 	}
 	
