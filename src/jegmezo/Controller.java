@@ -27,8 +27,9 @@ public class Controller {
 		System.out.println("<Controller.runGame()");
 		
 		System.out.println("Enter command for 1st Avatar!");
+		boolean exit = true;
 		
-		while(true) {
+		do {
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	        	String command = br.readLine();
 		        switch(command.toUpperCase()) {
@@ -40,6 +41,7 @@ public class Controller {
 				 * Valahogy meg kene tudni, hogy Eskimo-e es akkor build-elni.
 				 * Zoli
 				 */
+				 gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.North);
 	            		break;
 			case "B":
 				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack(
@@ -102,18 +104,21 @@ public class Controller {
 			    // code block
 				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.West);
 
-			    break;    
+			    break;
+			case "Exit":
+				exit=false;
+				break;
 			default:
 				System.out.println("Hibas input");
 			    break;
 	        	}
-		}
+		}while(exit)
 		
 		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
 		 * Oda majd megy valami, ami figyeli a jatek veget.
 		 * Zoli
 		*/
-		//System.out.println(">Controller.runGame()");
+		System.out.println(">Controller.runGame()");
 	}
 	
 	/*
