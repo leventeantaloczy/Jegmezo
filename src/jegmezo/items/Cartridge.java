@@ -8,6 +8,7 @@ public class Cartridge extends Item{
 	public void use(Avatar a) {
 		System.out.println("Cartridge.use()");
 		System.out.println(">Cartridge.use()"); 
+		return;
 		
 	}
 

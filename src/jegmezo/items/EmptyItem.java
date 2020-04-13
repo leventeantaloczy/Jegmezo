@@ -12,5 +12,6 @@ public class EmptyItem extends Item{
 	public void use(Avatar a) {
 		System.out.println("<EmptyItem.use()");
 		System.out.println(">EmptyItem.use()");
+		return;
 	}
 }

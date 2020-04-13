@@ -112,7 +112,7 @@ public class Controller {
 				System.out.println("Hibas input");
 			    break;
 	        	}
-		}while(exit)
+		}while(exit);
 		
 		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
 		 * Oda majd megy valami, ami figyeli a jatek veget.

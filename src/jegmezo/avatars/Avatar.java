@@ -1,6 +1,7 @@
 package jegmezo.avatars;
 import jegmezo.fields.*;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -69,7 +70,7 @@ public abstract class Avatar {
 	* Kihűl, elhalálozik
 	* Zoli
 	*/
-	public void dieByHeatLoss() {
+	public void instantDeath() {
 		System.out.println("<Avatar.dieByHeatLoss()");
 		gameEnder.endGame();
 		System.out.println(">Avatar.dieByHeatLoss()");
@@ -93,7 +94,7 @@ public abstract class Avatar {
 		System.out.println("<Avatar.loseHealth()");
 		healthPoints--;
 		if(healthPoints == 0)
-			this.dieByHeatLoss();
+			this.instantDeath();
 		System.out.println(">Avatar.loseHealth()");
 	}
 	
