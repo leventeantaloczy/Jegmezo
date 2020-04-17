@@ -10,7 +10,11 @@ import jegmezo.avatars.Avatar;
 import jegmezo.fields.Field;
 
 public class Rope extends Item{
-
+	
+	
+	public Rope(){
+		this.important = false;
+	}
 	/*
 	 * ugy gondoltam, hogy a parameterben kapott avatart menti meg, báár
 	 * Levente

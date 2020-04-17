@@ -4,6 +4,10 @@ import jegmezo.avatars.Avatar;
 
 public class Food extends Item{
 
+	public Food(){
+		this.important = false;
+	}
+	
 	/*
 	 * TODO aktivitas???
 	 * Eszik es felmegy az elete

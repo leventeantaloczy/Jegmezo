@@ -3,6 +3,11 @@ package jegmezo.items;
 import jegmezo.avatars.Avatar;
 
 public class WetSuit extends Item{
+	
+	public WetSuit(){
+		this.important = false;
+	}
+	
 	/*
 	 * Ha use-olod, beállítódik, hogy viseled. 
 	 * Innentől a dieByWater() nem bánthat.

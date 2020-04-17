@@ -3,7 +3,11 @@ import jegmezo.fields.Field;
 import jegmezo.avatars.Avatar;
 
 public class Shovel extends Item{
-
+	
+	public Shovel(){
+		this.important = false;
+	}
+	
 	/*
 	 * 2 havat eltakarit
 	 * Levente

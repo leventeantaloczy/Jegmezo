@@ -142,6 +142,7 @@ public abstract class Avatar {
 	 * Ha kifogy, meghívódik az endTurn()	
 	 * Levente															
 	 */
+	
 	public void setActivity(int i) {
 		System.out.println("<Avatar.setActivity()");
 		activityPoints -= i;
