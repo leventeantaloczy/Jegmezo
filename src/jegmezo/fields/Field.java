@@ -40,7 +40,7 @@ public abstract class Field {
 	 * A regi item helyett emptyItem lesz
 	 * Levente
 	 */
-	public void removeItem(Item i) {
+	public void removeItem() {
 		System.out.println("<Field.removeItem()");
 		item = new EmptyItem();
 		System.out.println(">Field.removeItem()");
