@@ -82,7 +82,7 @@ public class Rope extends Item{
 		}
 		
 		
-		System.out.println(">Rop.use()");
+		System.out.println(">Rope.use()");
 		
 	}
 

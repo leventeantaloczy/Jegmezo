@@ -41,7 +41,7 @@ public class Controller {
 				 * Valahogy meg kene tudni, hogy Eskimo-e es akkor build-elni.
 				 * Zoli
 				 */
-				 gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.North);
+				 gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 	            		break;
 			case "B":
 				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack(
@@ -88,21 +88,21 @@ public class Controller {
 				 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
 				 * ZolisnowAmount
 				 */
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.North);
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 			    break;
 			case "CE":
 			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.East);
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 
 			    break;
 			case "CS":
 			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.South);
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 
 			    break;
 			case "CW":
 			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.West);
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 
 			    break;
 			case "Exit":

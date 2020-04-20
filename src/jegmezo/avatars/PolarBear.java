@@ -13,7 +13,7 @@ public class PolarBear extends Avatar{
 	}
 
 	@Override
-	public int specialMove(Direction d) {
+	public int specialMove() {
 		// TODO Auto-generated method stub
 		return 0;
 	}

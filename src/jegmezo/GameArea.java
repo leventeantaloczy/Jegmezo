@@ -11,6 +11,7 @@ public class GameArea {
 	List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
 	List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
 	int activeAvatar = 0;
+	int turnCountdown = 0;
 	
 	public GameArea(GameEnder gameEnder) {
 		System.out.println("<GameArea.constructor()");
@@ -154,6 +155,23 @@ public class GameArea {
 		this.activeAvatar++;
 		if(activeAvatar >= this.avatars.size())
 			activeAvatar = 0;
+	}
+	/*
+	 * Ez a fuggveny inditja el a visszaszamlalot a kor eltelesehez
+	 * Tivadar
+	 */
+	public void setCountdown() {
+		turnCountdown = avatars.size();
+	}
+	
+	public void updateCountdown() {
+		if(turnCountdown > 0) {
+			turnCountdown--;
+		}
+	}
+	
+	public int getCountdown() {
+		return turnCountdown;
 	}
 	
 	
