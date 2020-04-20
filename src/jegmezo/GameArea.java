@@ -22,6 +22,27 @@ public class GameArea {
 		* Ezen kene maszkalni es figyelni, hogy jo-e amiket kiir. 
 		* Zoli
 		*/
+		System.out.println("How many players will try to escape?");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    		String numOfPlayersString = "";
+		try {
+			numOfPlayersString = br.readLine();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		int numberOfPlayersInt  =Integer.parseInt(numOfPlayersString);
+		while(numberOfPlayersInt < 3) {
+			System.out.println("Number isn't high enough. Sould be at least 3!");
+			try {
+				numOfPlayersString = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			numberOfPlayersInt  = Integer.parseInt(numOfPlayersString);
+		}
+		/*Ezutan ezt a numberOfPlayersInt-et oda kell adni az Avatar-oknak, 
+		pontosabban egynlove tenni a durability valtozojukkal.*/
+		
 		System.out.println("Creating and adding different types of fields for skeletoning purpose");
 		
 		HoleField holeField = new HoleField();
