@@ -120,6 +120,7 @@ public abstract class Avatar {
 		if(f.accept()) {
 			f.addAvatar(this);
 			field.removeAvatar(this);
+			field = f;
 			this.setActivity(1);
 		}
 		
