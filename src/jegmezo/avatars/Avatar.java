@@ -37,9 +37,10 @@ public abstract class Avatar {
 	 * Levente
 	 */
 	
-	public void addToBackpack(Item i) {
+	public void addToBackpack() {
 		System.out.println("<Avatar.addToBackpack()");
-		backpack.add(i);
+		backpack.add(field.item);
+		field.removeItem();
 		System.out.println(">Avatar.addToBackpack()");
 	}
 	
