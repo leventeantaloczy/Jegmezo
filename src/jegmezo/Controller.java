@@ -44,8 +44,7 @@ public class Controller {
 				 gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 	            		break;
 			case "B":
-				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack(
-						gameArea.avatars.get(gameArea.activeAvatar).field.item);
+				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack();
 			    break;
 			case "T":
 				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
