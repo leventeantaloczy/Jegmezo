@@ -133,6 +133,7 @@ public abstract class Avatar {
 	 */
 	public void endTurn() {
 		System.out.println("<Avatar.endTurn()");
+		this.activityPoints = 4;
 		this.EndTurn = true;
 		System.out.println(">Avatar.endTurn()");
 	}

@@ -3,6 +3,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import jegmezo.Direction;
+import jegmezo.Shelter;
 import jegmezo.avatars.*;
 import jegmezo.items.*;
 
@@ -10,7 +11,7 @@ public abstract class Field {
 
 	private int snowAmount;
 	private int capacity;
-	private boolean Igloo;
+	private Shelter shelter = Shelter.Nothing;
 	public List<Avatar> avatars = new ArrayList<Avatar>();
 	public Item item;
 	private List<Field> neighbours = new ArrayList <Field>();
@@ -94,10 +95,14 @@ public abstract class Field {
 	 * setter
 	 * Levente
 	 */
-	public void setIgloo() {
-		System.out.println("<Field.setIgloo()");
-		Igloo = !Igloo;
-		System.out.println(">Field.setIgloo()");
+	public void setShelter(Shelter sh) {
+		System.out.println("<Field.setShelter()");
+		this.shelter = sh;
+		System.out.println(">Field.setShelter()");
+	}
+	
+	public Shelter getShelter() {
+		return shelter;
 	}
 	
 	/*
