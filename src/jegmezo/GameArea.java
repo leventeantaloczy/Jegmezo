@@ -172,10 +172,14 @@ public class GameArea {
 	 * Benedek
 	 */
 	public void changeActiveAvatar() {
-		this.avatars.get(activeAvatar).EndTurn = false;
-		this.activeAvatar++;
-		if(activeAvatar >= this.avatars.size())
-			activeAvatar = 0;
+		if(this.avatars.get(activeAvatar).EndTurn = true) {
+			this.avatars.get(activeAvatar).setEndTurn();
+			this.activeAvatar++;
+			
+			if(activeAvatar >= this.avatars.size())
+				activeAvatar = 0;
+		}
+		
 	}
 	/*
 	 * Ez a fuggveny inditja el a visszaszamlalot a kor eltelesehez
