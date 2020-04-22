@@ -1,5 +1,4 @@
 package jegmezo;
-import jegmezo.avatars.*;
 import jegmezo.fields.*;
 import jegmezo.items.*;
 import java.io.BufferedReader;
@@ -38,6 +37,7 @@ public class Controller {
 	            		break;
 	      		case "I":
 				/*
+				 * TODO
 				 * Valahogy meg kene tudni, hogy Eskimo-e es akkor build-elni.
 				 * Zoli
 				 */

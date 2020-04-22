@@ -9,12 +9,13 @@ public abstract class Item {
 	public boolean getImportant() {
 		return important;
 	}
-	// gun részek fontosak, egyéb tárgyak nem, gun checknél ezt nézzük
+	// gun reszek fontosak, egyeb targyak nem, gun checknel ezt nezzek
 	
 	/*
 	 * Kiegeszitettem egy avatar parameterrel, hogy tudjuk, melyik avatar hasznalta
 	 * Levente
 	 */
 	public abstract void use(Avatar a);
+
 	
 }

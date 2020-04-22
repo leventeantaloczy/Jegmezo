@@ -14,6 +14,7 @@ public class GameArea {
 	List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
 	List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
 	int activeAvatar = 0;
+	private static int numberOfPlayers;
 	
 	
 	public GameArea(GameEnder gameEnder) {
@@ -25,6 +26,7 @@ public class GameArea {
 		* Ezen kene maszkalni es figyelni, hogy jo-e amiket kiir. 
 		* Zoli
 		*/
+		
 		System.out.println("How many players will try to escape?");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     		String numOfPlayersString = "";
@@ -42,6 +44,7 @@ public class GameArea {
 				e.printStackTrace();
 			}
 			numberOfPlayersInt  = Integer.parseInt(numOfPlayersString);
+			numberOfPlayers = numberOfPlayersInt;
 		}
 		/*Ezutan ezt a numberOfPlayersInt-et oda kell adni az Avatar-oknak, 
 		pontosabban egynlove tenni a durability valtozojukkal.*/
@@ -183,6 +186,10 @@ public class GameArea {
 				activeAvatar = 0;
 		}
 		
+	}
+
+	public static int getNumberOfPlayers() {
+		return numberOfPlayers;
 	}
 	
 	

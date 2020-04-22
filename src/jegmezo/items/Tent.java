@@ -7,7 +7,7 @@ public class Tent extends Item{
 
 	@Override
 	public void use(Avatar a) {
-		if(a.getField().getShelter() == Shelter.Nothing) {
+		if(a.getField().getShelter() == Shelter.None) {
 			a.getField().setShelter(Shelter.Tent);
 		}
 	}

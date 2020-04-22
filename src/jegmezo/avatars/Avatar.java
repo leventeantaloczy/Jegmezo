@@ -1,6 +1,9 @@
 package jegmezo.avatars;
 import jegmezo.fields.*;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
@@ -20,7 +23,27 @@ public abstract class Avatar {
 	public GameEnder gameEnder;
 	
 	
+	public List<Item> getBackpack(){
+		return backpack;
+	}
 	
+	protected void dropItem() throws IOException{
+		System.out.println("Which Item, please enter a number");
+		
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String i = br.readLine();
+		
+		while(Integer.parseInt(i) > backpack.size()) {
+			System.out.println("Again, please");
+			try {
+				i = br.readLine();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
+		backpack.add(field.switchItem(backpack.remove(Integer.parseInt(i))));
+	}
 	/*
 	 * mindenkinek 4 activityPoints-a van, bár ez állítható
 	 * Levente

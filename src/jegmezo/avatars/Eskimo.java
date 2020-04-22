@@ -1,5 +1,7 @@
 package jegmezo.avatars;
 
+import jegmezo.Shelter;
+
 public class Eskimo extends Avatar{
 	
 	
@@ -15,7 +17,7 @@ public class Eskimo extends Avatar{
 
 	public int specialMove() {
 		System.out.println("<Eskimo.build()");
-		field.setIgloo();
+		field.setShelter(Shelter.Igloo);
 		this.setActivity(1);
 		System.out.println(">Eskimo.build()");
 		return 1;

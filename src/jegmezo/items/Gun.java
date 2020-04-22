@@ -1,6 +1,11 @@
 package jegmezo.items;
 
+import java.util.List;
+
 import jegmezo.avatars.Avatar;
+import jegmezo.fields.Field;
+import jegmezo.GameArea;
+import jegmezo.GameEnder;
 
 public class Gun extends Item{
 
@@ -17,12 +22,25 @@ public class Gun extends Item{
 	@Override
 	public void use(Avatar a) {
 		System.out.println("<Gun.use()");
-		System.out.println(">Gun.use()");
-		if(true) {
-			//TODO game won + osszes egy mezon -> avatars mérete = a játékosook számával
+		
+		List<Item> items= a.getBackpack();
+		int importantCounter = 0;
+		Field field = a.getField();
+		
+		for(Item item : items) {
+			if(item.getImportant())
+				importantCounter++;
+		}
+
+		boolean end =(importantCounter > 2 && field.avatars.size() == GameArea.getNumberOfPlayers()) ?  true : false;
+		
+		if(end) {
+			GameEnder.endGame();
+		}else {
+			System.out.println("Requirements not satisfied");
 		}
 		
-		return;
+		System.out.println(">Gun.use()");
 	}
 
 }

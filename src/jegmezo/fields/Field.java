@@ -11,7 +11,7 @@ public abstract class Field {
 
 	private int snowAmount;
 	private int capacity;
-	private Shelter shelter = Shelter.Nothing;
+	private Shelter shelter = Shelter.None;
 	public List<Avatar> avatars = new ArrayList<Avatar>();
 	public Item item;
 	private List<Field> neighbours = new ArrayList <Field>();
@@ -22,9 +22,7 @@ public abstract class Field {
 	 * Levente
 	 */
 	
-	public Field(){
-
-	}
+	public Field(){	}
 	
 	public boolean accept() {
 		System.out.println("<Field.accept()");
@@ -45,6 +43,15 @@ public abstract class Field {
 		System.out.println("<Field.removeItem()");
 		item = new EmptyItem();
 		System.out.println(">Field.removeItem()");
+	}
+	
+	public Item switchItem(Item i) {
+		System.out.println("<Field.switchItem()");
+		Item tmp;
+		tmp = item;
+		item = i;
+		System.out.println(">Field.switchItem()");
+		return tmp;
 	}
 	
 	public void addAvatar(Avatar a) {
@@ -114,5 +121,8 @@ public abstract class Field {
 		System.out.println(">Field.getCapacity()");
 		return capacity;
 	}
+	
+	
+	
 	
 }
