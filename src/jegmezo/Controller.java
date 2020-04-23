@@ -111,6 +111,9 @@ public class Controller {
 				System.out.println("Hibas input");
 			    break;
 	        	}
+			
+			gameArea.changeActiveAvatar();
+			
 		}while(exit);
 		
 		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
