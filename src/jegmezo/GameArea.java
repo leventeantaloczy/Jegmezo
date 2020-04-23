@@ -27,121 +27,139 @@ public class GameArea {
 		* Zoli
 		*/
 		
-		System.out.println("How many players will try to escape?");
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    		String numOfPlayersString = "";
-		try {
-			numOfPlayersString = br.readLine();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		int numberOfPlayersInt  =Integer.parseInt(numOfPlayersString);
-		while(numberOfPlayersInt < 3) {
-			System.out.println("Number isn't high enough. Sould be at least 3!");
-			try {
-				numOfPlayersString = br.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-			numberOfPlayersInt  = Integer.parseInt(numOfPlayersString);
-			numberOfPlayers = numberOfPlayersInt;
-		}
-		/*Ezutan ezt a numberOfPlayersInt-et oda kell adni az Avatar-oknak, 
+		numberOfPlayers = dataReader("How many players will try to escape?", 3, true);
+		int researcherNumber = dataReader("How many of them has a paper in ice unstability researching?", numberOfPlayers, false);
+		
+		/*Ezutan ezt a numberOfPlayers-t oda kell adni az Avatar-oknak, 
 		pontosabban egynlove tenni a durability valtozojukkal.*/
 		
-		System.out.println("Creating and adding different types of fields for skeletoning purpose");
-		
-		HoleField holeField = new HoleField();
-		StableIce stableIce1 = new StableIce();
-		StableIce stableIce2 = new StableIce();
-		StableIce stableIce3 = new StableIce();
-		StableIce stableIce4 = new StableIce();
-		StableIce stableIce5 = new StableIce();
-		StableIce stableIce6 = new StableIce();
-		UnstableIce unstableIce = new UnstableIce();
-		Border border1 = new Border();
-		Border border2 = new Border();
-		Border border3 = new Border();
-		Border border4 = new Border();
-		Border border5 = new Border();
-		Border border6 = new Border();
-		Border border7 = new Border();
-		Border border8 = new Border();
-		Border border9 = new Border();
-		
-		addField(holeField);
-		addField(stableIce1);
-		addField(stableIce2);
-		addField(stableIce3);
-		addField(stableIce4);
-		addField(stableIce5);
-		addField(stableIce6);
-		addField(unstableIce);
-		addField(border1);
-		addField(border2);
-		addField(border3);
-		addField(border4);
-		addField(border5);
-		addField(border5);
-		addField(border6);
-		addField(border7);
-		addField(border8);
-		addField(border9);
-		
-		System.out.println("Creating and adding as many avatars as a proper test needs");
+		fieldAdder(numberOfPlayers + 3);
+		setterOfTheNeighbourhood();
 
-		Eskimo eskimo = new Eskimo();
-		Researcher researcher = new Researcher();
-		eskimo.gameEnder = gameEnder;
-		researcher.gameEnder = gameEnder;
+		putStaffOnGameArea(researcherNumber, gameEnder);
 		
-		addAvatar(eskimo);
-		addAvatar(researcher);
-		unstableIce.addAvatar(eskimo);
-		stableIce4.addAvatar(researcher);
+		System.out.println(">GameArea.constructor()");
+	}
+	
+	private int dataReader(String question, int constraint, boolean lowerConstraint) {
+		System.out.println("<GameArea.dataReader()");
 		
-		System.out.println("Putting avatars on Fields");
+		System.out.println(question);
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		int toReturn = 0;
+		try {
+			toReturn = Integer.parseInt(br.readLine());
+		} catch (NumberFormatException | IOException e) {
+			e.printStackTrace();
+		}
+		if(lowerConstraint) {
+			while(toReturn < constraint) {
+				System.out.println("I'm afraid it won't work... Give a lower number, please");
+				try {
+					toReturn = Integer.parseInt(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+		else {
+			while(toReturn > constraint) {
+				System.out.println("I'm afraid it won't work... Give a higher number, please");
+				try {
+					toReturn = Integer.parseInt(br.readLine());
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
 		
-		eskimo.field = unstableIce;
-		researcher.field = stableIce4;
+		System.out.println(">GameArea.dataReader()");
+		return toReturn;
+	}
+	
+	/*
+	 * Field lerako.
+	 */
+	private void fieldAdder(int widgth) {
+		System.out.println("<GameArea.fieldAdder()");
+		for(int i=0; i < widgth-1+2; i++) {
+			for(int j=0; j < numberOfPlayers+3-1+2; j++) {
+				if(i == 0) {
+					Border border = new Border();
+					addField(border);
+				}
+				else if (i == numberOfPlayers+3-1+2) {
+					Border border = new Border();
+					addField(border);
+				}
+				else if (j == 0) {
+					Border border = new Border();
+					addField(border);
+				}
+				else if (j == numberOfPlayers+3-1+2) {
+					Border border = new Border();
+					addField(border);
+				}
+				else if (j == 1) {
+					HoleField holeField = new HoleField();
+					addField(holeField);
+				}
+				else if (j == widgth-1+2-1) {
+					UnstableIce unstableIce = new UnstableIce();
+					addField(unstableIce);
+				}
+				else {
+					StableIce stableIce = new StableIce();
+					addField(stableIce);
+				}
+			}
+		}
 		
-		System.out.println("Setting up the neighbourhood");
+		System.out.println(">GameArea.fieldAdder()");
+	}
+	
+	/*
+	 * Szomszedossagok beallitasa. A Bordereknek nem allitjuk be a szomszedait, mert kopok ra.
+	 * Zoli
+	 */
+	private void setterOfTheNeighbourhood() {
+		System.out.println("<GameArea.setterOfTheNeighbourhood()");
+		// Lepheto resz szelessege es magassaga.
+		int widgth = numberOfPlayers + 3;
+		for(int k=1; k < widgth-1; k++) {
+			for(int l=1; l < widgth-1; l++) {
+				// Eszaki szomszed
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k-1)*widgth + l));
+				// Deli szomszed
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k+1)*widgth + l));
+				// Keleti szomszed
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l+1));
+				// Nyugati szomszed
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l-1));
+			}
+		}
 		
-		holeField.setNeighbour(border1);
-		holeField.setNeighbour(unstableIce);
-		holeField.setNeighbour(stableIce1);
-		//Nincs nyugati szomszed, mert minek
-		stableIce1.setNeighbour(border2);
-		stableIce1.setNeighbour(stableIce3);
-		stableIce1.setNeighbour(stableIce2);
-		stableIce1.setNeighbour(holeField);
-		stableIce2.setNeighbour(border3);
-		stableIce2.setNeighbour(stableIce4);
-		stableIce2.setNeighbour(border4);
-		stableIce2.setNeighbour(stableIce1);
-		unstableIce.setNeighbour(holeField);
-		unstableIce.setNeighbour(stableIce5);
-		unstableIce.setNeighbour(stableIce3);
-		//Nincs nyugati szomszed, mert minek
-		stableIce3.setNeighbour(stableIce1);
-		stableIce3.setNeighbour(stableIce6);
-		stableIce3.setNeighbour(stableIce4);
-		stableIce3.setNeighbour(unstableIce);
-		stableIce4.setNeighbour(stableIce2);
-		stableIce4.setNeighbour(border6);
-		stableIce4.setNeighbour(border5);
-		stableIce4.setNeighbour(stableIce3);
-		stableIce5.setNeighbour(unstableIce);
-		stableIce5.setNeighbour(border7);
-		stableIce5.setNeighbour(stableIce6);
-		//Nincs nyugati szomszed, mert minek
-		stableIce6.setNeighbour(stableIce3);
-		stableIce6.setNeighbour(border8);
-		stableIce6.setNeighbour(border6);
-		stableIce6.setNeighbour(stableIce5);
-		
-		System.out.println("Creating and putting items on Fields");
-		
+		System.out.println(">GameArea.setterOfTheNeighbourhood()");
+	}
+	
+	private void putStaffOnGameArea(int researcherNumber, GameEnder gameEnder) {
+		System.out.println("<GameArea.putStaffOnGameArea()");
+
+		int i;
+		for(i = 0; i < researcherNumber; i++) {
+			Researcher researcher = new Researcher();
+			fieldsOnArea.get(numberOfPlayers+2+2+i).avatars.add(researcher);
+			researcher.field = fieldsOnArea.get(numberOfPlayers+2+2+i);
+			addAvatar(researcher);
+			researcher.gameEnder = gameEnder;
+		}
+		for(int j=researcherNumber; j < numberOfPlayers; j++) {
+			Eskimo eskimo = new Eskimo();
+			fieldsOnArea.get(numberOfPlayers+2+2+i+j).avatars.add(eskimo);
+			eskimo.field = fieldsOnArea.get(numberOfPlayers+2+2+i+j);
+			eskimo.gameEnder = gameEnder;
+			addAvatar(eskimo);
+		}
 		WetSuit wetSuit = new WetSuit();
 		Flare flare = new Flare();
 		Food food = new Food();
@@ -149,16 +167,18 @@ public class GameArea {
 		Rope rope = new Rope();
 		Cartridge cartridge = new Cartridge();
 		Gun gun = new Gun();
+		Tent tent = new Tent();
+		int k = 1;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = tent; k++;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = wetSuit; k++;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = flare; k++;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = food; k += 5;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = shovel; k++;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = rope; k++;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = cartridge; k++;
+		fieldsOnArea.get(numberOfPlayers+2+2+k).item = gun; k++;
 		
-		stableIce1.item = wetSuit;
-		stableIce2.item = flare;
-		unstableIce.item = food;
-		stableIce3.item = shovel;
-		stableIce4.item = rope;
-		stableIce5.item = cartridge;
-		stableIce6.item = gun;
-		
-		System.out.println(">GameArea.constructor()");
+		System.out.println(">GameArea.putStaffOnGameArea()");		
 	}
 	
 	private void addField(Field f) {
@@ -191,6 +211,4 @@ public class GameArea {
 	public static int getNumberOfPlayers() {
 		return numberOfPlayers;
 	}
-	
-	
 }
