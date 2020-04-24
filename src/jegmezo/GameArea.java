@@ -83,12 +83,12 @@ public class GameArea {
 	private void fieldAdder(int widgth) {
 		System.out.println("<GameArea.fieldAdder()");
 		for(int i=0; i < widgth-1+2; i++) {
-			for(int j=0; j < numberOfPlayers+3-1+2; j++) {
+			for(int j=0; j < widgth-1+2; j++) {
 				if(i == 0) {
 					Border border = new Border();
 					addField(border);
 				}
-				else if (i == numberOfPlayers+3-1+2) {
+				else if (i == widgth-1+2) {
 					Border border = new Border();
 					addField(border);
 				}
@@ -96,7 +96,7 @@ public class GameArea {
 					Border border = new Border();
 					addField(border);
 				}
-				else if (j == numberOfPlayers+3-1+2) {
+				else if (j == widgth-1+2) {
 					Border border = new Border();
 					addField(border);
 				}
