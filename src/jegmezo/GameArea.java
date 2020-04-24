@@ -82,13 +82,13 @@ public class GameArea {
 	 */
 	private void fieldAdder(int widgth) {
 		System.out.println("<GameArea.fieldAdder()");
-		for(int i=0; i < widgth-1+2; i++) {
-			for(int j=0; j < numberOfPlayers+3-1+2; j++) {
+		for(int i=0; i < widgth - 1 + 2; i++) {
+			for(int j=0; j < numberOfPlayers + 3 - 1 + 2; j++) {
 				if(i == 0) {
 					Border border = new Border();
 					addField(border);
 				}
-				else if (i == numberOfPlayers+3-1+2) {
+				else if (i == numberOfPlayers + 3 - 1 + 2) {
 					Border border = new Border();
 					addField(border);
 				}
@@ -96,7 +96,7 @@ public class GameArea {
 					Border border = new Border();
 					addField(border);
 				}
-				else if (j == numberOfPlayers+3-1+2) {
+				else if (j == numberOfPlayers + 3 - 1 + 2) {
 					Border border = new Border();
 					addField(border);
 				}
@@ -104,7 +104,7 @@ public class GameArea {
 					HoleField holeField = new HoleField();
 					addField(holeField);
 				}
-				else if (j == widgth-1+2-1) {
+				else if (j == widgth - 1 + 2 - 1) {
 					UnstableIce unstableIce = new UnstableIce();
 					addField(unstableIce);
 				}
@@ -126,16 +126,16 @@ public class GameArea {
 		System.out.println("<GameArea.setterOfTheNeighbourhood()");
 		// Lepheto resz szelessege es magassaga.
 		int widgth = numberOfPlayers + 3;
-		for(int k=1; k < widgth-1; k++) {
-			for(int l=1; l < widgth-1; l++) {
+		for(int k=1; k < widgth - 1; k++) {
+			for(int l=1; l < widgth - 1; l++) {
 				// Eszaki szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k-1)*widgth + l));
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k - 1)*widgth + l));
 				// Deli szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k+1)*widgth + l));
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k + 1)*widgth + l));
 				// Keleti szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l+1));
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l + 1));
 				// Nyugati szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l-1));
+				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l - 1));
 			}
 		}
 		
@@ -148,15 +148,15 @@ public class GameArea {
 		int i;
 		for(i = 0; i < researcherNumber; i++) {
 			Researcher researcher = new Researcher();
-			fieldsOnArea.get(numberOfPlayers+2+2+i).avatars.add(researcher);
-			researcher.field = fieldsOnArea.get(numberOfPlayers+2+2+i);
+			fieldsOnArea.get(numberOfPlayers + 2 + 2 + i).avatars.add(researcher);
+			researcher.field = fieldsOnArea.get(numberOfPlayers + 2 + 2 + i);
 			addAvatar(researcher);
 			researcher.gameEnder = gameEnder;
 		}
-		for(int j=researcherNumber; j < numberOfPlayers; j++) {
+		for(int j = researcherNumber; j < numberOfPlayers; j++) {
 			Eskimo eskimo = new Eskimo();
-			fieldsOnArea.get(numberOfPlayers+2+2+i+j).avatars.add(eskimo);
-			eskimo.field = fieldsOnArea.get(numberOfPlayers+2+2+i+j);
+			fieldsOnArea.get(numberOfPlayers + 2 + 2 + i + j).avatars.add(eskimo);
+			eskimo.field = fieldsOnArea.get(numberOfPlayers + 2 + 2 + i + j);
 			eskimo.gameEnder = gameEnder;
 			addAvatar(eskimo);
 		}
@@ -169,14 +169,21 @@ public class GameArea {
 		Gun gun = new Gun();
 		Tent tent = new Tent();
 		int k = 1;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = tent; k++;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = wetSuit; k++;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = flare; k++;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = food; k += 5;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = shovel; k++;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = rope; k++;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = cartridge; k++;
-		fieldsOnArea.get(numberOfPlayers+2+2+k).item = gun; k++;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = tent; k++;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = wetSuit; k++;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = flare; k++;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = food; k += 5;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = shovel; k++;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = rope; k++;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = cartridge; k++;
+		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = gun; k++;
+		
+		for(int l = 0; l < fieldsOnArea.size(); l++) {
+			fieldsOnArea.get(l).setDurability(avatars.size());
+		}
+		for(int l = 0; l < avatars.size(); l++) {
+			avatars.get(l).setDurability(avatars.size());
+		}
 		
 		System.out.println(">GameArea.putStaffOnGameArea()");		
 	}
@@ -204,8 +211,16 @@ public class GameArea {
 			
 			if(activeAvatar >= this.avatars.size())
 				activeAvatar = 0;
+			
+			for(Field f : fieldsOnArea) {
+				if(f.decrementDurability())
+					f.setDurability(avatars.size());
+			}
+			
+			for(Avatar a : avatars) {
+				a.decrementDurability();
+			}
 		}
-		
 	}
 
 	public static int getNumberOfPlayers() {

@@ -15,6 +15,9 @@ public abstract class Field {
 	public List<Avatar> avatars = new ArrayList<Avatar>();
 	public Item item;
 	private List<Field> neighbours = new ArrayList <Field>();
+	private int durability;
+	protected boolean kills;
+	
 	
 	/*
 	 * TODO
@@ -22,7 +25,27 @@ public abstract class Field {
 	 * Levente
 	 */
 	
+	public boolean getKills() {
+		return kills;
+	}
+	
 	public Field(){	}
+	
+	public void setDurability(int i) {
+		durability = i;
+	}
+	
+	public boolean decrementDurability() {
+		if(shelter == Shelter.Tent)
+			durability--;
+		if(durability == 0) {
+			this.setShelter(Shelter.None);
+			return true;
+		}
+		
+		return false;
+
+	}
 	
 	public boolean accept() {
 		System.out.println("<Field.accept()");
@@ -102,6 +125,7 @@ public abstract class Field {
 	 * setter
 	 * Levente
 	 */
+	
 	public void setShelter(Shelter sh) {
 		System.out.println("<Field.setShelter()");
 		this.shelter = sh;
@@ -116,6 +140,7 @@ public abstract class Field {
 	 * getter
 	 * Levente
 	 */
+	
 	public int getCapacity() {
 		System.out.println("<Field.getCapacity()");
 		System.out.println(">Field.getCapacity()");

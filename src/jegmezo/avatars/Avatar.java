@@ -18,6 +18,7 @@ public abstract class Avatar {
 	private List<Item> backpack = new ArrayList<Item>();
 	private int activityPoints;
 	private int healthPoints;
+	private int durability;
 	public boolean EndTurn = false;
 	public boolean wearsWetsuit = false;
 	public GameEnder gameEnder;
@@ -25,6 +26,17 @@ public abstract class Avatar {
 	
 	public List<Item> getBackpack(){
 		return backpack;
+	}
+	
+	public void setDurability(int i) {
+		durability = i;
+	}
+	
+	public void decrementDurability() {
+		if(this.field.getKills())
+			durability--;
+		if(durability == 0)
+			gameEnder.endGame();
 	}
 	
 	protected void dropItem() throws IOException{
@@ -65,6 +77,10 @@ public abstract class Avatar {
 		backpack.add(field.item);
 		field.removeItem();
 		System.out.println(">Avatar.addToBackpack()");
+	}
+	
+	public void removeFromBackpack(Item i) {
+		backpack.remove(i);
 	}
 	
 	/*
