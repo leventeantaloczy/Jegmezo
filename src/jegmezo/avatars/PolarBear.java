@@ -7,18 +7,17 @@ import jegmezo.fields.Field;
 
 public class PolarBear extends Avatar{
 
-	public PolarBear(int hp) {
-		super(hp);
-		// TODO Auto-generated constructor stub
+	public PolarBear() {
+		super(100);
 	}
 
 	@Override
 	public int specialMove() {
-		// TODO Auto-generated method stub
 		return 0;
 	}
 	
 	public void move(Direction d) {
+		System.out.println("<PolarBear.move()");
 		Random rand = new Random();
 		int way = rand.nextInt(2) + 0;
 		
@@ -32,7 +31,13 @@ public class PolarBear extends Avatar{
 			}
 			this.setActivity(1);
 		}
-		
+		System.out.println(">PolarBear.move()");
 	}
-
+	
+		public void decrementDurability() {
+		/*
+		 * Nem hal meg a vizben.
+		 * Zoli
+		 */
+	}
 }
