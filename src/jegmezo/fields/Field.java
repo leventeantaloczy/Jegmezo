@@ -10,7 +10,7 @@ import jegmezo.items.*;
 public abstract class Field {
 
 	private int snowAmount;
-	private int capacity;
+	protected int capacity;
 	private Shelter shelter = Shelter.None;
 	public List<Avatar> avatars = new ArrayList<Avatar>();
 	public Item item;

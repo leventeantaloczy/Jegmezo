@@ -1,6 +1,12 @@
 package jegmezo.fields;
 
+import java.util.Random;
+import jegmezo.Shelter;
+import jegmezo.avatars.Avatar;
+import jegmezo.items.EmptyItem;
+
 public class UnstableIce extends Field{
+	
 	
 	public UnstableIce() {
 		Random rand = new Random();

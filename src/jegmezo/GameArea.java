@@ -78,7 +78,7 @@ public class GameArea {
 	}
 	
 	/*
-	 * Field lerako.
+	 * Field lerako.	
 	 */
 	private void fieldAdder(int widgth) {
 		System.out.println("<GameArea.fieldAdder()");
