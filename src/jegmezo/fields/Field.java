@@ -29,7 +29,9 @@ public abstract class Field {
 		return kills;
 	}
 	
-	public Field(){	}
+	public Field(){	
+		capacity = -1;
+	}
 	
 	public void setDurability(int i) {
 		durability = i;
@@ -44,7 +46,6 @@ public abstract class Field {
 		}
 		
 		return false;
-
 	}
 	
 	public boolean accept() {
