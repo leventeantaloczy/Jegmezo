@@ -104,7 +104,7 @@ public class Controller {
 				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 
 			    break;
-			case "Exit":
+			case "EXIT":
 				exit=false;
 				break;
 			default:
