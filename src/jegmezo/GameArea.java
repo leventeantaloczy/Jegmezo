@@ -11,12 +11,27 @@ import jegmezo.items.*;
 public class GameArea {
 	/*packet lathatosag*/
 	
-	List<Avatar> avatars = new ArrayList<Avatar>();	//Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
-	List<Field> fieldsOnArea = new ArrayList<Field>(); //Ez alapjan lesz, hogy hova dobunk havat
+	/*
+	 * A 2 List-ben taroljuk a jatekban levo osszes Field-et es Avatart
+	 * avatars: Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
+	 * fieldsOnArea: Ez alapjan lesz, hogy hova dobunk havat
+	 */
+	List<Avatar> avatars = new ArrayList<Avatar>();	
+	List<Field> fieldsOnArea = new ArrayList<Field>(); 
+	/*
+	 * Ebbenn taroljuk az aktiv Avatar indexet.
+	 */
 	int activeAvatar = 0;
+	/*
+	 * A jatekosok szama. A felhasznalo adhatja meg. Ehhez skalazodik a palya.
+	 */
 	private static int numberOfPlayers;
 	
-	
+	/*
+ 	 * Konstruktor. 
+ 	 * Ha az init trua, akkor felhasznaloi bemenet alapjan pit palyat. 
+ 	 * Ha nem, akkor csak letrejon az attributumaival.
+ 	 */
 	public GameArea(GameEnder gameEnder) {
 		System.out.println("<GameArea.constructor()");
 		
