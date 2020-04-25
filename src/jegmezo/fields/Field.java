@@ -17,6 +17,7 @@ public abstract class Field {
 	private List<Field> neighbours = new ArrayList <Field>();
 	private int durability;
 	protected boolean kills;
+	public int id;
 	
 	
 	/*
@@ -50,6 +51,7 @@ public abstract class Field {
 	
 	public boolean accept() {
 		System.out.println("<Field.accept()");
+		System.out.println("Nem Border");
 		System.out.println(">Field.accept()");
 		return true;
 	}
@@ -144,6 +146,7 @@ public abstract class Field {
 	
 	public int getCapacity() {
 		System.out.println("<Field.getCapacity()");
+		System.out.println("Capacity: " + capacity);
 		System.out.println(">Field.getCapacity()");
 		return capacity;
 	}

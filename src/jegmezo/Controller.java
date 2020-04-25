@@ -40,6 +40,7 @@ public class Controller {
 		boolean exit = true;
 		
 		do {
+			gameArea.changeActiveAvatar();
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 	        	String command = br.readLine();
 		        switch(command.toUpperCase()) {
@@ -60,60 +61,31 @@ public class Controller {
 			case "T":
 				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
 			    break;
-			case "UC":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Cartridge());
-				break;
-			case "UFL":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Flare());
-				break;
-			case "UFO":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Food());
-				break;
-			case "UG":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Gun());
-				break;
-			case "UR":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Rope());
-				break;
-			case "US":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Shovel());
-				break;
-			case "UW":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new WetSuit());
+			case "U":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem();
 				break;
 			case "MN":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
 			    break;
 			case "ME":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
 			    break;
 			case "MS":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.South);
 			    break;
 			case "MW":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
 			    break;    
-			case "CN":
+			case "C":
 				/*
 				 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
 				 * ZolisnowAmount
 				 */
 				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-			    break;
-			case "CE":
-			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-
-			    break;
-			case "CS":
-			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-
-			    break;
-			case "CW":
-			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-
 			    break;
 			case "EXIT":
 				exit=false;
@@ -122,8 +94,6 @@ public class Controller {
 				System.out.println("Hibas input");
 			    break;
 	        	}
-			
-			gameArea.changeActiveAvatar();
 			
 		}while(exit);
 		

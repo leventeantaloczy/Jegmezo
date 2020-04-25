@@ -98,35 +98,57 @@ public class GameArea {
 	 */
 	private void fieldAdder(int widgth) {
 		System.out.println("<GameArea.fieldAdder()");
-		for(int i = 0; i < widgth - 1 + 2; i++) {
-			for(int j = 0; j < widgth - 1 + 2; j++) {
+		int cnt = 0;
+		for(int i = 0; i < widgth + 2; i++) {
+			for(int j = 0; j < widgth + 2; j++) {
 				if(i == 0) {
 					Border border = new Border();
+					border.id = cnt;
+					cnt++;
 					addField(border);
+					System.out.println("added border as id " + border.id);
 				}
-				else if (i == widgth - 1 + 2) {
+				else if (i == widgth + 1) {
 					Border border = new Border();
+					border.id = cnt;
+					cnt++;
 					addField(border);
+					System.out.println("added border as id " + border.id);
 				}
 				else if (j == 0) {
 					Border border = new Border();
+					border.id = cnt;
+					cnt++;
 					addField(border);
+					System.out.println("added border as id " + border.id);
 				}
-				else if (j == widgth - 1 + 2) {
+				else if (j == widgth + 1) {
 					Border border = new Border();
+					border.id = cnt;
+					cnt++;
 					addField(border);
+					System.out.println("added border as id " + border.id);
 				}
 				else if (j == 1) {
 					HoleField holeField = new HoleField();
+					holeField.id = cnt;
+					cnt++;
 					addField(holeField);
+					System.out.println("added holefield as id " + holeField.id);
 				}
-				else if (j == widgth - 1 + 2 - 1) {
+				else if (j == widgth + 1 - 1) {
 					UnstableIce unstableIce = new UnstableIce();
+					unstableIce.id = cnt;
+					cnt++;
 					addField(unstableIce);
+					System.out.println("added unstableIce as id " + unstableIce.id);
 				}
 				else {
 					StableIce stableIce = new StableIce();
+					stableIce.id = cnt;
+					cnt++;
 					addField(stableIce);
+					System.out.println("added stableIce as id " + stableIce.id);
 				}
 			}
 		}
@@ -142,16 +164,23 @@ public class GameArea {
 		System.out.println("<GameArea.setterOfTheNeighbourhood()");
 		// Lepheto resz szelessege es magassaga.
 		int widgth = numberOfPlayers + 3;
-		for(int k=1; k < widgth - 1; k++) {
-			for(int l=1; l < widgth - 1; l++) {
+		for(int k=1; k < widgth + 1; k++) {
+			for(int l=1; l < widgth + 1; l++) {
 				// Eszaki szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k - 1)*widgth + l));
+				fieldsOnArea.get(k*(widgth + 2) + l).setNeighbour(fieldsOnArea.get((k - 1)*(widgth + 2) + l));
+				System.out.println("ezen field: " + fieldsOnArea.get(k*(widgth + 2) + l).id + "eszaki szomszedja: " + fieldsOnArea.get((k - 1)*(widgth + 2) + l).id);
 				// Deli szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k + 1)*widgth + l));
+				fieldsOnArea.get(k*(widgth + 2) + l).setNeighbour(fieldsOnArea.get((k + 1)*(widgth + 2) + l));
+				System.out.println("ezen field: " + fieldsOnArea.get(k*(widgth + 2) + l).id + "deli szomszedja: " + fieldsOnArea.get((k + 1)*(widgth + 2) + l).id);
+				
 				// Keleti szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l + 1));
+				fieldsOnArea.get(k*(widgth + 2) + l).setNeighbour(fieldsOnArea.get((k)*(widgth + 2) + l + 1));
+				System.out.println("ezen field: " + fieldsOnArea.get(k*(widgth + 2) + l).id + "keleti szomszedja: " + fieldsOnArea.get((k)*(widgth + 2) + l + 1).id);
+				
 				// Nyugati szomszed
-				fieldsOnArea.get(k*widgth + l).setNeighbour(fieldsOnArea.get((k)*widgth + l - 1));
+				fieldsOnArea.get(k*(widgth + 2) + l).setNeighbour(fieldsOnArea.get((k)*(widgth + 2) + l - 1));
+				System.out.println("ezen field: " + fieldsOnArea.get(k*(widgth + 2) + l).id + "nyugati szomszedja: " + fieldsOnArea.get((k)*(widgth + 2) + l - 1).id);
+				
 			}
 		}
 		
@@ -162,21 +191,25 @@ public class GameArea {
 		System.out.println("<GameArea.putStaffOnGameArea()");
 
 		int i;
+		int width = numberOfPlayers + 3;
 		for(i = 0; i < researcherNumber; i++) {
-			String name = "r" + "i";
+			String name = "r" + i;
 			Researcher researcher = new Researcher(name);
-			fieldsOnArea.get(numberOfPlayers + 2 + 2 + i).avatars.add(researcher);
-			researcher.field = fieldsOnArea.get(numberOfPlayers + 2 + 2 + i);
+			fieldsOnArea.get((width + 2) + 2 + i).avatars.add(researcher);
+			researcher.field = fieldsOnArea.get((width + 2) + 2 + i);
 			addAvatar(researcher);
+			System.out.println("Researcher on id " + researcher.field.id);
 			researcher.gameEnder = gameEnder;
 		}
 		for(int j = researcherNumber; j < numberOfPlayers; j++) {
-			String name = "r" + "j";
+			String name = "e" + (j - researcherNumber);
 			Eskimo eskimo = new Eskimo(name);
-			fieldsOnArea.get(numberOfPlayers + 2 + 2 + i + j).avatars.add(eskimo);
-			eskimo.field = fieldsOnArea.get(numberOfPlayers + 2 + 2 + i + j);
+			fieldsOnArea.get((width + 2) + 2 + j).avatars.add(eskimo);
+			eskimo.field = fieldsOnArea.get((width + 2) + 2 + j);
 			eskimo.gameEnder = gameEnder;
 			addAvatar(eskimo);
+			//System.out.println("Eskimo");
+			System.out.println("Eskimo on id " + eskimo.field.id);
 		}
 		WetSuit wetSuit = new WetSuit();
 		Flare flare = new Flare();
@@ -186,15 +219,15 @@ public class GameArea {
 		Cartridge cartridge = new Cartridge();
 		Gun gun = new Gun();
 		Tent tent = new Tent();
-		int k = 1;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = tent; k++;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = wetSuit; k++;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = flare; k++;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = food; k += 5;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = shovel; k++;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = rope; k++;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = cartridge; k++;
-		fieldsOnArea.get(numberOfPlayers + 2 + 2 + k).item = gun; k++;
+		int k = 0;
+		fieldsOnArea.get((width + 2) + 2 + k).item = tent; k++;
+		fieldsOnArea.get((width + 2) + 2 + k).item = wetSuit; k++;
+		fieldsOnArea.get((width + 2) + 2 + k).item = flare; k++;
+		fieldsOnArea.get((width + 2) + 2 + k).item = food; k += 5;
+		fieldsOnArea.get((width + 2) + 2 + k).item = shovel; k++;
+		fieldsOnArea.get((width + 2) + 2 + k).item = rope; k++;
+		fieldsOnArea.get((width + 2) + 2 + k).item = cartridge; k++;
+		fieldsOnArea.get((width + 2) + 2 + k).item = gun; k++;
 		
 		for(int l = 0; l < fieldsOnArea.size(); l++) {
 			fieldsOnArea.get(l).setDurability(avatars.size());
@@ -223,7 +256,8 @@ public class GameArea {
 	 * Benedek
 	 */
 	public void changeActiveAvatar() {
-		if(this.avatars.get(activeAvatar).EndTurn = true) {
+		System.out.println(">>changeActiveAvatar");
+		if((this.avatars.get(activeAvatar).EndTurn == true) || (this.avatars.get(activeAvatar).field.getKills() == true) ) {
 			this.avatars.get(activeAvatar).setEndTurn();
 			this.activeAvatar++;
 			
@@ -239,6 +273,7 @@ public class GameArea {
 				a.decrementDurability();
 			}
 		}
+		System.out.println("<<changeActiveAvatar");
 	}
 
 	public static int getNumberOfPlayers() {

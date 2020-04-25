@@ -12,13 +12,17 @@ public class UnstableIce extends Field{
 		Random rand = new Random();
 		this.kills = false;
 		// (0, vagy 1) + 1 = 1, vagy 2
-		capacity = rand.nextInt(2) + 1;
+		//capacity = rand.nextInt(2) + 1;
+		capacity = 1;
 	}
 	
+	@Override
 	public void addAvatar(Avatar a) {
 		System.out.println("<Field.addAvatar()");
 		
 		avatars.add(a);
+		System.out.println("avatars.size() = " + this.avatars.size());
+		System.out.println("capacity = " + capacity);
 		if(this.avatars.size() > capacity)
 			flip();
 		

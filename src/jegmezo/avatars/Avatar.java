@@ -87,9 +87,12 @@ public abstract class Avatar {
 	 * használja az adott itemet, aktivitasa no
 	 * Levente
 	 */
-	public void useItem(Item i) {
+	public void useItem() throws NumberFormatException, IOException {
 		System.out.println("<Avatar.useItem()");
-		i.use(this);
+		System.out.println("Hanyas itemet hasznaljam?");
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	int command = Integer.parseInt(br.readLine());
+    	backpack.get(command).use(this);
 		this.setActivity(1);
 		System.out.println(">Avatar.useItem()");
 	}
@@ -154,15 +157,18 @@ public abstract class Avatar {
 	 */
 	public void move(Direction d) {
 		System.out.println("<Avatar.move()");
-		Field f = field.getNeighbour(d);
-		
-		if(f.accept()) {
-			f.addAvatar(this);
-			field.removeAvatar(this);
-			field = field.getNeighbour(d);
-			this.setActivity(1);
+		System.out.println("ezen a mezon allok: " + this.field.id);
+		if(this.field.getKills() == false) {
+			if(field.getNeighbour(d).accept()) {
+				field.getNeighbour(d).addAvatar(this);
+				field.removeAvatar(this);
+				field = field.getNeighbour(d);
+				this.setActivity(1);
+			}
+		}else {
+			this.endTurn();
 		}
-		
+		System.out.println("ezen a mezon allok: " + this.field.id);
 		System.out.println(">Avatar.move()");
 	}
 	
@@ -190,6 +196,7 @@ public abstract class Avatar {
 	public void setActivity(int i) {
 		System.out.println("<Avatar.setActivity()");
 		activityPoints -= i;
+		System.out.println(activityPoints);
 		if(activityPoints <= 0) {
 			this.endTurn();
 		}
