@@ -18,11 +18,11 @@ public class Controller {
 		command = str;
 	}
 	
-	public static void startGame() throws IOException {
+	public static void startGame(boolean init) throws IOException {
 		System.out.println("<Controller.startGame()");
 		
 		GameEnder gameEnder = new GameEnder();
-		GameArea gameArea = new GameArea(gameEnder);
+		GameArea gameArea = new GameArea(gameEnder, init);
 		runGame(gameEnder, gameArea);
 		
 		System.out.println(">Controller.startGame()");
@@ -65,10 +65,11 @@ public class Controller {
 					gameArea.addAvatar(new Researcher(cmd[2].toLowerCase()));
 				}
         			break;
-        		
-				default:
-					System.out.println("Hibas input");
-				    break;
+        		case "INIT":
+	      			break;
+			default:
+				System.out.println("Hibas input");
+				break;
         	}
 			
 			gameArea.changeActiveAvatar();
@@ -106,7 +107,7 @@ public class Controller {
 		System.out.println(">Controller.Storm()");
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
         System.out.println("A legjobb targy a Projlab!! -help ;)");
         try {
 			startGame();
@@ -114,6 +115,6 @@ public class Controller {
 			System.out.println("IOexception: startgame");
 			e.printStackTrace();
 		}
-    }
+    	}*/
 	
 }
