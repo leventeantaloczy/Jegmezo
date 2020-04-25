@@ -146,7 +146,7 @@ public class Controller {
 			/*
 			 * Igy 50% esellyel esik minden mezon a ho
 			 */ 
-	        	int probability = rand.nextInt(101);
+	        	int probability = rand .nextInt(101);
 	        	if(probability > 50) {
 	        		fields.get(i).setSnow(1);
 				for(int j = 0; j < fields.get(i).avatars.size(); j++) {

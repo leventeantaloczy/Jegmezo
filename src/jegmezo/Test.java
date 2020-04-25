@@ -1,6 +1,7 @@
 package jegmezo;
 
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,8 +13,15 @@ import jegmezo.avatars.Eskimo;
 import jegmezo.avatars.Researcher;
 
 public class Test {
-	private static boolean exit = false;
-
+	private String[] initTest() {
+		//TODO letrehozni a dolgokat 
+		return;
+	}
+	
+	private void toFile(File f, String str) {
+		
+	}
+	
 	public void evaluateTest(BufferedReader br) throws IOException {
 
 		while (br.readLine() != null) {
@@ -21,6 +29,7 @@ public class Test {
 
 			switch (command[0].toLowerCase()) {
 			case "init":
+				initTest();
 				break;
 			case "avatar":
 				break;
@@ -71,18 +80,18 @@ public class Test {
 
 	}
 
-	/*
-	 * public static void main(String[] args) throws IOException { String path =
-	 * Paths.get("").toAbsolutePath().toString();
-	 * 
-	 * BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	 * String fileName = br.readLine();
-	 * 
-	 * FileReader fr = new FileReader(path + "/" + fileName); BufferedReader bread =
-	 * new BufferedReader(fr);
-	 * 
-	 * 
-	 * Test t = new Test(); t.evaluateTest(bread); }
-	 */
+	
+	 public static void main(String[] args) throws IOException { 
+		 String path = Paths.get("").toAbsolutePath().toString();
+		  
+		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		 String fileName = br.readLine();
+		  
+		 FileReader fr = new FileReader(path + "/" + fileName); BufferedReader bread =
+		 new BufferedReader(fr);
+		  
+		  
+		 Test t = new Test(); t.evaluateTest(bread); 
+	  }	
 
 }
