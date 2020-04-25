@@ -10,12 +10,31 @@ import java.nio.file.Paths;
 import java.util.StringTokenizer;
 
 import jegmezo.avatars.Eskimo;
+import jegmezo.avatars.PolarBear;
 import jegmezo.avatars.Researcher;
 
 public class Test {
 	private String[] initTest() {
 		//TODO letrehozni a dolgokat 
+		
 		return;
+	}
+	
+	private String Avatar(String str,String name) {
+		String vl = null;
+		if(str.equals("e")) {
+			Eskimo eskimo = new Eskimo(name);
+			vl = "Eskimo letrejott";
+		}
+		if(str.equals("p")) {
+			PolarBear bear = new PolarBear(name);
+			vl = "PolarBear letrejott";
+		}
+		if(str.equals("r")) {
+			Researcher reserchear = new Researcher(name);//Okostony
+			vl = "Researcher letrejott";
+		}
+		return vl;
 	}
 	
 	private void toFile(File f, String str) {
@@ -32,6 +51,7 @@ public class Test {
 				initTest();
 				break;
 			case "avatar":
+				Avatar(command[1].toLowerCase(),command[2].toLowerCase());
 				break;
 			case "field":
 				break;
