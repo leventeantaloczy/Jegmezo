@@ -14,11 +14,11 @@ import jegmezo.avatars.PolarBear;
 import jegmezo.avatars.Researcher;
 
 public class Test {
-	private String[] initTest() {
-		//TODO letrehozni a dolgokat 
-		
-		return;
-	}
+//	private String[] initTest() {
+//		//TODO letrehozni a dolgokat 
+//		
+//		//return;
+//	}
 	
 	private String Avatar(String str,String name) {
 		String vl = null;
@@ -48,7 +48,7 @@ public class Test {
 
 			switch (command[0].toLowerCase()) {
 			case "init":
-				initTest();
+				//initTest();
 				break;
 			case "avatar":
 				Avatar(command[1].toLowerCase(),command[2].toLowerCase());
