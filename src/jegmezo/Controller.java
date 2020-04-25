@@ -39,7 +39,7 @@ public class Controller {
 		System.out.println("Enter command for 1st Avatar!");
 		boolean exit = true;
 		
-		StringTokenizer st = new StringTokenizer(command, "\n");
+		StringTokenizer st = new StringTokenizer(command, ";");
 		String[] result = null;
 		int i = 0;
 		while(st.hasMoreTokens()) {
