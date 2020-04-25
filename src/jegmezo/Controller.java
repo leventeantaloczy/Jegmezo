@@ -1,4 +1,7 @@
 package jegmezo;
+import jegmezo.avatars.Avatar;
+import jegmezo.avatars.Eskimo;
+import jegmezo.avatars.Researcher;
 import jegmezo.fields.*;
 import jegmezo.items.*;
 import java.io.BufferedReader;
@@ -6,8 +9,14 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.List;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 public class Controller {
+	private static String command;
+	
+	public Controller(String str) {
+		command = str;
+	}
 	
 	public static void startGame() throws IOException {
 		System.out.println("<Controller.startGame()");
@@ -22,99 +31,49 @@ public class Controller {
 	/*
 	 * Itt fog futni a jatek
 	 */
+	
+	@SuppressWarnings("null")
 	public static void runGame(GameEnder gameEnder, GameArea gameArea) throws IOException {
 		System.out.println("<Controller.runGame()");
 		
 		System.out.println("Enter command for 1st Avatar!");
 		boolean exit = true;
 		
+		StringTokenizer st = new StringTokenizer(command, "\n");
+		String[] result = null;
+		int i = 0;
+		while(st.hasMoreTokens()) {
+			result[i++] = st.nextToken();
+		}
+		
+		int size = 0;
 		do {
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	        	String command = br.readLine();
-		        switch(command.toUpperCase()) {
-		        case "S":
-	        		Storm(gameArea.fieldsOnArea);
-	            		break;
-	      		case "I":
-				/*
-				 * TODO
-				 * Valahogy meg kene tudni, hogy Eskimo-e es akkor build-elni.
-				 * Zoli
-				 */
-				 gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-	            		break;
-			case "B":
-				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack();
-			    break;
-			case "T":
-				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
-			    break;
-			case "UC":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Cartridge());
-				break;
-			case "UFL":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Flare());
-				break;
-			case "UFO":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Food());
-				break;
-			case "UG":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Gun());
-				break;
-			case "UR":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Rope());
-				break;
-			case "US":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Shovel());
-				break;
-			case "UW":
-				gameArea.avatars.get(gameArea.activeAvatar).useItem(new WetSuit());
-				break;
-			case "MN":
-				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
-			    break;
-			case "ME":
-				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
-			    break;
-			case "MS":
-				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.South);
-			    break;
-			case "MW":
-				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
-			    break;    
-			case "CN":
-				/*
-				 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
-				 * ZolisnowAmount
-				 */
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-			    break;
-			case "CE":
-			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-
-			    break;
-			case "CS":
-			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-
-			    break;
-			case "CW":
-			    // code block
-				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-
-			    break;
-			case "EXIT":
-				exit=false;
-				break;
-			default:
-				System.out.println("Hibas input");
-			    break;
-	        	}
+        	int k = 0;
+    		StringTokenizer stok = new StringTokenizer(result[k++], " ");
+    		String[] cmd = null;
+    		int j = 0;
+    		
+    		while(stok.hasMoreTokens()) {
+    			cmd[j++] = st.nextToken();
+    		}
+	    		
+	        switch(cmd[0].toUpperCase()) {
+	      		case "AVATAR":
+				if(cmd[1].toUpperCase().equals("E")) {
+					gameArea.addAvatar(new Eskimo(cmd[2].toLowerCase()));
+				}else if(cmd[1].toUpperCase().equals("R")){
+					gameArea.addAvatar(new Researcher(cmd[2].toLowerCase()));
+				}
+        			break;
+        		
+				default:
+					System.out.println("Hibas input");
+				    break;
+        	}
 			
 			gameArea.changeActiveAvatar();
-			
-		}while(exit);
+			size++;
+		}while(size < result.length);
 		
 		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
 		 * Oda majd megy valami, ami figyeli a jatek veget.

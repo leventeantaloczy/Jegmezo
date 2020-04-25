@@ -9,8 +9,9 @@ import jegmezo.Direction;
 
 public class Researcher extends Avatar{
 
-	public Researcher() {
-		super(4); 
+	public Researcher(String _name) {
+		super(_name); 
+		this.healthPoints = 4;
 		// TODO Auto-generated constructor stub
 	}
 	

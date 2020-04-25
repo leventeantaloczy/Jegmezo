@@ -5,9 +5,10 @@ import jegmezo.Shelter;
 public class Eskimo extends Avatar{
 	
 	
-	public Eskimo() {
-		super(5);
-		// TODO Auto-generated constructor stub
+	public Eskimo(String _name) {
+		super(_name);
+		this.healthPoints = 5;
+
 	}
 	
 	/*

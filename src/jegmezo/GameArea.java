@@ -162,14 +162,16 @@ public class GameArea {
 
 		int i;
 		for(i = 0; i < researcherNumber; i++) {
-			Researcher researcher = new Researcher();
+			String name = "r" + "i";
+			Researcher researcher = new Researcher(name);
 			fieldsOnArea.get(numberOfPlayers + 2 + 2 + i).avatars.add(researcher);
 			researcher.field = fieldsOnArea.get(numberOfPlayers + 2 + 2 + i);
 			addAvatar(researcher);
 			researcher.gameEnder = gameEnder;
 		}
 		for(int j = researcherNumber; j < numberOfPlayers; j++) {
-			Eskimo eskimo = new Eskimo();
+			String name = "r" + "j";
+			Eskimo eskimo = new Eskimo(name);
 			fieldsOnArea.get(numberOfPlayers + 2 + 2 + i + j).avatars.add(eskimo);
 			eskimo.field = fieldsOnArea.get(numberOfPlayers + 2 + 2 + i + j);
 			eskimo.gameEnder = gameEnder;
@@ -209,7 +211,7 @@ public class GameArea {
 		System.out.println(">GameArea.addField()");
 	}
 	
-	private void addAvatar(Avatar a) {
+	public void addAvatar(Avatar a) {
 		System.out.println("<GameArea.addAvatar()");
 		avatars.add(a);
 		System.out.println(">GameArea.addAvatar()");

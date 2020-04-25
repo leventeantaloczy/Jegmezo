@@ -7,8 +7,9 @@ import jegmezo.fields.Field;
 
 public class PolarBear extends Avatar{
 
-	public PolarBear() {
-		super(100);
+	public PolarBear(String _name) {
+		super(_name);
+		this.healthPoints = 100;
 	}
 
 	@Override

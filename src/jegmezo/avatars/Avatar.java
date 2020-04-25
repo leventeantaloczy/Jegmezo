@@ -17,12 +17,12 @@ public abstract class Avatar {
 	public Field field;
 	private List<Item> backpack = new ArrayList<Item>();
 	private int activityPoints;
-	private int healthPoints;
 	private int durability;
 	public boolean EndTurn = false;
 	public boolean wearsWetsuit = false;
 	public GameEnder gameEnder;
-	
+	protected int healthPoints;
+	protected String name;
 	
 	public List<Item> getBackpack(){
 		return backpack;
@@ -61,9 +61,9 @@ public abstract class Avatar {
 	 * Levente
 	 */
 	
-	public Avatar(int hp) {	
+	public Avatar(String _name) {	
 		backpack = new LinkedList<Item>();
-		healthPoints = hp;
+		name = _name;
 		activityPoints = 4;
 	}
 	
@@ -194,6 +194,10 @@ public abstract class Avatar {
 			this.endTurn();
 		}
 		System.out.println(">Avatar.setActivity()");
+	}
+	
+	public String getName() {
+		return name;
 	}
 	
 	public abstract int specialMove();
