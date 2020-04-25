@@ -32,7 +32,7 @@ public class GameArea {
  	 * Ha az init trua, akkor felhasznaloi bemenet alapjan pit palyat. 
  	 * Ha nem, akkor csak letrejon az attributumaival.
  	 */
-	public GameArea(GameEnder gameEnder) {
+	public GameArea(GameEnder gameEnder, boolean init) {
 		System.out.println("<GameArea.constructor()");
 		
 		/*
@@ -41,17 +41,18 @@ public class GameArea {
 		* Ezen kene maszkalni es figyelni, hogy jo-e amiket kiir. 
 		* Zoli
 		*/
-		
-		numberOfPlayers = dataReader("How many players will try to escape?", 3, true);
-		int researcherNumber = dataReader("How many of them has a paper in ice unstability researching?", numberOfPlayers, false);
-		
-		/*Ezutan ezt a numberOfPlayers-t oda kell adni az Avatar-oknak, 
-		pontosabban egynlove tenni a durability valtozojukkal.*/
-		
-		fieldAdder(numberOfPlayers + 3);
-		setterOfTheNeighbourhood();
+		if(init) {
+			numberOfPlayers = dataReader("How many players will try to escape?", 3, true);
+			int researcherNumber = dataReader("How many of them has a paper in ice unstability researching?", numberOfPlayers, false);
 
-		putStaffOnGameArea(researcherNumber, gameEnder);
+			/*Ezutan ezt a numberOfPlayers-t oda kell adni az Avatar-oknak, 
+			pontosabban egynlove tenni a durability valtozojukkal.*/
+
+			fieldAdder(numberOfPlayers + 3);
+			setterOfTheNeighbourhood();
+
+			putStaffOnGameArea(researcherNumber, gameEnder);
+		}
 		
 		System.out.println(">GameArea.constructor()");
 	}
