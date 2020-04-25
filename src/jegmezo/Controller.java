@@ -39,9 +39,93 @@ public class Controller {
 		System.out.println("Enter command for 1st Avatar!");
 		boolean exit = true;
 		
+		do {
+			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	        	String command = br.readLine();
+		        switch(command.toUpperCase()) {
+		        case "S":
+	        		Storm(gameArea.fieldsOnArea);
+	            		break;
+	      		case "I":
+				/*
+				 * TODO
+				 * Valahogy meg kene tudni, hogy Eskimo-e es akkor build-elni.
+				 * Zoli
+				 */
+				 gameArea.avatars.get(gameArea.activeAvatar).specialMove();
+	            		break;
+			case "B":
+				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack();
+			    break;
+			case "T":
+				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
+			    break;
+			case "UC":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Cartridge());
+				break;
+			case "UFL":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Flare());
+				break;
+			case "UFO":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Food());
+				break;
+			case "UG":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Gun());
+				break;
+			case "UR":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Rope());
+				break;
+			case "US":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new Shovel());
+				break;
+			case "UW":
+				gameArea.avatars.get(gameArea.activeAvatar).useItem(new WetSuit());
+				break;
+			case "MN":
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
+			    break;
+			case "ME":
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
+			    break;
+			case "MS":
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.South);
+			    break;
+			case "MW":
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
+			    break;    
+			case "CN":
+				/*
+				 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
+				 * ZolisnowAmount
+				 */
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
+			    break;
+			case "CE":
+			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 
-		
+			    break;
+			case "CS":
+			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
 
+			    break;
+			case "CW":
+			    // code block
+				gameArea.avatars.get(gameArea.activeAvatar).specialMove();
+
+			    break;
+			case "EXIT":
+				exit=false;
+				break;
+			default:
+				System.out.println("Hibas input");
+			    break;
+	        	}
+			
+			gameArea.changeActiveAvatar();
+			
+		}while(exit);
 		
 		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
 		 * Oda majd megy valami, ami figyeli a jatek veget.
@@ -74,7 +158,7 @@ public class Controller {
 		System.out.println(">Controller.Storm()");
 	}
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
         System.out.println("A legjobb targy a Projlab!! -help ;)");
         try {
 			startGame(true);
@@ -82,6 +166,6 @@ public class Controller {
 			System.out.println("IOexception: startgame");
 			e.printStackTrace();
 		}
-    	}*/
+    	}
 	
 }

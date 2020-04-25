@@ -5,6 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.nio.file.Paths;
 import java.util.StringTokenizer;
 
 import jegmezo.avatars.Eskimo;
@@ -12,62 +13,76 @@ import jegmezo.avatars.Researcher;
 
 public class Test {
 	private static boolean exit = false;
-	
-	
-	public void evaluateTest() throws IOException {
-		BufferedReader in = null;
-		
-		try {
-	        in = new BufferedReader(new InputStreamReader(System.in));
-	        String line;
-	        while ((line = in.readLine()) != null) {
-	            System.out.println(line);
-	        }
-	    }
-	    catch (IOException e) {
-	       // logger.error("IOException reading System.in", e);
-	        throw e;
-	    }
-	    finally {
-	        if (in != null) {
-	            in.close();
-	        }
-	    }
-		
-	}	
-	
-	
-	
-	
 
-	public static void main(String[] args) throws IOException {
-		Test t = new Test();
-		t.evaluateTest();
-		
-		
-		/*do {
-			System.out.println("Which test would you like to run?");
-			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-			String command = br.readLine();
-			
-		    switch(command.toUpperCase()) {
-		        case "INIT":
-		        	Controller c1 = new Controller("init");
-				c1.startGame(true);
-		           	break;
-		        case "MOVEAVATAR":
-		        	Controller c2 = new Controller
-		        		("avatar e e1;field s f1;field s f2;bind n f1 f2;take e1 f1;move e1 n;saveToFile Results");
-				c2.startGame(false);
-		           	break;
-			case "EXIT":
-				exit = true;
+	public void evaluateTest(BufferedReader br) throws IOException {
+
+		while (br.readLine() != null) {
+			String[] command = br.readLine().split(" ");
+
+			switch (command[0].toLowerCase()) {
+			case "init":
+				break;
+			case "avatar":
+				break;
+			case "field":
+				break;
+			case "move":
+				break;
+			case "bind":
+				break;
+			case "take":
+				break;
+			case "igloo":
+				break;
+			case "check":
+				break;
+			case "item":
+				break;
+			case "itemtofield":
+				break;
+			case "tobackpack":
+				break;
+			case "feed":
+				break;
+			case "snow":
+				break;
+			case "use":
+				break;
+			case "lunch":
+				break;
+			case "strom":
+				break;
+			case "freeze":
+				break;
+			case "activity":
+				break;
+			case "shoot":
+				break;
+			case "help":
+				break;
+			case "setused":
+				break;
+			case "savetofile":
 				break;
 			default:
-				System.out.println("Hibas input");
 				break;
-		    }
-		}while(!exit);*/
-		
-    }
+			}
+		}
+
+	}
+
+	/*
+	 * public static void main(String[] args) throws IOException { String path =
+	 * Paths.get("").toAbsolutePath().toString();
+	 * 
+	 * BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+	 * String fileName = br.readLine();
+	 * 
+	 * FileReader fr = new FileReader(path + "/" + fileName); BufferedReader bread =
+	 * new BufferedReader(fr);
+	 * 
+	 * 
+	 * Test t = new Test(); t.evaluateTest(bread); }
+	 */
+
 }
