@@ -39,42 +39,9 @@ public class Controller {
 		System.out.println("Enter command for 1st Avatar!");
 		boolean exit = true;
 		
-		StringTokenizer st = new StringTokenizer(command, ";");
-		String[] result = null;
-		int i = 0;
-		while(st.hasMoreTokens()) {
-			result[i++] = st.nextToken();
-		}
+
 		
-		int size = 0;
-		do {
-        	int k = 0;
-    		StringTokenizer stok = new StringTokenizer(result[k++], " ");
-    		String[] cmd = null;
-    		int j = 0;
-    		
-    		while(stok.hasMoreTokens()) {
-    			cmd[j++] = st.nextToken();
-    		}
-	    		
-	        switch(cmd[0].toUpperCase()) {
-	      		case "AVATAR":
-				if(cmd[1].toUpperCase().equals("E")) {
-					gameArea.addAvatar(new Eskimo(cmd[2].toLowerCase()));
-				}else if(cmd[1].toUpperCase().equals("R")){
-					gameArea.addAvatar(new Researcher(cmd[2].toLowerCase()));
-				}
-        			break;
-        		case "INIT":
-	      			break;
-			default:
-				System.out.println("Hibas input");
-				break;
-        	}
-			
-			gameArea.changeActiveAvatar();
-			size++;
-		}while(size < result.length);
+
 		
 		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
 		 * Oda majd megy valami, ami figyeli a jatek veget.
@@ -110,7 +77,7 @@ public class Controller {
 	/*public static void main(String[] args) {
         System.out.println("A legjobb targy a Projlab!! -help ;)");
         try {
-			startGame();
+			startGame(true);
 		} catch (IOException e) {
 			System.out.println("IOexception: startgame");
 			e.printStackTrace();

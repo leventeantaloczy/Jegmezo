@@ -1,14 +1,51 @@
 package jegmezo;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.StringTokenizer;
+
+import jegmezo.avatars.Eskimo;
+import jegmezo.avatars.Researcher;
 
 public class Test {
 	private static boolean exit = false;
+	
+	
+	public void evaluateTest() throws IOException {
+		BufferedReader in = null;
+		
+		try {
+	        in = new BufferedReader(new InputStreamReader(System.in));
+	        String line;
+	        while ((line = in.readLine()) != null) {
+	            System.out.println(line);
+	        }
+	    }
+	    catch (IOException e) {
+	       // logger.error("IOException reading System.in", e);
+	        throw e;
+	    }
+	    finally {
+	        if (in != null) {
+	            in.close();
+	        }
+	    }
+		
+	}	
+	
+	
+	
+	
 
 	public static void main(String[] args) throws IOException {
-		do {
+		Test t = new Test();
+		t.evaluateTest();
+		
+		
+		/*do {
 			System.out.println("Which test would you like to run?");
 			BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 			String command = br.readLine();
@@ -30,6 +67,7 @@ public class Test {
 				System.out.println("Hibas input");
 				break;
 		    }
-		}while(!exit);
+		}while(!exit);*/
+		
     }
 }
