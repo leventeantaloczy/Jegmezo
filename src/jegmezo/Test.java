@@ -44,7 +44,7 @@ public class Test {
 	}
 	
 	public void evaluateTest(BufferedReader br) throws IOException {
-		while (br.readLine() != null) {
+		while (true) {
 			String[] command = br.readLine().split(" ");
 
 			switch (command[0].toLowerCase()) {
