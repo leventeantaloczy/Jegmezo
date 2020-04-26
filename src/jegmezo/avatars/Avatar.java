@@ -25,6 +25,7 @@ public abstract class Avatar {
 	public GameEnder gameEnder;
 	protected int healthPoints;
 	protected String name;
+	private boolean NPC = false;
 	
 	
 	/*
@@ -44,6 +45,14 @@ public abstract class Avatar {
 		name = _name;
 		activityPoints = 4;
 	}*/
+	
+	public void setNPC(boolean b) {
+		this.NPC = b;
+	}
+	
+	public boolean getNPC() {
+		return NPC;
+	}
 	
 	
 	public List<Item> getBackpack(){

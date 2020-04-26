@@ -215,9 +215,11 @@ public class GameArea {
 		for(int l = 0; l < (int) Math.ceil(numberOfPlayers/2); l++ ) {
 			String name = "b" + l;
 			PolarBear bear = new PolarBear(name);
+
 			//utols� el�tti sorba rakja
-			fieldsOnArea.get(((width + 2)*(width +1)) + 2 + l).avatars.add(bear);
-			bear.field = fieldsOnArea.get(((width + 2)*(width +1)) + 2 + l);
+			fieldsOnArea.get(((width + 2)*width) + 2 + l).avatars.add(bear);
+			bear.field = fieldsOnArea.get(((width + 2)*width) + 2 + l);
+
 			bear.gameEnder = gameEnder;
 			addAvatar(bear);
 			System.out.println("Bear on id " + bear.field.id);
