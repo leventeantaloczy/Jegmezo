@@ -45,7 +45,6 @@ public abstract class Avatar {
 	}*/
 	
 	
-	
 	public List<Item> getBackpack(){
 		return backpack;
 	}

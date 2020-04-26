@@ -14,49 +14,53 @@ import java.util.StringTokenizer;
 import jegmezo.avatars.Eskimo;
 import jegmezo.avatars.PolarBear;
 import jegmezo.avatars.Researcher;
+import jegmezo.avatars.Avatar;
 import jegmezo.fields.*;
 
 
 
 public class Test {
 	public static BufferedWriter bw;
-	
+	GameArea gamearea;
 //	private String[] initTest() {
 //		//TODO letrehozni a dolgokat 
 //		
 //		//return;
 //	}
 	
-	private void Avatar(String str, String name) throws IOException {
+	private Avatar Avatar(String str, String name) throws IOException {
 		if(str.equals("e")) {
-			Eskimo eskimo = new Eskimo(name);
+			return new Eskimo(name);
 		}
 		else if(str.equals("p")) {
-			PolarBear bear = new PolarBear(name);
+			return new PolarBear(name);
 		}
 		else if(str.equals("r")) {
-			Researcher researcher = new Researcher(name);			//Okostony
+			return new Researcher(name);			//Okostony
 		}
 		else {
 			bw.write("Nem jott letre " + name + " avatar\n");
+			return null;
 		}
 	}
 	
-	private void Field(String type, String name) throws IOException {
+	private Field Field(String type, String name) throws IOException {
+		
 		if(type.equals("s")) {
-			StableIce sIce = new StableIce(name);
+			return new StableIce(name);
 		}
 		else if(type.equals("u")) {
-			UnstableIce uIce = new UnstableIce(name);
+			return new UnstableIce(name);
 		}
 		else if(type.equals("h")) {
-			HoleField hField = new HoleField(name); 
+			return new HoleField(name); 
 		}
 		else if(type.equals("b")) {
-			Border border = new Border(name);	
+			return new Border(name);	
 		}
 		else {
 			bw.write("Nem jott letre " + name + " field\n");
+			return null;
 		}
 	}
 	
@@ -72,7 +76,7 @@ public class Test {
 				//initTest();
 				break;
 			case "avatar":
-				Avatar(command[1].toLowerCase(), command[2].toLowerCase());
+				gamearea.avatars.add(Avatar(command[1].toLowerCase(), command[2].toLowerCase()));
 				break;
 			case "field":
 				Field(command[1].toLowerCase(), command[2].toLowerCase());

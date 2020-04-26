@@ -158,7 +158,9 @@ public abstract class Field {
 		return capacity;
 	}
 	
-	
+	public String getName() {
+		return name;
+	}
 	
 	
 }
