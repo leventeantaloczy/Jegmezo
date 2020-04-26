@@ -160,7 +160,7 @@ public class GameArea {
 	 * Szomszedossagok beallitasa. A Bordereknek nem allitjuk be a szomszedait, mert kopok ra.
 	 * Zoli
 	 */
-	private void setterOfTheNeighbourhood() {
+	private void setterOfTheNeighbourhood() throws IOException {
 		System.out.println("<GameArea.setterOfTheNeighbourhood()");
 		// Lepheto resz szelessege es magassaga.
 		int widgth = numberOfPlayers + 3;
@@ -215,7 +215,7 @@ public class GameArea {
 		for(int l = 0; l < (int) Math.ceil(numberOfPlayers/2); l++ ) {
 			String name = "b" + l;
 			PolarBear bear = new PolarBear(name);
-			//utolsó elõtti sorba rakja
+			//utolsï¿½ elï¿½tti sorba rakja
 			fieldsOnArea.get(((width + 2)*(width +1)) + 2 + l).avatars.add(bear);
 			bear.field = fieldsOnArea.get(((width + 2)*(width +1)) + 2 + l);
 			bear.gameEnder = gameEnder;

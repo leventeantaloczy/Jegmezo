@@ -1,9 +1,11 @@
 package jegmezo.fields;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
 import jegmezo.Direction;
 import jegmezo.Shelter;
+import jegmezo.Test;
 import jegmezo.avatars.*;
 import jegmezo.items.*;
 
@@ -109,9 +111,14 @@ public abstract class Field {
 	* Emiatt a szomszedokat Eszaki, Deli, Keleti es Nyugati sorrendben kell hozzaadni.
 	* Zoli
 	*/
-	public void setNeighbour(Field f) {
+	public void setNeighbour(Field f) throws IOException {
 		System.out.println("<Field.setNeighbour()");
 		this.neighbours.add(f);
+		try {
+			Test.bw.write(this.name + "-" + f.getName() + " osszekotve");
+		}catch (NullPointerException e) {
+			System.out.println(e);
+		}
 		System.out.println(">Field.setNeighbour()");
 	}
 	

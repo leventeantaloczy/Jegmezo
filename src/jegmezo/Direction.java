@@ -6,9 +6,6 @@ import java.util.Map;
 public enum Direction {
 	North(0), South(1), East(2), West(3);
 	
-	
-
-	
 	private int val;
 	Direction(int v){
 		val = v;

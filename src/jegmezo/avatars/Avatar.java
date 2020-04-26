@@ -11,6 +11,7 @@ import java.util.List;
 
 import jegmezo.Direction;
 import jegmezo.GameEnder;
+import jegmezo.Test;
 import jegmezo.items.*;
 
 public abstract class Avatar {
@@ -181,6 +182,13 @@ public abstract class Avatar {
 			this.endTurn();
 		}
 		System.out.println("ezen a mezon allok: " + this.field.id);
+		try {
+			Test.bw.write("elmozdult " +  d.toString() + " ide\n");
+		}catch (NullPointerException e) {
+			System.out.println(e);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println(">Avatar.move()");
 	}
 	

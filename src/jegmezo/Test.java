@@ -64,6 +64,35 @@ public class Test {
 		}
 	}
 	
+	private Avatar findAvatar(String name) {
+		for(Avatar a : gamearea.avatars) {
+			if(a.getName().equals(name))
+				return a;
+		}
+		return null;
+	}
+	
+	private Field findField(String name) {
+		for(Field f : gamearea.fieldsOnArea) {
+			if(f.getName().equals(name))
+				return f;
+		}
+		return null;
+	}
+	/*
+	 * szoval a test bemeneti nyelvben ugy van h megkap egy fieldet amire lép, de sztem az nem olyan jo, ugy kéne h iranyt kap ahova lep - Levente
+	 */
+	private void Move(String name, String where) throws IOException {
+		bw.write(name + " ");
+		findAvatar(name).move(Direction.valueOf(where));
+	}
+	/*
+	 * beallitja a szomszedot, eloszor eszak majd del kelet nyugat 
+	 */
+	private void Bind(String field1, String field2) throws IOException {
+		findField(field1).setNeighbour(findField(field2));
+	}
+	
 	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
 		bw = new BufferedWriter(new FileWriter(fileName, true));
 		
@@ -72,53 +101,55 @@ public class Test {
 			String[] command = st.split(" ");
 
 			switch (command[0].toLowerCase()) {
-			case "init":
-				//initTest();
-				break;
-			case "avatar":
-				gamearea.avatars.add(Avatar(command[1].toLowerCase(), command[2].toLowerCase()));
-				break;
-			case "field":
-				Field(command[1].toLowerCase(), command[2].toLowerCase());
-				break;
-			case "move":
-				break;
-			case "bind":	
-				break;
-			case "take":
-				break;
-			case "igloo":
-				break;
-			case "check":
-				break;
-			case "item":
-				break;
-			case "itemtofield":
-				break;
-			case "tobackpack":
-				break;
-			case "feed":
-				break;
-			case "snow":
-				break;
-			case "use":
-				break;
-			case "lunch":
-				break;
-			case "strom":
-				break;
-			case "freeze":
-				break;
-			case "activity":
-				break;
-			case "shoot":
-				break;
-			case "help":
-				break;
-			case "setused":
-				break;
-			case "savetofile":
-				break;
+				case "init":
+					//initTest();
+					break;
+				case "avatar":
+					gamearea.avatars.add(Avatar(command[1].toLowerCase(), command[2].toLowerCase()));
+					break;
+				case "field":
+					gamearea.fieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
+					break;
+				case "move":
+					Move(command[1].toLowerCase(), command[2].toLowerCase());
+					break;
+				case "bind":
+					Bind(command[1].toLowerCase(), command[2].toLowerCase());
+					break;
+				case "take":
+					break;
+				case "igloo":
+					break;
+				case "check":
+					break;
+				case "item":
+					break;
+				case "itemtofield":
+					break;
+				case "tobackpack":
+					break;
+				case "feed":
+					break;
+				case "snow":
+					break;
+				case "use":
+					break;
+				case "lunch":
+					break;
+				case "strom":
+					break;
+				case "freeze":
+					break;
+				case "activity":
+					break;
+				case "shoot":
+					break;
+				case "help":
+					break;
+				case "setused":
+					break;
+				case "savetofile":
+					break;
 			default:
 				System.out.println("Rossz parancs");
 				bw.write("Rossz parancs\n");
