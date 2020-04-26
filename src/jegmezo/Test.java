@@ -217,9 +217,7 @@ public class Test {
 					break;
 				case "use":
 					break;
-				case "lunch": //???ILYEN NEM KELL MERT HA A POLARBEAR MEZORE LEP AKKOR TORTENIK VALAMI
-					break;
-				case "strom": //???EHHEZ EGESZ JATEKOT FEL KELL EPITENI MERT CONTROLLER CSINALJA A STORMOT
+				case "storm": //???EHHEZ EGESZ JATEKOT FEL KELL EPITENI MERT CONTROLLER CSINALJA A STORMOT
 					break;
 				case "freeze": //???SET HEALTHPOINTS TO 0 ??? ez egy egesz teszt hogy elfogy a healthpointja akkor mi tortenik
 					break;
