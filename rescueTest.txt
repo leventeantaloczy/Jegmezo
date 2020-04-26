@@ -1,0 +1,15 @@
+avatar e e1
+avatar r r1
+field s f1
+field s f2
+field h f3
+bind f1 f2
+bind f2 f3
+bind f2 f1
+place e1 f1
+place r1 f2
+move e1 North
+move e1 North
+item rope ro f2
+tobackpack r1
+use ro r1

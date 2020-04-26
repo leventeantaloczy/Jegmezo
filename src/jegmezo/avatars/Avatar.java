@@ -99,9 +99,8 @@ public abstract class Avatar {
 		backpack.add(field.item);
 		
 		try {
-			Test.bw.write(field.item + " added to backpack");
+			Test.bw.write(field.item.getName() + " added to backpack\n");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
@@ -134,13 +133,8 @@ public abstract class Avatar {
 	public void useItem(Item item) {
 		System.out.println("<Avatar.useItem()");
 		int indexOfItem = backpack.indexOf(item);
-		if(indexOfItem != 0) {
-			backpack.get(indexOfItem).use(this);
+		backpack.get(indexOfItem).use(this);
 		this.setActivity(1);
-		}
-		else {
-			System.out.println("No such item.");
-		}
 		System.out.println(">Avatar.useItem()");
 	}
 	

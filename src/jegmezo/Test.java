@@ -183,7 +183,6 @@ public class Test {
 			for(Item i : a.getBackpack()) {
 				if(i.getName().equals(name))
 					return i;
-				return null;
 			}
 		}
 		return null;
@@ -264,7 +263,7 @@ public class Test {
 		bw.close();
 	}
 
-	
+	//TODO ha illegal expression van akkor ne fossa ossze magat
 	 public static void main(String[] args) throws IOException { 
 		 String path = Paths.get("").toAbsolutePath().toString();
 		 Test t = new Test(); 
