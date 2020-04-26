@@ -3,4 +3,8 @@ field s f1
 field s f2
 bind f1 f2
 place e1 f1
+<<<<<<< HEAD
 move e1 north
+=======
+move e1 n
+>>>>>>> ca0424ae46b1813ed1773b38e2632d3695c00c08
