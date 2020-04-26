@@ -28,7 +28,7 @@ public class PolarBear extends Avatar{
 		return 0;
 	}
 	
-	public void move(Direction d) throws IOException {
+	public void move(Direction d) {
 		System.out.println("<PolarBear.move()");
 		System.out.println("ezen a mezon allok: " + this.field.id);
 		Random rand = new Random();
@@ -38,7 +38,12 @@ public class PolarBear extends Avatar{
 		
 		if(field.getNeighbour(trueWay).accept()) {
 			System.out.println("maki");
-			field.getNeighbour(trueWay).addAvatar(this);
+			try {
+				field.getNeighbour(trueWay).addAvatar(this);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			field.removeAvatar(this);
 			if(!(field.getNeighbour(trueWay).avatars.isEmpty())) {
 				gameEnder.endGame();

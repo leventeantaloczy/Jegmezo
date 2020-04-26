@@ -177,12 +177,17 @@ public abstract class Avatar {
 	 * d irányba elmozdul ha tud (csak akkor nem tud ha határmező van ott) 
 	 * Levente
 	 */
-	public void move(Direction d) throws IOException {
+	public void move(Direction d){
 		System.out.println("<Avatar.move()");
-		System.out.println("ezen a mezon allok: " + this.field.id);
+		//System.out.println("ezen a mezon allok: " + this.field.id);
 		if(this.field.getKills() == false) {
 			if(field.getNeighbour(d).accept()) {
-				field.getNeighbour(d).addAvatar(this);
+				try {
+					field.getNeighbour(d).addAvatar(this);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				field.removeAvatar(this);
 				field = field.getNeighbour(d);
 				this.setActivity(1);

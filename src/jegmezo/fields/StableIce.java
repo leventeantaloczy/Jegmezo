@@ -12,6 +12,6 @@ public class StableIce extends Field{
 	public StableIce(String _name) throws IOException {
 		super(_name);
 		this.kills = false;
-		Test.bw.write(this.name + " letrejott\n");
+		Test.bw.write(this.name + " created\n");
 	}
 }

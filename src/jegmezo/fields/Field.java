@@ -120,7 +120,7 @@ public abstract class Field {
 		System.out.println("<Field.setNeighbour()");
 		this.neighbours.add(f);
 		try {
-			Test.bw.write(this.name + "-" + f.getName() + " osszekotve");
+			Test.bw.write(this.name + "-" + f.getName() + " binded\n");
 		}catch (NullPointerException e) {
 			System.out.println(e);
 		}

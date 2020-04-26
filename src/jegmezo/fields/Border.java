@@ -10,7 +10,7 @@ public class Border extends Field{
 	
 	public Border(String _name) throws IOException {
 		super(_name);
-		Test.bw.write(this.name + " letrejott\n");
+		Test.bw.write(this.name + " created\n");
 	}
 	
 	

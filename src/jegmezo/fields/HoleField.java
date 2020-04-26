@@ -14,6 +14,6 @@ public class HoleField extends Field{
 	public HoleField(String _name) throws IOException {
 		super(_name);
 		this.kills = true;
-		Test.bw.write(this.name + " letrejott\n");
+		Test.bw.write(this.name + " created\n");
 	}
 }

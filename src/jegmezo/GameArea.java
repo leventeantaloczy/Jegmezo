@@ -32,7 +32,7 @@ public class GameArea {
  	 * Ha az init trua, akkor felhasznaloi bemenet alapjan pit palyat. 
  	 * Ha nem, akkor csak letrejon az attributumaival.
  	 */
-	public GameArea(GameEnder gameEnder, boolean init) throws IOException {
+	public GameArea(GameEnder gameEnder, boolean init){
 		System.out.println("<GameArea.constructor()");
 		
 		/*
@@ -49,9 +49,19 @@ public class GameArea {
 			pontosabban egynlove tenni a durability valtozojukkal.*/
 
 			fieldAdder(numberOfPlayers + 3);
-			setterOfTheNeighbourhood();
+			try {
+				setterOfTheNeighbourhood();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 
-			putStaffOnGameArea(researcherNumber, gameEnder);
+			try {
+				putStaffOnGameArea(researcherNumber, gameEnder);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 		System.out.println(">GameArea.constructor()");

@@ -7,6 +7,9 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+
 import jegmezo.avatars.Eskimo;
 import jegmezo.avatars.PolarBear;
 import jegmezo.avatars.Researcher;
@@ -17,15 +20,18 @@ import jegmezo.fields.*;
 
 public class Test {
 	public static BufferedWriter bw;
-	GameEnder ender = new GameEnder();
-	GameArea gamearea;// = new GameArea(ender, true);
+	private List<Avatar> avatars = new ArrayList<Avatar>();	
+	private List<Field> fieldsOnArea = new ArrayList<Field>();
+	
+	
 //	private String[] initTest() {
 //		//TODO letrehozni a dolgokat 
 //		
 //		//return;
 //	}
 	
-	private Avatar Avatar(String str, String name) throws IOException {
+	private Avatar avatar(String str, String name) throws IOException {
+		System.out.println("aaa");
 		if(str.equals("e")) {
 			return new Eskimo(name);
 		}
@@ -62,16 +68,17 @@ public class Test {
 	}
 	
 	private Avatar findAvatar(String name) {
-		for(Avatar a : gamearea.avatars) {
+		System.out.println("aaa");
+		for(Avatar a : avatars) {
 			if(a.getName().equals(name))
-				System.out.println(a.getName());
 				return a;
 		}
+		
 		return null;
 	}
 	
 	private Field findField(String name) {
-		for(Field f : gamearea.fieldsOnArea) {
+		for(Field f : fieldsOnArea) {
 			if(f.getName().equals(name))
 				return f;
 		}
@@ -95,7 +102,7 @@ public class Test {
 	}
 	
 	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
-		bw = new BufferedWriter(new FileWriter(fileName, true));
+		bw = new BufferedWriter(new FileWriter(fileName));
 		
 		String st = null;
 		while ((st = br.readLine()) != null) {
@@ -106,13 +113,13 @@ public class Test {
 					//TODO: initTest();
 					break;
 				case "avatar":
-					gamearea.avatars.add(Avatar(command[1].toLowerCase(), command[2].toLowerCase()));
+					avatars.add(avatar(command[1].toLowerCase(), command[2].toLowerCase()));
 					break;
 				case "field":
-					gamearea.fieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
+					fieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
 					break;
 				case "move":
-					Move(command[1].toLowerCase(), command[2].toLowerCase());
+					Move(command[1].toLowerCase(), command[2]);
 					break;
 				case "bind":
 					Bind(command[1].toLowerCase(), command[2].toLowerCase());
@@ -167,13 +174,18 @@ public class Test {
 		 Test t = new Test(); 
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		 String fileName = br.readLine();
-		 while(!fileName.equals("exit")) { 
-			 FileReader fr = new FileReader(path + "/" + fileName); 
-			 BufferedReader bread = new BufferedReader(fr);
-			 String[] newName = fileName.split("\\.");
-			 t.evaluateTest(bread, newName[0] + "Out." + newName[1]); 
-			 fileName = br.readLine();
-		 }
+		 try {
+			 while(!fileName.equals("exit")) { 
+				 FileReader fr = new FileReader(path + "/" + fileName); 
+				 BufferedReader bread = new BufferedReader(fr);
+				 String[] newName = fileName.split("\\.");
+				 t.evaluateTest(bread, newName[0] + "Out." + newName[1]); 
+				 fileName = br.readLine();
+			 }
+		 }catch (NullPointerException e) {
+			System.out.println(e);
+		}
+
 		  
 		
 	  }	

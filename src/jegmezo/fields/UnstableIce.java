@@ -23,7 +23,7 @@ public class UnstableIce extends Field{
 		Random rand = new Random();
 		this.kills = false;
 		capacity = rand.nextInt(2) + 1;
-		Test.bw.write(this.name + " letrejott\n");
+		Test.bw.write(this.name + " created\n");
 	}
 	
 	@Override
