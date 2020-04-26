@@ -14,7 +14,11 @@ public class Researcher extends Avatar{
 		super(_name); 
 		this.healthPoints = 4;
 		// TODO Auto-generated constructor stub
-		Test.bw.write(this.name + " letrejott\n");
+		try {
+			Test.bw.write(this.name + " letrejott\n");
+		}catch(NullPointerException e) {
+			System.out.println("NullPointerException: " + e);
+		}
 	}
 	
 	/*

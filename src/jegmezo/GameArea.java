@@ -211,6 +211,18 @@ public class GameArea {
 			//System.out.println("Eskimo");
 			System.out.println("Eskimo on id " + eskimo.field.id);
 		}
+		
+		for(int l = 0; l < (int) Math.ceil(numberOfPlayers/2); l++ ) {
+			String name = "b" + l;
+			PolarBear bear = new PolarBear(name);
+			//utolsó elõtti sorba rakja
+			fieldsOnArea.get(((width + 2)*(width +1)) + 2 + l).avatars.add(bear);
+			bear.field = fieldsOnArea.get(((width + 2)*(width +1)) + 2 + l);
+			bear.gameEnder = gameEnder;
+			addAvatar(bear);
+			System.out.println("Bear on id " + bear.field.id);
+		}
+		
 		WetSuit wetSuit = new WetSuit();
 		Flare flare = new Flare();
 		Food food = new Food();
@@ -260,7 +272,6 @@ public class GameArea {
 		if((this.avatars.get(activeAvatar).EndTurn == true) || (this.avatars.get(activeAvatar).field.getKills() == true) ) {
 			this.avatars.get(activeAvatar).setEndTurn();
 			this.activeAvatar++;
-			
 			if(activeAvatar >= this.avatars.size())
 				activeAvatar = 0;
 			

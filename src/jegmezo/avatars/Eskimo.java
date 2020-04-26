@@ -13,7 +13,11 @@ public class Eskimo extends Avatar{
 	public Eskimo(String _name) throws IOException{
 		super(_name);
 		this.healthPoints = 5;
-		Test.bw.write(this.name + " letrejott\n");
+		try {
+			Test.bw.write(this.name + " letrejott\n");
+		}catch(NullPointerException e){
+			System.out.println("NullpointerException: " + e);
+		}
 	}
 
 	
