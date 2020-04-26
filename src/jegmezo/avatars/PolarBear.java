@@ -13,6 +13,7 @@ public class PolarBear extends Avatar{
 	public PolarBear(String _name) throws IOException {
 		super(_name);
 		this.healthPoints = 100;
+		this.setNPC(true);
 		try {
 			Test.bw.write(this.name + " letrejott\n");
 		}catch(NullPointerException e){
@@ -29,19 +30,23 @@ public class PolarBear extends Avatar{
 	
 	public void move(Direction d) {
 		System.out.println("<PolarBear.move()");
+		System.out.println("ezen a mezon allok: " + this.field.id);
 		Random rand = new Random();
-		int way = rand.nextInt(2) + 0;
+		int way = rand.nextInt(4);
+		Direction trueWay = Direction.valueOf(way);
+		System.out.println("Direction: " + trueWay);
 		
-		Field f = field.getNeighbour(Direction.valueOf(way));
-		
-		if(f.accept()) {
-			f.addAvatar(this);
+		if(field.getNeighbour(trueWay).accept()) {
+			System.out.println("maki");
+			field.getNeighbour(trueWay).addAvatar(this);
 			field.removeAvatar(this);
-			if(!f.avatars.isEmpty()) {
+			if(!(field.getNeighbour(trueWay).avatars.isEmpty())) {
 				gameEnder.endGame();
 			}
+			field = field.getNeighbour(trueWay);
 			this.setActivity(1);
 		}
+		System.out.println("ezen a mezon allok: " + this.field.id);
 		System.out.println(">PolarBear.move()");
 	}
 	
