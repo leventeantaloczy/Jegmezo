@@ -1,7 +1,9 @@
 package jegmezo.fields;
 
+import java.io.IOException;
 import java.util.Random;
 import jegmezo.Shelter;
+import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 import jegmezo.items.EmptyItem;
 
@@ -12,8 +14,16 @@ public class UnstableIce extends Field{
 		Random rand = new Random();
 		this.kills = false;
 		// (0, vagy 1) + 1 = 1, vagy 2
-		//capacity = rand.nextInt(2) + 1;
-		capacity = 1;
+		capacity = rand.nextInt(2) + 1;
+
+	}
+	
+	public UnstableIce(String _name) throws IOException {
+		super(_name);
+		Random rand = new Random();
+		this.kills = false;
+		capacity = rand.nextInt(2) + 1;
+		Test.bw.write(this.name + " letrejott\n");
 	}
 	
 	@Override

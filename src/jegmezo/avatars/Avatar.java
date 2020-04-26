@@ -2,6 +2,7 @@ package jegmezo.avatars;
 import jegmezo.fields.*;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -23,6 +24,27 @@ public abstract class Avatar {
 	public GameEnder gameEnder;
 	protected int healthPoints;
 	protected String name;
+	
+	
+	/*
+	 * mindenkinek 4 activityPoints-a van, bár ez állítható
+	 * Levente
+	 */
+	
+	public Avatar(String _name) {	
+		backpack = new LinkedList<Item>();
+		name = _name;
+		activityPoints = 4;
+	}
+	
+	
+	/*public Avatar(String _name, BufferedWriter bw) {	
+		backpack = new LinkedList<Item>();
+		name = _name;
+		activityPoints = 4;
+	}*/
+	
+	
 	
 	public List<Item> getBackpack(){
 		return backpack;
@@ -56,16 +78,7 @@ public abstract class Avatar {
 		
 		backpack.add(field.switchItem(backpack.remove(Integer.parseInt(i))));
 	}
-	/*
-	 * mindenkinek 4 activityPoints-a van, bár ez állítható
-	 * Levente
-	 */
-	
-	public Avatar(String _name) {	
-		backpack = new LinkedList<Item>();
-		name = _name;
-		activityPoints = 4;
-	}
+
 	
 	/*
 	 * a backpack lancolt lista vegere fuzi az itemet

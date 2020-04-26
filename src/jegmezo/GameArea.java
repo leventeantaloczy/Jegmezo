@@ -32,7 +32,7 @@ public class GameArea {
  	 * Ha az init trua, akkor felhasznaloi bemenet alapjan pit palyat. 
  	 * Ha nem, akkor csak letrejon az attributumaival.
  	 */
-	public GameArea(GameEnder gameEnder, boolean init) {
+	public GameArea(GameEnder gameEnder, boolean init) throws IOException {
 		System.out.println("<GameArea.constructor()");
 		
 		/*
@@ -187,7 +187,7 @@ public class GameArea {
 		System.out.println(">GameArea.setterOfTheNeighbourhood()");
 	}
 	
-	private void putStaffOnGameArea(int researcherNumber, GameEnder gameEnder) {
+	private void putStaffOnGameArea(int researcherNumber, GameEnder gameEnder) throws IOException {
 		System.out.println("<GameArea.putStaffOnGameArea()");
 
 		int i;

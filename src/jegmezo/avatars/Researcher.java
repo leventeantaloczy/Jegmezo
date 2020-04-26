@@ -6,13 +6,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import jegmezo.Direction;
+import jegmezo.Test;
 
 public class Researcher extends Avatar{
 
-	public Researcher(String _name) {
+	public Researcher(String _name) throws IOException {
 		super(_name); 
 		this.healthPoints = 4;
 		// TODO Auto-generated constructor stub
+		Test.bw.write(this.name + " letrejott\n");
 	}
 	
 	/*

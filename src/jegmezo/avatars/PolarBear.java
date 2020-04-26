@@ -1,16 +1,22 @@
 package jegmezo.avatars;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
 import java.util.Random;
 
 import jegmezo.Direction;
+import jegmezo.Test;
 import jegmezo.fields.Field;
 
 public class PolarBear extends Avatar{
 
-	public PolarBear(String _name) {
+	public PolarBear(String _name) throws IOException {
 		super(_name);
 		this.healthPoints = 100;
+		Test.bw.write(this.name + " letrejott\n");
 	}
+	
+
 
 	@Override
 	public int specialMove() {

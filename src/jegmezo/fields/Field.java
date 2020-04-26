@@ -18,6 +18,7 @@ public abstract class Field {
 	private int durability;
 	protected boolean kills;
 	public int id;
+	protected String name;
 	
 	
 	/*
@@ -31,6 +32,12 @@ public abstract class Field {
 	}
 	
 	public Field(){	
+		capacity = -1;
+	}
+	
+	
+	public Field(String _name){	
+		name = _name;
 		capacity = -1;
 	}
 	
