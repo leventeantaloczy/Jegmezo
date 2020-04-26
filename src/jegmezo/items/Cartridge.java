@@ -4,7 +4,8 @@ import jegmezo.avatars.Avatar;
 
 public class Cartridge extends Item{
 	
-	public Cartridge(){
+	public Cartridge(String _name){
+		super(_name);
 		this.important = true;
 	}
 	

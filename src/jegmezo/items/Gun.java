@@ -10,7 +10,8 @@ import jegmezo.GameEnder;
 public class Gun extends Item{
 
 	
-	public Gun(){
+	public Gun(String _name){
+		super(_name);
 		this.important = true;
 		
 	}

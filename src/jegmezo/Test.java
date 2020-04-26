@@ -15,6 +15,7 @@ import jegmezo.avatars.PolarBear;
 import jegmezo.avatars.Researcher;
 import jegmezo.avatars.Avatar;
 import jegmezo.fields.*;
+import jegmezo.items.*;
 
 
 
@@ -31,7 +32,6 @@ public class Test {
 //	}
 	
 	private Avatar avatar(String str, String name) throws IOException {
-		System.out.println("aaa");
 		if(str.equals("e")) {
 			return new Eskimo(name);
 		}
@@ -86,7 +86,7 @@ public class Test {
 	}
 	
 	private void Move(String name, String where) throws IOException {
-		bw.write(name + " ");
+		//bw.write(name + " ");
 		findAvatar(name).move(Direction.valueOf(where));
 	}
 	/*
@@ -99,6 +99,72 @@ public class Test {
 	
 	private void Place(String name, String field) throws IOException {
 		findField(field).addAvatar(findAvatar(name));
+		findAvatar(name).setField(findField(field));
+	}
+	
+	private void specialmove(String _name){
+		findAvatar(_name).specialMove();
+	}
+	
+	private void item(String itemType, String itemName, String field) {
+		Field f = findField(field);
+		switch(itemType.toLowerCase()) {
+			case "rope":
+				f.item = new Rope(itemName);
+				break;
+			case "tent":
+				f.item = new Tent(itemName);
+				break;
+			case "emptyitem":
+				f.item = new EmptyItem(itemName);
+				break;
+			case "flare":
+				f.item = new Flare(itemName);
+				break;
+			case "food":
+				f.item = new Food(itemName);
+				break;
+			case "fragileshovel":
+				f.item = new FragileShovel(itemName);
+				break;
+			case "gun":
+				f.item = new Gun(itemName);
+				break;
+			case "shovel":
+				f.item = new Shovel(itemName);
+				break;
+			case "wetsuit":
+				f.item = new WetSuit(itemName);
+				break;
+			case "cartridge":
+				f.item = new Cartridge(itemName);
+				break;
+			default:
+				System.out.println("Not correct");
+		}
+		
+		try {
+			bw.write(itemName + " added to " + f.getName() + "\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	/*
+	 * amelyik mezon all azt az itemeet veszi fel
+	 */
+	private void tobackpack(String avatarName) {
+		findAvatar(avatarName).addToBackpack();
+	}
+	
+	private void feed(String avatarName) {
+		try {
+			findAvatar(avatarName).useItem();
+		} catch (NumberFormatException | IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
@@ -127,15 +193,14 @@ public class Test {
 				case "place":
 					Place(command[1].toLowerCase(), command[2].toLowerCase());
 					break;
-				case "igloo":
-					break;
-				case "check":
+				case "specialmove":
+					specialmove(command[1].toLowerCase());
 					break;
 				case "item":
-					break;
-				case "itemtofield":
+					item(command[1].toLowerCase(), command[2].toLowerCase(), command[3].toLowerCase());
 					break;
 				case "tobackpack":
+					tobackpack(command[1].toLowerCase());
 					break;
 				case "feed":
 					break;

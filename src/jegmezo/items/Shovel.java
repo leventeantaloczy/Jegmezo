@@ -4,7 +4,8 @@ import jegmezo.avatars.Avatar;
 
 public class Shovel extends Item{
 	
-	public Shovel(){
+	public Shovel(String _name){
+		super(_name);
 		this.important = false;
 	}
 	

@@ -4,7 +4,8 @@ import jegmezo.avatars.Avatar;
 
 public class Flare extends Item{
 	
-	public Flare(){
+	public Flare(String _name){
+		super(_name);
 		this.important = true;
 	}
 

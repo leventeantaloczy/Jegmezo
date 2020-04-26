@@ -4,7 +4,8 @@ import jegmezo.avatars.Avatar;
 
 public class Food extends Item{
 
-	public Food(){
+	public Food(String _name){
+		super(_name);
 		this.important = false;
 	}
 	

@@ -6,6 +6,13 @@ import jegmezo.fields.Field;
 public class FragileShovel extends Item{
 	private int numOfUsage = 0;
 
+	 public FragileShovel(String _name) {
+		super(_name);
+		this.important = false;
+	}
+
+	
+	
 	@Override
 	public void use(Avatar a) {
 		if(numOfUsage < 3) {

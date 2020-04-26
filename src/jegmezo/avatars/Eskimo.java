@@ -6,6 +6,7 @@ import java.io.IOException;
 
 import jegmezo.Shelter;
 import jegmezo.Test;
+import jegmezo.fields.Field;
 
 public class Eskimo extends Avatar{
 	
@@ -14,7 +15,7 @@ public class Eskimo extends Avatar{
 		super(_name);
 		this.healthPoints = 5;
 		try {
-			Test.bw.write(this.name + " letrejott\n");
+			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e){
 			System.out.println("NullpointerException: " + e);
 		}
@@ -25,8 +26,6 @@ public class Eskimo extends Avatar{
 	 * a field igloo flagjét beállítja
 	 * Levente
 	 */
-
-
 	public int specialMove() {
 		System.out.println("<Eskimo.build()");
 		field.setShelter(Shelter.Igloo);
@@ -34,5 +33,6 @@ public class Eskimo extends Avatar{
 		System.out.println(">Eskimo.build()");
 		return 1;
 	}
+
 
 }

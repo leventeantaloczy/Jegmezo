@@ -206,20 +206,20 @@ public class GameArea {
 			String name = "r" + i;
 			Researcher researcher = new Researcher(name);
 			fieldsOnArea.get((width + 2) + 2 + i).avatars.add(researcher);
-			researcher.field = fieldsOnArea.get((width + 2) + 2 + i);
+			researcher.setField(fieldsOnArea.get((width + 2) + 2 + i));
 			addAvatar(researcher);
-			System.out.println("Researcher on id " + researcher.field.id);
+			System.out.println("Researcher on id " + researcher.getField().id);
 			researcher.gameEnder = gameEnder;
 		}
 		for(int j = researcherNumber; j < numberOfPlayers; j++) {
 			String name = "e" + (j - researcherNumber);
 			Eskimo eskimo = new Eskimo(name);
 			fieldsOnArea.get((width + 2) + 2 + j).avatars.add(eskimo);
-			eskimo.field = fieldsOnArea.get((width + 2) + 2 + j);
+			eskimo.setField(fieldsOnArea.get((width + 2) + 2 + j));
 			eskimo.gameEnder = gameEnder;
 			addAvatar(eskimo);
 			//System.out.println("Eskimo");
-			System.out.println("Eskimo on id " + eskimo.field.id);
+			System.out.println("Eskimo on id " + eskimo.getField().id);
 		}
 		
 		for(int l = 0; l < (int) Math.ceil(numberOfPlayers/2); l++ ) {
@@ -228,21 +228,21 @@ public class GameArea {
 
 			//utols� el�tti sorba rakja
 			fieldsOnArea.get(((width + 2)*width) + 2 + l).avatars.add(bear);
-			bear.field = fieldsOnArea.get(((width + 2)*width) + 2 + l);
+			bear.setField(fieldsOnArea.get(((width + 2)*width) + 2 + l));
 
 			bear.gameEnder = gameEnder;
 			addAvatar(bear);
-			System.out.println("Bear on id " + bear.field.id);
+			System.out.println("Bear on id " + bear.getField().id);
 		}
 		
-		WetSuit wetSuit = new WetSuit();
-		Flare flare = new Flare();
-		Food food = new Food();
-		Shovel shovel = new Shovel();
-		Rope rope = new Rope();
-		Cartridge cartridge = new Cartridge();
-		Gun gun = new Gun();
-		Tent tent = new Tent();
+		WetSuit wetSuit = new WetSuit("WetSuit");
+		Flare flare = new Flare("Flare");
+		Food food = new Food("Food");
+		Shovel shovel = new Shovel("Shovel");
+		Rope rope = new Rope("Rope");
+		Cartridge cartridge = new Cartridge("Cartidge");
+		Gun gun = new Gun("Gun");
+		Tent tent = new Tent("Tent");
 		int k = 0;
 		fieldsOnArea.get((width + 2) + 2 + k).item = tent; k++;
 		fieldsOnArea.get((width + 2) + 2 + k).item = wetSuit; k++;
@@ -281,7 +281,7 @@ public class GameArea {
 	 */
 	public void changeActiveAvatar() {
 		System.out.println(">>changeActiveAvatar");
-		if((this.avatars.get(activeAvatar).EndTurn == true) || (this.avatars.get(activeAvatar).field.getKills() == true) ) {
+		if((this.avatars.get(activeAvatar).EndTurn == true) || (this.avatars.get(activeAvatar).getField().getKills() == true) ) {
 			this.avatars.get(activeAvatar).setEndTurn();
 			this.activeAvatar++;
 			if(activeAvatar >= this.avatars.size())

@@ -16,7 +16,7 @@ import jegmezo.items.*;
 
 public abstract class Avatar {
 	
-	public Field field;
+	protected Field field;
 	private List<Item> backpack = new ArrayList<Item>();
 	private int activityPoints;
 	private int durability;
@@ -97,6 +97,14 @@ public abstract class Avatar {
 	public void addToBackpack() {
 		System.out.println("<Avatar.addToBackpack()");
 		backpack.add(field.item);
+		
+		try {
+			Test.bw.write(field.item + " added to backpack");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 		field.removeItem();
 		System.out.println(">Avatar.addToBackpack()");
 	}
@@ -120,7 +128,8 @@ public abstract class Avatar {
 	}
 	
 	/*
-	 * TODO
+	 * TODO	public Field field;
+
 	 * Meg kell hívni a gameEnder endGame()-jét de nem tudom, azt látja-e
 	 * Várni kell majd előbb egy kört
 	 */
@@ -179,9 +188,9 @@ public abstract class Avatar {
 	 */
 	public void move(Direction d){
 		System.out.println("<Avatar.move()");
-		//System.out.println("ezen a mezon allok: " + this.field.id);
+		System.out.println("ezen a mezon allok: " + this.field.id);
 		if(this.field.getKills() == false) {
-			if(field.getNeighbour(d).accept()) {
+			if(this.field.getNeighbour(d).accept()) {
 				try {
 					field.getNeighbour(d).addAvatar(this);
 				} catch (IOException e) {
@@ -197,7 +206,7 @@ public abstract class Avatar {
 		}
 		System.out.println("ezen a mezon allok: " + this.field.id);
 		try {
-			Test.bw.write("elmozdult " +  d.toString() + " ide\n");
+			Test.bw.write(this.name + " moved to the " +  d.toString() + "\n");
 		}catch (NullPointerException e) {
 			System.out.println(e);
 		} catch (IOException e) {
@@ -239,6 +248,17 @@ public abstract class Avatar {
 	
 	public String getName() {
 		return name;
+	}
+	
+	public void setField(Field _field) {
+		field = _field;
+		try {
+			Test.bw.write(field.getName() + " has " + this.name + "\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	
 	public abstract int specialMove();

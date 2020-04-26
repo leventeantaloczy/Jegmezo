@@ -76,7 +76,7 @@ public abstract class Field {
 	 */
 	public void removeItem() {
 		System.out.println("<Field.removeItem()");
-		item = new EmptyItem();
+		item = new EmptyItem("EmptyItem");
 		System.out.println(">Field.removeItem()");
 	}
 	
@@ -93,7 +93,7 @@ public abstract class Field {
 		System.out.println("<Field.addAvatar()");
 		avatars.add(a);
 		try {
-			Test.bw.write(a.getName() + " placed on: " + this.name);
+			Test.bw.write(a.getName() + " placed on: " + this.name + "\n");
 		}catch (NullPointerException e) {
 			System.out.println(e);
 		}
@@ -151,6 +151,12 @@ public abstract class Field {
 	public void setShelter(Shelter sh) {
 		System.out.println("<Field.setShelter()");
 		this.shelter = sh;
+		try {
+			Test.bw.write(sh.toString() + " is built\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(">Field.setShelter()");
 	}
 	

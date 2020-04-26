@@ -15,7 +15,7 @@ public class Researcher extends Avatar{
 		this.healthPoints = 4;
 		// TODO Auto-generated constructor stub
 		try {
-			Test.bw.write(this.name + " letrejott\n");
+			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e) {
 			System.out.println("NullPointerException: " + e);
 		}
@@ -25,11 +25,20 @@ public class Researcher extends Avatar{
 	 * A d iranyu mezot leelenorzi és visszater annak kapacitas ertekevel
 	 * Levente
 	 */
-	public int specialMove() {
+	public int specialMove(){
 		System.out.println("<Researcher.checkField()");
 		
 		Field f = new StableIce(); 
-		System.out.println("Melyik iranyba?");
+		
+		
+		f = field.getNeighbour(Direction.North);				//Prototipus idejére
+		try {
+			Test.bw.write(this.name + " checked " + f.getName() + "\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		/*System.out.println("Melyik iranyba?");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			String direction = br.readLine();
@@ -56,7 +65,8 @@ public class Researcher extends Avatar{
 			}
 		}catch(IOException e){
 			
-		}
+		}*/
+		
 		this.setActivity(1);
 		
 		System.out.println(">Researcher.checkField()");

@@ -4,7 +4,8 @@ import jegmezo.avatars.Avatar;
 
 public class WetSuit extends Item{
 	
-	public WetSuit(){
+	public WetSuit(String _name){
+		super(_name);
 		this.important = false;
 	}
 	

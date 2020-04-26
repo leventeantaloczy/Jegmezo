@@ -4,7 +4,8 @@ import jegmezo.avatars.Avatar;
 
 public class EmptyItem extends Item{
 	
-	public EmptyItem(){
+	public EmptyItem(String _name){
+		super(_name);
 		this.important = false;
 	}
 	

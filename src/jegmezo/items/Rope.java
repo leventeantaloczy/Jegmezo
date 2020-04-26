@@ -12,7 +12,8 @@ import jegmezo.fields.Field;
 public class Rope extends Item{
 	
 	
-	public Rope(){
+	public Rope(String _name){
+		super(_name);
 		this.important = false;
 	}
 	/*

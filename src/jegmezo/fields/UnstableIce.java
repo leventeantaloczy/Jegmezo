@@ -43,7 +43,7 @@ public class UnstableIce extends Field{
 		System.out.println("<UnstableIce.flip()");
 		
 		this.kills = true;
-		this.item = new EmptyItem();
+		this.item = new EmptyItem("EmptyItem");
  		this.setShelter(Shelter.None);
  		this.setSnow(0);
 		

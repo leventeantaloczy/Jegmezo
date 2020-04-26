@@ -15,7 +15,7 @@ public class PolarBear extends Avatar{
 		this.healthPoints = 100;
 		this.setNPC(true);
 		try {
-			Test.bw.write(this.name + " letrejott\n");
+			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e){
 			System.out.println("NullpointerException: " + e);
 		}
