@@ -1,9 +1,11 @@
 package jegmezo;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
@@ -20,7 +22,7 @@ public class Test {
 //		//return;
 //	}
 	
-	private String Avatar(String str,String name) {
+	private String Avatar(String str, String name) {
 		String vl = null;
 		if(str.equals("e")) {
 			Eskimo eskimo = new Eskimo(name);
@@ -31,18 +33,17 @@ public class Test {
 			vl = "PolarBear letrejott";
 		}
 		if(str.equals("r")) {
-			Researcher reserchear = new Researcher(name);//Okostony
+			Researcher researcher = new Researcher(name);			//Okostony
 			vl = "Researcher letrejott";
 		}
 		return vl;
 	}
-	
-	private void toFile(File f, String str) {
-		
+	//TODO kiszepiteni igy elegge useless - Levente
+	private void toFile(BufferedWriter bw, String str) throws IOException {
+		bw.write(str + "\n");
 	}
 	
 	public void evaluateTest(BufferedReader br) throws IOException {
-
 		while (br.readLine() != null) {
 			String[] command = br.readLine().split(" ");
 
@@ -51,7 +52,9 @@ public class Test {
 				//initTest();
 				break;
 			case "avatar":
-				Avatar(command[1].toLowerCase(),command[2].toLowerCase());
+				BufferedWriter bw = new BufferedWriter(new FileWriter("avatarOut.txt"));
+				toFile(bw, Avatar(command[1].toLowerCase(),command[2].toLowerCase()));
+				bw.close();
 				break;
 			case "field":
 				break;
@@ -106,12 +109,12 @@ public class Test {
 		  
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		 String fileName = br.readLine();
+		 FileReader fr = new FileReader(path + "/" + fileName); 
+		 BufferedReader bread = new BufferedReader(fr);
 		  
-		 FileReader fr = new FileReader(path + "/" + fileName); BufferedReader bread =
-		 new BufferedReader(fr);
 		  
-		  
-		 Test t = new Test(); t.evaluateTest(bread); 
+		 Test t = new Test(); 
+		 t.evaluateTest(bread); 
 	  }	
 
 }
