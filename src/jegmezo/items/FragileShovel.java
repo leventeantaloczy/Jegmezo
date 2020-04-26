@@ -11,7 +11,8 @@ public class FragileShovel extends Item{
 		this.important = false;
 	}
 
-	
+	 @Override
+		public String getName() {return name;}
 	
 	@Override
 	public void use(Avatar a) {
@@ -23,5 +24,9 @@ public class FragileShovel extends Item{
 			a.removeFromBackpack(this);
 		}
 		
+	}
+	
+	public void setUsed(int n) {
+		numOfUsage = n;
 	}
 }

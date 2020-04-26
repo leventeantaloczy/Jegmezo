@@ -128,6 +128,23 @@ public abstract class Avatar {
 	}
 	
 	/*
+	 * adott item hasznalata ha az a hatizsakban van
+	 * Hanga
+	 */
+	public void useItem(Item item) {
+		System.out.println("<Avatar.useItem()");
+		int indexOfItem = backpack.indexOf(item);
+		if(indexOfItem!=null) {
+			backpack.get(indexOfItem).use(this);
+		this.setActivity(1);
+		}
+		else {
+			System.out.println("No such item.");
+		}
+		System.out.println(">Avatar.useItem()");
+	}
+	
+	/*
 	 * TODO	public Field field;
 
 	 * Meg kell hívni a gameEnder endGame()-jét de nem tudom, azt látja-e

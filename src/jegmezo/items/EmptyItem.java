@@ -19,4 +19,7 @@ public class EmptyItem extends Item{
 		System.out.println(">EmptyItem.use()");
 		return;
 	}
+	
+	@Override
+	public String getName() {return name;}
 }

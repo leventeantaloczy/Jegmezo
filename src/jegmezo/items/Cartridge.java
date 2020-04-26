@@ -16,5 +16,8 @@ public class Cartridge extends Item{
 		return;
 		
 	}
+	
+	@Override
+	public String getName() {return name;}
 
 }
