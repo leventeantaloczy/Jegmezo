@@ -1,4 +1,6 @@
+avatar e e1
 field s f1
-field u f2
-field b f3
-field h f4
+field s f2
+bind f1 f2
+place e1 f1
+move e1 n
