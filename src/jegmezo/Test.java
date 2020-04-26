@@ -167,6 +167,14 @@ public class Test {
 		}
 	}
 	
+	private void snow(String fieldName) {
+		findField(fieldName).setSnow(1);
+	}
+	
+	private void use(String itemName, String avatarName) {
+		//TODO
+	}
+	
 	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
 		bw = new BufferedWriter(new FileWriter(fileName));
 		
@@ -205,14 +213,15 @@ public class Test {
 				case "feed":
 					break;
 				case "snow":
+					snow(command[1].toLowerCase());
 					break;
 				case "use":
 					break;
-				case "lunch":
+				case "lunch": //???ILYEN NEM KELL MERT HA A POLARBEAR MEZORE LEP AKKOR TORTENIK VALAMI
 					break;
-				case "strom":
+				case "strom": //???EHHEZ EGESZ JATEKOT FEL KELL EPITENI MERT CONTROLLER CSINALJA A STORMOT
 					break;
-				case "freeze":
+				case "freeze": //???SET HEALTHPOINTS TO 0 ??? ez egy egesz teszt hogy elfogy a healthpointja akkor mi tortenik
 					break;
 				case "activity":
 					break;
