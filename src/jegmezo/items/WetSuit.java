@@ -1,5 +1,8 @@
 package jegmezo.items;
 
+import java.io.IOException;
+
+import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 
 public class WetSuit extends Item{
@@ -18,8 +21,13 @@ public class WetSuit extends Item{
 	public void use(Avatar a) {
 		System.out.println("<WetSuit.use()");
 		a.wearsWetsuit = true;
+		try {
+			Test.bw.write("WetSuit used\n");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(">WetSuit.use()");
-		
 	}
 	
 	@Override

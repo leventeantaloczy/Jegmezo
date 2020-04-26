@@ -134,7 +134,7 @@ public abstract class Avatar {
 	public void useItem(Item item) {
 		System.out.println("<Avatar.useItem()");
 		int indexOfItem = backpack.indexOf(item);
-		if(indexOfItem!=null) {
+		if(indexOfItem != 0) {
 			backpack.get(indexOfItem).use(this);
 		this.setActivity(1);
 		}

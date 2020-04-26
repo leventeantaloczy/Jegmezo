@@ -1,6 +1,9 @@
 package jegmezo.items;
 
+import java.io.IOException;
+
 import jegmezo.Shelter;
+import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 
 public class Tent extends Item{
@@ -13,7 +16,12 @@ public class Tent extends Item{
 	public void use(Avatar a) {
 		if(a.getField().getShelter() == Shelter.None) {
 			a.getField().setShelter(Shelter.Tent);
-			
+			try {
+				Test.bw.write("Tent used\n");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	

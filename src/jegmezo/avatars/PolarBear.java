@@ -20,8 +20,6 @@ public class PolarBear extends Avatar{
 			System.out.println("NullpointerException: " + e);
 		}
 	}
-	
-
 
 	@Override
 	public int specialMove() {
@@ -46,6 +44,11 @@ public class PolarBear extends Avatar{
 			}
 			field.removeAvatar(this);
 			if(!(field.getNeighbour(trueWay).avatars.isEmpty())) {
+				try {
+                    Test.bw.write(this.name + " ate avatar(s) on this field: " + field.getName() + "\n");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 				gameEnder.endGame();
 			}
 			field = field.getNeighbour(trueWay);
@@ -55,7 +58,7 @@ public class PolarBear extends Avatar{
 		System.out.println(">PolarBear.move()");
 	}
 	
-		public void decrementDurability() {
+	public void decrementDurability() {
 		/*
 		 * Nem hal meg a vizben.
 		 * Zoli

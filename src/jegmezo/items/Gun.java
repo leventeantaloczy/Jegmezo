@@ -1,11 +1,13 @@
 package jegmezo.items;
 
+import java.io.IOException;
 import java.util.List;
 
 import jegmezo.avatars.Avatar;
 import jegmezo.fields.Field;
 import jegmezo.GameArea;
 import jegmezo.GameEnder;
+import jegmezo.Test;
 
 public class Gun extends Item{
 
@@ -39,8 +41,20 @@ public class Gun extends Item{
 		boolean end =(importantCounter > 2 && field.avatars.size() == GameArea.getNumberOfPlayers()) ?  true : false;
 		
 		if(end) {
+			try {
+				Test.bw.write("Gun used\n");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			GameEnder.endGame();
 		}else {
+			try {
+				Test.bw.write("Nothing happened\n");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			System.out.println("Requirements not satisfied");
 		}
 		

@@ -154,6 +154,7 @@ public class Test {
 	/*
 	 * amelyik mezon all azt az itemeet veszi fel
 	 */
+	
 	private void tobackpack(String avatarName) {
 		findAvatar(avatarName).addToBackpack();
 	}
@@ -173,7 +174,7 @@ public class Test {
 	
 	private void use(String itemName, String avatarName) {
 		//ebben nem vagyok fixen biztos - Hanga
-		findAvatar(avatarName).useItem(Item(itemName));
+		findAvatar(avatarName).useItem(findItem(itemName));
 		
 	}
 	
@@ -185,15 +186,16 @@ public class Test {
 				return null;
 			}
 		}
+		return null;
 	}
 
 	/*
-	 * Beállítja, hogy a FragileShovel hányszor lett
-	 * használva (n)
+	 * Beï¿½llï¿½tja, hogy a FragileShovel hï¿½nyszor lett
+	 * hasznï¿½lva (n)
 	 * Hanga
 	 */
 	private void setused(String fragileShovelName, String n) {
-		findItem(fragileShovelName).setUsed(n);
+		findItem(fragileShovelName).setUsed(Integer.parseInt(n));
 	}
 	
 	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
@@ -231,7 +233,7 @@ public class Test {
 				case "tobackpack":
 					tobackpack(command[1].toLowerCase());
 					break;
-				case "feed":
+				case "feed": //useitem nem bizti h kell
 					break;
 				case "snow":
 					snow(command[1].toLowerCase());
@@ -243,16 +245,15 @@ public class Test {
 					break;
 				case "freeze": //???SET HEALTHPOINTS TO 0 ??? ez egy egesz teszt hogy elfogy a healthpointja akkor mi tortenik
 					break;
-				case "activity":
+				case "activity": // kell-e?
 					break;
-				case "shoot":
-					break;
-				case "help":
+				case "shoot": //??????? megvan az osszes fontos item 
 					break;
 				case "setused":
 					setused(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
 				case "savetofile":
+					bw.close();
 					break;
 			default:
 				System.out.println("Rossz parancs");
@@ -280,9 +281,6 @@ public class Test {
 		 }catch (NullPointerException e) {
 			System.out.println(e);
 		}
-
-		  
-		
 	  }	
 
 }

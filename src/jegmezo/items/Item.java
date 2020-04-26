@@ -26,12 +26,16 @@ public abstract class Item {
 	}
 	// gun reszek fontosak, egyeb targyak nem, gun checknel ezt nezzek
 	
+
+	
+	public void setUsed(int n) {}
+	
 	/*
 	 * Kiegeszitettem egy avatar parameterrel, hogy tudjuk, melyik avatar hasznalta
 	 * Levente
 	 */
 	public abstract void use(Avatar a);
-	
+
 	public abstract String getName();
 	
 }

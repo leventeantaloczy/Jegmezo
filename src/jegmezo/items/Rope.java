@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 
 
 import jegmezo.Direction;
+import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 import jegmezo.fields.Field;
 
@@ -27,8 +28,23 @@ public class Rope extends Item{
 	@Override
 	public void use(Avatar a) {
 		System.out.println("<Rope.use()");
+		//testre atirva
 		
-		System.out.println("Melyik iranyba?");
+		Field f;
+		f = a.getField().getNeighbour(Direction.North);
+		if(f.avatars.size() > 0) {
+			for(Avatar av : f.avatars){
+				try {
+					Test.bw.write(av.getName() + " rescued\n");
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				av.move(Direction.South);
+			}
+		}
+		
+		/*System.out.println("Melyik iranyba?");
 		Field f;
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -84,7 +100,7 @@ public class Rope extends Item{
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		
 		System.out.println(">Rope.use()");
