@@ -32,5 +32,6 @@ public abstract class Item {
 	 */
 	public abstract void use(Avatar a);
 	
+	public abstract String getName();
 	
 }

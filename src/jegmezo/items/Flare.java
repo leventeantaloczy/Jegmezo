@@ -17,5 +17,8 @@ public class Flare extends Item{
 		return;
 		
 	}
+	
+	@Override
+	public String getName() {return name;}
 
 }

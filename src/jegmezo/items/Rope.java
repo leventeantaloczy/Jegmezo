@@ -16,6 +16,10 @@ public class Rope extends Item{
 		super(_name);
 		this.important = false;
 	}
+	
+	@Override
+	public String getName() {return name;}
+	
 	/*
 	 * ugy gondoltam, hogy a parameterben kapott avatart menti meg, báár
 	 * Levente

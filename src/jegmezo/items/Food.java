@@ -9,6 +9,9 @@ public class Food extends Item{
 		this.important = false;
 	}
 	
+	@Override
+	public String getName() {return name;}
+	
 	/*
 	 * TODO aktivitas???
 	 * Eszik es felmegy az elete

@@ -16,6 +16,9 @@ public class Gun extends Item{
 		
 	}
 	
+	@Override
+	public String getName() {return name;}
+	
 	/*
 	 * Elsütni csak akkor tudja, ha ennek az a Avatarnak a taaskajaban van Cartridge es Flare
 	 * Levente

@@ -16,4 +16,7 @@ public class Tent extends Item{
 			
 		}
 	}
+	
+	@Override
+	public String getName() {return name;}
 }

@@ -89,13 +89,13 @@ public class Test {
 		//bw.write(name + " ");
 		findAvatar(name).move(Direction.valueOf(where));
 	}
+	
 	/*
 	 * beallitja a szomszedot, eloszor eszak majd del kelet nyugat 
 	 */
 	private void Bind(String field1, String field2) throws IOException {
 		findField(field1).setNeighbour(findField(field2));
 	}
-	
 	
 	private void Place(String name, String field) throws IOException {
 		findField(field).addAvatar(findAvatar(name));
@@ -172,7 +172,28 @@ public class Test {
 	}
 	
 	private void use(String itemName, String avatarName) {
-		//TODO
+		//ebben nem vagyok fixen biztos - Hanga
+		findAvatar(avatarName).useItem(Item(itemName));
+		
+	}
+	
+	private Item findItem(String name) {
+		for(Avatar a : avatars) {
+			for(Item i : a.getBackpack()) {
+				if(i.getName().equals(name))
+					return i;
+				return null;
+			}
+		}
+	}
+
+	/*
+	 * Beállítja, hogy a FragileShovel hányszor lett
+	 * használva (n)
+	 * Hanga
+	 */
+	private void setused(String fragileShovelName, String n) {
+		findItem(fragileShovelName).setUsed(n);
 	}
 	
 	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
@@ -216,6 +237,7 @@ public class Test {
 					snow(command[1].toLowerCase());
 					break;
 				case "use":
+					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
 				case "storm": //???EHHEZ EGESZ JATEKOT FEL KELL EPITENI MERT CONTROLLER CSINALJA A STORMOT
 					break;
@@ -228,6 +250,7 @@ public class Test {
 				case "help":
 					break;
 				case "setused":
+					setused(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
 				case "savetofile":
 					break;

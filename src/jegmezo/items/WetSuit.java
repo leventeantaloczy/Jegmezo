@@ -21,5 +21,8 @@ public class WetSuit extends Item{
 		System.out.println(">WetSuit.use()");
 		
 	}
+	
+	@Override
+	public String getName() {return name;}
 
 }

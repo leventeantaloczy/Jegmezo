@@ -21,5 +21,8 @@ public class Shovel extends Item{
 		System.out.println(">Shovel.use()");
 		
 	}
+	
+	@Override
+	public String getName() {return name;}
 
 }
