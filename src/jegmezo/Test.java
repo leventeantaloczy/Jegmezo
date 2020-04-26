@@ -2,15 +2,11 @@ package jegmezo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.file.Paths;
-import java.util.StringTokenizer;
-
 import jegmezo.avatars.Eskimo;
 import jegmezo.avatars.PolarBear;
 import jegmezo.avatars.Researcher;
@@ -21,7 +17,8 @@ import jegmezo.fields.*;
 
 public class Test {
 	public static BufferedWriter bw;
-	GameArea gamearea;
+	GameEnder ender = new GameEnder();
+	GameArea gamearea;// = new GameArea(ender, true);
 //	private String[] initTest() {
 //		//TODO letrehozni a dolgokat 
 //		
@@ -36,7 +33,7 @@ public class Test {
 			return new PolarBear(name);
 		}
 		else if(str.equals("r")) {
-			return new Researcher(name);			//Okostony
+			return new Researcher(name);
 		}
 		else {
 			bw.write("Nem jott letre " + name + " avatar\n");
@@ -67,6 +64,7 @@ public class Test {
 	private Avatar findAvatar(String name) {
 		for(Avatar a : gamearea.avatars) {
 			if(a.getName().equals(name))
+				System.out.println(a.getName());
 				return a;
 		}
 		return null;
@@ -79,9 +77,7 @@ public class Test {
 		}
 		return null;
 	}
-	/*
-	 * szoval a test bemeneti nyelvben ugy van h megkap egy fieldet amire lép, de sztem az nem olyan jo, ugy kéne h iranyt kap ahova lep - Levente
-	 */
+	
 	private void Move(String name, String where) throws IOException {
 		bw.write(name + " ");
 		findAvatar(name).move(Direction.valueOf(where));
@@ -93,6 +89,11 @@ public class Test {
 		findField(field1).setNeighbour(findField(field2));
 	}
 	
+	
+	private void Place(String name, String field) throws IOException {
+		findField(field).addAvatar(findAvatar(name));
+	}
+	
 	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
 		bw = new BufferedWriter(new FileWriter(fileName, true));
 		
@@ -102,7 +103,7 @@ public class Test {
 
 			switch (command[0].toLowerCase()) {
 				case "init":
-					//initTest();
+					//TODO: initTest();
 					break;
 				case "avatar":
 					gamearea.avatars.add(Avatar(command[1].toLowerCase(), command[2].toLowerCase()));
@@ -116,7 +117,8 @@ public class Test {
 				case "bind":
 					Bind(command[1].toLowerCase(), command[2].toLowerCase());
 					break;
-				case "take":
+				case "place":
+					Place(command[1].toLowerCase(), command[2].toLowerCase());
 					break;
 				case "igloo":
 					break;

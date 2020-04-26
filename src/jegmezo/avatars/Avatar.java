@@ -177,7 +177,7 @@ public abstract class Avatar {
 	 * d irányba elmozdul ha tud (csak akkor nem tud ha határmező van ott) 
 	 * Levente
 	 */
-	public void move(Direction d) {
+	public void move(Direction d) throws IOException {
 		System.out.println("<Avatar.move()");
 		System.out.println("ezen a mezon allok: " + this.field.id);
 		if(this.field.getKills() == false) {

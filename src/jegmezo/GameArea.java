@@ -16,8 +16,8 @@ public class GameArea {
 	 * avatars: Ez alapjan lesznek a korok (tehat, hogy ki mikor es ki utan lephet)
 	 * fieldsOnArea: Ez alapjan lesz, hogy hova dobunk havat
 	 */
-	List<Avatar> avatars = new ArrayList<Avatar>();	
-	List<Field> fieldsOnArea = new ArrayList<Field>(); 
+	public List<Avatar> avatars = new ArrayList<Avatar>();	
+	public List<Field> fieldsOnArea = new ArrayList<Field>(); 
 	/*
 	 * Ebbenn taroljuk az aktiv Avatar indexet.
 	 */

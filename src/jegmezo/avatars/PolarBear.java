@@ -28,7 +28,7 @@ public class PolarBear extends Avatar{
 		return 0;
 	}
 	
-	public void move(Direction d) {
+	public void move(Direction d) throws IOException {
 		System.out.println("<PolarBear.move()");
 		System.out.println("ezen a mezon allok: " + this.field.id);
 		Random rand = new Random();

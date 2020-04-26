@@ -89,9 +89,14 @@ public abstract class Field {
 		return tmp;
 	}
 	
-	public void addAvatar(Avatar a) {
+	public void addAvatar(Avatar a) throws IOException {
 		System.out.println("<Field.addAvatar()");
 		avatars.add(a);
+		try {
+			Test.bw.write(a.getName() + " placed on: " + this.name);
+		}catch (NullPointerException e) {
+			System.out.println(e);
+		}
 		System.out.println(">Field.addAvatar()");
 	}
 	
