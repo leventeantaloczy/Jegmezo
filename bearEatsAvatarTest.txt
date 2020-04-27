@@ -1,9 +1,21 @@
 noInit
 avatar e e1
+avatar e e2
+avatar e e3
+avatar e e4
 avatar p p1
 field s f1
 field s f2
+field s f3
+field s f4
+field s f5
 bind f1 f2
+bind f1 f3
+bind f1 f4
+bind f1 f5
 place p1 f1
 place e1 f2
+place e2 f3
+place e3 f4
+place e4 f5
 move p1 North
