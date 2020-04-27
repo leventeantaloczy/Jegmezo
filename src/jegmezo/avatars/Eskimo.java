@@ -27,12 +27,6 @@ public class Eskimo extends Avatar{
 		}
 	}
 
-	
-	/*
-	 * a field igloo flagjét beállítja
-	 * Levente
-	 */
-	
 	/**
 	 * Eskimo iglut epit:
 	 * Beallitja a az adott mezore az iglut

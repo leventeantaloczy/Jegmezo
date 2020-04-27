@@ -28,14 +28,10 @@ public abstract class Avatar {
 	private boolean NPC = false;
 	
 	
-	/*
-	 * mindenkinek 4 activityPoints-a van, bÃ¡r ez Ã¡llÃ­thatÃ³
-	 * Levente
-	 */
 	/**
 	 * Avatar konstruktora:
-	 * Letrehozza az adott avatar backpack-jet, amibe kesobb itemek kerülnek,
-	 * valamint beallitja a nevet és a kezdetleges activityPoint-ot.
+	 * Letrehozza az adott avatar backpack-jet, amibe kesobb itemek kerï¿½lnek,
+	 * valamint beallitja a nevet ï¿½s a kezdetleges activityPoint-ot.
 	 * 
 	 * @param _name Avatar azonositoja
 	 */
@@ -123,11 +119,6 @@ public abstract class Avatar {
 		backpack.add(field.switchItem(backpack.remove(Integer.parseInt(i))));
 	}
 
-	
-	/*
-	 * a backpack lancolt lista vegere fuzi az itemet
-	 * Levente
-	 */
 	/**
 	 * Hozzaad egy itemet a backpackhez:
 	 * Amelyik mezon all az avatar, az azon megtalalhato itemet
@@ -184,7 +175,7 @@ public abstract class Avatar {
 	 * Adott item hasznalata:
 	 * Ezzel a fuggvennyel az avatar felhasznalja az adott itemet,
 	 * felteve ha az benne van a backpack-jeben.
-	 * Illetve az activityPoint-ot növeli eggyel.
+	 * Illetve az activityPoint-ot nï¿½veli eggyel.
 	 * 
 	 * @param item A felhasznalni kivant item
 	 */
