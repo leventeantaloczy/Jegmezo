@@ -35,14 +35,21 @@ public class Test {
 	}
 	
 	private Avatar avatar(String str, String name) throws IOException {
+		GameEnder gameEnder = new GameEnder();
 		if(str.equals("e")) {
-			return new Eskimo(name);
+			Eskimo eskimo = new Eskimo(name);
+			eskimo.gameEnder = gameEnder;
+			return eskimo;
 		}
 		else if(str.equals("p")) {
-			return new PolarBear(name);
+			PolarBear polarbear = new PolarBear(name);
+			polarbear.gameEnder = gameEnder;
+			return polarbear;
 		}
 		else if(str.equals("r")) {
-			return new Researcher(name);
+			Researcher researcher = new Researcher(name);
+			researcher.gameEnder = gameEnder;
+			return researcher;
 		}
 		else {
 			bw.write("Nem jott letre " + name + " avatar\n");
@@ -250,14 +257,14 @@ public class Test {
 				case "use":
 					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
-				case "storm":
+				case "storm": 
 					controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
-				case "freeze":
+				case "freeze": 
 					for(int i = 0; i < 6; i++)
 						controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
-				case "activity":
+				case "activity": 
 					Controller.gameArea.avatars.get(0).setActivity(4);
 					break;
 				case "shoot":
@@ -265,6 +272,9 @@ public class Test {
 					break;
 				case "setused":
 					setused(command[1].toLowerCase(),command[2].toLowerCase());
+					break;
+				case "changeactive":
+					controller.gameArea.changeActiveAvatar();
 					break;
 				case "savetofile":
 					bw.close();
@@ -275,6 +285,7 @@ public class Test {
 				break;
 			}
 		}
+		System.out.println("Created: " + fileName);
 		bw.close();
 	}
 	
@@ -303,7 +314,7 @@ public class Test {
 		 String fileName = br.readLine();
 		 File f = new File(path + "/" + fileName);
 		 while(!f.exists()) {
-			 System.out.println("No such test");
+			 System.out.println("No Such Test");
 			 br = new BufferedReader(new InputStreamReader(System.in));
 			 fileName = br.readLine();
 			 f = new File(path + "/" + fileName);
@@ -317,13 +328,13 @@ public class Test {
 					 BufferedReader bread = new BufferedReader(fr);
 					 String[] newName = fileName.split("\\.");
 					 t.evaluateTest(bread, newName[0] + "Out." + newName[1]);
-					 if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
+					 /*if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
 						 System.out.println(newName[0] + " succeded");
 					 }else {
 						 System.out.println(newName[0] + " failed");
-					 }
+					 }*/
 				 }else {
-					 System.out.println("No such test");
+					 System.out.println("No Such Test");
 				 }
 				 fileName = br.readLine();
 			 }

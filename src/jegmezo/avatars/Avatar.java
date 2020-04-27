@@ -89,9 +89,10 @@ public abstract class Avatar {
 	 * Csokkenti a durability-t eggyel 
 	 */
 	public void decrementDurability() {
+		System.out.println(durability + " durab");
 		if(this.field.getKills())
 			durability--;
-		if(durability == 0)
+		if(durability <= 0)
 			gameEnder.endGame();
 	}
 	
@@ -345,7 +346,6 @@ public abstract class Avatar {
 		System.out.println("<Avatar.setActivity()");
 		activityPoints -= i;
 		System.out.println(activityPoints);
-
 		if(activityPoints <= 0) {
 			try {
 				Test.bw.write("EndTurn\n");
