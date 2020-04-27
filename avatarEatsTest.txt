@@ -2,6 +2,6 @@ noInit
 avatar e e1
 field s f1
 place e1 f1
-item food foo f2
+item food foo f1
 tobackpack foo
 use foo e1
