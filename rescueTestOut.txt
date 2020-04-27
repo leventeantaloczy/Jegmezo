@@ -1,0 +1,22 @@
+e1 created
+r1 created
+f1 created
+f2 created
+f3 created
+f1-f2 binded
+f2-f3 binded
+f2-f1 binded
+e1 placed on: f1
+f1 has e1
+r1 placed on: f2
+f2 has r1
+e1 placed on: f2
+e1 moved to the North
+e1 placed on: f3
+e1 moved to the North
+ro created
+ro added to f2
+ro added to backpack
+EmptyItem created
+e1 rescued
+e1 moved to the South
