@@ -25,7 +25,7 @@ public class GameArea {
 	/*
 	 * A jatekosok szama. A felhasznalo adhatja meg. Ehhez skalazodik a palya.
 	 */
-	private static int numberOfPlayers;
+	private static int numberOfPlayers = 1;
 	
 	/*
  	 * Konstruktor. 
