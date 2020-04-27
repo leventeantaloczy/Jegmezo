@@ -259,7 +259,7 @@ public class Test {
 					for(int i = 0; i < 6; i++)
 						controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
-				case "activity": // kell-e?
+				case "activity":
 					Controller.gameArea.avatars.get(0).setActivity(4);
 					break;
 				case "shoot":

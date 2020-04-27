@@ -113,6 +113,7 @@ public abstract class Field {
 	 * Eltavolitja az adott mezon talalhato itemet.
 	 * Item helyett EmptyItem lesz
 	 */
+	
 	public void removeItem() {
 		System.out.println("<Field.removeItem()");
 		try {
@@ -194,7 +195,7 @@ public abstract class Field {
 		System.out.println("<Field.setSnow()");
 		snowAmount += i;
 		try {
-			Test.bw.write("snow fell on this field" + this.name );
+			Test.bw.write("snow fell on this field " + this.name + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

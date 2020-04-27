@@ -1,0 +1,5 @@
+noinit
+avatar e e1
+avatar r r1
+activity
+savetofile

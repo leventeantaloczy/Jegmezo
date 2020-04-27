@@ -345,7 +345,14 @@ public abstract class Avatar {
 		System.out.println("<Avatar.setActivity()");
 		activityPoints -= i;
 		System.out.println(activityPoints);
+
 		if(activityPoints <= 0) {
+			try {
+				Test.bw.write("EndTurn\n");
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.endTurn();
 		}
 		System.out.println(">Avatar.setActivity()");
