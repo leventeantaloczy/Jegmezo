@@ -278,6 +278,23 @@ public class Test {
 		}
 		bw.close();
 	}
+	
+	public boolean didItSucced(FileReader result, FileReader keyFile) throws IOException {
+
+
+		BufferedReader br1 = new BufferedReader(result);
+		BufferedReader br2 = new BufferedReader(keyFile);
+
+		String key = br2.readLine();
+		System.out.println(key);
+		String in;
+		while((in = br1.readLine()) != null) {
+			if(in.equals(key)) {
+				return true;
+			}
+		}
+		return false;
+	}
 
 	//TODO ha illegal expression van akkor ne fossa ossze magat
 	 public static void main(String[] args) throws IOException { 
@@ -285,17 +302,22 @@ public class Test {
 		 Test t = new Test(); 
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		 String fileName = br.readLine();
+		 FileReader fr = new FileReader(path + "/" + fileName);
 		 try {
 			 while(!fileName.equals("exit")) { 
-				 FileReader fr = new FileReader(path + "/" + fileName); 
+				 fr = new FileReader(path + "/" + fileName);
 				 BufferedReader bread = new BufferedReader(fr);
 				 String[] newName = fileName.split("\\.");
-				 t.evaluateTest(bread, newName[0] + "Out." + newName[1]); 
+				 t.evaluateTest(bread, newName[0] + "Out." + newName[1]);
+				 if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
+					 System.out.println(newName[0] + " succeded");
+				 }else {
+					 System.out.println(newName[0] + " failed");
+				 }
 				 fileName = br.readLine();
 			 }
 		 }catch (NullPointerException e) {
 			System.out.println(e);
 		}
 	  }	
-
 }
