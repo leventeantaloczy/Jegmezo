@@ -53,10 +53,20 @@ public abstract class Avatar {
 		activityPoints = 4;
 	}*/
 	
+	/**
+	 * NPC - Setter
+	 * 
+	 * @param b Erre lesz beallitva az NPC erteke.
+	 */
 	public void setNPC(boolean b) {
 		this.NPC = b;
 	}
 	
+	/**
+	 * NPC - Getter 
+	 * 
+	 * @return NPC
+	 */
 	public boolean getNPC() {
 		return NPC;
 	}
@@ -73,12 +83,15 @@ public abstract class Avatar {
 	/**
 	 * Durability - Setter
 	 * 
-	 * @param i Ennyire allitja az avatar
+	 * @param i Ennyire allitja a durability-t
 	 */
 	public void setDurability(int i) {
 		durability = i;
 	}
 	
+	/**
+	 * Csokkenti a durability-t eggyel 
+	 */
 	public void decrementDurability() {
 		if(this.field.getKills())
 			durability--;
