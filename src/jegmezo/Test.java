@@ -204,6 +204,10 @@ public class Test {
 		bw = new BufferedWriter(new FileWriter(fileName));
 		
 		String st = null;
+		if(st.matches("fullInit"))
+			initTest(true);
+		else
+			initTest(false);
 		while ((st = br.readLine()) != null) {
 			String[] command = st.split(" ");
 
