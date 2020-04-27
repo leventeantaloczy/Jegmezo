@@ -12,18 +12,18 @@ import java.util.Random;
 import java.util.StringTokenizer;
 
 public class Controller {
-	private static String command;
-	
-	public Controller(String str) {
-		command = str;
-	}
+	static GameEnder gameEnder;
+	static GameArea gameArea;
+
 	
 	public static void startGame(boolean init) throws IOException {
 		System.out.println("<Controller.startGame()");
 		
 		GameEnder gameEnder = new GameEnder();
 		GameArea gameArea = new GameArea(gameEnder, init);
-		runGame(gameEnder, gameArea);
+		if(init) {
+			runGame();
+		}
 		
 		System.out.println(">Controller.startGame()");
 	}
@@ -33,7 +33,7 @@ public class Controller {
 	 */
 	
 	@SuppressWarnings("null")
-	public static void runGame(GameEnder gameEnder, GameArea gameArea) throws IOException {
+	public static void runGame() throws IOException {
 		System.out.println("<Controller.runGame()");
 		
 		System.out.println("Enter command for 1st Avatar!");
@@ -131,7 +131,7 @@ public class Controller {
 		System.out.println(">Controller.Storm()");
 	}
 	
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
         System.out.println("A legjobb targy a Projlab!! -help ;)");
         try {
 			startGame(true);
@@ -139,5 +139,5 @@ public class Controller {
 			System.out.println("IOexception: startgame");
 			e.printStackTrace();
 		}
-    }	
+    }*/
 }
