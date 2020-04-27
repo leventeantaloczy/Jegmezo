@@ -2,7 +2,6 @@ package jegmezo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -22,13 +21,13 @@ import jegmezo.items.*;
 
 public class Test {
 	public static BufferedWriter bw;
-	/*
-	 * Ennek van GameArea-ja es Controllerje
-	*/
+	/*private List<Avatar> avatars = new ArrayList<Avatar>();	
+	private List<Field> fieldsOnArea = new ArrayList<Field>();*/
 	Controller controller = new Controller();
 	
 	
-private void initTest(boolean init) {
+	
+	private void initTest(boolean init) {
 		try {
 			Controller.startGame(init);
 		} catch (IOException e) {
@@ -113,43 +112,42 @@ private void initTest(boolean init) {
 	
 	private void item(String itemType, String itemName, String field) {
 		Field f = findField(field);
+		switch(itemType.toLowerCase()) {
+			case "rope":
+				f.item = new Rope(itemName);
+				break;
+			case "tent":
+				f.item = new Tent(itemName);
+				break;
+			case "emptyitem":
+				f.item = new EmptyItem(itemName);
+				break;
+			case "flare":
+				f.item = new Flare(itemName);
+				break;
+			case "food":
+				f.item = new Food(itemName);
+				break;
+			case "fragileshovel":
+				f.item = new FragileShovel(itemName);
+				break;
+			case "gun":
+				f.item = new Gun(itemName);
+				break;
+			case "shovel":
+				f.item = new Shovel(itemName);
+				break;
+			case "wetsuit":
+				f.item = new WetSuit(itemName);
+				break;
+			case "cartridge":
+				f.item = new Cartridge(itemName);
+				break;
+			default:
+				System.out.println("Not correct");
+		}
+		
 		try {
-			switch(itemType.toLowerCase()) {
-				case "rope":
-					f.item = new Rope(itemName);
-					break;
-				case "tent":
-					f.item = new Tent(itemName);
-					break;
-				case "emptyitem":
-					f.item = new EmptyItem(itemName);
-					break;
-				case "flare":
-					f.item = new Flare(itemName);
-					break;
-				case "food":
-					f.item = new Food(itemName);
-					break;
-				case "fragileshovel":
-					f.item = new FragileShovel(itemName);
-					break;
-				case "gun":
-					f.item = new Gun(itemName);
-					break;
-				case "shovel":
-					f.item = new Shovel(itemName);
-					break;
-				case "wetsuit":
-					f.item = new WetSuit(itemName);
-					break;
-				case "cartridge":
-					f.item = new Cartridge(itemName);
-					break;
-				default:
-					System.out.println("Not correct");
-			}
-			
-			
 			bw.write(itemName + " added to " + f.getName() + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -207,16 +205,21 @@ private void initTest(boolean init) {
 		bw = new BufferedWriter(new FileWriter(fileName));
 		
 		String st = null;
-		if(st.matches("fullInit"))
+		/*
+		 * Ha az elso sor fullInit, akkor az az initet teszteli
+		 */
+		st = br.readLine();
+		if(st.equals("fullInit"))
 			initTest(true);
 		else
 			initTest(false);
+		
 		while ((st = br.readLine()) != null) {
 			String[] command = st.split(" ");
 
 			switch (command[0].toLowerCase()) {
 				case "init":
-					//TODO: initTest();
+					initTest(true);
 					break;
 				case "avatar":
 					controller.gameArea.avatars.add(avatar(command[1].toLowerCase(), command[2].toLowerCase()));
@@ -242,25 +245,23 @@ private void initTest(boolean init) {
 				case "tobackpack":
 					tobackpack(command[1].toLowerCase());
 					break;
-				case "feed": //useitem nem bizti h kell
-					break;
 				case "snow":
 					snow(command[1].toLowerCase());
 					break;
 				case "use":
 					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
-				case "storm":
+				case "storm": //???EHHEZ EGESZ JATEKOT FEL KELL EPITENI MERT CONTROLLER CSINALJA A STORMOT
 					controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
-				case "freeze":
+				case "freeze": //???SET HEALTHPOINTS TO 0 ??? ez egy egesz teszt hogy elfogy a healthpointja akkor mi tortenik
 					for(int i = 0; i < 6; i++)
 						controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
 				case "activity": // kell-e?
 					Controller.gameArea.avatars.get(0).setActivity(4);
 					break;
-				case "shoot": 
+				case "shoot":
 					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
 				case "setused":
@@ -277,24 +278,6 @@ private void initTest(boolean init) {
 		}
 		bw.close();
 	}
-	
-	
-	public boolean didItSucced(FileReader result, FileReader keyFile) throws IOException {
-		
-		
-		BufferedReader br1 = new BufferedReader(result);
-		BufferedReader br2 = new BufferedReader(keyFile);
-		
-		String key = br2.readLine();
-		System.out.println(key);
-		String in;
-		while((in = br1.readLine()) != null) {
-			if(in.equals(key)) {
-				return true;
-			}
-		}
-		return false;
-	}
 
 	//TODO ha illegal expression van akkor ne fossa ossze magat
 	 public static void main(String[] args) throws IOException { 
@@ -302,25 +285,17 @@ private void initTest(boolean init) {
 		 Test t = new Test(); 
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		 String fileName = br.readLine();
-		 FileReader fr = new FileReader(path + "/" + fileName);
 		 try {
 			 while(!fileName.equals("exit")) { 
-				 fr = new FileReader(path + "/" + fileName);
+				 FileReader fr = new FileReader(path + "/" + fileName); 
 				 BufferedReader bread = new BufferedReader(fr);
 				 String[] newName = fileName.split("\\.");
 				 t.evaluateTest(bread, newName[0] + "Out." + newName[1]); 
-				 if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
-					 System.out.println(newName[0] + " succeded");
-				 }else {
-					 System.out.println(newName[0] + " failed");
-				 }
 				 fileName = br.readLine();
-				 
 			 }
 		 }catch (NullPointerException e) {
 			System.out.println(e);
 		}
-
 	  }	
 
 }
