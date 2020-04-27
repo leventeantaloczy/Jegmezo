@@ -1,0 +1,4 @@
+noInit
+field s f1
+field s f2
+storm
