@@ -9,7 +9,6 @@ import java.io.InputStreamReader;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.io.FileNotFoundException;
 
 import jegmezo.avatars.Eskimo;
 import jegmezo.avatars.PolarBear;
