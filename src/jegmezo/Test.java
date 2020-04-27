@@ -306,7 +306,6 @@ public class Test {
 		return false;
 	}
 
-	//TODO ha illegal expression van akkor ne fossa ossze magat
 	 public static void main(String[] args) throws IOException { 
 		 String path = Paths.get("").toAbsolutePath().toString();
 		 Test t = new Test(); 
