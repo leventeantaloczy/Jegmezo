@@ -8,7 +8,7 @@ import jegmezo.avatars.Avatar;
 
 public class Tent extends Item{
 	
-	public Tent(String _name){
+	public Tent(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}

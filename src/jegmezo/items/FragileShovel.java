@@ -9,7 +9,7 @@ import jegmezo.fields.Field;
 public class FragileShovel extends Item{
 	private int numOfUsage = 0;
 
-	 public FragileShovel(String _name) {
+	 public FragileShovel(String _name) throws IOException {
 		super(_name);
 		this.important = false;
 	}

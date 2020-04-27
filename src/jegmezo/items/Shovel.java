@@ -8,7 +8,7 @@ import jegmezo.avatars.Avatar;
 
 public class Shovel extends Item{
 	
-	public Shovel(String _name){
+	public Shovel(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}

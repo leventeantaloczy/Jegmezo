@@ -12,7 +12,7 @@ import jegmezo.Test;
 public class Gun extends Item{
 
 	
-	public Gun(String _name){
+	public Gun(String _name) throws IOException{
 		super(_name);
 		this.important = true;
 		

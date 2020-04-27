@@ -10,13 +10,13 @@ public abstract class Item {
 	protected boolean important;
 	protected String name;
 	
-	public Item(String _name) {
+	public Item(String _name) throws IOException {
 		name = _name;
 		try {
 			Test.bw.write(this.name + " created\n");
-		} catch (IOException e) {
+		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e);
 		}
 	}
 	

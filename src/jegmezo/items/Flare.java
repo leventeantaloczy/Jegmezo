@@ -7,7 +7,7 @@ import jegmezo.avatars.Avatar;
 
 public class Flare extends Item{
 	
-	public Flare(String _name){
+	public Flare(String _name) throws IOException{
 		super(_name);
 		this.important = true;
 	}

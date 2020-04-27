@@ -7,7 +7,7 @@ import jegmezo.avatars.Avatar;
 
 public class WetSuit extends Item{
 	
-	public WetSuit(String _name){
+	public WetSuit(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}

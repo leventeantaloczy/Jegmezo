@@ -7,7 +7,7 @@ import jegmezo.avatars.Avatar;
 
 public class Cartridge extends Item{
 	
-	public Cartridge(String _name){
+	public Cartridge(String _name) throws IOException{
 		super(_name);
 		this.important = true;
 	}

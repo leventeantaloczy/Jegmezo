@@ -13,7 +13,7 @@ import jegmezo.fields.Field;
 public class Rope extends Item{
 	
 	
-	public Rope(String _name){
+	public Rope(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}

@@ -7,7 +7,7 @@ import jegmezo.avatars.Avatar;
 
 public class Food extends Item{
 
-	public Food(String _name){
+	public Food(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}
