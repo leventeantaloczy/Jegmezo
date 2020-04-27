@@ -71,7 +71,7 @@ public class Test {
 	
 	private Avatar findAvatar(String name) {
 		System.out.println("aaa");
-		for(Avatar a : avatars) {
+		for(Avatar a : controller.gameArea.avatars) {
 			if(a.getName().equals(name))
 				return a;
 		}
@@ -215,7 +215,7 @@ public class Test {
 					controller.gameArea.avatars.add(avatar(command[1].toLowerCase(), command[2].toLowerCase()));
 					break;
 				case "field":
-					controller.gameArea.avatarsfieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
+					controller.gameArea.fieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
 					break;
 				case "move":
 					Move(command[1].toLowerCase(), command[2]);
