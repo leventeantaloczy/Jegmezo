@@ -19,8 +19,8 @@ public class Controller {
 	public static void startGame(boolean init) throws IOException {
 		System.out.println("<Controller.startGame()");
 		
-		GameEnder gameEnder = new GameEnder();
-		GameArea gameArea = new GameArea(gameEnder, init);
+		gameEnder = new GameEnder();
+		gameArea = new GameArea(gameEnder, init);
 		if(init) {
 			runGame();
 		}
