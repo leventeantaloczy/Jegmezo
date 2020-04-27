@@ -197,7 +197,6 @@ public abstract class Field {
 		try {
 			Test.bw.write("snow fell on this field " + this.name + "\n");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(">Field.setSnow()");
