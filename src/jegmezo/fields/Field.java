@@ -194,9 +194,8 @@ public abstract class Field {
 		System.out.println("<Field.setSnow()");
 		snowAmount += i;
 		try {
-			Test.bw.write("snow fell on this field" + this.name );
+			Test.bw.write("snow fell on this field " + this.name + "\n");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		System.out.println(">Field.setSnow()");
