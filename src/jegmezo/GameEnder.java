@@ -8,7 +8,7 @@ public class GameEnder {
 	public static void endGame() {
 		System.out.println("<GameEnder.endGame()");
 		try {
-			Test.bw.write("Game Over");
+			Test.bw.write("Game Over\n");
 		}catch(NullPointerException e){
 			System.out.println("NullpointerException: " + e);
 		}catch(IOException e1) {

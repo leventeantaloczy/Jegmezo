@@ -1,7 +1,0 @@
-noInit
-avatar r r1
-field s f1
-place r1 f1
-item fragileshovel fs f1
-tobackpack r1
-setused fs 3
