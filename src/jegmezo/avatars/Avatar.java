@@ -32,7 +32,13 @@ public abstract class Avatar {
 	 * mindenkinek 4 activityPoints-a van, bár ez állítható
 	 * Levente
 	 */
-	
+	/**
+	 * Avatar konstruktora:
+	 * Letrehozza az adott avatar backpack-jet, amibe kesobb itemek ker�lnek,
+	 * valamint beallitja a nevet �s a kezdetleges activityPoint-ot.
+	 * 
+	 * @param _name Avatar azonositoja
+	 */
 	public Avatar(String _name) {	
 		backpack = new LinkedList<Item>();
 		name = _name;
@@ -55,11 +61,20 @@ public abstract class Avatar {
 		return NPC;
 	}
 	
-	
+	/**
+	 * Backpack - Getter
+	 * 
+	 * @return Maga a backpack.
+	 */
 	public List<Item> getBackpack(){
 		return backpack;
 	}
 	
+	/**
+	 * Durability - Setter
+	 * 
+	 * @param i Ennyire allitja az avatar
+	 */
 	public void setDurability(int i) {
 		durability = i;
 	}
@@ -71,6 +86,12 @@ public abstract class Avatar {
 			gameEnder.endGame();
 	}
 	
+	/**
+	 * Avatar eldob egy itemet:
+	 * Meg kell adni benne hanyas itemet dobja el, majd
+	 * ha az megtalalhato az avatar backpackjeben,
+	 * akkor azt kiveszi onnan.
+	 */
 	protected void dropItem() throws IOException{
 		System.out.println("Which Item, please enter a number");
 		
@@ -94,7 +115,11 @@ public abstract class Avatar {
 	 * a backpack lancolt lista vegere fuzi az itemet
 	 * Levente
 	 */
-	
+	/**
+	 * Hozzaad egy itemet a backpackhez:
+	 * Amelyik mezon all az avatar, az azon megtalalhato itemet
+	 * fogja annak backpackjebe tenni.
+	 */
 	public void addToBackpack() {
 		System.out.println("<Avatar.addToBackpack()");
 		backpack.add(field.item);
@@ -109,6 +134,11 @@ public abstract class Avatar {
 		System.out.println(">Avatar.addToBackpack()");
 	}
 	
+	/**
+	 * Eltavolit egy itemet a backpackbol
+	 * 
+	 * @param i Az adott item, amit el akarunk tavolitani.
+	 */
 	public void removeFromBackpack(Item i) {
 		backpack.remove(i);
 	}
@@ -116,6 +146,12 @@ public abstract class Avatar {
 	/*
 	 * használja az adott itemet, aktivitasa no
 	 * Levente
+	 */
+	/**
+	 * Adott item hasznalata:
+	 * A felhasznalonak kell megadni hanyadik elemet szeretne
+	 * felhasznalni a backpacknek. Ez az item lesz felhasznalva,
+	 * illetve az activityPoint beallitasra kerul.
 	 */
 	public void useItem() throws NumberFormatException, IOException {
 		System.out.println("<Avatar.useItem()");
@@ -131,6 +167,14 @@ public abstract class Avatar {
 	 * adott item hasznalata ha az a hatizsakban van
 	 * Hanga
 	 */
+	/**
+	 * Adott item hasznalata:
+	 * Ezzel a fuggvennyel az avatar felhasznalja az adott itemet,
+	 * felteve ha az benne van a backpack-jeben.
+	 * Illetve az activityPoint-ot n�veli eggyel.
+	 * 
+	 * @param item A felhasznalni kivant item
+	 */
 	public void useItem(Item item) {
 		System.out.println("<Avatar.useItem()");
 		int indexOfItem = backpack.indexOf(item);
@@ -145,6 +189,10 @@ public abstract class Avatar {
 	 * Meg kell hívni a gameEnder endGame()-jét de nem tudom, azt látja-e
 	 * Várni kell majd előbb egy kört
 	 */
+	/**
+	 * Avatar megfullad:
+	 * Ha az avatar nem visel buvarruhat, megfullad.
+	 */
 	public void dieByWater() {
 		System.out.println("<Avatar.dieByWater()");
 		if(!wearsWetsuit)
@@ -156,6 +204,10 @@ public abstract class Avatar {
 	* Kihűl, elhalálozik
 	* Zoli
 	*/
+	/**
+	 *Instant halal:
+	 *Az avatar azonnal meghal.
+	 */
 	public void instantDeath() {
 		System.out.println("<Avatar.dieByHeatLoss()");
 		gameEnder.endGame();
@@ -166,6 +218,9 @@ public abstract class Avatar {
 	 * Eletero novekszik etel hatiasara
 	 * Levente 
 	 */
+	/**
+	 * Eleteronoveles
+	 */
 	public void gainHealth() {
 		System.out.println("<Avatar.gainHealth()");
 		healthPoints++;
@@ -175,6 +230,11 @@ public abstract class Avatar {
 	/*
 	 * hp vesztes, ha 0 meghal heatLoss-ban
 	 * Levente
+	 */
+	/**
+	 * Eleterocsokkentes 
+	 * Amennyiben nullara csokkent az eleteropontja,
+	 * az avatar automatikusan meghal.
 	 */
 	public void loseHealth() {
 		System.out.println("<Avatar.loseHealth()");
@@ -187,6 +247,11 @@ public abstract class Avatar {
 	/*
 	 * getter
 	 * Levente
+	 */
+	/**
+	 * Field - Getter
+	 * 
+	 * @return Az adott avatar melyik fielden all.
 	 */
 	public Field getField() {
 		System.out.println("<Avatar.getField()");
