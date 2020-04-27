@@ -37,7 +37,7 @@ public class GameArea {
 		
 		/*
 		* Egy jo kis init szekvencia. 
-		* Felepit egy tesztpalyat field-ekbol, iteme-kbol ĂŠs tesz rajuk 2 avatart. 
+		* Felepit egy tesztpalyat field-ekbol, iteme-kbol Ês tesz rajuk 2 avatart. 
 		* Ezen kene maszkalni es figyelni, hogy jo-e amiket kiir. 
 		* Zoli
 		*/
@@ -226,7 +226,7 @@ public class GameArea {
 			String name = "b" + l;
 			PolarBear bear = new PolarBear(name);
 
-			//utols� el�tti sorba rakja
+			//utolso elotti sorba rakja
 			fieldsOnArea.get(((width + 2)*width) + 2 + l).avatars.add(bear);
 			bear.setField(fieldsOnArea.get(((width + 2)*width) + 2 + l));
 
@@ -276,7 +276,7 @@ public class GameArea {
 	}
 	
 	/*
-	 * Ez valt aktiv Avatart a tömbben
+	 * Ez valt aktiv Avatart a t�mbben
 	 * Benedek
 	 */
 	public void changeActiveAvatar() {
