@@ -1,0 +1,7 @@
+noInit
+avatar r r1
+field s f1
+field u f2
+bind f1 f2
+place r1 f1
+specialmove r1
