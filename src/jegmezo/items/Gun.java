@@ -11,19 +11,33 @@ import jegmezo.Test;
 
 public class Gun extends Item{
 
-	
+	/**
+	 * Gun konstruktora:
+	 * Beallitja a fontossagot igazra es a nevet
+	 * 
+	 *  @param _name Erre allitja be a Gun nevet
+	 */
 	public Gun(String _name) throws IOException{
 		super(_name);
 		this.important = true;
 		
 	}
 	
+	/**
+	 * Name - Getter
+	 * 
+	 *  @return name
+	 */
 	@Override
 	public String getName() {return name;}
 	
-	/*
-	 * Elsütni csak akkor tudja, ha ennek az a Avatarnak a taaskajaban van Cartridge es Flare
-	 * Levente
+	/**
+	 * Gun hasznalata:
+	 * Adott avatar elsuti a fegyvert,
+	 * ha megvannak hozza a hozzatartozo darabok (Cartridge, Flare),
+	 * megkezdodik az EndGame. Egyebkent semmi nem tortenik.
+	 * 
+	 *  @param a Ez az avatar suti el.
 	 */
 	@Override
 	public void use(Avatar a) {

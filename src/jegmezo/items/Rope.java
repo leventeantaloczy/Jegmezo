@@ -12,18 +12,30 @@ import jegmezo.fields.Field;
 
 public class Rope extends Item{
 	
-	
+	/**
+	 * Rope konstruktora:
+	 * Beallitja a fontossagot hamisra es a nevet
+	 * 
+	 *  @param _name Erre a nevre allitja be a Rope nevet
+	 */
 	public Rope(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}
 	
+	/**
+	 * Name - Getter 
+	 *
+	 * @return name
+	 */
 	@Override
 	public String getName() {return name;}
 	
-	/*
-	 * ugy gondoltam, hogy a parameterben kapott avatart menti meg, báár
-	 * Levente
+	/**
+	 * Rope hasznalata:
+	 * Az adott avatart menti meg a kotel
+	 *  
+	 *  @param a Ez az avatar lesz megmentve a Rope-pal
 	 */
 	@Override
 	public void use(Avatar a) {
