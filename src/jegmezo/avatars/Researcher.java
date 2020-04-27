@@ -28,11 +28,6 @@ public class Researcher extends Avatar{
 		}
 	}
 	
-	/*
-	 * A d iranyu mezot leelenorzi és visszater annak kapacitas ertekevel
-	 * Levente
-	 */
-	
 	/**
 	 * Researcher fieldet csekkol:
 	 * Megnez egy szomszedos mezot.

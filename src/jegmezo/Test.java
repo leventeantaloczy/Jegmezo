@@ -22,8 +22,6 @@ import jegmezo.items.*;
 
 public class Test {
 	public static BufferedWriter bw;
-	/*private List<Avatar> avatars = new ArrayList<Avatar>();	
-	private List<Field> fieldsOnArea = new ArrayList<Field>();*/
 	Controller controller = new Controller();
 	
 	
@@ -252,10 +250,10 @@ public class Test {
 				case "use":
 					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
-				case "storm": //???EHHEZ EGESZ JATEKOT FEL KELL EPITENI MERT CONTROLLER CSINALJA A STORMOT
+				case "storm":
 					controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
-				case "freeze": //???SET HEALTHPOINTS TO 0 ??? ez egy egesz teszt hogy elfogy a healthpointja akkor mi tortenik
+				case "freeze":
 					for(int i = 0; i < 6; i++)
 						controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
@@ -305,7 +303,7 @@ public class Test {
 		 String fileName = br.readLine();
 		 File f = new File(path + "/" + fileName);
 		 while(!f.exists()) {
-			 System.out.println("Dunno");
+			 System.out.println("No such test");
 			 br = new BufferedReader(new InputStreamReader(System.in));
 			 fileName = br.readLine();
 			 f = new File(path + "/" + fileName);
@@ -325,7 +323,7 @@ public class Test {
 						 System.out.println(newName[0] + " failed");
 					 }
 				 }else {
-					 System.out.println("Dunno");
+					 System.out.println("No such test");
 				 }
 				 fileName = br.readLine();
 			 }
