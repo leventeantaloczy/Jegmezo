@@ -10,6 +10,13 @@ import jegmezo.Test;
 
 public class Researcher extends Avatar{
 
+	
+	/**
+	 * Researcher konstruktora:
+	 * Beallitja a nevet es az activityPoints-ot 4-re allitja
+	 * 
+	 * @param _name Beallitja a researcher nevet
+	 */
 	public Researcher(String _name) throws IOException {
 		super(_name); 
 		this.healthPoints = 4;
@@ -24,6 +31,13 @@ public class Researcher extends Avatar{
 	/*
 	 * A d iranyu mezot leelenorzi és visszater annak kapacitas ertekevel
 	 * Levente
+	 */
+	
+	/**
+	 * Researcher fieldet csekkol:
+	 * Megnez egy szomszedos mezot.
+	 * 
+	 *  @return Beallitva
 	 */
 	public int specialMove(){
 		System.out.println("<Researcher.checkField()");

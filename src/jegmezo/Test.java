@@ -22,8 +22,10 @@ import jegmezo.items.*;
 
 public class Test {
 	public static BufferedWriter bw;
-	private List<Avatar> avatars = new ArrayList<Avatar>();	
-	private List<Field> fieldsOnArea = new ArrayList<Field>();
+	/*
+	 * Ennek van GameArea-ja es Controllerje
+	*/
+	Controller controller = new Controller();
 	
 	
 //	private String[] initTest() {
@@ -70,7 +72,7 @@ public class Test {
 	
 	private Avatar findAvatar(String name) {
 		System.out.println("aaa");
-		for(Avatar a : avatars) {
+		for(Avatar a : controller.gameArea.avatars) {
 			if(a.getName().equals(name))
 				return a;
 		}
@@ -79,7 +81,7 @@ public class Test {
 	}
 	
 	private Field findField(String name) {
-		for(Field f : fieldsOnArea) {
+		for(Field f : controller.gameArea.fieldsOnArea) {
 			if(f.getName().equals(name))
 				return f;
 		}
@@ -181,7 +183,7 @@ public class Test {
 	}
 	
 	private Item findItem(String name) {
-		for(Avatar a : avatars) {
+		for(Avatar a : controller.gameArea.avatars) {
 			for(Item i : a.getBackpack()) {
 				if(i.getName().equals(name))
 					return i;
@@ -191,8 +193,8 @@ public class Test {
 	}
 
 	/*
-	 * Be�ll�tja, hogy a FragileShovel h�nyszor lett
-	 * haszn�lva (n)
+	 * Beallitja, hogy a FragileShovel hanyszor lett
+	 * hasznalva (n)
 	 * Hanga
 	 */
 	private void setused(String fragileShovelName, String n) {
@@ -203,6 +205,10 @@ public class Test {
 		bw = new BufferedWriter(new FileWriter(fileName));
 		
 		String st = null;
+		if(st.matches("fullInit"))
+			initTest(true);
+		else
+			initTest(false);
 		while ((st = br.readLine()) != null) {
 			String[] command = st.split(" ");
 
@@ -211,10 +217,10 @@ public class Test {
 					//TODO: initTest();
 					break;
 				case "avatar":
-					avatars.add(avatar(command[1].toLowerCase(), command[2].toLowerCase()));
+					controller.gameArea.avatars.add(avatar(command[1].toLowerCase(), command[2].toLowerCase()));
 					break;
 				case "field":
-					fieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
+					controller.gameArea.fieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
 					break;
 				case "move":
 					Move(command[1].toLowerCase(), command[2]);
@@ -248,7 +254,8 @@ public class Test {
 					break;
 				case "activity": // kell-e?
 					break;
-				case "shoot": //??????? megvan az osszes fontos item 
+				case "shoot": 
+					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
 				case "setused":
 					setused(command[1].toLowerCase(),command[2].toLowerCase());
