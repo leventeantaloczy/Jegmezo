@@ -10,7 +10,13 @@ import jegmezo.fields.Field;
 
 public class Eskimo extends Avatar{
 	
-	
+	/**
+	 * Eskimo konstruktora:
+	 * Az activityPoints-ot 5-re alltija
+	 * es beallitja a nevet is.
+	 *
+	 * @param _name Az avatar neve
+	 */
 	public Eskimo(String _name) throws IOException{
 		super(_name);
 		this.healthPoints = 5;
@@ -25,6 +31,13 @@ public class Eskimo extends Avatar{
 	/*
 	 * a field igloo flagjét beállítja
 	 * Levente
+	 */
+	
+	/**
+	 * Eskimo iglut epit:
+	 * Beallitja a az adott mezore az iglut
+	 *
+	 * @return Beallitva
 	 */
 	public int specialMove() {
 		System.out.println("<Eskimo.build()");
