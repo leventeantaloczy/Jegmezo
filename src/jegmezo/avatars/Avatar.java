@@ -373,14 +373,15 @@ public abstract class Avatar {
 	 * Field - Setter
 	 *
 	 * @param _field Beallitja erre a fieldre az avatar fieldjet
+	 * @throws IOException 
 	 */
-	public void setField(Field _field) {
+	public void setField(Field _field) throws IOException {
 		field = _field;
 		try {
 			Test.bw.write(field.getName() + " has " + this.name + "\n");
-		} catch (IOException e) {
+		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			System.out.println(e);
 		}
 		
 	}

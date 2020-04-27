@@ -76,7 +76,12 @@ public abstract class Field {
 	 */
 	public void removeItem() {
 		System.out.println("<Field.removeItem()");
-		item = new EmptyItem("EmptyItem");
+		try {
+			item = new EmptyItem("EmptyItem");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		System.out.println(">Field.removeItem()");
 	}
 	

@@ -131,7 +131,7 @@ public class Controller {
 		System.out.println(">Controller.Storm()");
 	}
 	
-	/*public static void main(String[] args) {
+	public static void main(String[] args) {
         System.out.println("A legjobb targy a Projlab!! -help ;)");
         try {
 			startGame(true);
@@ -139,6 +139,5 @@ public class Controller {
 			System.out.println("IOexception: startgame");
 			e.printStackTrace();
 		}
-    }*/
-	
+    }	
 }

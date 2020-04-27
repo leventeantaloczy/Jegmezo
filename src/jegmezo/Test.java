@@ -108,42 +108,43 @@ public class Test {
 	
 	private void item(String itemType, String itemName, String field) {
 		Field f = findField(field);
-		switch(itemType.toLowerCase()) {
-			case "rope":
-				f.item = new Rope(itemName);
-				break;
-			case "tent":
-				f.item = new Tent(itemName);
-				break;
-			case "emptyitem":
-				f.item = new EmptyItem(itemName);
-				break;
-			case "flare":
-				f.item = new Flare(itemName);
-				break;
-			case "food":
-				f.item = new Food(itemName);
-				break;
-			case "fragileshovel":
-				f.item = new FragileShovel(itemName);
-				break;
-			case "gun":
-				f.item = new Gun(itemName);
-				break;
-			case "shovel":
-				f.item = new Shovel(itemName);
-				break;
-			case "wetsuit":
-				f.item = new WetSuit(itemName);
-				break;
-			case "cartridge":
-				f.item = new Cartridge(itemName);
-				break;
-			default:
-				System.out.println("Not correct");
-		}
-		
 		try {
+			switch(itemType.toLowerCase()) {
+				case "rope":
+					f.item = new Rope(itemName);
+					break;
+				case "tent":
+					f.item = new Tent(itemName);
+					break;
+				case "emptyitem":
+					f.item = new EmptyItem(itemName);
+					break;
+				case "flare":
+					f.item = new Flare(itemName);
+					break;
+				case "food":
+					f.item = new Food(itemName);
+					break;
+				case "fragileshovel":
+					f.item = new FragileShovel(itemName);
+					break;
+				case "gun":
+					f.item = new Gun(itemName);
+					break;
+				case "shovel":
+					f.item = new Shovel(itemName);
+					break;
+				case "wetsuit":
+					f.item = new WetSuit(itemName);
+					break;
+				case "cartridge":
+					f.item = new Cartridge(itemName);
+					break;
+				default:
+					System.out.println("Not correct");
+			}
+			
+			
 			bw.write(itemName + " added to " + f.getName() + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
