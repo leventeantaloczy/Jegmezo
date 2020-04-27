@@ -53,10 +53,20 @@ public abstract class Avatar {
 		activityPoints = 4;
 	}*/
 	
+	/**
+	 * NPC - Setter
+	 * 
+	 * @param b Erre lesz beallitva az NPC erteke.
+	 */
 	public void setNPC(boolean b) {
 		this.NPC = b;
 	}
 	
+	/**
+	 * NPC - Getter 
+	 * 
+	 * @return NPC
+	 */
 	public boolean getNPC() {
 		return NPC;
 	}
@@ -73,12 +83,15 @@ public abstract class Avatar {
 	/**
 	 * Durability - Setter
 	 * 
-	 * @param i Ennyire allitja az avatar
+	 * @param i Ennyire allitja a durability-t
 	 */
 	public void setDurability(int i) {
 		durability = i;
 	}
 	
+	/**
+	 * Csokkenti a durability-t eggyel 
+	 */
 	public void decrementDurability() {
 		if(this.field.getKills())
 			durability--;
@@ -263,6 +276,14 @@ public abstract class Avatar {
 	 * d irányba elmozdul ha tud (csak akkor nem tud ha határmező van ott) 
 	 * Levente
 	 */
+	/**
+	 * Avatar mozog:
+	 * Ha annak a fieldnek van szomszedja, ahol az avatar
+	 * eppen all d iranyban, akkor az avatar atlep arra a
+	 * fieldre, egyebkent hibat dob.
+	 * 
+	 * @param d Ebbe az iranyba fog elmozdulni az avatar
+	 */
 	public void move(Direction d){
 		System.out.println("<Avatar.move()");
 		System.out.println("ezen a mezon allok: " + this.field.id);
@@ -296,12 +317,21 @@ public abstract class Avatar {
 	 * Ezt tudtam kitalalni arra hogy "szol controllernek"
 	 * Benedek
 	 */
+	/**
+	 * Avatar korenek vege:
+	 * Beallitja az activityPoints-ot a maximumra (4)
+	 */
 	public void endTurn() {
 		System.out.println("<Avatar.endTurn()");
 		this.activityPoints = 4;
 		this.EndTurn = true;
 		System.out.println(">Avatar.endTurn()");
 	}
+	
+	/**
+	 * EndTurn - Setter
+	 * Beallitja hamisra az attributumot
+	 */
 	public void setEndTurn() {
 		this.EndTurn = false;
 	}
@@ -313,6 +343,13 @@ public abstract class Avatar {
 	 * Levente															
 	 */
 	
+	/**
+	 * Beallitja az aktivitaspontot:
+	 * Ha ez nullara (vagy az ala) esik, automatikusan
+	 * meghivodik az endturn metodus.
+	 * 
+	 * @param i Adott ertekkel csokkenti az aktivitaspontot
+	 */
 	public void setActivity(int i) {
 		System.out.println("<Avatar.setActivity()");
 		activityPoints -= i;
@@ -323,10 +360,20 @@ public abstract class Avatar {
 		System.out.println(">Avatar.setActivity()");
 	}
 	
+	/**
+	 * Name - Getter
+	 * 
+	 *  @return Az avatar neve
+	 */
 	public String getName() {
 		return name;
 	}
 	
+	/**
+	 * Field - Setter
+	 *
+	 * @param _field Beallitja erre a fieldre az avatar fieldjet
+	 */
 	public void setField(Field _field) {
 		field = _field;
 		try {
@@ -338,5 +385,10 @@ public abstract class Avatar {
 		
 	}
 	
+	
+	/**
+	 * Avatar specialis kepesseget hasznalja
+	 * abstarct fuggveny
+	 */
 	public abstract int specialMove();
 }
