@@ -22,31 +22,56 @@ public abstract class Field {
 	public int id;
 	protected String name;
 	
-	
 	/*
 	 * TODO
 	 * Kezdetben még legyen mindenstatikus
 	 * Levente
 	 */
 	
+	/**
+	 * Kills - Getter
+	 * 
+	 * @return kills
+	 */
 	public boolean getKills() {
 		return kills;
 	}
 	
+	/**
+	 * Field konstruktora:
+	 * Beallitja a kapacitast 
+	 */
 	public Field(){	
 		capacity = -1;
 	}
 	
-	
+	/**
+	 * Field konstruktora:
+	 * Beallitja a nevet es a kapacitast
+	 * 
+	 * @param _name Adott field neve / azonositoja
+	 */
 	public Field(String _name){	
 		name = _name;
 		capacity = -1;
 	}
 	
+	/**
+	 * Durability - Setter 
+	 * 
+	 * @param i Ennyire allitja a durability-t
+	 */
 	public void setDurability(int i) {
 		durability = i;
 	}
 	
+	/**
+	 * Durability csokkentese eggyel ha az Tent,
+	 * ha a durability nullara csokken -> Tent eltunik
+	 * az adott fieldrol
+	 * 
+	 * @return Eltunt-e a Tent a fieldrol (true/false)
+	 */
 	public boolean decrementDurability() {
 		if(shelter == Shelter.Tent)
 			durability--;
@@ -58,6 +83,12 @@ public abstract class Field {
 		return false;
 	}
 	
+	/**
+	 * Accept fuggveny:
+	 * A field nem border
+	 * 
+	 * @return true
+	 */
 	public boolean accept() {
 		System.out.println("<Field.accept()");
 		System.out.println("Nem Border");
@@ -65,14 +96,22 @@ public abstract class Field {
 		return true;
 	}
 	
+	/**
+	 * Avatareltavolitas:
+	 * Az adott avatart eltavolitja a fieldrol 
+	 * 
+	 * @param a Ezt az avatart fogja eltavolitani
+	 */
 	public void removeAvatar(Avatar a) {
 		System.out.println("<Field.removeAvatar()");
 		avatars.remove(a);
 		System.out.println(">Field.removeAvatar()");
 	}
-	/*
-	 * A regi item helyett emptyItem lesz
-	 * Levente
+	
+	/**
+	 * Itemeltavolitas:
+	 * Eltavolitja az adott mezon talalhato itemet.
+	 * Item helyett EmptyItem lesz
 	 */
 	public void removeItem() {
 		System.out.println("<Field.removeItem()");
@@ -85,6 +124,12 @@ public abstract class Field {
 		System.out.println(">Field.removeItem()");
 	}
 	
+	/**
+	 * Itemcsere:
+	 * Kicsereli a fielden talalhato itemet a megadottal
+	 * 
+	 * @param i Erre az itemre fog cserelni
+	 */
 	public Item switchItem(Item i) {
 		System.out.println("<Field.switchItem()");
 		Item tmp;
@@ -94,6 +139,11 @@ public abstract class Field {
 		return tmp;
 	}
 	
+	/**
+	 * Avatart ad a fieldhez
+	 * 
+	 * @param a Ezt az avatart teszi a fieldre
+	 */
 	public void addAvatar(Avatar a) throws IOException {
 		System.out.println("<Field.addAvatar()");
 		avatars.add(a);
@@ -105,22 +155,25 @@ public abstract class Field {
 		System.out.println(">Field.addAvatar()");
 	}
 	
-	/*
-	 * Elvileg visszater az adott iranyu szomszeddal, nem teszteltem
-	 * Levente
+	/**
+	 * Neighbour - Getter 
+	 *
+	 * @param d Ebbe az iranyba kerdezi le a szomszedos mezot
+	 * @return A szomszedos mezot adja vissza
 	 */
-	
 	public Field getNeighbour(Direction d) {
 		System.out.println("<Field.getNeighbour()");
 		System.out.println(">Field.getNeighbour()");
 		return neighbours.get(d.showVal());
 	}
 	
-	/*
-	* Kap egy Field-et és befuzi a lista vegere. 
-	* Emiatt a szomszedokat Eszaki, Deli, Keleti es Nyugati sorrendben kell hozzaadni.
-	* Zoli
-	*/
+	/**
+	 * Neighbours - Setter:
+	 * Kap egy Field-et es befuzi a lista vegere. 
+	 * Emiatt a szomszedokat Eszaki, Deli, Keleti es Nyugati sorrendben kell hozzaadni.
+	 * 
+	 * @param f Beallitja szomszednak az adott mezot
+	 */
 	public void setNeighbour(Field f) throws IOException {
 		System.out.println("<Field.setNeighbour()");
 		this.neighbours.add(f);
@@ -132,9 +185,10 @@ public abstract class Field {
 		System.out.println(">Field.setNeighbour()");
 	}
 	
-	/*
-	 * setter
-	 * Levente
+	/**
+	 * SnowAmount - Setter
+	 * 
+	 * @param i Noveli a snowAmount erteket erre a megadott szamra
 	 */
 	public void setSnow(int i) {
 		System.out.println("<Field.setSnow()");
@@ -148,17 +202,22 @@ public abstract class Field {
 		System.out.println(">Field.setSnow()");
 	}
 	
+	/**
+	 * SnowAmount - Getter 
+	 * 
+	 * @return snowAmount
+	 */
 	public int getSnowAmount(){
 		System.out.println("<Field.getSnowAmount()");
 		System.out.println(">Field.getSnowAmount()");
 		return snowAmount;
 	}
 	
-	/*
-	 * setter
-	 * Levente
+	/**
+	 * Shelter - Setter
+	 * 
+	 * @param sh Erre allitja be a shelter erteket
 	 */
-	
 	public void setShelter(Shelter sh) {
 		System.out.println("<Field.setShelter()");
 		this.shelter = sh;
@@ -171,15 +230,20 @@ public abstract class Field {
 		System.out.println(">Field.setShelter()");
 	}
 	
+	/**
+	 * Shelter - Getter 
+	 *
+	 * @return shelter
+	 */
 	public Shelter getShelter() {
 		return shelter;
 	}
 	
-	/*
-	 * getter
-	 * Levente
+	/**
+	 * Capacity - Getter
+	 * 
+	 * @return capacity
 	 */
-	
 	public int getCapacity() {
 		System.out.println("<Field.getCapacity()");
 		System.out.println("Capacity: " + capacity);
@@ -187,9 +251,13 @@ public abstract class Field {
 		return capacity;
 	}
 	
+	/**
+	 * Name - Getter
+	 * 
+	 * @return Field neve / azonositoja
+	 */
 	public String getName() {
 		return name;
 	}
-	
 	
 }
