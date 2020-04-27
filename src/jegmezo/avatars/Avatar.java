@@ -37,6 +37,7 @@ public abstract class Avatar {
 		backpack = new LinkedList<Item>();
 		name = _name;
 		activityPoints = 4;
+		System.out.println(name + " letrejott");
 	}
 	
 	
