@@ -1,0 +1,17 @@
+noInit
+avatar e e1
+field s f1
+field s f2
+field s f3
+bind f1 f2
+bind f2 f3
+place e1 f1
+item gun gu f1
+item flare fl f2
+item cartridge cart f3
+tobackpack e1
+move e1 North
+tobackpack e1
+move e1 North
+tobackpack e1
+use gu e1
