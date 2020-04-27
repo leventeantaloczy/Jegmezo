@@ -31,6 +31,11 @@ public class Border extends Field{
 	public boolean accept() {
 		System.out.println("<Field.accept()");
 		System.out.println("border");
+		try {
+			Test.bw.write("Moved towards border\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 		System.out.println(">Field.accept()");
 		return false;
 	}
