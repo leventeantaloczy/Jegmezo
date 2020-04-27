@@ -9,7 +9,9 @@ import jegmezo.items.EmptyItem;
 
 public class UnstableIce extends Field{
 	
-	
+	/**
+	 * UnstableIce konstruktora 
+	 */
 	public UnstableIce() {
 		Random rand = new Random();
 		this.kills = false;
@@ -18,6 +20,11 @@ public class UnstableIce extends Field{
 
 	}
 	
+	/**
+	 * UnstableIce konstruktora
+	 * 
+	 * @param _name Erre allitja az UnstableIce nevet
+	 */
 	public UnstableIce(String _name) throws IOException {
 		super(_name);
 		Random rand = new Random();
@@ -26,6 +33,13 @@ public class UnstableIce extends Field{
 		Test.bw.write(this.name + " created\n");
 	}
 	
+	/**
+	 * Avatar hozzadas:
+	 * Hozzaadja az adott avatart az UnstableIce-hoz,
+	 * ha annak kapacitasa kisebb lesz igy mint ahanyan rajta allnak, megfordul 
+	 * 
+	 * @param a Az elhelyezendo avatar
+	 */
 	@Override
 	public void addAvatar(Avatar a) {
 		System.out.println("<Field.addAvatar()");
@@ -39,6 +53,12 @@ public class UnstableIce extends Field{
 		System.out.println(">Field.addAvatar()");
 	}
 	
+	/**
+	 * Fordulas:
+	 * Az UnstableIce megfordul ha tul sokan vannak rajta,
+	 * Az esetleg elotte rajta talalhato itemek pedig eltunnek -> EmptyItem lesz rajta
+	 * Ez vonatkozik Tent-re, Igloo-ra es mindenre ami elotte rajta volt
+	 */
 	public void flip() {
 		System.out.println("<UnstableIce.flip()");
 		
