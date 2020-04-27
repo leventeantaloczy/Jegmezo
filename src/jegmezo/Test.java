@@ -277,7 +277,7 @@ public class Test {
 				 t.evaluateTest(bread, newName[0] + "Out." + newName[1]); 
 				 fileName = br.readLine();
 			 }
-		 }catch (NullPointerException e) {
+		 }catch (NullPointerException e ) {
 			System.out.println(e);
 		}
 	  }	
