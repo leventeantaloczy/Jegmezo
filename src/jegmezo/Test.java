@@ -245,10 +245,14 @@ private void initTest(boolean init) {
 					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
 				case "storm":
+					controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
 				case "freeze":
+					for(int i = 0; i < 6; i++)
+						controller.Storm(controller.gameArea.fieldsOnArea);
 					break;
 				case "activity":
+					Controller.gameArea.avatars.get(0).setActivity(4);
 					break;
 				case "shoot": 
 					use(command[1].toLowerCase(),command[2].toLowerCase());

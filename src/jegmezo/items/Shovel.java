@@ -8,14 +8,23 @@ import jegmezo.avatars.Avatar;
 
 public class Shovel extends Item{
 	
+	/**
+	 * Shovel konstruktora:
+	 * Beallitja a fontossagot hamisra es a nevet.
+	 * 
+	 * @param _name Erre a nevre allitja be a Shovel nevet
+	 */
 	public Shovel(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}
 	
-	/*
-	 * 2 havat eltakarit
-	 * Levente
+	/**
+	 * Shovel hasznalata:
+	 * A megadott avatar fogja felhasznalni ezt az itemet,
+	 * leszed az avatar field-jerol 2 egyseg havat.
+	 * 
+	 * @param a Ez az avatar fogja haszalni a targyat
 	 */
 	@Override
 	public void use(Avatar a) {

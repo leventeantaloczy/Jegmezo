@@ -10,6 +10,12 @@ public abstract class Item {
 	protected boolean important;
 	protected String name;
 	
+	/**
+	 * Item konstruktora:
+	 * Beallitja a nevet
+	 * 
+	 * @param _name Erre allitja be az item nevet / azonositojat
+	 */
 	public Item(String _name) throws IOException {
 		name = _name;
 		try {
@@ -20,22 +26,38 @@ public abstract class Item {
 		}
 	}
 	
-	
+	/**
+	 * Important - Getter
+	 * 
+	 * @return important
+	 */
 	public boolean getImportant() {
 		return important;
 	}
 	// gun reszek fontosak, egyeb targyak nem, gun checknel ezt nezzek
 	
-
-	
+	/**
+	 * Beallitja az adott targyra, hogy hanyszor
+	 * lett hasznalva
+	 * 
+	 * @param n Ennyiszer lett hasznalva - erre allitja be
+	 */
 	public void setUsed(int n) {}
 	
-	/*
-	 * Kiegeszitettem egy avatar parameterrel, hogy tudjuk, melyik avatar hasznalta
-	 * Levente
+	/**
+	 * Itemhasznalat
+	 * abstract
+	 * 
+	 * @param a Adott avatar hasznalja az itemet
 	 */
 	public abstract void use(Avatar a);
 
+	/**
+	 * Name - Getter
+	 * absract
+	 * 
+	 * @return name
+	 */
 	public abstract String getName();
 	
 }

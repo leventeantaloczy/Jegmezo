@@ -8,10 +8,24 @@ import jegmezo.avatars.Avatar;
 
 public class Tent extends Item{
 	
+	/**
+	 * Tent konstruktora:
+	 * Nevet es a fontossagat hamisra allitja
+	 * 
+	 * @param _name Ezt allitja be nevnek / azonositonak
+	 */
 	public Tent(String _name) throws IOException{
 		super(_name);
 		this.important = false;
 	}
+	
+	/**
+	 * Tent hasznalata:
+	 * Adott avatar hasznalja fel a satrat, ha azon a
+	 * fielden ahol epp all semmi nincs feallitja.
+	 * 
+	 * @param a Adott avatar, aki hasznalni fogja a satrat
+	 */
 	@Override
 	public void use(Avatar a) {
 		if(a.getField().getShelter() == Shelter.None) {
@@ -25,6 +39,11 @@ public class Tent extends Item{
 		}
 	}
 	
+	/**
+	 * Name - Getter
+	 * 
+	 * @return name
+	 */
 	@Override
 	public String getName() {return name;}
 }
