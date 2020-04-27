@@ -28,11 +28,13 @@ public class Test {
 	Controller controller = new Controller();
 	
 	
-//	private String[] initTest() {
-//		//TODO letrehozni a dolgokat 
-//		
-//		//return;
-//	}
+private void initTest(boolean init) {
+		try {
+			Controller.startGame(init);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 	
 	private Avatar avatar(String str, String name) throws IOException {
 		if(str.equals("e")) {
