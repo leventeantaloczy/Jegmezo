@@ -2,6 +2,7 @@ package jegmezo;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -302,17 +303,29 @@ public class Test {
 		 Test t = new Test(); 
 		 BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		 String fileName = br.readLine();
-		 FileReader fr = new FileReader(path + "/" + fileName);
+		 File f = new File(path + "/" + fileName);
+		 while(!f.exists()) {
+			 System.out.println("Dunno");
+			 br = new BufferedReader(new InputStreamReader(System.in));
+			 fileName = br.readLine();
+			 f = new File(path + "/" + fileName);
+		 }
+		 FileReader fr = new FileReader(f);
 		 try {
 			 while(!fileName.equals("exit")) { 
-				 fr = new FileReader(path + "/" + fileName);
-				 BufferedReader bread = new BufferedReader(fr);
-				 String[] newName = fileName.split("\\.");
-				 t.evaluateTest(bread, newName[0] + "Out." + newName[1]);
-				 if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
-					 System.out.println(newName[0] + " succeded");
+				 f = new File(path + "/" + fileName);
+				 if(f.exists()) {
+					 fr = new FileReader(f);
+					 BufferedReader bread = new BufferedReader(fr);
+					 String[] newName = fileName.split("\\.");
+					 t.evaluateTest(bread, newName[0] + "Out." + newName[1]);
+					 if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
+						 System.out.println(newName[0] + " succeded");
+					 }else {
+						 System.out.println(newName[0] + " failed");
+					 }
 				 }else {
-					 System.out.println(newName[0] + " failed");
+					 System.out.println("Dunno");
 				 }
 				 fileName = br.readLine();
 			 }
