@@ -65,7 +65,7 @@ private void initTest(boolean init) {
 		}
 		else if(type.equals("b")) {
 			return new Border(name);	
-		}
+		}	
 		else {
 			bw.write("Nem jott letre " + name + " field\n");
 			return null;
@@ -73,7 +73,6 @@ private void initTest(boolean init) {
 	}
 	
 	private Avatar findAvatar(String name) {
-		System.out.println("aaa");
 		for(Avatar a : controller.gameArea.avatars) {
 			if(a.getName().equals(name))
 				return a;
@@ -95,9 +94,6 @@ private void initTest(boolean init) {
 		findAvatar(name).move(Direction.valueOf(where));
 	}
 	
-	/*
-	 * beallitja a szomszedot, eloszor eszak majd del kelet nyugat 
-	 */
 	private void Bind(String field1, String field2) throws IOException {
 		findField(field1).setNeighbour(findField(field2));
 	}
@@ -242,19 +238,17 @@ private void initTest(boolean init) {
 				case "tobackpack":
 					tobackpack(command[1].toLowerCase());
 					break;
-				case "feed": //useitem nem bizti h kell
-					break;
 				case "snow":
 					snow(command[1].toLowerCase());
 					break;
 				case "use":
 					use(command[1].toLowerCase(),command[2].toLowerCase());
 					break;
-				case "storm": //???EHHEZ EGESZ JATEKOT FEL KELL EPITENI MERT CONTROLLER CSINALJA A STORMOT
+				case "storm":
 					break;
-				case "freeze": //???SET HEALTHPOINTS TO 0 ??? ez egy egesz teszt hogy elfogy a healthpointja akkor mi tortenik
+				case "freeze":
 					break;
-				case "activity": // kell-e?
+				case "activity":
 					break;
 				case "shoot": 
 					use(command[1].toLowerCase(),command[2].toLowerCase());
@@ -292,7 +286,6 @@ private void initTest(boolean init) {
 		return false;
 	}
 
-	//TODO ha illegal expression van akkor ne fossa ossze magat
 	 public static void main(String[] args) throws IOException { 
 		 String path = Paths.get("").toAbsolutePath().toString();
 		 Test t = new Test(); 
@@ -318,5 +311,4 @@ private void initTest(boolean init) {
 		}
 
 	  }	
-
 }
