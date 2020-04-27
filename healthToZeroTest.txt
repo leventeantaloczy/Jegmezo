@@ -1,0 +1,5 @@
+noInit
+field s f1
+avatar e e1
+place e1 f1
+freeze
