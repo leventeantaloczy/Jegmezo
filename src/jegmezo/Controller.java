@@ -41,6 +41,7 @@ public class Controller {
 		
 		do {
 			gameArea.changeActiveAvatar();
+			
 			if(gameArea.avatars.get(gameArea.activeAvatar).getNPC()) {
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
 			}else {
