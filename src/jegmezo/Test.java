@@ -327,11 +327,11 @@ public class Test {
 					 BufferedReader bread = new BufferedReader(fr);
 					 String[] newName = fileName.split("\\.");
 					 t.evaluateTest(bread, newName[0] + "Out." + newName[1]);
-					 /*if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
+					 if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
 						 System.out.println(newName[0] + " succeded");
 					 }else {
 						 System.out.println(newName[0] + " failed");
-					 }*/
+					 }
 				 }else {
 					 System.out.println("No Such Test");
 				 }

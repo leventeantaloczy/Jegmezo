@@ -195,10 +195,12 @@ public abstract class Field {
 		snowAmount += i;
 		try {
 			Test.bw.write("snow fell on this field " + this.name + "\n" );
+			Test.bw.write(avatars.get(0).getName() + " hp: " + avatars.get(0).getHealthPoints() + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 		System.out.println(">Field.setSnow()");
 	}
 	

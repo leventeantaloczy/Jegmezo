@@ -41,6 +41,7 @@ public class Controller {
 		
 		do {
 			gameArea.changeActiveAvatar();
+			Storm(gameArea.fieldsOnArea);
 			
 			if(gameArea.avatars.get(gameArea.activeAvatar).getNPC()) {
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
@@ -48,58 +49,50 @@ public class Controller {
 				BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		        	String command = br.readLine();
 			        switch(command.toUpperCase()) {
-			        case "S":
-		        		Storm(gameArea.fieldsOnArea);
-		            		break;
-		      		case "I":
-					/*
-					 * TODO
-					 * Valahogy meg kene tudni, hogy Eskimo-e es akkor build-elni.
-					 * Zoli
-					 */
-					 gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-		            		break;
-				case "B":
-					gameArea.avatars.get(gameArea.activeAvatar).addToBackpack();
-				    break;
-				case "T":
-					gameArea.avatars.get(gameArea.activeAvatar).endTurn();
-				    break;
-				case "U":
-					gameArea.avatars.get(gameArea.activeAvatar).useItem();
-					break;
-				case "MN":
-					System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-					gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
-				    break;
-				case "ME":
-					System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-					gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
-				    break;
-				case "MS":
-					System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-					gameArea.avatars.get(gameArea.activeAvatar).move(Direction.South);
-				    break;
-				case "MW":
-					System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-					gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
-				    break;    
-				case "C":
-					/*
-					 * Valahogy meg kene tudni, hogy Reearcher-e es akkor check-elni.
-					 * ZolisnowAmount
-					 */
-					gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-				    break;
-				case "EXIT":
-					exit=false;
-					break;
-				default:
-					System.out.println("Hibas input");
-				    break;
-		        	}
-			}
-		}while(exit);
+			        	/*case "S":
+			        		
+		            		break;*/
+			      		case "SP":
+			      			gameArea.avatars.get(gameArea.activeAvatar).specialMove();
+			            	break;
+						case "B":
+							gameArea.avatars.get(gameArea.activeAvatar).addToBackpack();
+						    break;
+						case "T":
+							gameArea.avatars.get(gameArea.activeAvatar).endTurn();
+						    break;
+						case "U":
+							gameArea.avatars.get(gameArea.activeAvatar).useItem();
+							break;
+						case "MN":
+							System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+							gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
+						    break;
+						case "ME":
+							System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+							gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
+						    break;
+						case "MS":
+							System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+							gameArea.avatars.get(gameArea.activeAvatar).move(Direction.South);
+						    break;
+						case "MW":
+							System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+							gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
+						    break;
+						case "D":
+							System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+							gameArea.avatars.get(gameArea.activeAvatar).dropItem();
+							break;
+						case "EXIT":
+							exit=false;
+							break;
+						default:
+							System.out.println("Hibas input");
+							break;
+		        		}
+					}
+			}while(exit);
 		
 		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
 		 * Oda majd megy valami, ami figyeli a jatek veget.

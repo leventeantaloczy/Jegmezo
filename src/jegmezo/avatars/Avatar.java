@@ -102,7 +102,7 @@ public abstract class Avatar {
 	 * ha az megtalalhato az avatar backpackjeben,
 	 * akkor azt kiveszi onnan.
 	 */
-	protected void dropItem() throws IOException{
+	public void dropItem() throws IOException{
 		System.out.println("Which Item, please enter a number");
 		
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -118,6 +118,7 @@ public abstract class Avatar {
 		}
 		
 		backpack.add(field.switchItem(backpack.remove(Integer.parseInt(i))));
+		setActivity(1);
 	}
 
 	/**
@@ -136,6 +137,7 @@ public abstract class Avatar {
 		}
 		
 		field.removeItem();
+		setActivity(1);
 		System.out.println(">Avatar.addToBackpack()");
 	}
 	
@@ -384,6 +386,9 @@ public abstract class Avatar {
 		
 	}
 	
+	public int getHealthPoints() {
+		return healthPoints;
+	}
 	
 	/**
 	 * Avatar specialis kepesseget hasznalja

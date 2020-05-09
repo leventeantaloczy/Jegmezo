@@ -222,13 +222,13 @@ public class GameArea {
 			System.out.println("Eskimo on id " + eskimo.getField().id);
 		}
 		
-		for(int l = 0; l < (int) Math.ceil(numberOfPlayers/2); l++ ) {
+		for(int l = 0; l < (int) Math.ceil(numberOfPlayers / 2); l++ ) {
 			String name = "b" + l;
 			PolarBear bear = new PolarBear(name);
 
 			//utolso elotti sorba rakja
-			fieldsOnArea.get(((width + 2)*width) + 2 + l).avatars.add(bear);
-			bear.setField(fieldsOnArea.get(((width + 2)*width) + 2 + l));
+			fieldsOnArea.get(((width + 2) * width) + 2 + l).avatars.add(bear);
+			bear.setField(fieldsOnArea.get(((width + 2) * width) + 2 + l));
 
 			bear.gameEnder = gameEnder;
 			addAvatar(bear);
@@ -276,7 +276,7 @@ public class GameArea {
 	}
 	
 	/*
-	 * Ez valt aktiv Avatart a tömbben
+	 * Ez valt aktiv Avatart a tï¿½mbben
 	 * Benedek
 	 */
 	public void changeActiveAvatar() {
