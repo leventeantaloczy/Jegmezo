@@ -1,5 +1,7 @@
 package graphics;
 
+import java.util.function.UnaryOperator;
+
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -8,13 +10,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.control.TextFormatter;
+import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
+import javafx.scene.text.Text;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.converter.IntegerStringConverter;
  
 public class HelloWorld extends Application {
 	private Stage mainStage;
@@ -65,6 +73,73 @@ public class HelloWorld extends Application {
     	
     	mainStage.setScene(itemSelectionScene);
     	mainStage.show();
+    }
+    
+    public Scene MenuScene() {
+    	VBox menuItems = new VBox();
+    	menuItems.prefWidth(1200);
+    	menuItems.prefHeight(800);
+    	menuItems.setAlignment(Pos.CENTER);
+    	menuItems.setSpacing(100);
+    	
+    	Label letsplay = new Label("How many players?");
+       	letsplay.setFont(new Font("Arial Rounded MT Bold",50));
+       	
+       	TextField numPlayers = new TextField("3");
+       	numPlayers.setMaxWidth(100);
+       	numPlayers.setMinHeight(70);
+       	numPlayers.setFont(new Font(44));
+       	UnaryOperator<Change> integerFilter = change -> {
+       	    String newText = change.getControlNewText();
+       	    if (newText.matches("-?([1-9][0-9]*)?")) { 
+       	        return change;
+       	    }
+       	    return null;
+       	};
+
+       	numPlayers.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
+       	
+       	Button startGame = new Button("Start Game");
+       	startGame.setMinWidth(150);
+       	startGame.setMinHeight(70);
+       	startGame.setFont(new Font("Arial Rounded MT Bold",30));
+       	startGame.setOnAction(new EventHandler<ActionEvent>() {
+       	    @Override public void handle(ActionEvent e) {
+       	        if(Integer.parseInt(numPlayers.getText()) > 6 || Integer.parseInt(numPlayers.getText()) < 3) {
+       	        	final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.initOwner(mainStage);
+                    VBox dialogVbox = new VBox(20);
+                    
+                    Button closeButton = new Button("Close");
+                    closeButton.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override public void handle(ActionEvent e) {
+                            dialog.hide();
+                        }
+                    });
+                    dialogVbox.getChildren().addAll(new Text("Enter a valid number please! (3-6)"),closeButton);
+                    dialogVbox.setAlignment(Pos.CENTER);
+                    
+                    Scene dialogScene = new Scene(dialogVbox, 250, 100);
+                    dialog.setTitle("Error :(");
+                    dialog.setScene(dialogScene);
+                    dialog.show();
+       	        } else {
+           	      //TODO: START GAME
+       	        }
+       	    }
+       	});
+       	
+    	menuItems.getChildren().addAll(letsplay, numPlayers, startGame);
+    	String style = "-fx-background-color: linear-gradient(#24fffb, #ffebeb);";   	
+    	//String style = "-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");";   	
+
+    	menuItems.setStyle(style);
+    	
+		Scene menuScene = new Scene(menuItems,1200,800);
+		//menuScene.setFill(pattern);
+    	
+    	return menuScene;
     }
 }
 	
