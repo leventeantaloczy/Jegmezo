@@ -21,11 +21,11 @@ public class Researcher extends Avatar{
 		super(_name); 
 		this.healthPoints = 4;
 		// TODO Auto-generated constructor stub
-		try {
+		/*try {
 			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e) {
 			System.out.println("NullPointerException: " + e);
-		}
+		}*/
 	}
 	
 	/*
@@ -46,12 +46,12 @@ public class Researcher extends Avatar{
 		
 		
 		f = field.getNeighbour(Direction.North);				//Prototipus idejére
-		try {
+		/*try {
 			Test.bw.write(this.name + " checked " + f.getName() + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		/*System.out.println("Melyik iranyba?");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {

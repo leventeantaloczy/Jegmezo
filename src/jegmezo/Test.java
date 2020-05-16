@@ -21,14 +21,14 @@ import jegmezo.items.*;
 
 
 public class Test {
-	public static BufferedWriter bw;
+	/*public static BufferedWriter bw;
 	Controller controller = new Controller();
 	
 	
 	
-	private void initTest(boolean init) {
+	private void initTest(boolean init, String[] args) {
 		try {
-			Controller.startGame(init);
+			Controller.startGame(init, args);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -103,7 +103,7 @@ public class Test {
 	/*
 	 * beallitja a szomszedot, eloszor eszak majd del kelet nyugat 
 	 */
-	private void Bind(String field1, String field2) throws IOException {
+	/*private void Bind(String field1, String field2) throws IOException {
 		findField(field1).setNeighbour(findField(field2));
 	}
 	
@@ -165,7 +165,7 @@ public class Test {
 	 * amelyik mezon all azt az itemeet veszi fel
 	 */
 	
-	private void tobackpack(String avatarName) {
+	/*private void tobackpack(String avatarName) {
 		findAvatar(avatarName).addToBackpack();
 	}
 	
@@ -203,32 +203,32 @@ public class Test {
 	 * hasznalva (n)
 	 * Hanga
 	 */
-	private void setused(String fragileShovelName, String n) {
+	/*private void setused(String fragileShovelName, String n) {
 		findItem(fragileShovelName).setUsed(Integer.parseInt(n));
 	}
 	
-	public void evaluateTest(BufferedReader br, String fileName) throws IOException {
+	public void evaluateTest(BufferedReader br, String fileName, String[] args) throws IOException {
 		bw = new BufferedWriter(new FileWriter(fileName));
 		
 		String st = null;
 		/*
 		 * Ha az elso sor fullInit, akkor az az initet teszteli
 		 */
-		st = br.readLine();
-		if(st.equals("fullInit"))
-			initTest(true);
+		//st = br.readLine();
+		/*if(st.equals("fullInit"))
+			initTest(true, args);
 		else
-			initTest(false);
+			initTest(false, args);*/
 		
-		while ((st = br.readLine()) != null) {
+		/*while ((st = br.readLine()) != null) {
 			String[] command = st.split(" ");
 
 			switch (command[0].toLowerCase()) {
 				case "init":
-					initTest(true);
+					initTest(true, args);
 					break;
-				case "avatar":
-					controller.gameArea.avatars.add(avatar(command[1].toLowerCase(), command[2].toLowerCase()));
+				case "avatar":*/
+				/*	controller.gameArea.avatars.add(avatar(command[1].toLowerCase(), command[2].toLowerCase()));
 					break;
 				case "field":
 					controller.gameArea.fieldsOnArea.add(Field(command[1].toLowerCase(), command[2].toLowerCase()));
@@ -287,9 +287,8 @@ public class Test {
 		}
 		System.out.println("Created: " + fileName);
 		bw.close();
-	}
-	
-	public boolean didItSucced(FileReader result, FileReader keyFile) throws IOException {
+	}*/
+	/*public boolean didItSucced(FileReader result, FileReader keyFile) throws IOException {
 
 
 		BufferedReader br1 = new BufferedReader(result);
@@ -326,7 +325,7 @@ public class Test {
 					 fr = new FileReader(f);
 					 BufferedReader bread = new BufferedReader(fr);
 					 String[] newName = fileName.split("\\.");
-					 t.evaluateTest(bread, newName[0] + "Out." + newName[1]);
+					 t.evaluateTest(bread, newName[0] + "Out." + newName[1], args);
 					 if(t.didItSucced(new FileReader(newName[0] + "Out." + newName[1]), new FileReader(path + "/" + newName[0] + "Control.txt"))) {
 						 System.out.println(newName[0] + " succeded");
 					 }else {
@@ -340,5 +339,5 @@ public class Test {
 		 }catch (NullPointerException e) {
 			System.out.println(e);
 		}
-	  }	
+	  }	*/
 }

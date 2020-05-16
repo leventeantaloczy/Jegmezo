@@ -31,12 +31,12 @@ public class Shovel extends Item{
 		System.out.println("<Shovel.use()");
 		Field f = a.getField();
 		f.setSnow(-2);
-		try {
+		/*try {
 			Test.bw.write("Shovel used\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">Shovel.use()");
 	}
 	

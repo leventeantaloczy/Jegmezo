@@ -27,12 +27,12 @@ public class Cartridge extends Item{
 	@Override
 	public void use(Avatar a) {
 		System.out.println("Cartridge.use()");
-		try {
+		/*try {
 			Test.bw.write("Cartidge used\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">Cartridge.use()"); 
 		return;
 		

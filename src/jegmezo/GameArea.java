@@ -48,7 +48,7 @@ public class GameArea {
 			/*Ezutan ezt a numberOfPlayers-t oda kell adni az Avatar-oknak, 
 			pontosabban egynlove tenni a durability valtozojukkal.*/
 
-			fieldAdder(numberOfPlayers + 3);
+			fieldAdder(9);
 			try {
 				setterOfTheNeighbourhood();
 			} catch (IOException e) {
@@ -79,8 +79,8 @@ public class GameArea {
 			e.printStackTrace();
 		}
 		if(lowerConstraint) {
-			while(toReturn < constraint) {
-				System.out.println("I'm afraid it won't work... Give a lower number, please");
+			while(toReturn < constraint || toReturn > 6) {
+				System.out.println("I'm afraid it won't work... Give another number, please");
 				try {
 					toReturn = Integer.parseInt(br.readLine());
 				} catch (IOException e) {
@@ -90,7 +90,7 @@ public class GameArea {
 		}
 		else {
 			while(toReturn > constraint) {
-				System.out.println("I'm afraid it won't work... Give a higher number, please");
+				System.out.println("I'm afraid it won't work... Give a lower number, please");
 				try {
 					toReturn = Integer.parseInt(br.readLine());
 				} catch (IOException e) {

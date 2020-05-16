@@ -90,7 +90,7 @@ public abstract class Avatar {
 	 */
 	public void decrementDurability() {
 		System.out.println(durability + " durab");
-		if(this.field.getKills())
+		if(this.field.getKills() && !this.wearsWetsuit)
 			durability--;
 		if(durability <= 0)
 			gameEnder.endGame();
@@ -128,16 +128,18 @@ public abstract class Avatar {
 	 */
 	public void addToBackpack() {
 		System.out.println("<Avatar.addToBackpack()");
-		backpack.add(field.item);
-		
-		try {
-			Test.bw.write(field.item.getName() + " added to backpack\n");
-		} catch (IOException e) {
-			e.printStackTrace();
+		if(this.field.getSnowAmount() <= 0) {
+			backpack.add(field.item);
+			
+			/*try {
+				Test.bw.write(field.item.getName() + " added to backpack\n");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}*/
+			
+			field.removeItem();
+			setActivity(1);
 		}
-		
-		field.removeItem();
-		setActivity(1);
 		System.out.println(">Avatar.addToBackpack()");
 	}
 	
@@ -297,13 +299,13 @@ public abstract class Avatar {
 			this.endTurn();
 		}
 		System.out.println("ezen a mezon allok: " + this.field.id);
-		try {
+		/*try {
 			Test.bw.write(this.name + " moved to the " +  d.toString() + "\n");
 		}catch (NullPointerException e) {
 			System.out.println(e);
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">Avatar.move()");
 	}
 	
@@ -349,12 +351,12 @@ public abstract class Avatar {
 		activityPoints -= i;
 		System.out.println(activityPoints);
 		if(activityPoints <= 0) {
-			try {
+			/*try {
 				Test.bw.write("EndTurn\n");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			this.endTurn();
 		}
 		System.out.println(">Avatar.setActivity()");
@@ -377,12 +379,12 @@ public abstract class Avatar {
 	 */
 	public void setField(Field _field) throws IOException {
 		field = _field;
-		try {
+		/*try {
 			Test.bw.write(field.getName() + " has " + this.name + "\n");
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
-		}
+		}*/
 		
 	}
 	

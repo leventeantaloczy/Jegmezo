@@ -27,12 +27,12 @@ public class Flare extends Item{
 	@Override
 	public void use(Avatar a) {
 		System.out.println("<Flare.use()");
-		try {
+		/*try {
 			Test.bw.write("Flare used\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">Flare.use()");
 	}
 	

@@ -2,7 +2,6 @@ package jegmezo.fields;
 
 import java.io.IOException;
 
-import jegmezo.Test;
 
 public class Border extends Field{
 	
@@ -19,7 +18,7 @@ public class Border extends Field{
 	 */
 	public Border(String _name) throws IOException {
 		super(_name);
-		Test.bw.write(this.name + " created(Border) \n");
+		//Test.bw.write(this.name + " created(Border) \n");
 	}
 	
 	/**
@@ -31,11 +30,11 @@ public class Border extends Field{
 	public boolean accept() {
 		System.out.println("<Field.accept()");
 		System.out.println("border");
-		try {
+		/*try {
 			Test.bw.write("Moved towards border\n");
 		} catch (IOException e) {
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">Field.accept()");
 		return false;
 	}

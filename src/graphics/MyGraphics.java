@@ -1,5 +1,6 @@
 package graphics;
 
+import java.io.IOException;
 import java.util.function.UnaryOperator;
 
 import javafx.application.Application;
@@ -28,12 +29,27 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
+import jegmezo.Controller;
+import jegmezo.GameArea;
  
-public class HelloWorld extends Application {
+public class MyGraphics extends Application {
 	private Stage mainStage;
+	private Controller control;
+	private ImageView[][] viewmx = new ImageView[9][9];
 	
     public static void main(String[] args) {
         launch(args);
+    }
+    
+    @Override
+    public void init() {
+    	control = new Controller();
+    	try {
+			control.startGame(true);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
     
     @Override
@@ -69,26 +85,118 @@ public class HelloWorld extends Application {
     	gridIceField.setPrefSize(800, 800);
     	gridIceField.setMinSize(800, 800);
     	gridIceField.setGridLinesVisible(true);
+    	//----------------Tivadar---------------------------------Begin------------------------
+    	Image IceField = new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 88.8, 88.8, false, false);
+    	Image HoleField = new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false);
+    	Image Eskimo1  = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 29.6, 29.6, false, false);
+    	Image Eskimo2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo2.png"), 29.6, 29.6, false, false);
+    	Image Eskimo3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo3.png"), 29.6, 29.6, false, false);
+    	Image Eskimo4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo4.png"), 29.6, 29.6, false, false);
+    	Image Eskimo5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 29.6, 29.6, false, false);
+    	Image Eskimo6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 29.6, 29.6, false, false);
+    	Image Researcher1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher1.png"), 29.6, 29.6, false, false);
+    	Image Researcher2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher2.png"), 29.6, 29.6, false, false);
+    	Image Researcher3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
+    	Image Researcher4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
+    	Image Researcher5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
+    	Image Researcher6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
+    	Image Bear = new Image(getClass().getClassLoader().getResourceAsStream("resources/medve.png"), 29.6, 29.6, false, false);
+    	//Image IceField2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 29.6, 29.6, false, false);
+    	
+    	//----------------Tivadar---------------------------------End------------------------
     	
     	////-----------------------------------------IceField & Fields------------------------
+    	int counter = 11;
+    	int avatarcounter = 0;
     	for (int i = 0; i < 9; i++) {
-        	for(int j = 0; j < 9; j++) {
+    		int n = 0;
+        	for(int j = 0; j < 11; j++) {
         		GridPane gridField = new GridPane();
         		gridField.setMinSize(88.8, 88.8);
         		gridField.setMaxSize(88.8, 88.8);
-        		
-        		//inside Fields
-        		for(int k = 0; k < 3; k++) {
-        			for(int l = 0; l < 3; l++) {
-        				TextField halo = new TextField("heyho");
-        				halo.setMinSize(29, 29);
-        				gridField.setGridLinesVisible(false);
-        				gridField.add(halo, k, l);
-        			}
+        		int helper = counter % 11;
+        		System.out.println("helper: " + helper);
+          		System.out.println("counter: " + counter);
+        		if(!( helper == 0 || helper == 10 )) {
+        			System.out.println("begyüttem");
+	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
+        			//if(false) {
+	        			viewmx[n][i] = new ImageView(HoleField);
+	        			gridIceField.add(viewmx[n][i], n, i);
+	        		}else {
+	        			viewmx[n][i] = new ImageView(IceField);
+	        			gridIceField.add(viewmx[n][i], n, i);
+	        		}
+	        		for(int k = 0; k < 3; k++) {
+	        			for(int l = 0; l < 3; l++) {
+	        				ImageView halo = new ImageView();
+	        				gridField.setGridLinesVisible(false);
+	        				//System.out.println(control.getGameArea().fieldsOnArea.get(counter).avatars.size() + " " + avatarcounter);
+	        				if(control.getGameArea().fieldsOnArea.get(counter).avatars.size() > avatarcounter) {
+	        						//System.out.println("avatart talaltam");
+		        					String melyik = control.getGameArea().fieldsOnArea.get(counter).avatars.get(avatarcounter).getName();
+		        					switch (melyik) {
+									case "e0":
+										halo.setImage(Eskimo1);
+										break;
+									case "e1":
+										halo.setImage(Eskimo2);
+										break;
+									case "e2":
+										halo.setImage(Eskimo3);
+										break;
+									case "e3":
+										halo.setImage(Eskimo4);
+										break;
+									case "e4":
+										halo.setImage(Eskimo5);
+										break;
+									case "e5":
+										halo.setImage(Eskimo6);
+										break;
+									case "r0":
+										halo.setImage(Researcher1);
+										break;
+									case "r1":
+										halo.setImage(Researcher2);
+										break;
+									case "r2":
+										halo.setImage(Researcher3);
+										break;
+									case "r3":
+										halo.setImage(Researcher4);
+										break;
+									case "r4":
+										halo.setImage(Researcher5);
+										break;
+									case "r5":
+										halo.setImage(Researcher6);
+										break;
+									case "b0":
+										halo.setImage(Bear);
+										break;
+									case "b1":
+										halo.setImage(Bear);
+										break;
+									case "b2":
+										halo.setImage(Bear);
+										break;
+									default:
+										halo.setImage(placeHolderImage);
+										break;
+		        					}
+		        				avatarcounter++;
+	        				}
+	        				gridField.add(halo, k, l);
+	        			}
+	        		}
+	        		avatarcounter = 0;
+	        		
+	        		
+	        		gridIceField.add(gridField, n, i);
+	        		n++;
         		}
-        		
-        		
-        		gridIceField.add(gridField, i, j);
+        		counter++;
         	}
 		}
     	
@@ -173,27 +281,27 @@ public class HelloWorld extends Application {
     	
     	Button up = new Button();
     	up.setPrefSize(60, 60);
-    	up.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
+    	//up.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
     	up.setLayoutX(60);
     	up.setLayoutY(130);
     	
     	Button right = new Button();
     	right.setPrefSize(60, 60);
-    	right.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
+    	//right.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
     	right.setLayoutX(120);
     	right.setLayoutY(190);
     	right.setRotate(90);
     	
     	Button down = new Button();
     	down.setPrefSize(60, 60);
-    	down.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
+    	//down.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
     	down.setLayoutX(60);
     	down.setLayoutY(250);
     	down.setRotate(180);
     	
     	Button left = new Button();
     	left.setPrefSize(60, 60);
-    	left.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
+    	//left.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
     	left.setLayoutX(0);
     	left.setLayoutY(190);
     	left.setRotate(270);
@@ -340,5 +448,6 @@ public class HelloWorld extends Application {
     	//nameofAvatar.setFont(new Font("Arial Rounded MT Bold", 18));
     	nameofAvatar.setTextFill(Color.BLACK);
     }
+   
 }
 	
