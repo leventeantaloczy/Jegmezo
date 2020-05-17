@@ -39,6 +39,7 @@ import javafx.util.converter.IntegerStringConverter;
 import jegmezo.Controller;
 import jegmezo.Direction;
 import jegmezo.GameArea;
+import jegmezo.avatars.Avatar;
  
 public class MyGraphics extends Application {
 	private Stage mainStage;
@@ -395,10 +396,8 @@ public class MyGraphics extends Application {
 	            stage.setHeight(1000);
 	            stage.setWidth(1000);
 	            stage.setScene(ItemSelectionScene());
-	            stage.show();
-				
-			}
-    		
+	            stage.show();	
+			}	
     	});
     	
     	Button sUse = new Button();
@@ -440,6 +439,12 @@ public class MyGraphics extends Application {
     	up.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	up.setLayoutX(60);
     	up.setLayoutY(130);
+    	up.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.North);
+            }
+    	});
+    	
     	
     	Button right = new Button();
     	right.setPrefSize(60, 60);
@@ -448,6 +453,11 @@ public class MyGraphics extends Application {
     	right.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	right.setLayoutY(190);
     	right.setRotate(90);
+    	right.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.East);
+            }
+    	});
     	
     	Button down = new Button();
     	down.setPrefSize(60, 60);
@@ -456,6 +466,11 @@ public class MyGraphics extends Application {
     	down.setLayoutX(60);
     	down.setLayoutY(250);
     	down.setRotate(180);
+    	down.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.South);
+            }
+    	});
     	
     	Button left = new Button();
     	left.setPrefSize(60, 60);
@@ -464,6 +479,11 @@ public class MyGraphics extends Application {
     	left.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	left.setLayoutY(190);
     	left.setRotate(270);
+    	left.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.West);
+            }
+    	});
     	
     	uiRoot.getChildren().add(use);
     	uiRoot.getChildren().add(sUse);
