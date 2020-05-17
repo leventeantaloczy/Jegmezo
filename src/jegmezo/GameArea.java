@@ -34,9 +34,15 @@ public class GameArea {
  	 * Ha az init trua, akkor felhasznaloi bemenet alapjan pit palyat. 
  	 * Ha nem, akkor csak letrejon az attributumaival.
  	 */
-	public GameArea(GameEnder gameEnder, boolean init){
-		Random rand = new Random();
+	public GameArea(){
 		System.out.println("<GameArea.constructor()");
+		
+		System.out.println(">GameArea.constructor()");
+	}
+	
+	public void init(GameEnder gameEnder, boolean init) {
+		Random rand = new Random();
+		
 		
 		/*
 		* Egy jo kis init szekvencia. 
@@ -45,7 +51,7 @@ public class GameArea {
 		* Zoli
 		*/
 		if(init) {
-			numberOfPlayers = dataReader("How many players will try to escape?", 3, true);
+			//numberOfPlayers = dataReader("How many players will try to escape?", 3, true);
 			int researcherNumber = rand.nextInt(numberOfPlayers - 2) + 1;
 
 			/*Ezutan ezt a numberOfPlayers-t oda kell adni az Avatar-oknak, 
@@ -66,8 +72,6 @@ public class GameArea {
 				e.printStackTrace();
 			}
 		}
-		
-		System.out.println(">GameArea.constructor()");
 	}
 	
 	private int dataReader(String question, int constraint, boolean lowerConstraint) {
@@ -308,5 +312,9 @@ public class GameArea {
 	
 	public static int getNumberOfPlayers() {
 		return numberOfPlayers;
+	}
+	
+	public void setNumberOfPlayers(int num) {
+		numberOfPlayers = num;
 	}
 }

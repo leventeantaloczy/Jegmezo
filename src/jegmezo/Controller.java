@@ -20,7 +20,7 @@ public class Controller {
 		System.out.println("<Controller.startGame()");
 		
 		gameEnder = new GameEnder();
-		gameArea = new GameArea(gameEnder, init);
+		gameArea = new GameArea();
 		/*if(init) {
 			System.out.println("if init");
 			runGame();
@@ -137,5 +137,8 @@ public class Controller {
     }
 	public GameArea getGameArea() {
 		return gameArea;
+	}
+	public GameEnder getGameEnder() {
+		return gameEnder;
 	}
 }
