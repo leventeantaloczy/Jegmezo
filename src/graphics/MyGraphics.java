@@ -342,6 +342,12 @@ public class MyGraphics extends Application {
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #FFB6B6");
     	
+    	Button dig = new Button();
+        dig.setPrefSize(60, 60);
+        dig.setLayoutX(60);
+        dig.setLayoutY(191);
+    	
+    	
     	Button up = new Button();
     	up.setPrefSize(60, 60);
     	//up.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
@@ -376,6 +382,7 @@ public class MyGraphics extends Application {
     	uiRoot.getChildren().add(right);
     	uiRoot.getChildren().add(down);
     	uiRoot.getChildren().add(left);
+    	uiRoot.getChildren().add(dig);
 
     	
     	//Addig elements to UI

@@ -96,6 +96,12 @@ public abstract class Avatar {
 			gameEnder.endGame();
 	}
 	
+	public void digForItem() {
+		
+		this.field.setSnow(-1);
+		this.setActivity(1);
+	}
+	
 	/**
 	 * Avatar eldob egy itemet:
 	 * Meg kell adni benne hanyas itemet dobja el, majd

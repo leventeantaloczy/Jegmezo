@@ -193,6 +193,10 @@ public abstract class Field {
 	public void setSnow(int i) {
 		System.out.println("<Field.setSnow()");
 		snowAmount += i;
+		
+		if(snowAmount < 0)
+			snowAmount = 0;
+		
 		/*try {
 			//Test.bw.write("snow fell on this field " + this.name + "\n" );
 			//Test.bw.write(avatars.get(0).getName() + " hp: " + avatars.get(0).getHealthPoints() + "\n");
