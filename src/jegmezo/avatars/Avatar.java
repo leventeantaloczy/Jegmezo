@@ -172,10 +172,6 @@ public abstract class Avatar {
 		System.out.println(">Avatar.useItem()");
 	}
 	
-	/*
-	 * adott item hasznalata ha az a hatizsakban van
-	 * Hanga
-	 */
 	/**
 	 * Adott item hasznalata:
 	 * Ezzel a fuggvennyel az avatar felhasznalja az adott itemet,

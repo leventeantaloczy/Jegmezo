@@ -44,15 +44,14 @@ public class Researcher extends Avatar{
 		
 		Field f = new StableIce(); 
 		
-		
-		f = field.getNeighbour(Direction.North);				//Prototipus idejére
 		/*try {
 			Test.bw.write(this.name + " checked " + f.getName() + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
-		/*System.out.println("Melyik iranyba?");
+		
+		System.out.println("Melyik iranyba?");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		try {
 			String direction = br.readLine();
@@ -79,7 +78,7 @@ public class Researcher extends Avatar{
 			}
 		}catch(IOException e){
 			
-		}*/
+		}
 		
 		this.setActivity(1);
 		
