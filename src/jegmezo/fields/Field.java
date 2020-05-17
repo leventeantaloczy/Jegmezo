@@ -147,11 +147,11 @@ public abstract class Field {
 	public void addAvatar(Avatar a) throws IOException {
 		System.out.println("<Field.addAvatar()");
 		avatars.add(a);
-		try {
+		/*try {
 			Test.bw.write(a.getName() + " placed on: " + this.name + "\n");
 		}catch (NullPointerException e) {
 			System.out.println(e);
-		}
+		}*/
 		System.out.println(">Field.addAvatar()");
 	}
 	
@@ -177,11 +177,11 @@ public abstract class Field {
 	public void setNeighbour(Field f) throws IOException {
 		System.out.println("<Field.setNeighbour()");
 		this.neighbours.add(f);
-		try {
+		/*try {
 			Test.bw.write(this.name + "-" + f.getName() + " binded\n");
 		}catch (NullPointerException e) {
 			System.out.println(e);
-		}
+		}*/
 		System.out.println(">Field.setNeighbour()");
 	}
 	
@@ -193,13 +193,13 @@ public abstract class Field {
 	public void setSnow(int i) {
 		System.out.println("<Field.setSnow()");
 		snowAmount += i;
-		try {
-			Test.bw.write("snow fell on this field " + this.name + "\n" );
-			Test.bw.write(avatars.get(0).getName() + " hp: " + avatars.get(0).getHealthPoints() + "\n");
+		/*try {
+			//Test.bw.write("snow fell on this field " + this.name + "\n" );
+			//Test.bw.write(avatars.get(0).getName() + " hp: " + avatars.get(0).getHealthPoints() + "\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		
 		System.out.println(">Field.setSnow()");
 	}
@@ -223,12 +223,12 @@ public abstract class Field {
 	public void setShelter(Shelter sh) {
 		System.out.println("<Field.setShelter()");
 		this.shelter = sh;
-		try {
+		/*try {
 			Test.bw.write(sh.toString() + " is built\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">Field.setShelter()");
 	}
 	

@@ -55,20 +55,20 @@ public class Gun extends Item{
 		boolean end =(importantCounter > 2 && field.avatars.size() == GameArea.getNumberOfPlayers()) ?  true : false;
 		
 		if(end) {
-			try {
+			/*try {
 				Test.bw.write("Gun used\n");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			GameEnder.endGame();
 		}else {
-			try {
+			/*try {
 				Test.bw.write("Nothing happened\n");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			System.out.println("Requirements not satisfied");
 		}
 		

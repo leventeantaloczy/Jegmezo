@@ -18,12 +18,12 @@ public abstract class Item {
 	 */
 	public Item(String _name) throws IOException {
 		name = _name;
-		try {
+		/*try {
 			Test.bw.write(this.name + " created\n");
 		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
-		}
+		}*/
 	}
 	
 	/**

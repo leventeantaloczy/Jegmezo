@@ -46,12 +46,12 @@ public class Rope extends Item{
 		f = a.getField().getNeighbour(Direction.North);
 		if(f.avatars.size() > 0) {
 			for(Avatar av : f.avatars){
-				try {
+				/*try {
 					Test.bw.write(av.getName() + " rescued\n");
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
-				}
+				}*/
 				av.move(Direction.South);
 			}
 		}

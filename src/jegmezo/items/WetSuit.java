@@ -29,12 +29,12 @@ public class WetSuit extends Item{
 	public void use(Avatar a) {
 		System.out.println("<WetSuit.use()");
 		a.wearsWetsuit = true;
-		try {
+		/*try {
 			Test.bw.write("WetSuit used\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">WetSuit.use()");
 	}
 	

@@ -41,22 +41,22 @@ public class FragileShovel extends Item{
 	public void use(Avatar a) {
 		if(numOfUsage < 3) {
 			Field f = a.getField();
-			try {
+			/*try {
 				Test.bw.write("FragileShovel used\n");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 			f.setSnow(-2);
 			numOfUsage++;
 		}else {
 			a.removeFromBackpack(this);
-			try {
+			/*try {
 				Test.bw.write("FragileShovel broken\n");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 		
 	}

@@ -21,9 +21,10 @@ public class Controller {
 		
 		gameEnder = new GameEnder();
 		gameArea = new GameArea(gameEnder, init);
-		if(init) {
+		/*if(init) {
+			System.out.println("if init");
 			runGame();
-		}
+		}*/
 		
 		System.out.println(">Controller.startGame()");
 	}
@@ -114,7 +115,7 @@ public class Controller {
 			 * Igy 50% esellyel esik minden mezon a ho
 			 */ 
 	        	int probability = rand .nextInt(101);
-	        	if(probability > -1) {
+	        	if(probability > 50) {
 	        		fields.get(i).setSnow(1);
 				for(int j = 0; j < fields.get(i).avatars.size(); j++) {
 	        			fields.get(i).avatars.get(j).loseHealth();
@@ -125,7 +126,7 @@ public class Controller {
 		System.out.println(">Controller.Storm()");
 	}
 	
-	/*public static void main(String[] args) {
+	public void mainThread() {
         System.out.println("A legjobb targy a Projlab!! -help ;)");
         try {
 			startGame(true);
@@ -133,5 +134,8 @@ public class Controller {
 			System.out.println("IOexception: startgame");
 			e.printStackTrace();
 		}
-    }*/
+    }
+	public GameArea getGameArea() {
+		return gameArea;
+	}
 }

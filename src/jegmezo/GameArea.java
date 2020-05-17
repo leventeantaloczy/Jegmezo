@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
+
 import jegmezo.avatars.*;
 import jegmezo.fields.*;
 import jegmezo.items.*;
@@ -33,6 +35,7 @@ public class GameArea {
  	 * Ha nem, akkor csak letrejon az attributumaival.
  	 */
 	public GameArea(GameEnder gameEnder, boolean init){
+		Random rand = new Random();
 		System.out.println("<GameArea.constructor()");
 		
 		/*
@@ -43,12 +46,12 @@ public class GameArea {
 		*/
 		if(init) {
 			numberOfPlayers = dataReader("How many players will try to escape?", 3, true);
-			int researcherNumber = dataReader("How many of them has a paper in ice unstability researching?", numberOfPlayers, false);
+			int researcherNumber = rand.nextInt(numberOfPlayers - 2) + 1;
 
 			/*Ezutan ezt a numberOfPlayers-t oda kell adni az Avatar-oknak, 
 			pontosabban egynlove tenni a durability valtozojukkal.*/
 
-			fieldAdder(numberOfPlayers + 3);
+			fieldAdder(9);
 			try {
 				setterOfTheNeighbourhood();
 			} catch (IOException e) {
@@ -79,8 +82,8 @@ public class GameArea {
 			e.printStackTrace();
 		}
 		if(lowerConstraint) {
-			while(toReturn < constraint) {
-				System.out.println("I'm afraid it won't work... Give a lower number, please");
+			while(toReturn < constraint || toReturn > 6) {
+				System.out.println("I'm afraid it won't work... Give another number, please");
 				try {
 					toReturn = Integer.parseInt(br.readLine());
 				} catch (IOException e) {
@@ -90,7 +93,7 @@ public class GameArea {
 		}
 		else {
 			while(toReturn > constraint) {
-				System.out.println("I'm afraid it won't work... Give a higher number, please");
+				System.out.println("I'm afraid it won't work... Give a lower number, please");
 				try {
 					toReturn = Integer.parseInt(br.readLine());
 				} catch (IOException e) {
@@ -201,7 +204,7 @@ public class GameArea {
 		System.out.println("<GameArea.putStaffOnGameArea()");
 
 		int i;
-		int width = numberOfPlayers + 3;
+		int width = 9;
 		for(i = 0; i < researcherNumber; i++) {
 			String name = "r" + i;
 			Researcher researcher = new Researcher(name);

@@ -26,12 +26,12 @@ public class EmptyItem extends Item{
 	 */
 	public void use(Avatar a) {
 		System.out.println("<EmptyItem.use()");
-		try {
+		/*try {
 			Test.bw.write("EmptyItem used\n");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
+		}*/
 		System.out.println(">EmptyItem.use()");
 		return;
 	}

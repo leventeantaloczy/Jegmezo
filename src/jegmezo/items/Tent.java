@@ -30,12 +30,12 @@ public class Tent extends Item{
 	public void use(Avatar a) {
 		if(a.getField().getShelter() == Shelter.None) {
 			a.getField().setShelter(Shelter.Tent);
-			try {
+			/*try {
 				Test.bw.write("Tent used\n");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-			}
+			}*/
 		}
 	}
 	

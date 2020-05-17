@@ -20,11 +20,11 @@ public class PolarBear extends Avatar{
 		super(_name);
 		this.healthPoints = 100;
 		this.setNPC(true);
-		try {
+		/*try {
 			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e){
 			System.out.println("NullpointerException: " + e);
-		}
+		}*/
 	}
 
 	/**
@@ -63,11 +63,11 @@ public class PolarBear extends Avatar{
 			}
 			field.removeAvatar(this);
 			if(!(field.getNeighbour(trueWay).avatars.isEmpty())) {
-				try {
+				/*try {
                     Test.bw.write(this.name + " ate avatar(s) on this field: " + field.getName() + "\n");
                 } catch (IOException e) {
                     e.printStackTrace();
-                }
+                }*/
 				gameEnder.endGame();
 			}
 			field = field.getNeighbour(trueWay);
