@@ -689,13 +689,14 @@ public class MyGraphics extends Application {
         dirchoose.setTitle("Choose a direction!");
         dirchoose.setScene(sceneDir);
         
-        
+        String arrowPath = path + "/src/resources/arrowBlue.png";
         up.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
             	    dir = Direction.North;
             	    dirchoose.hide();
             }
         });
+        up.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
 
         right.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
@@ -703,18 +704,26 @@ public class MyGraphics extends Application {
             	    dirchoose.hide();
             }
         });
+        right.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
+        
         down.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
             	    dir = Direction.South;
             	    dirchoose.hide();
             }
         });
+        
+        down.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
+        
         left.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
             	    dir = Direction.West;
             	    dirchoose.hide();
             }
         });
+        
+        left.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
+        
         dirchoose.show();
         
     	return dir;
