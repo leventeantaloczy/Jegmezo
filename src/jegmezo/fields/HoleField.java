@@ -12,7 +12,7 @@ public class HoleField extends Field{
 	 */
 	public HoleField() {
 		this.kills = true;
-		capacity = 0;
+		
 	}
 	
 	/**
@@ -24,7 +24,6 @@ public class HoleField extends Field{
 	public HoleField(String _name) throws IOException {
 		super(_name);
 		this.kills = true;
-		capacity = 0;
 		//Test.bw.write(this.name + " created (HoleField) \n");
 	}
 }

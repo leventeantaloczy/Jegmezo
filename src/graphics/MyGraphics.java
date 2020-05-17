@@ -17,6 +17,7 @@ import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -30,6 +31,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import jegmezo.Controller;
+import jegmezo.Direction;
 import jegmezo.GameArea;
  
 public class MyGraphics extends Application {
@@ -59,26 +61,83 @@ public class MyGraphics extends Application {
     	mainStage.setTitle("MainStage");
     	mainStage.setResizable(false);
     	
-    	//------------Tivadar-----------ItemSelectionList----------------Begin---------------------
     	
-    	VBox itemSelectionLayout = new VBox();
-    	Label placeHolderText = new Label("This is a placeholder");
-    	Label placeHolderText2 = new Label("This is a placeholder2");
-    	Image placeHolderImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png"), 100, 100, false, false);
-    	HBox itemSelectionInside1 = new HBox();
-    	itemSelectionInside1.setAlignment(Pos.CENTER_LEFT);
-    	HBox itemSelectionInside2 = new HBox();
-    	itemSelectionInside2.setAlignment(Pos.CENTER_LEFT);
-    	itemSelectionInside1.getChildren().add(new ImageView(placeHolderImage));
-    	itemSelectionInside1.getChildren().add(placeHolderText);
-    	itemSelectionInside2.getChildren().add(new ImageView(placeHolderImage));
-    	itemSelectionInside2.getChildren().add(placeHolderText2);
-    	itemSelectionLayout.getChildren().add(itemSelectionInside1);
-    	itemSelectionLayout.getChildren().add(itemSelectionInside2);
     	
-    	Scene itemSelectionScene = new Scene(itemSelectionLayout, 800, 800);
+    	
+    	mainStage.setScene(MenuScene());
+    	mainStage.show();
+    }
     
-    	//------------Tivadar-----------ItemSelectionList----------------End-----------------------
+    //Menu scene method
+    public Scene MenuScene() {
+    	VBox menuItems = new VBox();
+    	menuItems.prefWidth(1200);
+    	menuItems.prefHeight(800);
+    	menuItems.setAlignment(Pos.CENTER);
+    	menuItems.setSpacing(100);
+    	
+    	Label letsplay = new Label("How many players?");
+       	letsplay.setFont(new Font("Arial Rounded MT Bold",50));
+       	
+       	TextField numPlayers = new TextField("3");
+       	numPlayers.setMaxWidth(100);
+       	numPlayers.setMinHeight(70);
+       	numPlayers.setFont(new Font(44));
+       	UnaryOperator<Change> integerFilter = change -> {
+       	    String newText = change.getControlNewText();
+       	    if (newText.matches("-?([1-9][0-9]*)?")) { 
+       	        return change;
+       	    }
+       	    return null;
+       	};
+
+       	numPlayers.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
+       	
+       	Button startGame = new Button("Start Game");
+       	startGame.setMinWidth(150);
+       	startGame.setMinHeight(70);
+       	startGame.setFont(new Font("Arial Rounded MT Bold",30));
+       	startGame.setOnAction(new EventHandler<ActionEvent>() {
+       	    @Override public void handle(ActionEvent e) {
+       	        if(Integer.parseInt(numPlayers.getText()) > 6 || Integer.parseInt(numPlayers.getText()) < 3) {
+       	        	final Stage dialog = new Stage();
+                    dialog.initModality(Modality.APPLICATION_MODAL);
+                    dialog.initOwner(mainStage);
+                    VBox dialogVbox = new VBox(20);
+                    
+                    Button closeButton = new Button("Close");
+                    closeButton.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override public void handle(ActionEvent e) {
+                            dialog.hide();
+                        }
+                    });
+                    dialogVbox.getChildren().addAll(new Text("Enter a valid number please! (3-6)"),closeButton);
+                    dialogVbox.setAlignment(Pos.CENTER);
+                    
+                    Scene dialogScene = new Scene(dialogVbox, 250, 100);
+                    dialog.setTitle("Error :(");
+                    dialog.setScene(dialogScene);
+                    dialog.show();
+       	        } else {
+           	      mainStage.setScene(MainScene());
+       	        }
+       	    }
+       	});
+       	
+    	menuItems.getChildren().addAll(letsplay, numPlayers, startGame);
+    	String style = "-fx-background-color: linear-gradient(#24fffb, #ffebeb);";   	
+    	//String style = "-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");";   	
+
+    	menuItems.setStyle(style);
+    	
+		Scene menuScene = new Scene(menuItems,1200,800);
+		//menuScene.setFill(pattern);
+    	
+    	return menuScene;
+    }
+    
+    public Scene MainScene() {
+    	
     	//------------Levente & Benedek ------ MainScene--------------Begin------------------------
     	BorderPane bPane = new BorderPane();
     	GridPane gridIceField = new GridPane();
@@ -86,6 +145,7 @@ public class MyGraphics extends Application {
     	gridIceField.setMinSize(800, 800);
     	gridIceField.setGridLinesVisible(true);
     	//----------------Tivadar---------------------------------Begin------------------------
+    	
     	Image IceField = new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 88.8, 88.8, false, false);
     	Image HoleField = new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false);
     	Image Eskimo1  = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 29.6, 29.6, false, false);
@@ -131,7 +191,7 @@ public class MyGraphics extends Application {
         		System.out.println("helper: " + helper);
           		System.out.println("counter: " + counter);
         		if(!( helper == 0 || helper == 10 )) {
-        			System.out.println("begyï¿½ttem");
+        			System.out.println("begyüttem");
 	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
         			//if(false) {
 	        			viewmx[n][i] = new ImageView(HoleField);
@@ -195,7 +255,6 @@ public class MyGraphics extends Application {
 										halo.setImage(Bear);
 										break;
 									default:
-										halo.setImage(placeHolderImage);
 										break;
 		        					}
 		        				avatarcounter++;
@@ -297,7 +356,7 @@ public class MyGraphics extends Application {
     	setLife(avatarsList,1,5);
     	setName(avatarsList,1,"Levente");
     	setLife(avatarsList,2,4);
-    	setName(avatarsList,2,"Zoltï¿½n");
+    	setName(avatarsList,2,"Zoltán");
     	setLife(avatarsList,3,3);
     	setName(avatarsList,3,"Tivadar");
     	setLife(avatarsList,4,2);
@@ -319,6 +378,20 @@ public class MyGraphics extends Application {
                 "-fx-max-width: 60px; " +
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #99FF9D");
+    	use.setOnAction(new EventHandler<ActionEvent>() {
+
+			@Override
+			public void handle(ActionEvent arg0) {
+				Stage stage = new Stage();
+	            stage.setTitle("Choose Item");
+	            stage.setHeight(1000);
+	            stage.setWidth(1000);
+	            stage.setScene(ItemSelectionScene());
+	            stage.show();
+				
+			}
+    		
+    	});
     	
     	Button sUse = new Button();
     	sUse.setText("S Use");
@@ -393,77 +466,108 @@ public class MyGraphics extends Application {
 
     	Scene mainScene = new Scene(bPane, 1200, 800);
     	//------------Levente & Benedek ------ MainScene--------------End------------------------
-    	
-    	mainStage.setScene(mainScene);
-    	mainStage.show();
+    	return mainScene;
     }
     
-    //Menu scene method
-    public Scene MenuScene() {
-    	VBox menuItems = new VBox();
-    	menuItems.prefWidth(1200);
-    	menuItems.prefHeight(800);
-    	menuItems.setAlignment(Pos.CENTER);
-    	menuItems.setSpacing(100);
+    private Scene ItemSelectionScene() {
+    	//------------Tivadar-----------ItemSelectionList----------------Begin---------------------
     	
-    	Label letsplay = new Label("How many players?");
-       	letsplay.setFont(new Font("Arial Rounded MT Bold",50));
-       	
-       	TextField numPlayers = new TextField("3");
-       	numPlayers.setMaxWidth(100);
-       	numPlayers.setMinHeight(70);
-       	numPlayers.setFont(new Font(44));
-       	UnaryOperator<Change> integerFilter = change -> {
-       	    String newText = change.getControlNewText();
-       	    if (newText.matches("-?([1-9][0-9]*)?")) { 
-       	        return change;
-       	    }
-       	    return null;
-       	};
-
-       	numPlayers.setTextFormatter(new TextFormatter<Integer>(new IntegerStringConverter(), 0, integerFilter));
-       	
-       	Button startGame = new Button("Start Game");
-       	startGame.setMinWidth(150);
-       	startGame.setMinHeight(70);
-       	startGame.setFont(new Font("Arial Rounded MT Bold",30));
-       	startGame.setOnAction(new EventHandler<ActionEvent>() {
-       	    @Override public void handle(ActionEvent e) {
-       	        if(Integer.parseInt(numPlayers.getText()) > 6 || Integer.parseInt(numPlayers.getText()) < 3) {
-       	        	final Stage dialog = new Stage();
-                    dialog.initModality(Modality.APPLICATION_MODAL);
-                    dialog.initOwner(mainStage);
-                    VBox dialogVbox = new VBox(20);
-                    
-                    Button closeButton = new Button("Close");
-                    closeButton.setOnAction(new EventHandler<ActionEvent>() {
-                        @Override public void handle(ActionEvent e) {
-                            dialog.hide();
-                        }
-                    });
-                    dialogVbox.getChildren().addAll(new Text("Enter a valid number please! (3-6)"),closeButton);
-                    dialogVbox.setAlignment(Pos.CENTER);
-                    
-                    Scene dialogScene = new Scene(dialogVbox, 250, 100);
-                    dialog.setTitle("Error :(");
-                    dialog.setScene(dialogScene);
-                    dialog.show();
-       	        } else {
-           	      //TODO: START GAME
-       	        }
-       	    }
-       	});
-       	
-    	menuItems.getChildren().addAll(letsplay, numPlayers, startGame);
-    	String style = "-fx-background-color: linear-gradient(#24fffb, #ffebeb);";   	
-    	//String style = "-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");";   	
-
-    	menuItems.setStyle(style);
+    	VBox itemSelectionLayout = new VBox();
+    	Image placeHolderImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png"), 100, 100, false, false);
+    	Image cartridgeImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/batman.png"), 100, 100, false, false);
+    	Image flareImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/flare.png"), 100, 100, false, false);
+    	Image foodImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/food.png"), 100, 100, false, false);
+    	Image fragileShovelImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/fragile_shovel.png"), 100, 100, false, false);
+    	Image gunImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/gun.png"), 100, 100, false, false);
+    	Image ropeImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/rope.png"), 100, 100, false, false);
+    	Image shovelImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/shovel.png"), 100, 100, false, false);
+    	Image tentImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/tent.png"), 100, 100, false, false);
+    	Image wetSuitImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/Wetsuit.png"), 100, 100, false, false);
+    	/*HBox itemSelectionInside1 = new HBox();
+    	itemSelectionInside1.setAlignment(Pos.CENTER_LEFT);
+    	HBox itemSelectionInside2 = new HBox();
+    	itemSelectionInside2.setAlignment(Pos.CENTER_LEFT);
+    	itemSelectionInside1.getChildren().add(new ImageView(placeHolderImage));
+    	itemSelectionInside1.getChildren().add(placeHolderText);
+    	itemSelectionInside2.getChildren().add(new ImageView(placeHolderImage));
+    	itemSelectionInside2.getChildren().add(placeHolderText2);
+    	itemSelectionLayout.getChildren().add(itemSelectionInside1);
+    	itemSelectionLayout.getChildren().add(itemSelectionInside2);*/
+    	for(int i = 0; i < 9; i++) {
+    		GridPane itemSelectionInside = new GridPane();
+    		ColumnConstraints col1 = new ColumnConstraints();
+		    col1.setPercentWidth(25);
+		    ColumnConstraints col2 = new ColumnConstraints();
+		    col2.setPercentWidth(25);
+		    ColumnConstraints col3 = new ColumnConstraints();
+		    col3.setPercentWidth(25);
+		    ColumnConstraints col4 = new ColumnConstraints();
+		    col4.setPercentWidth(25);
+		    itemSelectionInside.getColumnConstraints().addAll(col1,col2,col3,col4);
+    		switch (i) {
+			case 0:
+				itemSelectionInside.add(new ImageView(cartridgeImage),0,0);
+				itemSelectionInside.add(new Label("Cartridge"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 1:
+				itemSelectionInside.add(new ImageView(flareImage),0,0);
+				itemSelectionInside.add(new Label("Flare"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 2:
+				itemSelectionInside.add(new ImageView(foodImage),0,0);
+				itemSelectionInside.add(new Label("Food"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 3:
+				itemSelectionInside.add(new ImageView(fragileShovelImage),0,0);
+				itemSelectionInside.add(new Label("Fragile Shovel"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 4:
+				itemSelectionInside.add(new ImageView(gunImage),0,0);
+				itemSelectionInside.add(new Label("Gun"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 5:
+				itemSelectionInside.add(new ImageView(ropeImage),0,0);
+				itemSelectionInside.add(new Label("Rope"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 6:
+				itemSelectionInside.add(new ImageView(shovelImage),0,0);
+				itemSelectionInside.add(new Label("Shovel"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 7:
+				itemSelectionInside.add(new ImageView(tentImage),0,0);
+				itemSelectionInside.add(new Label("Tent"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Button("Use"),3,0);
+				break;
+			case 8:
+				itemSelectionInside.add(new ImageView(wetSuitImage),0,0);
+				itemSelectionInside.add(new Label("WetSuit"),1,0);
+				itemSelectionInside.add(new Label("0"),2,0);
+				break;
+			default:
+				break;
+			}
+    		itemSelectionLayout.getChildren().add(itemSelectionInside);
+    	}
     	
-		Scene menuScene = new Scene(menuItems,1200,800);
-		//menuScene.setFill(pattern);
-    	
-    	return menuScene;
+    	Scene itemSelectionScene = new Scene(itemSelectionLayout, 1000, 1000);
+    
+    	//------------Tivadar-----------ItemSelectionList----------------End-----------------------
+    	return itemSelectionScene;
     }
     
     //returns a field in the IceField
@@ -518,6 +622,81 @@ public class MyGraphics extends Application {
     	//nameofAvatar.setFont(new Font("Arial Rounded MT Bold", 18));
     	nameofAvatar.setTextFill(Color.BLACK);
     }
+    
+    private Direction dir = null;
+    public Direction whichDir() {
+        Stage dirchoose = new Stage();
+    	dirchoose.initModality(Modality.APPLICATION_MODAL);
+        dirchoose.initOwner(mainStage);
+    	
+        Pane pane = new Pane();
+        
+        Button up = new Button();
+    	up.setPrefSize(60, 60);
+    	up.setLayoutX(120);
+    	up.setLayoutY(60);
+    	
+    	Button right = new Button();
+    	right.setPrefSize(60, 60);
+    	right.setLayoutX(180);
+    	right.setLayoutY(120);
+    	right.setRotate(90);
+    	
+    	Button down = new Button();
+    	down.setPrefSize(60, 60);
+    	down.setLayoutX(120);
+    	down.setLayoutY(180);
+    	down.setRotate(180);
+    	
+    	Button left = new Button();
+    	left.setPrefSize(60, 60);
+    	left.setLayoutX(60);
+    	left.setLayoutY(120);
+    	left.setRotate(270);
+        
+    	pane.getChildren().add(up);
+    	pane.getChildren().add(right);
+    	pane.getChildren().add(down);
+    	pane.getChildren().add(left);
+
+    	
+    	
+        Scene sceneDir = new Scene(pane,300,300);
+        dirchoose.setTitle("Choose a direction!");
+        dirchoose.setScene(sceneDir);
+        
+        
+        up.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	    dir = Direction.North;
+            	    dirchoose.hide();
+            }
+        });
+
+        right.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	    dir = Direction.East;
+            	    dirchoose.hide();
+            }
+        });
+        down.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	    dir = Direction.South;
+            	    dirchoose.hide();
+            }
+        });
+        left.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	    dir = Direction.West;
+            	    dirchoose.hide();
+            }
+        });
+        dirchoose.show();
+        
+    	return dir;
+    }
    
 }
+
+
 	
