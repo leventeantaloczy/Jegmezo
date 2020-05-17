@@ -101,12 +101,12 @@ public class MyGraphics extends Application {
     	Image Researcher5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
     	Image Researcher6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
     	Image Bear = new Image(getClass().getClassLoader().getResourceAsStream("resources/medve.png"), 29.6, 29.6, false, false);
-    	Image EskimoImageAvatar1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo1.png"), 30, 30, false, false);
-    	Image EskimoImageAvatar2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo2.png"), 30, 30, false, false);
-    	Image EskimoImageAvatar3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo3.png"), 30, 30, false, false);
-    	Image EskimoImageAvatar4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo4.png"), 30, 30, false, false);
-    	Image EskimoImageAvatar5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo5.png"), 30, 30, false, false);
-    	Image EskimoImageAvatar6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo5.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo2.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo3.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo4.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 30, 30, false, false);
     	Image ResearcherImageAvatar1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher1.png"), 30, 30, false, false);
     	Image ResearcherImageAvatar2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher2.png"), 30, 30, false, false);
     	Image ResearcherImageAvatar3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
@@ -131,7 +131,7 @@ public class MyGraphics extends Application {
         		System.out.println("helper: " + helper);
           		System.out.println("counter: " + counter);
         		if(!( helper == 0 || helper == 10 )) {
-        			System.out.println("begyüttem");
+        			System.out.println("begyï¿½ttem");
 	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
         			//if(false) {
 	        			viewmx[n][i] = new ImageView(HoleField);
@@ -297,7 +297,7 @@ public class MyGraphics extends Application {
     	setLife(avatarsList,1,5);
     	setName(avatarsList,1,"Levente");
     	setLife(avatarsList,2,4);
-    	setName(avatarsList,2,"Zoltán");
+    	setName(avatarsList,2,"Zoltï¿½n");
     	setLife(avatarsList,3,3);
     	setName(avatarsList,3,"Tivadar");
     	setLife(avatarsList,4,2);
