@@ -119,7 +119,9 @@ public class MyGraphics extends Application {
                     dialog.setScene(dialogScene);
                     dialog.show();
        	        } else {
-           	      mainStage.setScene(MainScene());
+       	        	control.getGameArea().setNumberOfPlayers(Integer.parseInt(numPlayers.getText()));
+       	        	control.getGameArea().init(control.getGameEnder(), true);
+       	        	mainStage.setScene(MainScene());
        	        }
        	    }
        	});
