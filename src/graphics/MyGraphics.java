@@ -188,7 +188,7 @@ public class MyGraphics extends Application {
     	//----------------Tivadar---------------------------------End------------------------
     	
     	////-----------------------------------------IceField & Fields------------------------
-    	int counter = 11;
+    	/*int counter = 11;
     	int avatarcounter = 0;
     	for (int i = 0; i < 9; i++) {
     		int n = 0;
@@ -203,13 +203,16 @@ public class MyGraphics extends Application {
         			System.out.println("begy�ttem");
 	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
         			//if(false) {
-	        			viewmx[n][i] = new ImageView(HoleField);
-	        			gridIceField.add(viewmx[n][i], n, i);
+	        			//viewmx[n][i] = new ImageView(HoleField);
+	        			//gridIceField.add(viewmx[n][i], n, i);
+	        			gridIceField.add(control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField(), n, i);
 	        		}else {
-	        			viewmx[n][i] = new ImageView(IceField);
-	        			gridIceField.add(viewmx[n][i], n, i);
+	        			//viewmx[n][i] = new ImageView(IceField);
+	        			//gridIceField.add(viewmx[n][i], n, i);
+	        			gridIceField.add(control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField(), n, i);
+
 	        		}
-	        		for(int k = 0; k < 3; k++) {
+	        		/*for(int k = 0; k < 3; k++) {
 	        			for(int l = 0; l < 3; l++) {
 	        				ImageView halo = new ImageView();
 	        				gridField.setGridLinesVisible(false);
@@ -274,12 +277,51 @@ public class MyGraphics extends Application {
 	        		avatarcounter = 0;
 	        		
 	        		
-	        		gridIceField.add(gridField, n, i);
+	        		//gridIceField.add(gridField, n, i);
+	        		n++;
+        		}
+        		counter++;
+        
+		}*/
+    	for (int i = 11; i < 109; i++) {
+			if(!(i % 11 == 0 || i % 11 == 10)) {
+				int x = i/11;
+				int y = i%11;
+				gridIceField.add(control.getGameArea().fieldsOnArea.get(i).getGraphics().refreshField(), y, x);
+			}
+		}
+    	/*
+    	int counter = 11;
+    	for (int i = 0; i < 9; i++) {
+    		int n = 0;
+        	for(int j = 0; j < 11; j++) {
+        		GridPane gridField = new GridPane();
+        		gridField.setMinSize(88.8, 88.8);
+        		gridField.setMaxSize(88.8, 88.8);
+        		int helper = counter % 11;
+        		System.out.println("helper: " + helper);
+          		System.out.println("counter: " + counter);
+        		if(!( helper == 0 || helper == 10 )) {
+        			System.out.println("begy�ttem");
+	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
+        			//if(false) {
+	        			//viewmx[n][i] = new ImageView(HoleField);
+	        			//gridIceField.add(viewmx[n][i], n, i);
+	        			GridPane shit = control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField();
+	        			System.out.println(shit.getBaselineOffset() + "haloka");
+	        			gridIceField.add(shit, n, i);
+	        		}else {
+	        			//viewmx[n][i] = new ImageView(IceField);
+	        			//gridIceField.add(viewmx[n][i], n, i);
+	        			gridIceField.add(control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField(), n, i);	        			
+	        		}	        		
+	        		
 	        		n++;
         		}
         		counter++;
         	}
-		}
+        }*/
+    	
     	
     	////-----------------------------------------IceField & Fields-END-----------------------
     	////------------------------------------------------UI-BEGIN-------------------------------
@@ -433,7 +475,10 @@ public class MyGraphics extends Application {
     	up.setMaxSize(60, 60);
     	//Image arrowBackground = new Image(getClass().getClassLoader().getResourceAsStream("resources/arrowBlue.png"), 50, 50, false, false);
     	//up.setGraphic(new ImageView(arrowBackground));
+    	path = path.replaceAll("\\\\", "/");
     	String arrowPath = path + "/src/resources/arrowBlue.png";
+    	System.out.println(arrowPath);
+    	
     	
     	System.out.println(arrowPath);
     	up.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");

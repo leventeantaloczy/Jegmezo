@@ -2,6 +2,8 @@ package jegmezo.items;
 
 import java.io.IOException;
 
+import graphics.ItemGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 
@@ -16,6 +18,7 @@ public class Food extends Item{
 	public Food(String _name) throws IOException{
 		super(_name);
 		this.important = false;
+		this.graphics = new ItemGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/food.png"), 29.6, 29.6, false, false));
 	}
 	
 	/**

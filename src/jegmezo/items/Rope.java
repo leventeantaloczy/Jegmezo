@@ -4,7 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-
+import graphics.ItemGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Direction;
 import jegmezo.Test;
 import jegmezo.avatars.Avatar;
@@ -21,6 +22,8 @@ public class Rope extends Item{
 	public Rope(String _name) throws IOException{
 		super(_name);
 		this.important = false;
+		this.graphics = new ItemGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/rope.png"), 29.6, 29.6, false, false));
+
 	}
 	
 	/**

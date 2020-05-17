@@ -2,6 +2,8 @@ package jegmezo.fields;
 
 import java.io.IOException;
 
+import graphics.FieldGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Test;
 
 public class HoleField extends Field{
@@ -12,7 +14,8 @@ public class HoleField extends Field{
 	 */
 	public HoleField() {
 		this.kills = true;
-		
+		System.out.println("graphicsHole");
+		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
 	}
 	
 	/**
@@ -24,6 +27,7 @@ public class HoleField extends Field{
 	public HoleField(String _name) throws IOException {
 		super(_name);
 		this.kills = true;
+		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
 		//Test.bw.write(this.name + " created (HoleField) \n");
 	}
 }

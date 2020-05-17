@@ -3,13 +3,18 @@ package jegmezo.avatars;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.Random;
 
+import graphics.AvatarGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Shelter;
 import jegmezo.Test;
 import jegmezo.fields.Field;
 
 public class Eskimo extends Avatar{
 	
+	static int eskimoCounter = 1;
+
 	/**
 	 * Eskimo konstruktora:
 	 * Az activityPoints-ot 5-re alltija
@@ -20,6 +25,8 @@ public class Eskimo extends Avatar{
 	public Eskimo(String _name) throws IOException{
 		super(_name);
 		this.healthPoints = 5;
+		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo" + eskimoCounter + ".png"), 29.6, 29.6, false, false));
+		eskimoCounter++;
 		/*try {
 			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e){

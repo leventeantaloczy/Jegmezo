@@ -3,6 +3,8 @@ package jegmezo.items;
 import java.io.IOException;
 import java.util.List;
 
+import graphics.ItemGraphics;
+import javafx.scene.image.Image;
 import jegmezo.avatars.Avatar;
 import jegmezo.fields.Field;
 import jegmezo.GameArea;
@@ -20,8 +22,11 @@ public class Gun extends Item{
 	public Gun(String _name) throws IOException{
 		super(_name);
 		this.important = true;
+		this.graphics = new ItemGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/gun.png"), 29.6, 29.6, false, false));
 		
 	}
+	
+	
 	
 	/**
 	 * Name - Getter

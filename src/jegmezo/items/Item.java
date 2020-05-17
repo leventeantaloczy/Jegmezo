@@ -2,6 +2,7 @@ package jegmezo.items;
 
 import java.io.IOException;
 
+import graphics.ItemGraphics;
 import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 
@@ -9,6 +10,7 @@ public abstract class Item {
 	
 	protected boolean important;
 	protected String name;
+	protected ItemGraphics graphics;
 	
 	/**
 	 * Item konstruktora:
@@ -24,6 +26,10 @@ public abstract class Item {
 			// TODO Auto-generated catch block
 			System.out.println(e);
 		}*/
+	}
+	
+	public ItemGraphics getGraphics() {
+		return graphics;
 	}
 	
 	/**

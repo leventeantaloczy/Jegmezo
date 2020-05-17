@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import graphics.FieldGraphics;
 import jegmezo.Direction;
 import jegmezo.Shelter;
 import jegmezo.Test;
@@ -21,6 +22,7 @@ public abstract class Field {
 	protected boolean kills;
 	public int id;
 	protected String name;
+	protected FieldGraphics graphics;
 	
 	/*
 	 * TODO
@@ -35,6 +37,11 @@ public abstract class Field {
 	 */
 	public boolean getKills() {
 		return kills;
+	}
+	
+	public FieldGraphics getGraphics() {
+		System.out.println("getgraphics");
+		return graphics;
 	}
 	
 	/**

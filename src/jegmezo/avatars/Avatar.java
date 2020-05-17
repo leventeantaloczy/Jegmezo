@@ -9,6 +9,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import graphics.AvatarGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Direction;
 import jegmezo.GameEnder;
 import jegmezo.Test;
@@ -26,6 +28,12 @@ public abstract class Avatar {
 	protected int healthPoints;
 	protected String name;
 	private boolean NPC = false;
+	protected AvatarGraphics graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png")));
+	
+	public AvatarGraphics getGraphics() {
+		System.out.println("getGraphics");
+		return graphics;
+	}
 	
 	
 	/**

@@ -5,11 +5,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
+import graphics.AvatarGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Direction;
 import jegmezo.Test;
 
 public class Researcher extends Avatar{
-
+	
+	static int researcherCounter = 1;
 	
 	/**
 	 * Researcher konstruktora:
@@ -20,6 +23,8 @@ public class Researcher extends Avatar{
 	public Researcher(String _name) throws IOException {
 		super(_name); 
 		this.healthPoints = 4;
+		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo" + researcherCounter + ".png"), 29.6, 29.6, false, false));
+		researcherCounter++;
 		// TODO Auto-generated constructor stub
 		/*try {
 			Test.bw.write(this.name + " created\n");

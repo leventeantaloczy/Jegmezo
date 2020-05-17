@@ -3,6 +3,8 @@ import jegmezo.fields.Field;
 
 import java.io.IOException;
 
+import graphics.ItemGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 
@@ -17,6 +19,8 @@ public class Shovel extends Item{
 	public Shovel(String _name) throws IOException{
 		super(_name);
 		this.important = false;
+		this.graphics = new ItemGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/shovel.png"), 29.6, 29.6, false, false));
+
 	}
 	
 	/**

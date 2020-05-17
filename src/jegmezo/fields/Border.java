@@ -2,13 +2,19 @@ package jegmezo.fields;
 
 import java.io.IOException;
 
+import graphics.FieldGraphics;
+import javafx.scene.image.Image;
+
 
 public class Border extends Field{
 	
 	/**
 	 * Border konstruktora 
 	 */
-	public Border() {}
+	public Border() {
+		System.out.println("graphicsBorder");
+		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
+	}
 	
 	/**
 	 * Border konstruktora:
@@ -19,6 +25,8 @@ public class Border extends Field{
 	public Border(String _name) throws IOException {
 		super(_name);
 		//Test.bw.write(this.name + " created(Border) \n");
+		System.out.println("graphicsBorder");
+		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
 	}
 	
 	/**

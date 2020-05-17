@@ -2,6 +2,8 @@ package jegmezo.items;
 
 import java.io.IOException;
 
+import graphics.ItemGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 import jegmezo.fields.Field;
@@ -18,6 +20,8 @@ public class FragileShovel extends Item{
 	 public FragileShovel(String _name) throws IOException {
 		super(_name);
 		this.important = false;
+		this.graphics = new ItemGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/fragile_shovel.png"), 29.6, 29.6, false, false));
+
 	}
 
 	 /**

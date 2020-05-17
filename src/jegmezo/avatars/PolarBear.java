@@ -4,6 +4,8 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.util.Random;
 
+import graphics.AvatarGraphics;
+import javafx.scene.image.Image;
 import jegmezo.Direction;
 import jegmezo.Test;
 import jegmezo.fields.Field;
@@ -20,6 +22,9 @@ public class PolarBear extends Avatar{
 		super(_name);
 		this.healthPoints = 100;
 		this.setNPC(true);
+		
+		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/medve.png"), 29.6, 29.6, false, false));
+
 		/*try {
 			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e){

@@ -40,6 +40,8 @@ public class GameArea {
 		System.out.println(">GameArea.constructor()");
 	}
 	
+
+	
 	public void init(GameEnder gameEnder, boolean init) {
 		Random rand = new Random();
 		
