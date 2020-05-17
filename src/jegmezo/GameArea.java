@@ -301,7 +301,11 @@ public class GameArea {
 		}
 		System.out.println("<<changeActiveAvatar");
 	}
-
+	
+	public int getActiveAvatar() {
+		return activeAvatar;
+	}
+	
 	public static int getNumberOfPlayers() {
 		return numberOfPlayers;
 	}

@@ -101,6 +101,19 @@ public class MyGraphics extends Application {
     	Image Researcher5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
     	Image Researcher6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
     	Image Bear = new Image(getClass().getClassLoader().getResourceAsStream("resources/medve.png"), 29.6, 29.6, false, false);
+    	Image EskimoImageAvatar1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo1.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo2.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo3.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo4.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo5.png"), 30, 30, false, false);
+    	Image EskimoImageAvatar6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Eskimo5.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher1.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher2.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
+    	Image placeholderImageAvatar = new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png"), 30, 30, false, false);
     	//Image IceField2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 29.6, 29.6, false, false);
     	
     	//----------------Tivadar---------------------------------End------------------------
@@ -215,21 +228,71 @@ public class MyGraphics extends Application {
         	avatarRow.setMinSize(350, 33.3);
         	avatarRow.setSpacing(40);
         	avatarRow.setAlignment(Pos.CENTER_LEFT);
-        	Image placeHolderImageAvatar = new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png"), 30, 30, false, false);
         	Label avatarName = new Label("Not Playing :(");
         	avatarName.setFont(new Font(18));
         	avatarName.setMinSize(150, 33.3);
         	Label avatarLife = new Label("0");
         	avatarLife.setFont(new Font(18));
-        	avatarRow.getChildren().add(new ImageView(placeHolderImageAvatar));
+        	avatarRow.getChildren().add(new ImageView());
         	avatarRow.getChildren().add(avatarName);
         	avatarRow.getChildren().add(avatarLife);
         	
         	avatarsList.getChildren().add(avatarRow);
 		}
     	
+    	for(int i = 0; i < control.getGameArea().avatars.size(); i++) {
+    		if(!(control.getGameArea().avatars.get(i).getName().contains("b"))) {
+	    		String melyik = control.getGameArea().avatars.get(i).getName();
+				switch (melyik) {
+				case "e0":
+					setImage(avatarsList,i,EskimoImageAvatar1);
+					break;
+				case "e1":
+					setImage(avatarsList,i,EskimoImageAvatar2);
+					break;
+				case "e2":
+					setImage(avatarsList,i,EskimoImageAvatar3);
+					break;
+				case "e3":
+					setImage(avatarsList,i,EskimoImageAvatar4);
+					break;
+				case "e4":
+					setImage(avatarsList,i,EskimoImageAvatar5);
+					break;
+				case "e5":
+					setImage(avatarsList,i,EskimoImageAvatar6);
+					break;
+				case "r0":
+					setImage(avatarsList,i,ResearcherImageAvatar1);
+					break;
+				case "r1":
+					setImage(avatarsList,i,ResearcherImageAvatar2);
+					break;
+				case "r2":
+					setImage(avatarsList,i,ResearcherImageAvatar3);
+					break;
+				case "r3":
+					setImage(avatarsList,i,ResearcherImageAvatar4);
+					break;
+				case "r4":
+					setImage(avatarsList,i,ResearcherImageAvatar5);
+					break;
+				case "r5":
+					setImage(avatarsList,i,ResearcherImageAvatar6);
+					break;
+				default:
+					setImage(avatarsList,i,placeholderImageAvatar);
+					break;
+				}
+				setName(avatarsList,i,control.getGameArea().avatars.get(i).getName());
+				setLife(avatarsList, i, control.getGameArea().avatars.get(i).getHealthPoints());
+				deactivateAvatar(avatarsList, i);
+				if(control.getGameArea().getActiveAvatar() == i)
+	    			activateAvatar(avatarsList, i);
+    		}
+    	}
     	//Avatar's things
-    	setLife(avatarsList,0,4);
+    	/*setLife(avatarsList,0,4);
     	setName(avatarsList,0,"Benedek");
     	setLife(avatarsList,1,5);
     	setName(avatarsList,1,"Levente");
@@ -239,10 +302,10 @@ public class MyGraphics extends Application {
     	setName(avatarsList,3,"Tivadar");
     	setLife(avatarsList,4,2);
     	setName(avatarsList,4,"Hanga");
-    	//setLife(avatarsList,5,2);
-    	//setName(avatarsList,5,"Hagymakarika");
+    	setLife(avatarsList,5,2);
+    	setName(avatarsList,5,"Hagymakarika");*/
     	
-    	activateAvatar(avatarsList, 2);
+    	
     	
     	Pane uiRoot = new Pane();
     	    	
@@ -424,6 +487,13 @@ public class MyGraphics extends Application {
     	HBox avatarRow = (HBox)avatarlist.getChildren().get(index);
     	Label lifeofAvatar = (Label)avatarRow.getChildren().get(2);
     	lifeofAvatar.setText(Integer.toString(life));
+    }
+    
+    //Sets the picture of avatar in avatarlist
+    public void setImage(VBox avatarlist, int index, Image image) {
+    	HBox avatarRow = (HBox)avatarlist.getChildren().get(index);
+    	ImageView imageofAvatar = (ImageView)avatarRow.getChildren().get(0);
+    	imageofAvatar.setImage(image);
     }
     
     //Sets the name of avatar in the avatar list
