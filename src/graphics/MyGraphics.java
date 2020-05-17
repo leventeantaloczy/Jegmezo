@@ -239,8 +239,8 @@ public class MyGraphics extends Application {
     	setName(avatarsList,3,"Tivadar");
     	setLife(avatarsList,4,2);
     	setName(avatarsList,4,"Hanga");
-    	setLife(avatarsList,5,2);
-    	setName(avatarsList,5,"Hagymakarika");
+    	//setLife(avatarsList,5,2);
+    	//setName(avatarsList,5,"Hagymakarika");
     	
     	activateAvatar(avatarsList, 2);
     	
@@ -251,10 +251,10 @@ public class MyGraphics extends Application {
     	use.setLayoutX(212);
     	use.setLayoutY(130);
     	use.setStyle("-fx-background-radius: 10em; " +
-                "-fx-min-width: 55px; " +
-                "-fx-min-height: 55px; " +
-                "-fx-max-width: 55px; " +
-                "-fx-max-height: 55px;" + 
+                "-fx-min-width: 60px; " +
+                "-fx-min-height: 60px; " +
+                "-fx-max-width: 60px; " +
+                "-fx-max-height: 60px;" + 
                 "-fx-background-color: #99FF9D");
     	
     	Button sUse = new Button();
@@ -262,10 +262,10 @@ public class MyGraphics extends Application {
     	sUse.setLayoutX(257);
     	sUse.setLayoutY(196);
     	sUse.setStyle("-fx-background-radius: 10em; " +
-                "-fx-min-width: 55px; " +
-                "-fx-min-height: 55px; " +
-                "-fx-max-width: 55px; " +
-                "-fx-max-height: 55px;" + 
+                "-fx-min-width: 60px; " +
+                "-fx-min-height: 60px; " +
+                "-fx-max-width: 60px; " +
+                "-fx-max-height: 60px;" + 
                 "-fx-background-color: #C5B7FF");
     	
     	Button pickUp = new Button();
@@ -273,10 +273,10 @@ public class MyGraphics extends Application {
     	pickUp.setLayoutX(216);
     	pickUp.setLayoutY(260);
     	pickUp.setStyle("-fx-background-radius: 10em; " +
-                "-fx-min-width: 55px; " +
-                "-fx-min-height: 55px; " +
-                "-fx-max-width: 55px; " +
-                "-fx-max-height: 55px;" + 
+                "-fx-min-width: 60px; " +
+                "-fx-min-height: 60px; " +
+                "-fx-max-width: 60px; " +
+                "-fx-max-height: 60px;" + 
                 "-fx-background-color: #FFB6B6");
     	
     	Button up = new Button();
