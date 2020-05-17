@@ -1,6 +1,7 @@
 package graphics;
 
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.function.UnaryOperator;
 
 import javafx.application.Application;
@@ -16,6 +17,11 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -38,7 +44,7 @@ public class MyGraphics extends Application {
 	private Stage mainStage;
 	private Controller control;
 	private ImageView[][] viewmx = new ImageView[9][9];
-	
+	private String path = Paths.get("").toAbsolutePath().toString();
     public static void main(String[] args) {
         launch(args);
     }
@@ -193,7 +199,7 @@ public class MyGraphics extends Application {
         		System.out.println("helper: " + helper);
           		System.out.println("counter: " + counter);
         		if(!( helper == 0 || helper == 10 )) {
-        			System.out.println("begyüttem");
+        			System.out.println("begyï¿½ttem");
 	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
         			//if(false) {
 	        			viewmx[n][i] = new ImageView(HoleField);
@@ -358,7 +364,7 @@ public class MyGraphics extends Application {
     	setLife(avatarsList,1,5);
     	setName(avatarsList,1,"Levente");
     	setLife(avatarsList,2,4);
-    	setName(avatarsList,2,"Zoltán");
+    	setName(avatarsList,2,"Zoltï¿½n");
     	setLife(avatarsList,3,3);
     	setName(avatarsList,3,"Tivadar");
     	setLife(avatarsList,4,2);
@@ -425,7 +431,13 @@ public class MyGraphics extends Application {
     	
     	Button up = new Button();
     	up.setPrefSize(60, 60);
-    	//up.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
+    	up.setMaxSize(60, 60);
+    	//Image arrowBackground = new Image(getClass().getClassLoader().getResourceAsStream("resources/arrowBlue.png"), 50, 50, false, false);
+    	//up.setGraphic(new ImageView(arrowBackground));
+    	String arrowPath = path + "/src/resources/arrowBlue.png";
+    	
+    	System.out.println(arrowPath);
+    	up.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	up.setLayoutX(60);
     	up.setLayoutY(130);
     	
@@ -433,12 +445,14 @@ public class MyGraphics extends Application {
     	right.setPrefSize(60, 60);
     	//right.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
     	right.setLayoutX(120);
+    	right.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	right.setLayoutY(190);
     	right.setRotate(90);
     	
     	Button down = new Button();
     	down.setPrefSize(60, 60);
     	//down.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
+    	down.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	down.setLayoutX(60);
     	down.setLayoutY(250);
     	down.setRotate(180);
@@ -447,6 +461,7 @@ public class MyGraphics extends Application {
     	left.setPrefSize(60, 60);
     	//left.setStyle("-fx-background-image: url(\"file:///C:/Users/molna/Desktop/spec4.PNG\");");
     	left.setLayoutX(0);
+    	left.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	left.setLayoutY(190);
     	left.setRotate(270);
     	
