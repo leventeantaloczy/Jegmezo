@@ -6,7 +6,7 @@ public class Graphics {
 	protected Image image;
 	
 	public Graphics(Image image) {
-		image = image;
+		this.image = image;
 	}
 	
 	public Image getImage() {
@@ -14,6 +14,6 @@ public class Graphics {
 	}
 	
 	public void setImage(Image image) {
-		image = image;
+		this.image = image;
 	}
 }

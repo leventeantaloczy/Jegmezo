@@ -182,7 +182,7 @@ public class GameArea {
 	private void setterOfTheNeighbourhood() throws IOException {
 		System.out.println("<GameArea.setterOfTheNeighbourhood()");
 		// Lepheto resz szelessege es magassaga.
-		int widgth = numberOfPlayers + 3;
+		int widgth = 9;
 		for(int k=1; k < widgth + 1; k++) {
 			for(int l=1; l < widgth + 1; l++) {
 				// Eszaki szomszed

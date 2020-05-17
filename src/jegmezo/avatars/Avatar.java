@@ -44,10 +44,12 @@ public abstract class Avatar {
 	 * @param _name Avatar azonositoja
 	 */
 	public Avatar(String _name) {	
+		System.out.println("masodik");
 		backpack = new LinkedList<Item>();
 		name = _name;
 		activityPoints = 4;
 		System.out.println(name + " letrejott");
+		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png")));
 	}
 	
 	

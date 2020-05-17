@@ -23,7 +23,7 @@ public class Researcher extends Avatar{
 	public Researcher(String _name) throws IOException {
 		super(_name); 
 		this.healthPoints = 4;
-		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo" + researcherCounter + ".png"), 29.6, 29.6, false, false));
+		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 29.6, 29.6, false, false));
 		researcherCounter++;
 		// TODO Auto-generated constructor stub
 		/*try {

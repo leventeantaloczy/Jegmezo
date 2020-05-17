@@ -1,11 +1,11 @@
 package graphics;
 
 
-import org.graalvm.compiler.core.common.Fields;
 
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.GridPane;
 import jegmezo.fields.Field;
 
@@ -41,8 +41,8 @@ public class FieldGraphics extends Graphics {
 			for (int i = 0; i < size; i++) {
 				grid.add(new ImageView(field.avatars.get(i).getGraphics().getImage()), size/3, size%3);
 			}
-			grid.add(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/flare.png"), 100, 100, false, false)), 2, 1);
-			//grid.setBackground(arg0); this.getimage();
+			//grid.add(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/flare.png"), 100, 100, false, false)), 2, 1);
+			grid.setBackground(new Background(new BackgroundImage(this.image))); 
 			break;
 		default:
 			grid.add(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/flare.png"), 100, 100, false, false)), 2, 1);
@@ -52,14 +52,14 @@ public class FieldGraphics extends Graphics {
 		System.out.println(field.id + " field id"); 
 		
 		System.out.println(field.avatars.isEmpty());
-		if(!field.avatars.isEmpty()) {
-			System.out.println(field.avatars.get(0).getGraphics().getImage().getHeight() + "Imagaea asdlkfjasédfh"); 
+		if(!field.avatars.isEmpty()) { 
+			System.out.println(field.avatars.get(0).getGraphics().toString() + " Imagaea asdlkfjasédfh"); 
 			System.out.println("heyho not empty");
 			int size = field.avatars.size();
 			for (int i = 0; i < size; i++) {
 				System.out.println("hey" + i + "\n");
-				System.out.println(field.avatars.get(i).getGraphics().getImage().getHeight() + " image height");
-				grid.add(new ImageView(field.avatars.get(i).getGraphics().getImage()), 1, 1);
+				//System.out.println(field.avatars.get(i).getGraphics().getImage().getHeight() + " image height");
+				grid.add(new ImageView(field.avatars.get(i).getGraphics().getImage()), size/3, size%3);
 			}
 		} else {
 			grid.add(new Label("kaksi"), 0, 0);
