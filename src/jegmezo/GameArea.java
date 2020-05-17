@@ -34,9 +34,10 @@ public class GameArea {
  	 * Ha az init trua, akkor felhasznaloi bemenet alapjan pit palyat. 
  	 * Ha nem, akkor csak letrejon az attributumaival.
  	 */
-	public GameArea(){
+	public GameArea(int numberOfPlayers, GameEnder gameEnder){
 		System.out.println("<GameArea.constructor()");
-		
+		GameArea.numberOfPlayers = numberOfPlayers;
+		init(gameEnder, true);
 		System.out.println(">GameArea.constructor()");
 	}
 	
@@ -244,6 +245,7 @@ public class GameArea {
 			System.out.println("Bear on id " + bear.getField().id);
 		}
 		
+		
 		WetSuit wetSuit = new WetSuit("WetSuit");
 		Flare flare = new Flare("Flare");
 		Food food = new Food("Food");
@@ -252,15 +254,18 @@ public class GameArea {
 		Cartridge cartridge = new Cartridge("Cartidge");
 		Gun gun = new Gun("Gun");
 		Tent tent = new Tent("Tent");
-		int k = 0;
-		fieldsOnArea.get((width + 2) + 2 + k).item = tent; k++;
-		fieldsOnArea.get((width + 2) + 2 + k).item = wetSuit; k++;
-		fieldsOnArea.get((width + 2) + 2 + k).item = flare; k++;
-		fieldsOnArea.get((width + 2) + 2 + k).item = food; k += 5;
-		fieldsOnArea.get((width + 2) + 2 + k).item = shovel; k++;
-		fieldsOnArea.get((width + 2) + 2 + k).item = rope; k++;
-		fieldsOnArea.get((width + 2) + 2 + k).item = cartridge; k++;
-		fieldsOnArea.get((width + 2) + 2 + k).item = gun; k++;
+		FragileShovel fShovel = new FragileShovel("fShovel");
+		
+		putrandomField(wetSuit);
+		putrandomField(flare);
+		putrandomField(food);
+		putrandomField(shovel);
+		putrandomField(rope);
+		putrandomField(cartridge);
+		putrandomField(gun);
+		putrandomField(tent);
+		putrandomField(fShovel);
+
 		
 		for(int l = 0; l < fieldsOnArea.size(); l++) {
 			fieldsOnArea.get(l).setDurability(avatars.size());
@@ -318,5 +323,22 @@ public class GameArea {
 	
 	public void setNumberOfPlayers(int num) {
 		numberOfPlayers = num;
+	}
+	private void putrandomField(Item item) {
+		Random rand = new Random();
+		boolean flag = true;
+		System.out.println("barmi");
+		System.out.println("barmi mas");
+		while(flag) {
+			int place = rand.nextInt(95) + 13;
+			while(place % 11 == 0 || place % 11 == 10 || place % 11 == 1) {
+				place = rand.nextInt(95) + 13;
+			}
+			if(fieldsOnArea.get(place).item == null) {
+				fieldsOnArea.get(place).item = item;
+				flag = false;
+			}
+		}
+		
 	}
 }

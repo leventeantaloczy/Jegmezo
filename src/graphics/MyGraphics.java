@@ -40,6 +40,7 @@ import jegmezo.Controller;
 import jegmezo.Direction;
 import jegmezo.GameArea;
 import jegmezo.avatars.Avatar;
+import jegmezo.fields.Field;
  
 public class MyGraphics extends Application {
 	private Stage mainStage;
@@ -48,17 +49,6 @@ public class MyGraphics extends Application {
 	private String path = Paths.get("").toAbsolutePath().toString();
     public static void main(String[] args) {
         launch(args);
-    }
-    
-    @Override
-    public void init() {
-    	control = new Controller();
-    	try {
-			control.startGame(true);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
     }
     
     @Override
@@ -126,9 +116,22 @@ public class MyGraphics extends Application {
                     dialog.setScene(dialogScene);
                     dialog.show();
        	        } else {
-       	        	control.getGameArea().setNumberOfPlayers(Integer.parseInt(numPlayers.getText()));
-       	        	control.getGameArea().init(control.getGameEnder(), true);
+	       	     	control = new Controller(Integer.parseInt(numPlayers.getText()));
+	       	    	try {
+	       				control.startGame(true);
+	       			} catch (IOException t) {
+	       				// TODO Auto-generated catch block
+	       				t.printStackTrace();
+	       			}
+       	        	/*control.getGameArea().setNumberOfPlayers(Integer.parseInt(numPlayers.getText()));
+       	        	control.getGameArea().init(control.getGameEnder(), true);*/
        	        	mainStage.setScene(MainScene());
+       	        	/*try {
+						control.runGame();
+					} catch (IOException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}*/
        	        }
        	    }
        	});
@@ -478,15 +481,16 @@ public class MyGraphics extends Application {
     	path = path.replaceAll("\\\\", "/");
     	String arrowPath = path + "/src/resources/arrowBlue.png";
     	System.out.println(arrowPath);
-    	
-    	
-    	System.out.println(arrowPath);
-    	up.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
+      	up.setStyle("-fx-background-image: url(\"file:///" + arrowPath + "\");" + "-fx-background-size: cover;");
     	up.setLayoutX(60);
     	up.setLayoutY(130);
     	up.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.North);
+            	Field temp = control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField();
+            	Controller.command = "mn";
+            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField().getGraphics().refreshField();
+            	temp.getGraphics().refreshField();
+            	
             }
     	});
     	
@@ -500,7 +504,8 @@ public class MyGraphics extends Application {
     	right.setRotate(90);
     	right.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.East);
+            	//control.setCommand("me");
+            	control.setCommand("me");  
             }
     	});
     	
@@ -513,7 +518,10 @@ public class MyGraphics extends Application {
     	down.setRotate(180);
     	down.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.South);
+            	Field temp = control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField();
+            	control.setCommand("ms");
+            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField().getGraphics().refreshField();
+            	temp.getGraphics().refreshField();
             }
     	});
     	
@@ -526,7 +534,7 @@ public class MyGraphics extends Application {
     	left.setRotate(270);
     	left.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).move(Direction.West);
+            	control.command = "mw";
             }
     	});
     	

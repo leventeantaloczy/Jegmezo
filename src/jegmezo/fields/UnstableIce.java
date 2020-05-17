@@ -21,7 +21,7 @@ public class UnstableIce extends Field{
 		// (0, vagy 1) + 1 = 1, vagy 2
 		capacity = rand.nextInt(2) + 1;
 		System.out.println("graphicsUnstable");
-		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
+		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 88.8, 88.8, false, false), this);
 
 	}
 	
@@ -35,7 +35,7 @@ public class UnstableIce extends Field{
 		Random rand = new Random();
 		this.kills = false;
 		capacity = rand.nextInt(2) + 1;
-		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
+		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 88.8, 88.8, false, false), this);
 
 		//Test.bw.write(this.name + " created (UnstableIce) \n");
 	}
@@ -69,6 +69,7 @@ public class UnstableIce extends Field{
 	public void flip() {
 		System.out.println("<UnstableIce.flip()");
 		
+		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
 		this.kills = true;
 		try {
 			this.item = new EmptyItem("EmptyItem");
