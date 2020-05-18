@@ -3,7 +3,8 @@ package jegmezo;
 import java.io.IOException;
 
 public class GameEnder {
-	//majd singletonna kell tenni
+	
+	private static boolean end=false;
 	
 	public static void endGame() {
 		System.out.println("<GameEnder.endGame()");
@@ -14,6 +15,11 @@ public class GameEnder {
 		}catch(IOException e1) {
 			e1.printStackTrace();
 		}*/
+		end = true;
 		System.out.println(">GameEnder.endGame()");
+	}
+	
+	public boolean getEnd() {
+		return end;
 	}
 }

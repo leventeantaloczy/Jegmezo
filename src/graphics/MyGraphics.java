@@ -5,6 +5,7 @@ import java.nio.file.Paths;
 import java.util.function.UnaryOperator;
 
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.Pos;
@@ -329,11 +330,16 @@ public class MyGraphics extends Application {
                 "-fx-max-width: 60px; " +
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #C5B7FF");
-	sUse.setOnAction(new EventHandler<ActionEvent>() {
+    	sUse.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-		int mySelf = control.getGameArea().getActiveAvatar();
+            	int mySelf = control.getGameArea().getActiveAvatar();
             	control.setCommand("sp");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
             }
     	});
     	
@@ -347,11 +353,16 @@ public class MyGraphics extends Application {
                 "-fx-max-width: 60px; " +
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #FFB6B6");
-	pickUp.setOnAction(new EventHandler<ActionEvent>() {
+    	pickUp.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-		int mySelf = control.getGameArea().getActiveAvatar();
+            	int mySelf = control.getGameArea().getActiveAvatar();
             	control.setCommand("b");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
             }
     	});
     	
@@ -374,11 +385,16 @@ public class MyGraphics extends Application {
     	up.setLayoutY(130);
     	up.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-		int mySelf = control.getGameArea().getActiveAvatar();
+            	int mySelf = control.getGameArea().getActiveAvatar();
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("mn");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
             	temp.getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
             }
     	});
     	
@@ -392,11 +408,16 @@ public class MyGraphics extends Application {
     	right.setRotate(90);
     	right.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-		int mySelf = control.getGameArea().getActiveAvatar();
+            	int mySelf = control.getGameArea().getActiveAvatar();
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("me");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
             	temp.getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
             }
     	});
     	
@@ -409,11 +430,16 @@ public class MyGraphics extends Application {
     	down.setRotate(180);
     	down.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-		int mySelf = control.getGameArea().getActiveAvatar();
+            	int mySelf = control.getGameArea().getActiveAvatar();
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("ms");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
             	temp.getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
             }
     	});
     	
@@ -426,11 +452,16 @@ public class MyGraphics extends Application {
     	left.setRotate(270);
     	left.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-		int mySelf = control.getGameArea().getActiveAvatar();
+            	int mySelf = control.getGameArea().getActiveAvatar();
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("mw");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
             	temp.getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
             }
     	});
     	
@@ -707,7 +738,38 @@ public class MyGraphics extends Application {
         
     	return dir;
     }
-   
+    public void refreshList(VBox avatarsList) {
+    	for(int i = 0; i < control.getGameArea().avatars.size(); i++) {
+    		if(!(control.getGameArea().avatars.get(i).getName().contains("b"))) {
+    			setLife(avatarsList, i, control.getGameArea().avatars.get(i).getHealthPoints());
+    			deactivateAvatar(avatarsList, i);
+    			if(control.getGameArea().getActiveAvatar() == i)
+    				activateAvatar(avatarsList, i);
+    		}
+    	}
+    }
+    
+    private Stage endGameDialog() {
+    	final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(mainStage);
+        VBox dialogVbox = new VBox(20);
+        
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                Platform.exit();
+            }
+        });
+        dialogVbox.getChildren().addAll(new Text("Game Over!"),closeButton);
+        dialogVbox.setAlignment(Pos.CENTER);
+        
+        Scene dialogScene = new Scene(dialogVbox, 250, 100);
+        dialog.setTitle("Better Luck Next Time!");
+        dialog.setScene(dialogScene);
+        return dialog;
+    }
+    			
 }
 
 

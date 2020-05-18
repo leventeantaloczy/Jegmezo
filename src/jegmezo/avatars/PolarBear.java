@@ -59,6 +59,15 @@ public class PolarBear extends Avatar{
 		Direction trueWay = Direction.valueOf(way);
 		System.out.println("Direction: " + trueWay);
 		
+		if(!(field.getNeighbour(trueWay).avatars.isEmpty())) {
+			/*try {
+                Test.bw.write(this.name + " ate avatar(s) on this field: " + field.getName() + "\n");
+            } catch (IOException e) {
+                e.printStackTrace();
+            }*/
+			gameEnder.endGame();
+		}
+		
 		if(field.getNeighbour(trueWay).accept()) {
 			System.out.println("maki");
 			try {
@@ -67,14 +76,7 @@ public class PolarBear extends Avatar{
 				e.printStackTrace();
 			}
 			field.removeAvatar(this);
-			if(!(field.getNeighbour(trueWay).avatars.isEmpty())) {
-				/*try {
-                    Test.bw.write(this.name + " ate avatar(s) on this field: " + field.getName() + "\n");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }*/
-				gameEnder.endGame();
-			}
+			
 			field = field.getNeighbour(trueWay);
 			this.setActivity(1);
 		}
