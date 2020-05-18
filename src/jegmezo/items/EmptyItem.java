@@ -18,7 +18,7 @@ public class EmptyItem extends Item{
 	public EmptyItem(String _name) throws IOException{
 		super(_name);
 		this.important = false;
-		this.graphics = new ItemGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/gun.png"), 29.6, 29.6, false, false));
+		this.graphics = new ItemGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/emptyItem.png"), 29.6, 29.6, false, false));
 	}
 	
 	/**

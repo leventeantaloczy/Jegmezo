@@ -15,7 +15,7 @@ public class Controller {
 	static GameEnder gameEnder;
 	static GameArea gameArea;
 	public static int numberOfPlayers;
-	public static String command; 
+	public static String command = null; 
 	
 	public Controller(int numofplayers) {
 		this.numberOfPlayers = numofplayers;
@@ -76,6 +76,10 @@ public class Controller {
 				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
 			    break;
+			case "DIG":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+				gameArea.avatars.get(gameArea.activeAvatar).digForItem();;
+			    break;
 			case "D":
 				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				try {
@@ -112,7 +116,7 @@ public class Controller {
 			 * Igy 20% esellyel esik minden mezon a ho
 			 */ 
 	        	int probability = rand .nextInt(101);
-	        	if(probability > 20) {
+	        	if(probability < 0) {
 	        		fields.get(i).setSnow(1);
 	        		fields.get(i).getGraphics().refreshField();
 				for(int j = 0; j < fields.get(i).avatars.size(); j++) {
@@ -139,4 +143,19 @@ public class Controller {
 	public GameEnder getGameEnder() {
 		return gameEnder;
 	}
+	
+	/*
+	 * Tivadar
+	 */
+	public int countItem(String itemname) {
+    	int counter = 0;
+    	if(!( gameArea.avatars.get(gameArea.getActiveAvatar()).getBackpack().isEmpty())) {
+			for(int j = 0; j < gameArea.avatars.get(gameArea.getActiveAvatar()).getBackpack().size(); j++) {
+				if(gameArea.avatars.get(gameArea.getActiveAvatar()).getBackpack().get(j).getName().contains(itemname)) {
+					counter++;
+				}
+			}
+		}
+    	return counter;
+    }
 }

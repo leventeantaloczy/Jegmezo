@@ -25,7 +25,7 @@ public class Eskimo extends Avatar{
 	public Eskimo(String _name) throws IOException{
 		super(_name);
 		this.healthPoints = 5;
-		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 29.6, 29.6, false, false));
+		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo" + eskimoCounter + ".png"), 29.6, 29.6, false, false));
 		System.out.println("elso");
 		eskimoCounter++;
 		/*try {

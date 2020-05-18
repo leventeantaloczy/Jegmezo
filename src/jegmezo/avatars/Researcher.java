@@ -8,7 +8,6 @@ import java.io.InputStreamReader;
 import graphics.AvatarGraphics;
 import javafx.scene.image.Image;
 import jegmezo.Direction;
-import jegmezo.Test;
 
 public class Researcher extends Avatar{
 	
@@ -23,9 +22,8 @@ public class Researcher extends Avatar{
 	public Researcher(String _name) throws IOException {
 		super(_name); 
 		this.healthPoints = 4;
-		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 29.6, 29.6, false, false));
+		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher" + researcherCounter + ".png"), 29.6, 29.6, false, false));
 		researcherCounter++;
-		// TODO Auto-generated constructor stub
 		/*try {
 			Test.bw.write(this.name + " created\n");
 		}catch(NullPointerException e) {
@@ -52,7 +50,6 @@ public class Researcher extends Avatar{
 		/*try {
 			Test.bw.write(this.name + " checked " + f.getName() + "\n");
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}*/
 		
