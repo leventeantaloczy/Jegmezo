@@ -64,7 +64,6 @@ public class GameArea {
 			try {
 				setterOfTheNeighbourhood();
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 
@@ -212,7 +211,7 @@ public class GameArea {
 		Food food = new Food("Food");
 		Shovel shovel = new Shovel("Shovel");
 		Rope rope = new Rope("Rope");
-		Cartridge cartridge = new Cartridge("Cartidge");
+		Cartridge cartridge = new Cartridge("Cartridge");
 		Gun gun = new Gun("Gun");
 		Tent tent = new Tent("Tent");
 		FragileShovel fShovel = new FragileShovel("fShovel");

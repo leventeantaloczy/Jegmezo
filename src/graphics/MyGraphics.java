@@ -497,59 +497,69 @@ public class MyGraphics extends Application {
 		    ColumnConstraints col4 = new ColumnConstraints();
 		    col4.setPercentWidth(25);
 		    itemSelectionInside.getColumnConstraints().addAll(col1,col2,col3,col4);
+		    int cnt = 0;
     		switch (i) {
 			case 0:
+				cnt = control.countItem("Cartridge");
 				itemSelectionInside.add(new ImageView(cartridgeImage),0,0);
 				itemSelectionInside.add(new Label("Cartridge"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 1:
+				cnt = control.countItem("Flare");
 				itemSelectionInside.add(new ImageView(flareImage),0,0);
 				itemSelectionInside.add(new Label("Flare"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 2:
+				cnt = control.countItem("Food");
 				itemSelectionInside.add(new ImageView(foodImage),0,0);
 				itemSelectionInside.add(new Label("Food"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 3:
+				cnt = control.countItem("fShovel");
 				itemSelectionInside.add(new ImageView(fragileShovelImage),0,0);
 				itemSelectionInside.add(new Label("Fragile Shovel"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 4:
+				cnt = control.countItem("Gun");
 				itemSelectionInside.add(new ImageView(gunImage),0,0);
 				itemSelectionInside.add(new Label("Gun"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 5:
+				cnt = control.countItem("Rope");
 				itemSelectionInside.add(new ImageView(ropeImage),0,0);
 				itemSelectionInside.add(new Label("Rope"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 6:
+				cnt = control.countItem("Shovel");
 				itemSelectionInside.add(new ImageView(shovelImage),0,0);
 				itemSelectionInside.add(new Label("Shovel"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 7:
+				cnt = control.countItem("Tent");
 				itemSelectionInside.add(new ImageView(tentImage),0,0);
 				itemSelectionInside.add(new Label("Tent"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				itemSelectionInside.add(new Button("Use"),3,0);
 				break;
 			case 8:
+				cnt = control.countItem("WetSuit");
 				itemSelectionInside.add(new ImageView(wetSuitImage),0,0);
 				itemSelectionInside.add(new Label("WetSuit"),1,0);
-				itemSelectionInside.add(new Label("0"),2,0);
+				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
 				break;
 			default:
 				break;

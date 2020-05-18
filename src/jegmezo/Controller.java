@@ -95,8 +95,12 @@ public class Controller {
 		command = null;
 		gameArea.changeActiveAvatar();
 		Storm(gameArea.fieldsOnArea);
+		System.out.println("gameArea.activeAvatar = " + gameArea.activeAvatar);
 		while(gameArea.avatars.get(gameArea.activeAvatar).getNPC()) {
+			Field tmp = gameArea.avatars.get(gameArea.activeAvatar).getField();
 			gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
+			gameArea.avatars.get(gameArea.activeAvatar).getField().getGraphics().refreshField();
+			tmp.getGraphics().refreshField();
 			gameArea.changeActiveAvatar();
 			System.out.println("gameArea.activeAvatar = " + gameArea.activeAvatar);
 			Storm(gameArea.fieldsOnArea);
