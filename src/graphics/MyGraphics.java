@@ -191,101 +191,7 @@ public class MyGraphics extends Application {
     	//----------------Tivadar---------------------------------End------------------------
     	
     	////-----------------------------------------IceField & Fields------------------------
-    	/*int counter = 11;
-    	int avatarcounter = 0;
-    	for (int i = 0; i < 9; i++) {
-    		int n = 0;
-        	for(int j = 0; j < 11; j++) {
-        		GridPane gridField = new GridPane();
-        		gridField.setMinSize(88.8, 88.8);
-        		gridField.setMaxSize(88.8, 88.8);
-        		int helper = counter % 11;
-        		System.out.println("helper: " + helper);
-          		System.out.println("counter: " + counter);
-        		if(!( helper == 0 || helper == 10 )) {
-        			System.out.println("begy�ttem");
-	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
-        			//if(false) {
-	        			//viewmx[n][i] = new ImageView(HoleField);
-	        			//gridIceField.add(viewmx[n][i], n, i);
-	        			gridIceField.add(control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField(), n, i);
-	        		}else {
-	        			//viewmx[n][i] = new ImageView(IceField);
-	        			//gridIceField.add(viewmx[n][i], n, i);
-	        			gridIceField.add(control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField(), n, i);
-
-	        		}
-	        		/*for(int k = 0; k < 3; k++) {
-	        			for(int l = 0; l < 3; l++) {
-	        				ImageView halo = new ImageView();
-	        				gridField.setGridLinesVisible(false);
-	        				//System.out.println(control.getGameArea().fieldsOnArea.get(counter).avatars.size() + " " + avatarcounter);
-	        				if(control.getGameArea().fieldsOnArea.get(counter).avatars.size() > avatarcounter) {
-	        						//System.out.println("avatart talaltam");
-		        					String melyik = control.getGameArea().fieldsOnArea.get(counter).avatars.get(avatarcounter).getName();
-		        					switch (melyik) {
-									case "e0":
-										halo.setImage(Eskimo1);
-										break;
-									case "e1":
-										halo.setImage(Eskimo2);
-										break;
-									case "e2":
-										halo.setImage(Eskimo3);
-										break;
-									case "e3":
-										halo.setImage(Eskimo4);
-										break;
-									case "e4":
-										halo.setImage(Eskimo5);
-										break;
-									case "e5":
-										halo.setImage(Eskimo6);
-										break;
-									case "r0":
-										halo.setImage(Researcher1);
-										break;
-									case "r1":
-										halo.setImage(Researcher2);
-										break;
-									case "r2":
-										halo.setImage(Researcher3);
-										break;
-									case "r3":
-										halo.setImage(Researcher4);
-										break;
-									case "r4":
-										halo.setImage(Researcher5);
-										break;
-									case "r5":
-										halo.setImage(Researcher6);
-										break;
-									case "b0":
-										halo.setImage(Bear);
-										break;
-									case "b1":
-										halo.setImage(Bear);
-										break;
-									case "b2":
-										halo.setImage(Bear);
-										break;
-									default:
-										break;
-		        					}
-		        				avatarcounter++;
-	        				}
-	        				gridField.add(halo, k, l);
-	        			}
-	        		}
-	        		avatarcounter = 0;
-	        		
-	        		
-	        		//gridIceField.add(gridField, n, i);
-	        		n++;
-        		}
-        		counter++;
-        
-		}*/
+    	
     	for (int i = 11; i < 109; i++) {
 			if(!(i % 11 == 0 || i % 11 == 10)) {
 				int x = i/11;
@@ -293,37 +199,6 @@ public class MyGraphics extends Application {
 				gridIceField.add(control.getGameArea().fieldsOnArea.get(i).getGraphics().refreshField(), y, x);
 			}
 		}
-    	/*
-    	int counter = 11;
-    	for (int i = 0; i < 9; i++) {
-    		int n = 0;
-        	for(int j = 0; j < 11; j++) {
-        		GridPane gridField = new GridPane();
-        		gridField.setMinSize(88.8, 88.8);
-        		gridField.setMaxSize(88.8, 88.8);
-        		int helper = counter % 11;
-        		System.out.println("helper: " + helper);
-          		System.out.println("counter: " + counter);
-        		if(!( helper == 0 || helper == 10 )) {
-        			System.out.println("begy�ttem");
-	        		if(control.getGameArea().fieldsOnArea.get(counter).getKills()) {
-        			//if(false) {
-	        			//viewmx[n][i] = new ImageView(HoleField);
-	        			//gridIceField.add(viewmx[n][i], n, i);
-	        			GridPane shit = control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField();
-	        			System.out.println(shit.getBaselineOffset() + "haloka");
-	        			gridIceField.add(shit, n, i);
-	        		}else {
-	        			//viewmx[n][i] = new ImageView(IceField);
-	        			//gridIceField.add(viewmx[n][i], n, i);
-	        			gridIceField.add(control.getGameArea().fieldsOnArea.get(counter).getGraphics().refreshField(), n, i);	        			
-	        		}	        		
-	        		
-	        		n++;
-        		}
-        		counter++;
-        	}
-        }*/
     	
     	
     	////-----------------------------------------IceField & Fields-END-----------------------
@@ -433,7 +308,6 @@ public class MyGraphics extends Application {
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #99FF9D");
     	use.setOnAction(new EventHandler<ActionEvent>() {
-
 			@Override
 			public void handle(ActionEvent arg0) {
 				Stage stage = new Stage();
@@ -455,6 +329,13 @@ public class MyGraphics extends Application {
                 "-fx-max-width: 60px; " +
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #C5B7FF");
+	sUse.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+		int mySelf = control.getGameArea().getActiveAvatar();
+            	control.setCommand("sp");
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            }
+    	});
     	
     	Button pickUp = new Button();
     	pickUp.setText("Pick Up");
@@ -466,6 +347,13 @@ public class MyGraphics extends Application {
                 "-fx-max-width: 60px; " +
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #FFB6B6");
+	pickUp.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+		int mySelf = control.getGameArea().getActiveAvatar();
+            	control.setCommand("b");
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            }
+    	});
     	
     	Button dig = new Button();
         dig.setPrefSize(60, 60);
@@ -486,11 +374,11 @@ public class MyGraphics extends Application {
     	up.setLayoutY(130);
     	up.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	Field temp = control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField();
-            	Controller.command = "mn";
-            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField().getGraphics().refreshField();
+		int mySelf = control.getGameArea().getActiveAvatar();
+            	Field temp = control.getGameArea().avatars.get(mySelf).getField();
+            	control.setCommand("mn");
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
             	temp.getGraphics().refreshField();
-            	
             }
     	});
     	
@@ -504,8 +392,11 @@ public class MyGraphics extends Application {
     	right.setRotate(90);
     	right.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	//control.setCommand("me");
-            	control.setCommand("me");  
+		int mySelf = control.getGameArea().getActiveAvatar();
+            	Field temp = control.getGameArea().avatars.get(mySelf).getField();
+            	control.setCommand("me");
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	temp.getGraphics().refreshField();
             }
     	});
     	
@@ -518,9 +409,10 @@ public class MyGraphics extends Application {
     	down.setRotate(180);
     	down.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	Field temp = control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField();
+		int mySelf = control.getGameArea().getActiveAvatar();
+            	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("ms");
-            	control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getField().getGraphics().refreshField();
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
             	temp.getGraphics().refreshField();
             }
     	});
@@ -534,7 +426,11 @@ public class MyGraphics extends Application {
     	left.setRotate(270);
     	left.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	control.command = "mw";
+		int mySelf = control.getGameArea().getActiveAvatar();
+            	Field temp = control.getGameArea().avatars.get(mySelf).getField();
+            	control.setCommand("mw");
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	temp.getGraphics().refreshField();
             }
     	});
     	
