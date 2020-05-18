@@ -16,6 +16,7 @@ public class Controller {
 	static GameArea gameArea;
 	public static int numberOfPlayers;
 	public static String command = null; 
+	public static int tempCapacity;
 	
 	public Controller(int numofplayers) {
 		this.numberOfPlayers = numofplayers;
@@ -51,15 +52,6 @@ public class Controller {
 			case "T":
 				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
 			    break;
-			case "U":
-				try {
-					gameArea.avatars.get(gameArea.activeAvatar).useItem();
-				} catch (NumberFormatException e1) {
-					e1.printStackTrace();
-				} catch (IOException e1) {
-					e1.printStackTrace();
-				}
-				break;
 			case "MN":
 				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
@@ -87,6 +79,86 @@ public class Controller {
 				} catch (IOException e) {
 					e.printStackTrace();
 				}
+				break;
+			case "FOOD":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+					break;
+			case "GUN":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}		
+				break;
+			case "FSHOVEL":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "SHOVEL":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "CARTRIDGE":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "WETSUIT":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "ROPEN":
+					gameArea.avatars.get(gameArea.activeAvatar).useRope(Direction.North);
+				break;
+			case "ROPES":
+					gameArea.avatars.get(gameArea.activeAvatar).useRope(Direction.South);
+				break;
+			case "ROPEW":
+					gameArea.avatars.get(gameArea.activeAvatar).useRope(Direction.West);
+				break;
+			case "ROPEE":
+					gameArea.avatars.get(gameArea.activeAvatar).useRope(Direction.East);
+				break;
+			case "FLARE":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "TENT":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem(command);
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "RESN":
+				tempCapacity = gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.North);
+				break;
+			case "RESS":
+				tempCapacity = gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.South);
+				break;
+			case "RESW":
+				tempCapacity = gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.West);
+				break;
+			case "RESE":
+				tempCapacity = gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.East);
 				break;
 			default:
 				System.out.println("Hibas input");
@@ -120,7 +192,7 @@ public class Controller {
 			 * Igy 20% esellyel esik minden mezon a ho
 			 */ 
 	        	int probability = rand .nextInt(101);
-	        	if(probability < 10) {
+	        	if(probability < 0) {
 	        		fields.get(i).setSnow(1);
 	        		fields.get(i).getGraphics().refreshField();
 				for(int j = 0; j < fields.get(i).avatars.size(); j++) {

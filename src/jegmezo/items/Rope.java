@@ -41,84 +41,33 @@ public class Rope extends Item{
 	 *  @param a Ez az avatar lesz megmentve a Rope-pal
 	 */
 	@Override
-	public void use(Avatar a) {
+	public void use(Avatar a, Direction d) {
 		System.out.println("<Rope.use()");
-		//testre atirva
 		
+		System.out.println("Melyik iranyba?");
 		Field f;
-		f = a.getField().getNeighbour(Direction.North);
-		if(f.avatars.size() > 0) {
-			for(Avatar av : f.avatars){
-				/*try {
-					Test.bw.write(av.getName() + " rescued\n");
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-				av.move(Direction.South);
-			}
-		}
-		
-		/*System.out.println("Melyik iranyba?");
-		Field f;
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    	try {
-			String direction = br.readLine();
-			switch(direction.toLowerCase()) {
-				case "n":{
-					f = a.getField().getNeighbour(Direction.North);
-					if(f.avatars.size() > 0) {
-						for(Avatar av : f.avatars){
-							av.move(Direction.South);
-						}
-					System.out.println("Avatars moved");
-					}
-					break;
+		try {
+			f = a.getField().getNeighbour(d);
+			if(f.avatars.size() > 0) {
+				for(Avatar av : f.avatars){
+					Field fi = av.getField();
+					av.getField().removeAvatar(av);
+					av.setField(a.getField());
+					av.getField().addAvatar(av);
+					av.getField().getGraphics().refreshField();
+					fi.getGraphics().refreshField();
 				}
-				case "s":{
-					f = a.getField().getNeighbour(Direction.South);
-					if(f.avatars.size() > 0) {
-						for(Avatar av : f.avatars){
-							av.move(Direction.North);
-						}
-					System.out.println("Avatars moved");
-					}
-					break;
-				}
-				case "e":{
-					f = a.getField().getNeighbour(Direction.East);
-					if(f.avatars.size() > 0) {
-						for(Avatar av : f.avatars){
-							av.move(Direction.West);
-						}
-					System.out.println("Avatars moved");
-					}
-					break;
-				}
-				case "w":{
-					f = a.getField().getNeighbour(Direction.West);
-					if(f.avatars.size() > 0) {
-						for(Avatar av : f.avatars){
-							av.move(Direction.East);
-						}
-					System.out.println("Avatars moved");
-					}
-					break;
-				}
-				default:
-					System.out.println("Helytelen");
-					break;
 			}
 			
-			
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
+		}catch (Exception e) {
 			e.printStackTrace();
-		}*/
-		
-		
+		}		
 		System.out.println(">Rope.use()");
+	}
+
+	@Override
+	public void use(Avatar a) {
+		// TODO Auto-generated method stub
 		
 	}
 

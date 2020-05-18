@@ -3,6 +3,7 @@ package jegmezo.items;
 import java.io.IOException;
 
 import graphics.ItemGraphics;
+import jegmezo.Direction;
 import jegmezo.Test;
 import jegmezo.avatars.Avatar;
 
@@ -31,6 +32,8 @@ public abstract class Item {
 	public ItemGraphics getGraphics() {
 		return graphics;
 	}
+	
+	public void use(Avatar a, Direction d) {}
 	
 	/**
 	 * Important - Getter

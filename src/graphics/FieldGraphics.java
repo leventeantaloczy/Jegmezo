@@ -44,7 +44,7 @@ public class FieldGraphics extends Graphics {
 		switch(field.getShelter()) {
 		case Igloo :
 			//IGLOO and AVATARS INSIDE
-			grid.add(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/tent.png"), 100, 100, false, false)), 1, 1);
+			grid.add(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/igloo.png"), 29.6, 29.6, false, false)), 1, 1);
 			//ITEM
 			if(field.item != null && field.getSnowAmount() <= 0)
 				grid.add(new ImageView(field.item.getGraphics().getImage()), 1, 2);
@@ -53,7 +53,7 @@ public class FieldGraphics extends Graphics {
 			break;
 		case Tent :
 			//TENT and AVATARS INSIDE
-			grid.add(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/tent.png"), 100, 100, false, false)), 1, 1);
+			grid.add(new ImageView(new Image(getClass().getClassLoader().getResourceAsStream("resources/tent.png"), 29.6, 29.6, false, false)), 1, 1);
 			//ITEM 
 			if(field.item != null && field.getSnowAmount() <= 0)
 				grid.add(new ImageView(field.item.getGraphics().getImage()), 1, 2);

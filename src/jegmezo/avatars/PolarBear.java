@@ -7,6 +7,7 @@ import java.util.Random;
 import graphics.AvatarGraphics;
 import javafx.scene.image.Image;
 import jegmezo.Direction;
+import jegmezo.Shelter;
 import jegmezo.Test;
 import jegmezo.fields.Field;
 
@@ -59,7 +60,7 @@ public class PolarBear extends Avatar{
 		Direction trueWay = Direction.valueOf(way);
 		System.out.println("Direction: " + trueWay);
 		
-		if(!(field.getNeighbour(trueWay).avatars.isEmpty())) {
+		if(!(field.getNeighbour(trueWay).avatars.isEmpty()) && field.getNeighbour(trueWay).getShelter() != Shelter.Igloo) {
 			/*try {
                 Test.bw.write(this.name + " ate avatar(s) on this field: " + field.getName() + "\n");
             } catch (IOException e) {

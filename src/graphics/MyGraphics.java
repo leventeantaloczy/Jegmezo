@@ -45,6 +45,7 @@ import jegmezo.fields.Field;
  
 public class MyGraphics extends Application {
 	private Stage mainStage;
+	private Stage iSelectStage;
 	private Controller control;
 	private ImageView[][] viewmx = new ImageView[9][9];
 	private String path = Paths.get("").toAbsolutePath().toString();
@@ -68,6 +69,11 @@ public class MyGraphics extends Application {
     
     //Menu scene method
     public Scene MenuScene() {
+    	VBox v = new VBox();
+    	Image Splash = new Image(getClass().getClassLoader().getResourceAsStream("resources/splash.jpg"), 1200, 860,  false, false);
+    	ImageView iv = new ImageView(Splash);
+    	v.getChildren().add(iv);
+    	Scene s = new Scene(v, 1200, 800);
     	VBox menuItems = new VBox();
     	menuItems.prefWidth(1200);
     	menuItems.prefHeight(800);
@@ -117,6 +123,7 @@ public class MyGraphics extends Application {
                     dialog.setScene(dialogScene);
                     dialog.show();
        	        } else {
+       	        	mainStage.setScene(s);
 	       	     	control = new Controller(Integer.parseInt(numPlayers.getText()));
 	       	    	try {
 	       				control.startGame(true);
@@ -311,12 +318,12 @@ public class MyGraphics extends Application {
     	use.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
-				Stage stage = new Stage();
-	            stage.setTitle("Choose Item");
-	            stage.setHeight(1000);
-	            stage.setWidth(1000);
-	            stage.setScene(ItemSelectionScene());
-	            stage.show();	
+				iSelectStage = new Stage();
+	            iSelectStage.setTitle("Choose Item");
+	            iSelectStage.setHeight(1000);
+	            iSelectStage.setWidth(1000);
+	            iSelectStage.setScene(ItemSelectionScene());
+	            iSelectStage.show();	
 			}	
     	});
     	
@@ -333,7 +340,11 @@ public class MyGraphics extends Application {
     	sUse.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
             	int mySelf = control.getGameArea().getActiveAvatar();
-            	control.setCommand("sp");
+            	if(control.getGameArea().avatars.get(mySelf).getName().contains("e")) {
+            		control.setCommand("sp");
+            	}else {
+            		whichDir("Researcher");
+            	}
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
             	refreshList(avatarsList);
             	if(control.getGameEnder().getEnd()) {
@@ -370,6 +381,19 @@ public class MyGraphics extends Application {
         dig.setPrefSize(60, 60);
         dig.setLayoutX(60);
         dig.setLayoutY(191);
+        dig.setText("DIG");
+        dig.setOnAction(new EventHandler<ActionEvent>() {
+        	@Override public void handle(ActionEvent e) {
+        		int mySelf = control.getGameArea().getActiveAvatar();
+            	control.setCommand("dig");
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
+        	}
+        });
     	
     	
     	Button up = new Button();
@@ -529,72 +553,165 @@ public class MyGraphics extends Application {
 		    col4.setPercentWidth(25);
 		    itemSelectionInside.getColumnConstraints().addAll(col1,col2,col3,col4);
 		    int cnt = 0;
-    		switch (i) {
-			case 0:
-				cnt = control.countItem("Cartridge");
-				itemSelectionInside.add(new ImageView(cartridgeImage),0,0);
-				itemSelectionInside.add(new Label("Cartridge"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 1:
-				cnt = control.countItem("Flare");
-				itemSelectionInside.add(new ImageView(flareImage),0,0);
-				itemSelectionInside.add(new Label("Flare"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 2:
-				cnt = control.countItem("Food");
-				itemSelectionInside.add(new ImageView(foodImage),0,0);
-				itemSelectionInside.add(new Label("Food"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 3:
-				cnt = control.countItem("fShovel");
-				itemSelectionInside.add(new ImageView(fragileShovelImage),0,0);
-				itemSelectionInside.add(new Label("Fragile Shovel"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 4:
-				cnt = control.countItem("Gun");
-				itemSelectionInside.add(new ImageView(gunImage),0,0);
-				itemSelectionInside.add(new Label("Gun"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 5:
-				cnt = control.countItem("Rope");
-				itemSelectionInside.add(new ImageView(ropeImage),0,0);
-				itemSelectionInside.add(new Label("Rope"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 6:
-				cnt = control.countItem("Shovel");
-				itemSelectionInside.add(new ImageView(shovelImage),0,0);
-				itemSelectionInside.add(new Label("Shovel"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 7:
-				cnt = control.countItem("Tent");
-				itemSelectionInside.add(new ImageView(tentImage),0,0);
-				itemSelectionInside.add(new Label("Tent"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				itemSelectionInside.add(new Button("Use"),3,0);
-				break;
-			case 8:
-				cnt = control.countItem("WetSuit");
-				itemSelectionInside.add(new ImageView(wetSuitImage),0,0);
-				itemSelectionInside.add(new Label("WetSuit"),1,0);
-				itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-				break;
-			default:
-				break;
-			}
+		    switch (i) {
+            case 0:
+                cnt = control.countItem("Cartridge");
+                itemSelectionInside.add(new ImageView(cartridgeImage),0,0);
+                itemSelectionInside.add(new Label("Cartridge"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but1 = new Button("Use");
+                itemSelectionInside.add(but1, 3, 0);
+                but1.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent e) {
+                int mySelf = control.getGameArea().getActiveAvatar();
+                        control.setCommand("Cartridge");
+                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                        iSelectStage.close();
+                    }
+                });
+                break;
+            case 1:
+                cnt = control.countItem("Flare");
+                itemSelectionInside.add(new ImageView(flareImage),0,0);
+                itemSelectionInside.add(new Label("Flare"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but2 = new Button("Use");
+                itemSelectionInside.add(but2, 3, 0);
+                but2.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    int mySelf = control.getGameArea().getActiveAvatar();
+                            control.setCommand("Flare");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+            case 2:
+                cnt = control.countItem("Food");
+                itemSelectionInside.add(new ImageView(foodImage),0,0);
+                itemSelectionInside.add(new Label("Food"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but3 = new Button("Use");
+                itemSelectionInside.add(but3, 3, 0);
+                but3.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    int mySelf = control.getGameArea().getActiveAvatar();
+                            control.setCommand("Food");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+            case 3:
+                cnt = control.countItem("fShovel");
+                itemSelectionInside.add(new ImageView(fragileShovelImage),0,0);
+                itemSelectionInside.add(new Label("Fragile Shovel"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but4 = new Button("Use");
+                itemSelectionInside.add(but4, 3, 0);
+                but4.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    int mySelf = control.getGameArea().getActiveAvatar();
+                            control.setCommand("fShovel");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+            case 4:
+                cnt = control.countItem("Gun");
+                itemSelectionInside.add(new ImageView(gunImage),0,0);
+                itemSelectionInside.add(new Label("Gun"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but5 = new Button("Use");
+                itemSelectionInside.add(but5, 3, 0);
+                but5.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    int mySelf = control.getGameArea().getActiveAvatar();
+                            control.setCommand("Gun");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+               
+            //Nem jo
+            case 5:
+                cnt = control.countItem("Rope");
+                itemSelectionInside.add(new ImageView(ropeImage),0,0);
+                itemSelectionInside.add(new Label("Rope"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but6 = new Button("Use");
+                itemSelectionInside.add(but6, 3, 0);
+                but6.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    		int mySelf = control.getGameArea().getActiveAvatar();
+                    		whichDir("Rope");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+            case 6:
+                cnt = control.countItem("Shovel");
+                itemSelectionInside.add(new ImageView(shovelImage),0,0);
+                itemSelectionInside.add(new Label("Shovel"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but7 = new Button("Use");
+                itemSelectionInside.add(but7, 3, 0);
+                but7.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    int mySelf = control.getGameArea().getActiveAvatar();
+                            control.setCommand("Shovel");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+            case 7:
+                cnt = control.countItem("Tent");
+                itemSelectionInside.add(new ImageView(tentImage),0,0);
+                itemSelectionInside.add(new Label("Tent"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but8 = new Button("Use");
+                itemSelectionInside.add(but8, 3, 0);
+                but8.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    int mySelf = control.getGameArea().getActiveAvatar();
+                            control.setCommand("Tent");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+            case 8:
+                cnt = control.countItem("WetSuit");
+                itemSelectionInside.add(new ImageView(wetSuitImage),0,0);
+                itemSelectionInside.add(new Label("WetSuit"),1,0);
+                itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
+                Button but9 = new Button("Use");
+                itemSelectionInside.add(but9, 3, 0);
+                but9.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent e) {
+                    int mySelf = control.getGameArea().getActiveAvatar();
+                            control.setCommand("WetSuit");
+                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+                            iSelectStage.close();
+                        }
+                    });                
+                break;
+            default:
+                break;
+            }
     		itemSelectionLayout.getChildren().add(itemSelectionInside);
     	}
     	
@@ -658,10 +775,9 @@ public class MyGraphics extends Application {
     }
     
     private Direction dir = null;
-    public Direction whichDir() {
+    public Direction whichDir(String type) {
         Stage dirchoose = new Stage();
     	dirchoose.initModality(Modality.APPLICATION_MODAL);
-        dirchoose.initOwner(mainStage);
     	
         Pane pane = new Pane();
         
@@ -699,10 +815,43 @@ public class MyGraphics extends Application {
         dirchoose.setTitle("Choose a direction!");
         dirchoose.setScene(sceneDir);
         
+        //------------------------
+    	final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(mainStage);
+        VBox dialogVbox = new VBox(20);
+        
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                dialog.hide();
+            }
+        });
+        Text t = new Text("N/A");
+        dialogVbox.getChildren().addAll(t,closeButton);
+        dialogVbox.setAlignment(Pos.CENTER);
+        
+        Scene dialogScene = new Scene(dialogVbox, 250, 100);
+        dialog.setTitle("Is it unstable?");
+        dialog.setScene(dialogScene);
+        //------------------------
+        
         String arrowPath = path + "/src/resources/arrowBlue.png";
         up.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
             	    dir = Direction.North;
+            	    if(type == "Rope") {
+            	    	control.setCommand("ropen");
+            	    }else {
+            	    	control.setCommand("resn");
+            	    	if(Controller.tempCapacity == -1) {
+	        	    		t.setText("Stable");
+	        	    	}else {
+	        	    		t.setText("Unstable, cap: " + Controller.tempCapacity);
+	        	    	}
+            	    	dialog.show();
+            	    }
+            	    
             	    dirchoose.hide();
             }
         });
@@ -710,7 +859,18 @@ public class MyGraphics extends Application {
 
         right.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	    dir = Direction.East;
+	            	if(type == "Rope") {
+	        	    	control.setCommand("ropee");
+	        	    }else {
+	        	    	control.setCommand("rese");
+	        	    	if(Controller.tempCapacity == -1) {
+	        	    		t.setText("Stable");
+	        	    	}else {
+	        	    		t.setText("Unstable, cap: " + Controller.tempCapacity);
+	        	    	}
+	        	    	
+            	    	dialog.show();
+	        	    }
             	    dirchoose.hide();
             }
         });
@@ -718,7 +878,17 @@ public class MyGraphics extends Application {
         
         down.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	    dir = Direction.South;
+	            	if(type == "Rope") {
+	        	    	control.setCommand("ropes");
+	        	    }else {
+	        	    	control.setCommand("ress");
+	        	    	if(Controller.tempCapacity == -1) {
+	        	    		t.setText("Stable");
+	        	    	}else {
+	        	    		t.setText("Unstable, cap: " + Controller.tempCapacity);
+	        	    	}
+            	    	dialog.show();
+	        	    }
             	    dirchoose.hide();
             }
         });
@@ -727,7 +897,17 @@ public class MyGraphics extends Application {
         
         left.setOnAction(new EventHandler<ActionEvent>() {
             @Override public void handle(ActionEvent e) {
-            	    dir = Direction.West;
+	            	if(type == "Rope") {
+	        	    	control.setCommand("ropew");
+	        	    }else {
+	        	    	control.setCommand("resw");
+	        	    	if(Controller.tempCapacity == -1) {
+	        	    		t.setText("Stable");
+	        	    	}else {
+	        	    		t.setText("Unstable, cap: " + Controller.tempCapacity);
+	        	    	}
+            	    	dialog.show();
+	        	    }
             	    dirchoose.hide();
             }
         });

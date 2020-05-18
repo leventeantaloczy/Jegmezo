@@ -13,6 +13,7 @@ import graphics.AvatarGraphics;
 import javafx.scene.image.Image;
 import jegmezo.Direction;
 import jegmezo.GameEnder;
+import jegmezo.Shelter;
 import jegmezo.Test;
 import jegmezo.items.*;
 
@@ -99,11 +100,12 @@ public abstract class Avatar {
 	 * Csokkenti a durability-t eggyel 
 	 */
 	public void decrementDurability() {
-		System.out.println(durability + " durab");
+		System.out.println(durability + " durab 1");
 		if(this.field.getKills() && !this.wearsWetsuit)
 			durability--;
 		if(durability <= 0)
 			gameEnder.endGame();
+		System.out.println(durability + " durab 2");
 	}
 	
 	public void digForItem() {
@@ -196,11 +198,25 @@ public abstract class Avatar {
 	 * 
 	 * @param item A felhasznalni kivant item
 	 */
-	public void useItem(Item item) {
-		System.out.println("<Avatar.useItem()");
-		int indexOfItem = backpack.indexOf(item);
-		backpack.get(indexOfItem).use(this);
-		this.setActivity(1);
+	public void useItem(String itemName) throws NumberFormatException, IOException {
+		for(Item i : backpack) {
+			if(i.getName().contains(itemName)) {
+				i.use(this);
+				this.setActivity(1);
+			}
+		}
+		
+		System.out.println(">Avatar.useItem()");
+	}
+	
+	public void useRope(Direction dir) {
+		for(Item i : backpack) {
+			if(i.getName().contains("Rope")) {
+				i.use(this, dir);
+				this.setActivity(1);
+			}
+		}
+		
 		System.out.println(">Avatar.useItem()");
 	}
 	
@@ -253,7 +269,8 @@ public abstract class Avatar {
 	 */
 	public void loseHealth() {
 		System.out.println("<Avatar.loseHealth()");
-		healthPoints--;
+		if(this.field.getShelter() == Shelter.None)
+			healthPoints--;
 		if(healthPoints == 0)
 			this.instantDeath();
 		System.out.println(">Avatar.loseHealth()");
@@ -400,4 +417,5 @@ public abstract class Avatar {
 	 * abstarct fuggveny
 	 */
 	public abstract int specialMove();
+	public int specialMove(Direction d) { return -3;}
 }
