@@ -377,6 +377,34 @@ public class MyGraphics extends Application {
             }
     	});
     	
+    	Button drop = new Button();
+    	drop.setText("Drop");
+    	drop.setLayoutX(159);
+    	drop.setLayoutY(325);
+    	drop.setStyle("-fx-background-radius: 10em; " +
+                "-fx-min-width: 60px; " +
+                "-fx-min-height: 60px; " +
+                "-fx-max-width: 60px; " +
+                "-fx-max-height: 60px;" + 
+                "-fx-background-color: #ffd700");
+    	//TODO DROPRA CLICK
+    	drop.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+            	int mySelf = control.getGameArea().getActiveAvatar();
+            	if(control.getGameArea().avatars.get(mySelf).getName().contains("e")) {
+            		control.setCommand("sp");
+            	}else {
+            		whichDir("Researcher");
+            	}
+            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	refreshList(avatarsList);
+            	if(control.getGameEnder().getEnd()) {
+            		Stage endStage = endGameDialog();
+            		endStage.show();
+            	}
+            }
+    	});
+    	
     	Button dig = new Button();
         dig.setPrefSize(60, 60);
         dig.setLayoutX(60);
@@ -492,6 +520,7 @@ public class MyGraphics extends Application {
     	uiRoot.getChildren().add(use);
     	uiRoot.getChildren().add(sUse);
     	uiRoot.getChildren().add(pickUp);
+    	uiRoot.getChildren().add(drop);
     	uiRoot.getChildren().add(up);
     	uiRoot.getChildren().add(right);
     	uiRoot.getChildren().add(down);
