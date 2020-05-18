@@ -20,8 +20,9 @@ public class PolarBear extends Avatar{
 	 */
 	public PolarBear(String _name) throws IOException {
 		super(_name);
-		this.healthPoints = 100;
+		this.healthPoints = 10000;
 		this.setNPC(true);
+		this.activityPoints = 1;
 		
 		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/medve.png"), 29.6, 29.6, false, false));
 
@@ -63,7 +64,6 @@ public class PolarBear extends Avatar{
 			try {
 				field.getNeighbour(trueWay).addAvatar(this);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 			field.removeAvatar(this);
@@ -90,5 +90,13 @@ public class PolarBear extends Avatar{
 		 * Nem hal meg a vizben.
 		 * Zoli
 		 */
+	}
+	
+	@Override
+	public void endTurn() {
+		System.out.println("<Avatar.endTurn()");
+		this.activityPoints = 1;
+		this.EndTurn = true;
+		System.out.println(">Avatar.endTurn()");
 	}
 }

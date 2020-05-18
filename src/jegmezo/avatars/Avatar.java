@@ -20,7 +20,7 @@ public abstract class Avatar {
 	
 	protected Field field;
 	private List<Item> backpack = new ArrayList<Item>();
-	private int activityPoints;
+	protected int activityPoints;
 	private int durability;
 	public boolean EndTurn = false;
 	public boolean wearsWetsuit = false;
@@ -204,12 +204,6 @@ public abstract class Avatar {
 		System.out.println(">Avatar.useItem()");
 	}
 	
-	/*
-	 * TODO	public Field field;
-
-	 * Meg kell hívni a gameEnder endGame()-jét de nem tudom, azt látja-e
-	 * Várni kell majd előbb egy kört
-	 */
 	/**
 	 * Avatar megfullad:
 	 * Ha az avatar nem visel buvarruhat, megfullad.
@@ -300,7 +294,6 @@ public abstract class Avatar {
 				try {
 					field.getNeighbour(d).addAvatar(this);
 				} catch (IOException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 				field.removeAvatar(this);
@@ -366,7 +359,6 @@ public abstract class Avatar {
 			/*try {
 				Test.bw.write("EndTurn\n");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}*/
 			this.endTurn();
@@ -394,7 +386,6 @@ public abstract class Avatar {
 		/*try {
 			Test.bw.write(field.getName() + " has " + this.name + "\n");
 		} catch (NullPointerException e) {
-			// TODO Auto-generated catch block
 			System.out.println(e);
 		}*/
 		

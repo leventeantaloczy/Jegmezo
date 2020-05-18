@@ -24,11 +24,6 @@ public abstract class Field {
 	protected String name;
 	protected FieldGraphics graphics;
 	
-	/*
-	 * TODO
-	 * Kezdetben még legyen mindenstatikus
-	 * Levente
-	 */
 	
 	/**
 	 * Kills - Getter
@@ -40,7 +35,7 @@ public abstract class Field {
 	}
 	
 	public FieldGraphics getGraphics() {
-		System.out.println("getgraphics");
+		//System.out.println("getgraphics");
 		return graphics;
 	}
 	
@@ -198,7 +193,7 @@ public abstract class Field {
 	 * @param i Noveli a snowAmount erteket erre a megadott szamra
 	 */
 	public void setSnow(int i) {
-		System.out.println("<Field.setSnow()");
+		//System.out.println("<Field.setSnow()");
 		snowAmount += i;
 		
 		if(snowAmount < 0)
@@ -212,7 +207,7 @@ public abstract class Field {
 			e.printStackTrace();
 		}*/
 		
-		System.out.println(">Field.setSnow()");
+		//System.out.println(">Field.setSnow()");
 	}
 	
 	/**
@@ -221,8 +216,8 @@ public abstract class Field {
 	 * @return snowAmount
 	 */
 	public int getSnowAmount(){
-		System.out.println("<Field.getSnowAmount()");
-		System.out.println(">Field.getSnowAmount()");
+		//System.out.println("<Field.getSnowAmount()");
+		//System.out.println(">Field.getSnowAmount()");
 		return snowAmount;
 	}
 	

@@ -41,86 +41,62 @@ public class Controller {
 	public void setCommand(String cmd) {
 		Controller.command = cmd;
 		System.out.println(command + " command");
-		if(gameArea.avatars.get(gameArea.activeAvatar).getNPC()) {
+		switch(command.toUpperCase()) {
+			case "SP":
+      			gameArea.avatars.get(gameArea.activeAvatar).specialMove();
+            	break;
+			case "B":
+				gameArea.avatars.get(gameArea.activeAvatar).addToBackpack();
+			    break;
+			case "T":
+				gameArea.avatars.get(gameArea.activeAvatar).endTurn();
+			    break;
+			case "U":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).useItem();
+				} catch (NumberFormatException e1) {
+					e1.printStackTrace();
+				} catch (IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "MN":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
+			    break;
+			case "ME":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
+			    break;
+			case "MS":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.South);
+			    break;
+			case "MW":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+				gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
+			    break;
+			case "D":
+				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				break;
+			default:
+				System.out.println("Hibas input");
+				break;
+       	}
+		command = null;
+		gameArea.changeActiveAvatar();
+		Storm(gameArea.fieldsOnArea);
+		while(gameArea.avatars.get(gameArea.activeAvatar).getNPC()) {
 			gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
-		} else {
-
-				gameArea.changeActiveAvatar();
-				Storm(gameArea.fieldsOnArea);
-			/*BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-	        	String command = br.readLine();*/
-					switch(command.toUpperCase()) {
-		        	/*case "S":
-		        		
-	            		break;*/
-		      		case "SP":
-		      			gameArea.avatars.get(gameArea.activeAvatar).specialMove();
-		            	break;
-					case "B":
-						gameArea.avatars.get(gameArea.activeAvatar).addToBackpack();
-					    break;
-					case "T":
-						gameArea.avatars.get(gameArea.activeAvatar).endTurn();
-					    break;
-					case "U":
-						try {
-							gameArea.avatars.get(gameArea.activeAvatar).useItem();
-						} catch (NumberFormatException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						} catch (IOException e1) {
-							// TODO Auto-generated catch block
-							e1.printStackTrace();
-						}
-						break;
-					case "MN":
-						System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-						gameArea.avatars.get(gameArea.activeAvatar).move(Direction.North);
-					    break;
-					case "ME":
-						System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-						gameArea.avatars.get(gameArea.activeAvatar).move(Direction.East);
-					    break;
-					case "MS":
-						System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-						gameArea.avatars.get(gameArea.activeAvatar).move(Direction.South);
-					    break;
-					case "MW":
-						System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-						gameArea.avatars.get(gameArea.activeAvatar).move(Direction.West);
-					    break;
-					case "D":
-						System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-						try {
-							gameArea.avatars.get(gameArea.activeAvatar).dropItem();
-						} catch (IOException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
-						break;
-					default:
-						System.out.println("Hibas input");
-						break;
-	        		}
-					command = null;
-			}
-	}
-	@SuppressWarnings("null")
-	public static void runGame() throws IOException {
-		System.out.println("<Controller.runGame()");
-		
-		System.out.println("Enter command for 1st Avatar!");
-		boolean exit = true;
-		
-		do {			
-			
-			}while(exit);
-		
-		/* Ez azert komment most, mert unreachable code (a while(1) miatt).
-		 * Oda majd megy valami, ami figyeli a jatek veget.
-		 * Zoli
-		*/
-		System.out.println(">Controller.runGame()");
+			gameArea.changeActiveAvatar();
+			System.out.println("gameArea.activeAvatar = " + gameArea.activeAvatar);
+			Storm(gameArea.fieldsOnArea);
+		}
 	}
 	
 	/*
@@ -133,10 +109,10 @@ public class Controller {
 		Random rand = new Random();
 		for(int i = 0; i < fields.size(); i++) {
 			/*
-			 * Igy 50% esellyel esik minden mezon a ho
+			 * Igy 20% esellyel esik minden mezon a ho
 			 */ 
 	        	int probability = rand .nextInt(101);
-	        	if(probability > 50) {
+	        	if(probability > 20) {
 	        		fields.get(i).setSnow(1);
 	        		fields.get(i).getGraphics().refreshField();
 				for(int j = 0; j < fields.get(i).avatars.size(); j++) {

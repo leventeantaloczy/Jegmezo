@@ -71,56 +71,24 @@ public class GameArea {
 			try {
 				putStaffOnGameArea(researcherNumber, gameEnder);
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-	}
-	
-	private int dataReader(String question, int constraint, boolean lowerConstraint) {
-		System.out.println("<GameArea.dataReader()");
-		
-		System.out.println(question);
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int toReturn = 0;
-		try {
-			toReturn = Integer.parseInt(br.readLine());
-		} catch (NumberFormatException | IOException e) {
-			e.printStackTrace();
-		}
-		if(lowerConstraint) {
-			while(toReturn < constraint || toReturn > 6) {
-				System.out.println("I'm afraid it won't work... Give another number, please");
-				try {
-					toReturn = Integer.parseInt(br.readLine());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		else {
-			while(toReturn > constraint) {
-				System.out.println("I'm afraid it won't work... Give a lower number, please");
-				try {
-					toReturn = Integer.parseInt(br.readLine());
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
-			}
-		}
-		
-		System.out.println(">GameArea.dataReader()");
-		return toReturn;
 	}
 	
 	/*
 	 * Field lerako.	
 	 */
 	private void fieldAdder(int widgth) {
+	    Random rand = new Random();
 		System.out.println("<GameArea.fieldAdder()");
 		int cnt = 0;
 		for(int i = 0; i < widgth + 2; i++) {
 			for(int j = 0; j < widgth + 2; j++) {
+				int probHole = rand.nextInt(101);
+				System.out.println("ido huzas");
+				System.out.println("meg ido huzas");
+				int probUnstable = rand.nextInt(101);
 				if(i == 0) {
 					Border border = new Border();
 					border.id = cnt;
@@ -149,14 +117,16 @@ public class GameArea {
 					addField(border);
 					System.out.println("added border as id " + border.id);
 				}
-				else if (j == 1) {
+		        //10%
+				else if (probHole < 10) {
 					HoleField holeField = new HoleField();
 					holeField.id = cnt;
 					cnt++;
 					addField(holeField);
 					System.out.println("added holefield as id " + holeField.id);
 				}
-				else if (j == widgth + 1 - 1) {
+				//30%
+				else if (probUnstable < 30) {
 					UnstableIce unstableIce = new UnstableIce();
 					unstableIce.id = cnt;
 					cnt++;
@@ -215,33 +185,24 @@ public class GameArea {
 		for(i = 0; i < researcherNumber; i++) {
 			String name = "r" + i;
 			Researcher researcher = new Researcher(name);
-			fieldsOnArea.get((width + 2) + 2 + i).avatars.add(researcher);
-			researcher.setField(fieldsOnArea.get((width + 2) + 2 + i));
-			addAvatar(researcher);
+			researcher.gameEnder = gameEnder;
+			putrandomAvatar(researcher);
 			System.out.println("Researcher on id " + researcher.getField().id);
 			researcher.gameEnder = gameEnder;
 		}
 		for(int j = researcherNumber; j < numberOfPlayers; j++) {
 			String name = "e" + (j - researcherNumber);
 			Eskimo eskimo = new Eskimo(name);
-			fieldsOnArea.get((width + 2) + 2 + j).avatars.add(eskimo);
-			eskimo.setField(fieldsOnArea.get((width + 2) + 2 + j));
 			eskimo.gameEnder = gameEnder;
-			addAvatar(eskimo);
-			//System.out.println("Eskimo");
+			putrandomAvatar(eskimo);
 			System.out.println("Eskimo on id " + eskimo.getField().id);
 		}
 		
 		for(int l = 0; l < (int) Math.ceil(numberOfPlayers / 2); l++ ) {
 			String name = "b" + l;
 			PolarBear bear = new PolarBear(name);
-
-			//utolso elotti sorba rakja
-			fieldsOnArea.get(((width + 2) * width) + 2 + l).avatars.add(bear);
-			bear.setField(fieldsOnArea.get(((width + 2) * width) + 2 + l));
-
 			bear.gameEnder = gameEnder;
-			addAvatar(bear);
+			putrandomAvatar(bear);
 			System.out.println("Bear on id " + bear.getField().id);
 		}
 		
@@ -327,11 +288,11 @@ public class GameArea {
 	private void putrandomField(Item item) {
 		Random rand = new Random();
 		boolean flag = true;
-		System.out.println("barmi");
+		System.out.println("put random field");
 		System.out.println("barmi mas");
 		while(flag) {
 			int place = rand.nextInt(95) + 13;
-			while(place % 11 == 0 || place % 11 == 10 || place % 11 == 1) {
+			while(place % 11 == 0 || place % 11 == 10 || fieldsOnArea.get(place).getKills()) {
 				place = rand.nextInt(95) + 13;
 			}
 			if(fieldsOnArea.get(place).item == null) {
@@ -339,6 +300,22 @@ public class GameArea {
 				flag = false;
 			}
 		}
-		
+	}
+	
+	private void putrandomAvatar(Avatar a) {
+		Random rand = new Random();
+		System.out.println("put random avatar");
+		System.out.println("barmi mas");
+		int place = rand.nextInt(95) + 13;
+		while(place % 11 == 0 || place % 11 == 10 || fieldsOnArea.get(place).getKills() /*|| fieldsOnArea.get(place).avatars.isEmpty()*/) {
+			place = rand.nextInt(95) + 13;
+		}
+		fieldsOnArea.get(place).avatars.add(a);
+		try {
+			a.setField(fieldsOnArea.get(place));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		addAvatar(a);
 	}
 }
