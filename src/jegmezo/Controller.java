@@ -244,7 +244,7 @@ public class Controller {
 		Random rand = new Random();
 		for(int i = 0; i < fields.size(); i++) {
 			/*
-			 * Igy 20% esellyel esik minden mezon a ho
+			 * Igy 	0% esellyel esik minden mezon a ho
 			 */ 
 	        	int probability = rand .nextInt(101);
 	        	if(probability < 3) {

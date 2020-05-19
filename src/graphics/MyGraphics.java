@@ -760,6 +760,9 @@ public class MyGraphics extends Application {
 	                		int mySelf = control.getGameArea().getActiveAvatar();
 	                        control.setCommand("Gun");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                        if(control.getGameEnder().getWin()) {
+	                        	winGameDialog().show();
+	                        }
 	                	}
 	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
 	            		bar.setProgress( pr );
@@ -785,6 +788,7 @@ public class MyGraphics extends Application {
 	                	} else {
 	                		int mySelf = control.getGameArea().getActiveAvatar();
 	                        control.setCommand("Rope");
+	                        whichDir("Rope");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
 	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
