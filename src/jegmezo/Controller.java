@@ -71,14 +71,6 @@ public class Controller {
 			case "DIG":
 				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
 				gameArea.avatars.get(gameArea.activeAvatar).digForItem();;
-			    break;
-			case "D":
-				System.out.println("Ezen avatar cselekszik: " + gameArea.avatars.get(gameArea.activeAvatar).getName());
-				try {
-					gameArea.avatars.get(gameArea.activeAvatar).dropItem();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
 				break;
 			case "FOOD":
 				try {
@@ -148,6 +140,69 @@ public class Controller {
 					e1.printStackTrace();
 				}
 				break;
+			case "DROPFOOD":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("Food");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+					break;
+			case "DROPGUN":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("Gun");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}		
+				break;
+			case "DROPFSHOVEL":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("fShovel");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "DROPSHOVEL":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("Shovel");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "DROPCARTRIDGE":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("Cartridge");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "DROPWETSUIT":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("WetSuit");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "DROPROPE":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("Rope");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}				
+				break;
+			case "DROPTENT":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("Tent");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
+			case "DROPFLARE":
+				try {
+					gameArea.avatars.get(gameArea.activeAvatar).dropItem("Flare");
+				} catch (NumberFormatException | IOException e1) {
+					e1.printStackTrace();
+				}
+				break;
 			case "RESN":
 				tempCapacity = gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.North);
 				break;
@@ -161,7 +216,7 @@ public class Controller {
 				tempCapacity = gameArea.avatars.get(gameArea.activeAvatar).specialMove(Direction.East);
 				break;
 			default:
-				System.out.println("Hibas input");
+				System.out.println("Hibas az input");
 				break;
        	}
 		command = null;

@@ -137,7 +137,6 @@ public class MyGraphics extends Application {
        	        	/*try {
 						control.runGame();
 					} catch (IOException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					}*/
        	        }
@@ -355,7 +354,7 @@ public class MyGraphics extends Application {
     	});
     	
     	Button pickUp = new Button();
-    	pickUp.setText("Pick Up");
+    	pickUp.setText("Take");
     	pickUp.setLayoutX(216);
     	pickUp.setLayoutY(260);
     	pickUp.setStyle("-fx-background-radius: 10em; " +
@@ -387,29 +386,24 @@ public class MyGraphics extends Application {
                 "-fx-max-width: 60px; " +
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #ffd700");
-    	//TODO DROPRA CLICK
-    	drop.setOnAction(new EventHandler<ActionEvent>() {
-            @Override public void handle(ActionEvent e) {
-            	int mySelf = control.getGameArea().getActiveAvatar();
-            	if(control.getGameArea().avatars.get(mySelf).getName().contains("e")) {
-            		control.setCommand("sp");
-            	}else {
-            		whichDir("Researcher");
-            	}
-            	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-            	refreshList(avatarsList);
-            	if(control.getGameEnder().getEnd()) {
-            		Stage endStage = endGameDialog();
-            		endStage.show();
-            	}
-            }
+    	use.setOnAction(new EventHandler<ActionEvent>() {
+			@Override
+			public void handle(ActionEvent arg0) {
+				iSelectStage = new Stage();
+	            iSelectStage.setTitle("Choose Item");
+	            iSelectStage.setHeight(1000);
+	            iSelectStage.setWidth(1000);
+	            iSelectStage.setScene(ItemSelectionScene());
+	            iSelectStage.show();	
+			}	
     	});
+    	
     	
     	Button dig = new Button();
         dig.setPrefSize(60, 60);
         dig.setLayoutX(60);
         dig.setLayoutY(191);
-        dig.setText("DIG");
+        dig.setText("Dig");
         dig.setOnAction(new EventHandler<ActionEvent>() {
         	@Override public void handle(ActionEvent e) {
         		int mySelf = control.getGameArea().getActiveAvatar();

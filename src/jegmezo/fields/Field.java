@@ -135,10 +135,11 @@ public abstract class Field {
 	public Item switchItem(Item i) {
 		System.out.println("<Field.switchItem()");
 		Item tmp;
-		tmp = item;
-		item = i;
+		tmp = this.item;	//tmp := emptyItem
+		this.item = i;		//this.item := tent
+		System.out.println("ret: " + tmp.getName());
 		System.out.println(">Field.switchItem()");
-		return tmp;
+		return tmp;			//ret emptyItem
 	}
 	
 	/**

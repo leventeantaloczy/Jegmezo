@@ -104,7 +104,7 @@ public abstract class Avatar {
 		if(this.field.getKills() && !this.wearsWetsuit)
 			durability--;
 		if(durability <= 0)
-			gameEnder.endGame();
+			GameEnder.endGame();
 		System.out.println(durability + " durab 2");
 	}
 	
@@ -120,23 +120,17 @@ public abstract class Avatar {
 	 * ha az megtalalhato az avatar backpackjeben,
 	 * akkor azt kiveszi onnan.
 	 */
-	public void dropItem() throws IOException{
-		System.out.println("Which Item, please enter a number");
-		
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		String i = br.readLine();
-		
-		while(Integer.parseInt(i) > backpack.size()) {
-			System.out.println("Again, please");
-			try {
-				i = br.readLine();
-			} catch (IOException e) {
-				e.printStackTrace();
+	public void dropItem(String itemName) throws IOException{
+		for(Item i : backpack) {
+			if(i.getName().contains(itemName)) {
+				Item thisOne = this.field.switchItem(i);
+				System.out.println(backpack.remove(thisOne));
+				backpack.add(thisOne);
+				System.out.println("fielden: " + this.field.item.getName());
+				System.out.println("zsakban: " + this.backpack.get(0).getName());
+				this.setActivity(1);
 			}
 		}
-		
-		backpack.add(field.switchItem(backpack.remove(Integer.parseInt(i))));
-		setActivity(1);
 	}
 
 	/**
