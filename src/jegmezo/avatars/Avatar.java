@@ -122,12 +122,18 @@ public abstract class Avatar {
 	 */
 	public void dropItem(String itemName) throws IOException{
 		for(Item i : backpack) {
-			if(i.getName().contains(itemName)) {
-				Item thisOne = this.field.switchItem(i);
-				System.out.println(backpack.remove(thisOne));
-				backpack.add(thisOne);
+			if(i.getName().toUpperCase().contains(itemName.toUpperCase())) {
+				Item switchedOne = this.field.switchItem(i);
+				System.out.println(backpack.remove(i));
+				backpack.add(switchedOne);
 				System.out.println("fielden: " + this.field.item.getName());
 				System.out.println("zsakban: " + this.backpack.get(0).getName());
+				
+				for (Item item : backpack) {
+					System.out.println("DROP");
+					System.out.println(item.getName()); 
+				}
+				
 				this.setActivity(1);
 			}
 		}
@@ -148,6 +154,10 @@ public abstract class Avatar {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}*/
+			for (Item item : backpack) {
+				System.out.println("ADD");
+				System.out.println(item.getName()); 
+			}
 			
 			field.removeItem();
 			setActivity(1);

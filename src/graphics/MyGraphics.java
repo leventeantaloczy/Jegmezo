@@ -57,7 +57,7 @@ public class MyGraphics extends Application {
     public void start(Stage primaryStage) {
     	mainStage = primaryStage;
     	
-    	mainStage.setTitle("MainStage");
+    	mainStage.setTitle("help: Jegmezo");
     	mainStage.setResizable(false);
     	
     	
@@ -70,12 +70,11 @@ public class MyGraphics extends Application {
     //Menu scene method
     public Scene MenuScene() {
     	VBox v = new VBox();
-    	Image Splash = new Image(getClass().getClassLoader().getResourceAsStream("resources/splash.jpg"), 1200, 860,  false, false);
+    	Image Splash = new Image(getClass().getClassLoader().getResourceAsStream("resources/splash.png"), 1200, 800,  false, false);
     	ImageView iv = new ImageView(Splash);
     	v.getChildren().add(iv);
     	Scene s = new Scene(v, 1200, 800);
     	VBox menuItems = new VBox();
-    	menuItems.prefWidth(1200);
     	menuItems.prefHeight(800);
     	menuItems.setAlignment(Pos.CENTER);
     	menuItems.setSpacing(100);
@@ -322,7 +321,7 @@ public class MyGraphics extends Application {
 	            iSelectStage.setTitle("Choose Item");
 	            iSelectStage.setHeight(1000);
 	            iSelectStage.setWidth(1000);
-	            iSelectStage.setScene(ItemSelectionScene());
+	            iSelectStage.setScene(ItemSelectionScene(false));
 	            iSelectStage.show();	
 			}	
     	});
@@ -387,14 +386,14 @@ public class MyGraphics extends Application {
                 "-fx-max-width: 60px; " +
                 "-fx-max-height: 60px;" + 
                 "-fx-background-color: #ffd700");
-    	use.setOnAction(new EventHandler<ActionEvent>() {
+    	drop.setOnAction(new EventHandler<ActionEvent>() {
 			@Override
 			public void handle(ActionEvent arg0) {
 				iSelectStage = new Stage();
 	            iSelectStage.setTitle("Choose Item");
 	            iSelectStage.setHeight(1000);
 	            iSelectStage.setWidth(1000);
-	            iSelectStage.setScene(ItemSelectionScene());
+	            iSelectStage.setScene(ItemSelectionScene(true));
 	            iSelectStage.show();	
 			}	
     	});
@@ -541,8 +540,12 @@ public class MyGraphics extends Application {
     	return mainScene;
     }
     
-    private Scene ItemSelectionScene() {
+    private Scene ItemSelectionScene(boolean drop) {
     	//------------Tivadar-----------ItemSelectionList----------------Begin---------------------
+    	String buttonString = "use";
+    	if(drop) {
+    		buttonString = "drop";
+    	}
     	
     	VBox itemSelectionLayout = new VBox();
     	Image placeHolderImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png"), 100, 100, false, false);
@@ -583,16 +586,23 @@ public class MyGraphics extends Application {
                 itemSelectionInside.add(new ImageView(cartridgeImage),0,0);
                 itemSelectionInside.add(new Label("Cartridge"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but1 = new Button("Use");
+                
+                Button but1 = new Button(buttonString);
                 itemSelectionInside.add(but1, 3, 0);
                 but1.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent e) {
-                int mySelf = control.getGameArea().getActiveAvatar();
-                        control.setCommand("Cartridge");
-                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                        iSelectStage.close();
-                    }
+	                @Override
+	                public void handle(ActionEvent e) {
+	                	if(drop) {
+	                		control.setCommand("dropCartridge");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("Cartridge");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                 });
                 break;
             case 1:
@@ -600,33 +610,45 @@ public class MyGraphics extends Application {
                 itemSelectionInside.add(new ImageView(flareImage),0,0);
                 itemSelectionInside.add(new Label("Flare"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but2 = new Button("Use");
+                Button but2 = new Button(buttonString);
                 itemSelectionInside.add(but2, 3, 0);
                 but2.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    int mySelf = control.getGameArea().getActiveAvatar();
-                            control.setCommand("Flare");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                        }
-                    });                
+	                	if(drop) {
+	                		control.setCommand("dropFlare");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("Flare");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
+                });                
                 break;
             case 2:
                 cnt = control.countItem("Food");
                 itemSelectionInside.add(new ImageView(foodImage),0,0);
                 itemSelectionInside.add(new Label("Food"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but3 = new Button("Use");
+                Button but3 = new Button(buttonString);
                 itemSelectionInside.add(but3, 3, 0);
                 but3.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    int mySelf = control.getGameArea().getActiveAvatar();
-                            control.setCommand("Food");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                        }
+	                	if(drop) {
+	                		control.setCommand("dropFood");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("Food");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                     });                
                 break;
             case 3:
@@ -634,16 +656,22 @@ public class MyGraphics extends Application {
                 itemSelectionInside.add(new ImageView(fragileShovelImage),0,0);
                 itemSelectionInside.add(new Label("Fragile Shovel"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but4 = new Button("Use");
+                Button but4 = new Button(buttonString);
                 itemSelectionInside.add(but4, 3, 0);
                 but4.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    int mySelf = control.getGameArea().getActiveAvatar();
-                            control.setCommand("fShovel");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                        }
+	                	if(drop) {
+	                		control.setCommand("dropfShovel");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("fShovel");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                     });                
                 break;
             case 4:
@@ -651,39 +679,46 @@ public class MyGraphics extends Application {
                 itemSelectionInside.add(new ImageView(gunImage),0,0);
                 itemSelectionInside.add(new Label("Gun"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but5 = new Button("Use");
+                Button but5 = new Button(buttonString);
                 itemSelectionInside.add(but5, 3, 0);
                 but5.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    int mySelf = control.getGameArea().getActiveAvatar();
-                            control.setCommand("Gun");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                            //WIN
-                            if(control.getGameEnder().getWin()) {
-                            	winGameDialog().show();
-                            }
-                        }
+	                	if(drop) {
+	                		control.setCommand("dropGun");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("Gun");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                     });                
                 break;
                
-            //Nem jo
             case 5:
                 cnt = control.countItem("Rope");
                 itemSelectionInside.add(new ImageView(ropeImage),0,0);
                 itemSelectionInside.add(new Label("Rope"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but6 = new Button("Use");
+                Button but6 = new Button(buttonString);
                 itemSelectionInside.add(but6, 3, 0);
                 but6.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    		int mySelf = control.getGameArea().getActiveAvatar();
-                    		whichDir("Rope");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                        }
+	                	if(drop) {
+	                		control.setCommand("dropRope");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("Rope");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                     });                
                 break;
             case 6:
@@ -691,16 +726,22 @@ public class MyGraphics extends Application {
                 itemSelectionInside.add(new ImageView(shovelImage),0,0);
                 itemSelectionInside.add(new Label("Shovel"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but7 = new Button("Use");
+                Button but7 = new Button(buttonString);
                 itemSelectionInside.add(but7, 3, 0);
                 but7.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    int mySelf = control.getGameArea().getActiveAvatar();
-                            control.setCommand("Shovel");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                        }
+	                	if(drop) {
+	                		control.setCommand("dropShovel");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("Shovel");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                     });                
                 break;
             case 7:
@@ -708,16 +749,22 @@ public class MyGraphics extends Application {
                 itemSelectionInside.add(new ImageView(tentImage),0,0);
                 itemSelectionInside.add(new Label("Tent"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but8 = new Button("Use");
+                Button but8 = new Button(buttonString);
                 itemSelectionInside.add(but8, 3, 0);
                 but8.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    int mySelf = control.getGameArea().getActiveAvatar();
-                            control.setCommand("Tent");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                        }
+	                	if(drop) {
+	                		control.setCommand("dropTent");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("Tent");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                     });                
                 break;
             case 8:
@@ -725,16 +772,22 @@ public class MyGraphics extends Application {
                 itemSelectionInside.add(new ImageView(wetSuitImage),0,0);
                 itemSelectionInside.add(new Label("WetSuit"),1,0);
                 itemSelectionInside.add(new Label(Integer.toString(cnt)),2,0);
-                Button but9 = new Button("Use");
+                Button but9 = new Button(buttonString);
                 itemSelectionInside.add(but9, 3, 0);
                 but9.setOnAction(new EventHandler<ActionEvent>() {
                     @Override
                     public void handle(ActionEvent e) {
-                    int mySelf = control.getGameArea().getActiveAvatar();
-                            control.setCommand("WetSuit");
-                            control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
-                            iSelectStage.close();
-                        }
+	                	if(drop) {
+	                		control.setCommand("dropWetSuit");
+	                        int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	} else {
+	                		int mySelf = control.getGameArea().getActiveAvatar();
+	                        control.setCommand("WetSuit");
+	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+	                	}
+	                	iSelectStage.close();
+	                }
                     });                
                 break;
             default:
