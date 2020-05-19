@@ -162,6 +162,7 @@ public class MyGraphics extends Application {
     	GridPane gridIceField = new GridPane();
     	gridIceField.setPrefSize(800, 800);
     	gridIceField.setMinSize(800, 800);
+    	gridIceField.setMaxSize(800, 800);
     	gridIceField.setGridLinesVisible(true);
     	//----------------Tivadar---------------------------------Begin------------------------
     	
@@ -659,6 +660,10 @@ public class MyGraphics extends Application {
                             control.setCommand("Gun");
                             control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
                             iSelectStage.close();
+                            //WIN
+                            if(control.getGameEnder().getWin()) {
+                            	winGameDialog().show();
+                            }
                         }
                     });                
                 break;
@@ -969,6 +974,27 @@ public class MyGraphics extends Application {
         
         Scene dialogScene = new Scene(dialogVbox, 250, 100);
         dialog.setTitle("Better Luck Next Time!");
+        dialog.setScene(dialogScene);
+        return dialog;
+    }
+    
+    private Stage winGameDialog() {
+    	final Stage dialog = new Stage();
+        dialog.initModality(Modality.APPLICATION_MODAL);
+        dialog.initOwner(mainStage);
+        VBox dialogVbox = new VBox(20);
+        
+        Button closeButton = new Button("Close");
+        closeButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override public void handle(ActionEvent e) {
+                Platform.exit();
+            }
+        });
+        dialogVbox.getChildren().addAll(new Text("Congratulations!"),closeButton);
+        dialogVbox.setAlignment(Pos.CENTER);
+        
+        Scene dialogScene = new Scene(dialogVbox, 250, 100);
+        dialog.setTitle("You survived :)");
         dialog.setScene(dialogScene);
         return dialog;
     }

@@ -63,15 +63,16 @@ public class Gun extends Item{
 			/*try {
 				Test.bw.write("Gun used\n");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				// Auto-generated catch block
 				e.printStackTrace();
 			}*/
+			GameEnder.setWin(true);
 			GameEnder.endGame();
 		}else {
 			/*try {
 				Test.bw.write("Nothing happened\n");
 			} catch (IOException e) {
-				// TODO Auto-generated catch block
+				//  Auto-generated catch block
 				e.printStackTrace();
 			}*/
 			System.out.println("Requirements not satisfied");

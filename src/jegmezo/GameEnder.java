@@ -4,6 +4,7 @@ import java.io.IOException;
 
 public class GameEnder {
 	
+	private static boolean win=false;
 	private static boolean end=false;
 	
 	public static void endGame() {
@@ -16,7 +17,16 @@ public class GameEnder {
 			e1.printStackTrace();
 		}*/
 		end = true;
+		
 		System.out.println(">GameEnder.endGame()");
+	}
+	
+	public boolean getWin(){
+		return win;
+	}
+	
+	public static void setWin(boolean win) {
+		GameEnder.win = win;
 	}
 	
 	public boolean getEnd() {
