@@ -126,7 +126,7 @@ public class GameArea {
 					System.out.println("added holefield as id " + holeField.id);
 				}
 				//30%
-				else if (probUnstable < 90) {
+				else if (probUnstable < 20) {
 					UnstableIce unstableIce = new UnstableIce();
 					unstableIce.id = cnt;
 					cnt++;

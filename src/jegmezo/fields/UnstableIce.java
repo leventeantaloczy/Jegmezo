@@ -19,7 +19,7 @@ public class UnstableIce extends Field{
 		Random rand = new Random();
 		this.kills = false;
 		// (0, vagy 1) + 1 = 1, vagy 2
-		capacity = rand.nextInt(2) + 1;
+		capacity = rand.nextInt(4) + 1;
 		System.out.println("graphicsUnstable");
 		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 88.8, 88.8, false, false), this);
 
