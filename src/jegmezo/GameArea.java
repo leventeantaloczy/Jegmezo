@@ -1,7 +1,5 @@
 package jegmezo;
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -54,9 +52,9 @@ public class GameArea {
 		* Zoli
 		*/
 		if(init) {
-			//numberOfPlayers = dataReader("How many players will try to escape?", 3, true);
-			int researcherNumber = rand.nextInt(numberOfPlayers - 2) + 1;
-
+			System.out.println("ido huzas");
+			System.out.println("meg egy ido huzas");
+			
 			/*Ezutan ezt a numberOfPlayers-t oda kell adni az Avatar-oknak, 
 			pontosabban egynlove tenni a durability valtozojukkal.*/
 
@@ -66,7 +64,9 @@ public class GameArea {
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-
+			int max = numberOfPlayers - 1;
+			int researcherNumber = rand.nextInt((max - 1) + 1) + 1;
+			
 			try {
 				putStaffOnGameArea(researcherNumber, gameEnder);
 			} catch (IOException e) {
@@ -181,7 +181,6 @@ public class GameArea {
 		System.out.println("<GameArea.putStaffOnGameArea()");
 
 		int i;
-		int width = 9;
 		for(i = 0; i < researcherNumber; i++) {
 			String name = "r" + i;
 			Researcher researcher = new Researcher(name);
@@ -190,6 +189,7 @@ public class GameArea {
 			System.out.println("Researcher on id " + researcher.getField().id);
 			researcher.gameEnder = gameEnder;
 		}
+		
 		for(int j = researcherNumber; j < numberOfPlayers; j++) {
 			String name = "e" + (j - researcherNumber);
 			Eskimo eskimo = new Eskimo(name);
@@ -206,26 +206,26 @@ public class GameArea {
 			System.out.println("Bear on id " + bear.getField().id);
 		}
 		
+		Cartridge cartridge = new Cartridge("Cartridge");
+		Gun gun = new Gun("Gun");
+		Flare flare = new Flare("Flare");
 		
 		WetSuit wetSuit = new WetSuit("WetSuit");
-		Flare flare = new Flare("Flare");
 		Food food = new Food("Food");
 		Shovel shovel = new Shovel("Shovel");
 		Rope rope = new Rope("Rope");
-		Cartridge cartridge = new Cartridge("Cartridge");
-		Gun gun = new Gun("Gun");
 		Tent tent = new Tent("Tent");
 		FragileShovel fShovel = new FragileShovel("fShovel");
 		
-		putrandomField(wetSuit);
-		putrandomField(flare);
-		putrandomField(food);
-		putrandomField(shovel);
-		putrandomField(rope);
-		putrandomField(cartridge);
-		putrandomField(gun);
-		putrandomField(tent);
-		putrandomField(fShovel);
+		putrandomField(wetSuit, false);
+		putrandomField(flare, true);
+		putrandomField(food, false);
+		putrandomField(shovel, false);
+		putrandomField(rope, false);
+		putrandomField(cartridge, true);
+		putrandomField(gun, true);
+		putrandomField(tent, false);
+		putrandomField(fShovel, false);
 
 		
 		for(int l = 0; l < fieldsOnArea.size(); l++) {
@@ -285,19 +285,27 @@ public class GameArea {
 	public void setNumberOfPlayers(int num) {
 		numberOfPlayers = num;
 	}
-	private void putrandomField(Item item) {
-		Random rand = new Random();
-		boolean flag = true;
+	private void putrandomField(Item item, boolean important) {
+		Random randPlace = new Random();
+		Random randNum = new Random();
+		int cnt = 0;
 		System.out.println("put random field");
 		System.out.println("barmi mas");
-		while(flag) {
-			int place = rand.nextInt(95) + 13;
-			while(place % 11 == 0 || place % 11 == 10 || fieldsOnArea.get(place).getKills()) {
-				place = rand.nextInt(95) + 13;
-			}
-			if(fieldsOnArea.get(place).item == null) {
-				fieldsOnArea.get(place).item = item;
-				flag = false;
+		int num = randNum.nextInt(2) + 1;
+		if(important)
+			num = 1;
+		for(int i = 0; i < num; i++) {
+			System.out.println();
+			while(cnt < num) {
+				int place = randPlace.nextInt(95) + 13;
+				while(place % 11 == 0 || place % 11 == 10 || fieldsOnArea.get(place).getKills()) {
+					place = randPlace.nextInt(95) + 13;
+				}
+				if(fieldsOnArea.get(place).item == null) {
+					System.out.println("lerakom: " + item.getName());
+					fieldsOnArea.get(place).item = item;
+					cnt++;
+				}
 			}
 		}
 	}

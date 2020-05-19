@@ -28,6 +28,19 @@ public abstract class Avatar {
 	public GameEnder gameEnder;
 	protected int healthPoints;
 	protected String name;
+	protected String nameOnBoard;
+	static private int nameCounter = 0;
+	private String[] names = {
+		"Flynn Coates",
+		"Mandeep Christian",
+		"Ameen Beck",
+		"Akaash Healy",
+		"Yuvaan Lees",
+		"Henri Finnegan",
+		"",
+		"",
+		""
+	};
 	private boolean NPC = false;
 	protected AvatarGraphics graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png")));
 	
@@ -36,6 +49,9 @@ public abstract class Avatar {
 		return graphics;
 	}
 	
+	public String getNameOnBoard() {
+		return nameOnBoard;
+	}
 	
 	public int getActivityPoints() {
 		return activityPoints;
@@ -52,6 +68,8 @@ public abstract class Avatar {
 		System.out.println("masodik");
 		backpack = new LinkedList<Item>();
 		name = _name;
+		nameOnBoard = names[nameCounter];
+		nameCounter++;
 		activityPoints = 4;
 		System.out.println(name + " letrejott");
 		this.graphics = new AvatarGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png")));
@@ -235,7 +253,7 @@ public abstract class Avatar {
 	public void dieByWater() {
 		System.out.println("<Avatar.dieByWater()");
 		if(!wearsWetsuit)
-		gameEnder.endGame();
+		GameEnder.endGame();
 		System.out.println(">Avatar.dieByWater()");
 	}
 	
@@ -249,7 +267,7 @@ public abstract class Avatar {
 	 */
 	public void instantDeath() {
 		System.out.println("<Avatar.dieByHeatLoss()");
-		gameEnder.endGame();
+		GameEnder.endGame();
 		System.out.println(">Avatar.dieByHeatLoss()");
 	}
 	
@@ -300,7 +318,7 @@ public abstract class Avatar {
 	}
 	
 	/*
-	 * d irányba elmozdul ha tud (csak akkor nem tud ha határmező van ott) 
+	 * d iranyba elmozdul ha tud (csak akkor nem tud ha hatarmezo van ott) 
 	 * Levente
 	 */
 	/**

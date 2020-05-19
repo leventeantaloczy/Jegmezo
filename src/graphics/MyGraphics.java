@@ -19,20 +19,13 @@ import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextFormatter.Change;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundImage;
-import javafx.scene.layout.BackgroundPosition;
-import javafx.scene.layout.BackgroundRepeat;
-import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.stage.Modality;
@@ -40,15 +33,12 @@ import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import jegmezo.Controller;
 import jegmezo.Direction;
-import jegmezo.GameArea;
-import jegmezo.avatars.Avatar;
 import jegmezo.fields.Field;
  
 public class MyGraphics extends Application {
 	private Stage mainStage;
 	private Stage iSelectStage;
 	private Controller control;
-	private ImageView[][] viewmx = new ImageView[9][9];
 	private String path = Paths.get("").toAbsolutePath().toString();
 	ProgressBar bar = new ProgressBar(1);
 	
@@ -128,9 +118,8 @@ public class MyGraphics extends Application {
        	        	mainStage.setScene(s);
 	       	     	control = new Controller(Integer.parseInt(numPlayers.getText()));
 	       	    	try {
-	       				control.startGame(true);
+	       				Controller.startGame(true);
 	       			} catch (IOException t) {
-	       				// TODO Auto-generated catch block
 	       				t.printStackTrace();
 	       			}
        	        	/*control.getGameArea().setNumberOfPlayers(Integer.parseInt(numPlayers.getText()));
@@ -168,33 +157,17 @@ public class MyGraphics extends Application {
     	gridIceField.setGridLinesVisible(true);
     	//----------------Tivadar---------------------------------Begin------------------------
     	
-    	Image IceField = new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 88.8, 88.8, false, false);
-    	Image HoleField = new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false);
-    	Image Eskimo1  = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 29.6, 29.6, false, false);
-    	Image Eskimo2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo2.png"), 29.6, 29.6, false, false);
-    	Image Eskimo3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo3.png"), 29.6, 29.6, false, false);
-    	Image Eskimo4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo4.png"), 29.6, 29.6, false, false);
-    	Image Eskimo5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 29.6, 29.6, false, false);
-    	Image Eskimo6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 29.6, 29.6, false, false);
-    	Image Researcher1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher1.png"), 29.6, 29.6, false, false);
-    	Image Researcher2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher2.png"), 29.6, 29.6, false, false);
-    	Image Researcher3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
-    	Image Researcher4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
-    	Image Researcher5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
-    	Image Researcher6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 29.6, 29.6, false, false);
-    	Image Bear = new Image(getClass().getClassLoader().getResourceAsStream("resources/medve.png"), 29.6, 29.6, false, false);
+    	
     	Image EskimoImageAvatar1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo1.png"), 30, 30, false, false);
     	Image EskimoImageAvatar2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo2.png"), 30, 30, false, false);
     	Image EskimoImageAvatar3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo3.png"), 30, 30, false, false);
     	Image EskimoImageAvatar4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo4.png"), 30, 30, false, false);
     	Image EskimoImageAvatar5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 30, 30, false, false);
-    	Image EskimoImageAvatar6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/eskimo5.png"), 30, 30, false, false);
     	Image ResearcherImageAvatar1 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher1.png"), 30, 30, false, false);
     	Image ResearcherImageAvatar2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher2.png"), 30, 30, false, false);
     	Image ResearcherImageAvatar3 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
-    	Image ResearcherImageAvatar4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
-    	Image ResearcherImageAvatar5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
-    	Image ResearcherImageAvatar6 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher3.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar4 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher4.png"), 30, 30, false, false);
+    	Image ResearcherImageAvatar5 = new Image(getClass().getClassLoader().getResourceAsStream("resources/researcher5.png"), 30, 30, false, false);
     	Image placeholderImageAvatar = new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png"), 30, 30, false, false);
     	//Image IceField2 = new Image(getClass().getClassLoader().getResourceAsStream("resources/Ice.png"), 29.6, 29.6, false, false);
     	
@@ -257,9 +230,6 @@ public class MyGraphics extends Application {
 				case "e4":
 					setImage(avatarsList,i,EskimoImageAvatar5);
 					break;
-				case "e5":
-					setImage(avatarsList,i,EskimoImageAvatar6);
-					break;
 				case "r0":
 					setImage(avatarsList,i,ResearcherImageAvatar1);
 					break;
@@ -275,35 +245,17 @@ public class MyGraphics extends Application {
 				case "r4":
 					setImage(avatarsList,i,ResearcherImageAvatar5);
 					break;
-				case "r5":
-					setImage(avatarsList,i,ResearcherImageAvatar6);
-					break;
 				default:
 					setImage(avatarsList,i,placeholderImageAvatar);
 					break;
 				}
-				setName(avatarsList,i,control.getGameArea().avatars.get(i).getName());
+				setName(avatarsList, i, control.getGameArea().avatars.get(i).getNameOnBoard());
 				setLife(avatarsList, i, control.getGameArea().avatars.get(i).getHealthPoints());
 				deactivateAvatar(avatarsList, i);
 				if(control.getGameArea().getActiveAvatar() == i)
 	    			activateAvatar(avatarsList, i);
     		}
     	}
-    	//Avatar's things
-    	/*setLife(avatarsList,0,4);
-    	setName(avatarsList,0,"Benedek");
-    	setLife(avatarsList,1,5);
-    	setName(avatarsList,1,"Levente");
-    	setLife(avatarsList,2,4);
-    	setName(avatarsList,2,"Zolt�n");
-    	setLife(avatarsList,3,3);
-    	setName(avatarsList,3,"Tivadar");
-    	setLife(avatarsList,4,2);
-    	setName(avatarsList,4,"Hanga");
-    	setLife(avatarsList,5,2);
-    	setName(avatarsList,5,"Hagymakarika");*/
-    	
-    	
     	
     	Pane uiRoot = new Pane();
     	   
@@ -608,7 +560,6 @@ public class MyGraphics extends Application {
     	}
     	
     	VBox itemSelectionLayout = new VBox();
-    	Image placeHolderImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/placeholder.png"), 100, 100, false, false);
     	Image cartridgeImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/batman.png"), 100, 100, false, false);
     	Image flareImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/flare.png"), 100, 100, false, false);
     	Image foodImage = new Image(getClass().getClassLoader().getResourceAsStream("resources/food.png"), 100, 100, false, false);
