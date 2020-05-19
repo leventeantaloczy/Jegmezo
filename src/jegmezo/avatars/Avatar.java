@@ -37,6 +37,10 @@ public abstract class Avatar {
 	}
 	
 	
+	public int getActivityPoints() {
+		return activityPoints;
+	}
+	
 	/**
 	 * Avatar konstruktora:
 	 * Letrehozza az adott avatar backpack-jet, amibe kesobb itemek ker�lnek,

@@ -13,6 +13,7 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
 import javafx.scene.control.TextFormatter.Change;
@@ -49,6 +50,8 @@ public class MyGraphics extends Application {
 	private Controller control;
 	private ImageView[][] viewmx = new ImageView[9][9];
 	private String path = Paths.get("").toAbsolutePath().toString();
+	ProgressBar bar = new ProgressBar(1);
+	
     public static void main(String[] args) {
         launch(args);
     }
@@ -303,7 +306,11 @@ public class MyGraphics extends Application {
     	
     	
     	Pane uiRoot = new Pane();
-    	    	
+    	   
+    	bar.setLayoutX(15);
+    	bar.setLayoutY(440);
+    	bar.setMinSize(292, 50);
+    	
     	Button use = new Button();
     	use.setText("Use");
     	use.setLayoutX(212);
@@ -368,6 +375,14 @@ public class MyGraphics extends Application {
             	int mySelf = control.getGameArea().getActiveAvatar();
             	control.setCommand("b");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	if(mySelf == control.getGameArea().getActiveAvatar()) {
+            		System.out.println(control.getGameArea().avatars.get(mySelf).getActivityPoints() + " activitiiii");
+            		double pr = (double)control.getGameArea().avatars.get(mySelf).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
+            	} else {
+            		System.out.println("else activitiiiiiiiiiiiiiiii");
+            		bar.setProgress(1);
+            	}
             	refreshList(avatarsList);
             	if(control.getGameEnder().getEnd()) {
             		Stage endStage = endGameDialog();
@@ -409,6 +424,14 @@ public class MyGraphics extends Application {
         		int mySelf = control.getGameArea().getActiveAvatar();
             	control.setCommand("dig");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	if(mySelf == control.getGameArea().getActiveAvatar()) {
+            		System.out.println(control.getGameArea().avatars.get(mySelf).getActivityPoints() + " activitiiii");
+            		double pr = (double)control.getGameArea().avatars.get(mySelf).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
+            	} else {
+            		System.out.println("else activitiiiiiiiiiiiiiiii");
+            		bar.setProgress(1);
+            	}
             	refreshList(avatarsList);
             	if(control.getGameEnder().getEnd()) {
             		Stage endStage = endGameDialog();
@@ -435,6 +458,14 @@ public class MyGraphics extends Application {
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("mn");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	if(mySelf == control.getGameArea().getActiveAvatar()) {
+            		System.out.println(control.getGameArea().avatars.get(mySelf).getActivityPoints() + " activitiiii");
+            		double pr = (double)control.getGameArea().avatars.get(mySelf).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
+            	} else {
+            		System.out.println("else activitiiiiiiiiiiiiiiii");
+            		bar.setProgress(1);
+            	}
             	temp.getGraphics().refreshField();
             	refreshList(avatarsList);
             	if(control.getGameEnder().getEnd()) {
@@ -458,6 +489,14 @@ public class MyGraphics extends Application {
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("me");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	if(mySelf == control.getGameArea().getActiveAvatar()) {
+            		System.out.println(control.getGameArea().avatars.get(mySelf).getActivityPoints() + " activitiiii");
+            		double pr = (double)control.getGameArea().avatars.get(mySelf).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
+            	} else {
+            		System.out.println("else activitiiiiiiiiiiiiiiii");
+            		bar.setProgress(1);
+            	}
             	temp.getGraphics().refreshField();
             	refreshList(avatarsList);
             	if(control.getGameEnder().getEnd()) {
@@ -480,6 +519,14 @@ public class MyGraphics extends Application {
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("ms");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	if(mySelf == control.getGameArea().getActiveAvatar()) {
+            		System.out.println(control.getGameArea().avatars.get(mySelf).getActivityPoints() + " activitiiii");
+            		double pr = (double)control.getGameArea().avatars.get(mySelf).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
+            	} else {
+            		System.out.println("else activitiiiiiiiiiiiiiiii");
+            		bar.setProgress(1);
+            	}
             	temp.getGraphics().refreshField();
             	refreshList(avatarsList);
             	if(control.getGameEnder().getEnd()) {
@@ -502,6 +549,14 @@ public class MyGraphics extends Application {
             	Field temp = control.getGameArea().avatars.get(mySelf).getField();
             	control.setCommand("mw");
             	control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
+            	if(mySelf == control.getGameArea().getActiveAvatar()) {
+            		System.out.println(control.getGameArea().avatars.get(mySelf).getActivityPoints() + " activitiiii");
+            		double pr = (double)control.getGameArea().avatars.get(mySelf).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
+            	} else {
+            		System.out.println("else activitiiiiiiiiiiiiiiii");
+            		bar.setProgress(1);
+            	}
             	temp.getGraphics().refreshField();
             	refreshList(avatarsList);
             	if(control.getGameEnder().getEnd()) {
@@ -510,6 +565,10 @@ public class MyGraphics extends Application {
             	}
             }
     	});
+    	
+    	
+    	
+    	
     	
     	uiRoot.getChildren().add(use);
     	uiRoot.getChildren().add(sUse);
@@ -520,7 +579,8 @@ public class MyGraphics extends Application {
     	uiRoot.getChildren().add(down);
     	uiRoot.getChildren().add(left);
     	uiRoot.getChildren().add(dig);
-
+    	uiRoot.getChildren().add(bar);
+    	
     	
     	//Addig elements to UI
     	uiElements.getChildren().add(avatarsList);
@@ -601,6 +661,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("Cartridge");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                 });
@@ -624,6 +686,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("Flare");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                 });                
@@ -647,6 +711,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("Food");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                     });                
@@ -670,6 +736,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("fShovel");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                     });                
@@ -693,6 +761,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("Gun");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                     });                
@@ -717,6 +787,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("Rope");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                     });                
@@ -740,6 +812,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("Shovel");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                     });                
@@ -763,6 +837,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("Tent");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                     });                
@@ -786,6 +862,8 @@ public class MyGraphics extends Application {
 	                        control.setCommand("WetSuit");
 	                        control.getGameArea().avatars.get(mySelf).getField().getGraphics().refreshField();
 	                	}
+	                	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+	            		bar.setProgress( pr );
 	                	iSelectStage.close();
 	                }
                     });                
@@ -932,7 +1010,8 @@ public class MyGraphics extends Application {
 	        	    	}
             	    	dialog.show();
             	    }
-            	    
+            	    double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
             	    dirchoose.hide();
             }
         });
@@ -952,6 +1031,8 @@ public class MyGraphics extends Application {
 	        	    	
             	    	dialog.show();
 	        	    }
+	            	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
             	    dirchoose.hide();
             }
         });
@@ -970,6 +1051,8 @@ public class MyGraphics extends Application {
 	        	    	}
             	    	dialog.show();
 	        	    }
+	            	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
             	    dirchoose.hide();
             }
         });
@@ -989,6 +1072,8 @@ public class MyGraphics extends Application {
 	        	    	}
             	    	dialog.show();
 	        	    }
+	            	double pr = (double)control.getGameArea().avatars.get(control.getGameArea().getActiveAvatar()).getActivityPoints() / (double)4;
+            		bar.setProgress( pr );
             	    dirchoose.hide();
             }
         });

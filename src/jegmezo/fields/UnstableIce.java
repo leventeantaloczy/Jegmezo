@@ -69,7 +69,7 @@ public class UnstableIce extends Field{
 	public void flip() {
 		System.out.println("<UnstableIce.flip()");
 		
-		this.graphics = new FieldGraphics(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false), this);
+		this.graphics.setImage(new Image(getClass().getClassLoader().getResourceAsStream("resources/hole.png"), 88.8, 88.8, false, false));
 		this.kills = true;
 		try {
 			this.item = new EmptyItem("EmptyItem");
@@ -78,8 +78,8 @@ public class UnstableIce extends Field{
 			e.printStackTrace();
 		}
  		this.setShelter(Shelter.None);
- 		this.setSnow(0);
-		
+ 		this.setSnow(-100);
+		this.graphics.refreshField();
 		System.out.println(">UnstableIce.flip()");	
 	}
 }

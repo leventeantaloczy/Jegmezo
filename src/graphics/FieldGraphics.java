@@ -76,6 +76,7 @@ public class FieldGraphics extends Graphics {
 			if(field.item != null && field.getSnowAmount() <= 0)
 				grid.add(new ImageView(field.item.getGraphics().getImage()), 1, 2);
 			//BACKGROUND
+			System.out.println("------------------>None type background");
 			grid.setBackground(new Background(new BackgroundImage( this.image, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.CENTER,new BackgroundSize(88.8,88.8,false,false,false,false))));
 			break;
 		default:

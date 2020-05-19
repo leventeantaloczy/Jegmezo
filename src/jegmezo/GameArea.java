@@ -113,6 +113,7 @@ public class GameArea {
 					Border border = new Border();
 					border.id = cnt;
 					cnt++;
+					
 					addField(border);
 					System.out.println("added border as id " + border.id);
 				}

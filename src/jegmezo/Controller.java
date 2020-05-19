@@ -247,7 +247,7 @@ public class Controller {
 			 * Igy 20% esellyel esik minden mezon a ho
 			 */ 
 	        	int probability = rand .nextInt(101);
-	        	if(probability < 20) {
+	        	if(probability < 3) {
 	        		fields.get(i).setSnow(1);
 	        		fields.get(i).getGraphics().refreshField();
 				for(int j = 0; j < fields.get(i).avatars.size(); j++) {
