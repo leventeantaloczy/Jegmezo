@@ -1,5 +1,6 @@
 package graphics;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 import java.util.function.UnaryOperator;
@@ -25,6 +26,8 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
@@ -53,8 +56,11 @@ public class MyGraphics extends Application {
     	mainStage.setTitle("help: Jegmezo");
     	mainStage.setResizable(false);
     	
+    	File file = new File("src/resources/Music.mp3");
+		Media media = new Media(file.toURI().toString());
+		MediaPlayer mediaplayer = new MediaPlayer(media);
     	
-    	
+    	mediaplayer.play();
     	
     	mainStage.setScene(MenuScene());
     	mainStage.show();
